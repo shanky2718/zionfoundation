@@ -1,5 +1,5 @@
 /**
- * Trust Zion Foundation - Web Application Logic
+ * Zion Foundation - Web Application Logic
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -349,7 +349,7 @@ function handleVolunteerSubmit(event) {
     successBox.style.display = 'block';
   }
 
-  showToast(`Welcome to Trust Zion, ${name}!`);
+  showToast(`Welcome to the Zion family, ${name}!`);
 }
 
 function resetVolunteerForm() {

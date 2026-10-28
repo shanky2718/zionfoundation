@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="pageTitle">Program Details | Trust Zion Foundation</title>
-  <meta name="description" content="Explore programs and support community initiatives through Trust Zion Foundation." />
+  <title id="pageTitle">Program Details | Zion Foundation</title>
+  <meta name="description" content="Explore programs and support community initiatives through Zion Foundation." />
 
   <!-- Exact Production Stylesheet -->
   <link rel="stylesheet" href="css/original.css" />
@@ -108,7 +108,7 @@
               <img src="assets/images/logo.jpg" alt="Zion Foundation logo" class="h-full w-full object-cover" />
             </span>
             <span class="font-display text-lg font-600 leading-tight text-foreground text-left">
-              Trust Zion
+              Zion
               <span class="block text-[0.62rem] tracking-[0.2em] uppercase font-sans opacity-70">Foundation</span>
             </span>
           </a>
@@ -517,7 +517,7 @@
                 <span class="grid place-items-center h-11 w-11 rounded-xl overflow-hidden bg-white">
                   <img src="assets/images/logo.jpg" alt="Zion Foundation logo" class="h-full w-full object-cover" />
                 </span>
-                <span class="font-display text-lg font-600">Trust Zion Foundation</span>
+                <span class="font-display text-lg font-600">Zion Foundation</span>
               </div>
               <p class="mt-4 text-primary-foreground/70 leading-relaxed">
                 A charity, faith, and community organization serving families with compassion, education, and hope since 2001.
@@ -547,13 +547,13 @@
               <ul class="space-y-2.5 text-primary-foreground/70">
                 <li>1204 Zion Avenue</li>
                 <li>(404) 555-0142</li>
-                <li><a href="mailto:hello@trustzionfoundation.org" class="hover:underline">hello@trustzionfoundation.org</a></li>
+                <li><a href="mailto:hello@zionfoundation.org" class="hover:underline">hello@zionfoundation.org</a></li>
               </ul>
             </div>
           </div>
 
           <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-primary-foreground/60">
-            <p>© <span id="yearVal">2026</span> Trust Zion Foundation. A registered 501(c)(3) nonprofit.</p>
+            <p>© <span id="yearVal">2026</span> Zion Foundation. A registered 501(c)(3) nonprofit.</p>
             <p>Building Hope · Protecting Lives · Empowering Communities</p>
           </div>
         </div>
@@ -1100,7 +1100,7 @@
 
     // Populate Page with Program Data
     function renderProgramPage() {
-      document.getElementById('pageTitle').textContent = `${currentProg.title} | Trust Zion Foundation`;
+      document.getElementById('pageTitle').textContent = `${currentProg.title} | Zion Foundation`;
       document.getElementById('progTitle').textContent = currentProg.title;
       document.getElementById('progSubtitle').textContent = currentProg.shortDesc;
       document.getElementById('progCategoryBadge').textContent = currentProg.category;
@@ -1552,7 +1552,7 @@
             key: keyId,
             amount: orderData.amount,
             currency: orderData.currency || currencyCode,
-            name: "Trust Zion Foundation",
+            name: "Zion Foundation",
             description: `${currentProg.title} Donation`,
             image: "assets/images/logo.jpg",
             order_id: orderId.startsWith('order_test_') ? undefined : orderId,
@@ -1564,7 +1564,7 @@
             notes: {
               purpose: currentProg.title,
               frequency: selectedFreq,
-              charity: "Trust Zion Foundation"
+              charity: "Zion Foundation"
             },
             theme: {
               color: "#573678"

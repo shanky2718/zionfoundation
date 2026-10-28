@@ -1,7 +1,7 @@
 {
-  "name": "trustzion-foundation",
+  "name": "zion-foundation",
   "version": "1.0.0",
-  "description": "Trust Zion Foundation Website - Exact replica and production-ready implementation",
+  "description": "Zion Foundation Website - Exact replica and production-ready implementation",
   "main": "index.html",
   "scripts": {
     "start": "npx serve -l 3000",
@@ -9,11 +9,11 @@
     "dev": "npx serve -l 3000"
   },
   "keywords": [
-    "trust-zion-foundation",
+    "zion-foundation",
     "nonprofit",
     "charity",
     "community"
   ],
-  "author": "Trust Zion Foundation",
+  "author": "Zion Foundation",
   "license": "MIT"
 }

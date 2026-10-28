@@ -1,6 +1,6 @@
-# Trust Zion Foundation Website
+# Zion Foundation Website
 
-A complete, high-fidelity replica and production-ready implementation of **[Trust Zion Foundation](https://trustzionfnd.org/)**.
+A complete, high-fidelity replica and production-ready implementation of **[Zion Foundation](https://zionfoundation.org/)**.
 
 ## 🌟 Highlights & Features
 - **Accurate Brand Aesthetic**: Features the authentic color palette, typography (`Fraunces` serif + `Inter` sans), brand logo, and photography.
@@ -41,7 +41,7 @@ Then visit `http://localhost:3000`.
 
 ## 📁 Directory Structure
 ```
-trustzion-foundation/
+zion-foundation/
 ├── assets/
 │   └── images/
 │       ├── logo.jpg

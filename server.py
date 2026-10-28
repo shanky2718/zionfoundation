@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trust Zion Foundation - Backend Server
+Zion Foundation - Backend Server
 Supports static serving, secure Razorpay order creation & signature verification,
 and animal food donation pledge recording.
 """
@@ -138,7 +138,7 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
                     "notes": {
                         "purpose": purpose[:30],
                         "donor_name": donor_name[:30],
-                        "organization": "Trust Zion Foundation"
+                        "organization": "Zion Foundation"
                     }
                 }
 
@@ -298,7 +298,7 @@ def run_server():
     os.chdir(DATA_DIR)
     socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", PORT), CustomHTTPHandler) as httpd:
-        print(f"Trust Zion Foundation Server running on http://localhost:{PORT}")
+        print(f"Zion Foundation Server running on http://localhost:{PORT}")
         print(f"Razorpay Status: {'Live/Test Keys Configured' if HAS_REAL_KEYS else 'Test Mode Simulation Ready'}")
         print("Static Files + Razorpay API: Ready")
         try:
