@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trust Zion Foundation | Building Hope, One Community at a Time</title>
+  <meta name="description" content="Trust Zion Foundation serves families through compassion, education, and faith — meeting real needs and nurturing lasting change across our neighborhoods." />
+
+  <!-- Exact Production Stylesheet -->
+  <link rel="stylesheet" href="css/original.css" />
+
+  <!-- Razorpay Checkout Gateway SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Interactive Enhancements Styles -->
+  <style>
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Modal Backdrop */
+    .modal-backdrop-custom {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-backdrop-custom.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card-custom {
+      position: relative;
+      width: 100%;
+      max-width: 32rem;
+      background-color: hsl(var(--card));
+      color: hsl(var(--card-foreground));
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid hsl(var(--border));
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-backdrop-custom.open .modal-card-custom {
+      transform: translateY(0) scale(1);
+    }
+    .toast-container-custom {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      pointer-events: none;
+    }
+    .toast-custom {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: hsl(var(--primary));
+      color: #ffffff;
+      padding: 0.875rem 1.25rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.875rem;
+      font-weight: 500;
+      animation: toastIn 0.3s ease-out;
+    }
+    @keyframes toastIn {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="bg-background text-foreground">
+  <div id="root">
+    <div>
+      <!-- Fixed Header -->
+      <header id="siteHeader" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="mx-auto max-w-[90rem] px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
+          <button onclick="scrollToSection('top')" class="flex items-center gap-2.5 group">
+            <span class="grid place-items-center h-11 w-11 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
+              <img src="assets/images/logo.jpg" alt="Zion Foundation logo" class="h-full w-full object-cover" />
+            </span>
+            <span id="brandName" class="font-display text-lg font-600 leading-tight text-primary-foreground text-left">
+              Trust Zion
+              <span class="block text-[0.62rem] tracking-[0.2em] uppercase font-sans opacity-70">Foundation</span>
+            </span>
+          </button>
+
+          <nav class="hidden lg:flex items-center gap-1">
+            <button onclick="scrollToSection('about')" class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">About</button>
+            <button onclick="scrollToSection('programs')" class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Verticals</button>
+            <button onclick="scrollToSection('events')" class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Events</button>
+            <button onclick="scrollToSection('news')" class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">News</button>
+            <button onclick="scrollToSection('volunteer')" class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Volunteer</button>
+            <button onclick="scrollToSection('contact')" class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Contact</button>
+            <button onclick="openDonateModal()" class="ml-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-600 text-accent-foreground shadow-sm hover:brightness-105 active:scale-[0.98] transition">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              </svg>
+              Donate
+            </button>
+          </nav>
+
+          <button id="mobileMenuOpenBtn" class="lg:hidden text-primary-foreground" aria-label="Open menu">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 z-50 bg-primary/98 backdrop-blur-sm lg:hidden hidden">
+          <div class="flex items-center justify-between h-16 px-5">
+            <span class="font-display text-primary-foreground text-lg">Trust Zion</span>
+            <button id="mobileMenuCloseBtn" class="text-primary-foreground" aria-label="Close menu">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <nav class="flex flex-col px-6 pt-6 gap-1">
+            <button onclick="closeMobileMenu(); scrollToSection('about')" class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">About</button>
+            <button onclick="closeMobileMenu(); scrollToSection('programs')" class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Verticals</button>
+            <button onclick="closeMobileMenu(); scrollToSection('events')" class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Events</button>
+            <button onclick="closeMobileMenu(); scrollToSection('news')" class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">News</button>
+            <button onclick="closeMobileMenu(); scrollToSection('volunteer')" class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Volunteer</button>
+            <button onclick="closeMobileMenu(); scrollToSection('contact')" class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Contact</button>
+            <button onclick="closeMobileMenu(); openDonateModal()" class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              </svg>
+              Donate Now
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section id="top" class="relative min-h-[100dvh] flex items-center overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="assets/images/hero.png" alt="Volunteers gathered at a community outreach event" class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-primary/30"></div>
+        </div>
+
+        <div class="relative mx-auto max-w-[90rem] w-full px-5 sm:px-8 pt-28 pb-16">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-sm font-500 text-primary-foreground backdrop-blur-sm">
+              <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+                <path d="M20 3v4"></path>
+                <path d="M22 5h-4"></path>
+                <path d="M4 17v2"></path>
+                <path d="M5 18H3"></path>
+              </svg>
+              Building Hope. Protecting Lives. Empowering Communities.
+            </span>
+
+            <h1 class="mt-6 font-display text-[2.7rem] leading-[1.05] sm:text-6xl lg:text-7xl font-600 text-primary-foreground">
+              Building hope, one <br class="hidden sm:inline" /><span class="italic text-accent">community</span> at a time.
+            </h1>
+
+            <p class="mt-6 text-lg sm:text-xl text-primary-foreground/85 leading-relaxed max-w-xl">
+              Trust Zion Foundation serves families through compassion, education, and faith — meeting real needs and nurturing lasting change across our neighborhoods.
+            </p>
+
+            <div class="mt-9 flex flex-wrap gap-4">
+              <button onclick="scrollToSection('donate')" class="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-base font-600 text-accent-foreground shadow-lg shadow-black/20 hover:brightness-105 active:scale-[0.98] transition">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg>
+                Give Today
+              </button>
+
+              <button onclick="scrollToSection('volunteer')" class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-3.5 text-base font-600 text-primary-foreground backdrop-blur-sm hover:bg-white/15 active:scale-[0.98] transition">
+                Get Involved
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee Ticker -->
+      <div class="bg-primary py-4 overflow-hidden border-y border-white/10">
+        <div class="marquee-track flex w-max gap-10">
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Compassion <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Faith <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Education <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Service <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Community <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Hope <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Dignity <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Unity <span class="text-accent not-italic">✦</span></span>
+          <!-- Duplicate for seamless loop -->
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Compassion <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Faith <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Education <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Service <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Community <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Hope <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Dignity <span class="text-accent not-italic">✦</span></span>
+          <span class="flex items-center gap-10 font-display text-2xl italic text-primary-foreground/80">Unity <span class="text-accent not-italic">✦</span></span>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <section id="about" class="py-24 sm:py-32">
+        <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
+          <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div class="relative reveal">
+              <img src="assets/images/hug.png" alt="A volunteer embracing an elder at a food drive" class="rounded-2xl w-full object-cover aspect-[4/3] shadow-xl" />
+              <div class="absolute -bottom-6 -right-4 sm:-right-8 bg-card rounded-2xl shadow-lg border border-border p-5 max-w-[13rem]">
+                <svg class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                  <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path>
+                </svg>
+                <p class="mt-2 text-sm font-500 text-foreground leading-snug">"Whatever you did for the least of these, you did for me."</p>
+              </div>
+            </div>
+
+            <div class="reveal">
+              <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Our Mission</span>
+              <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">
+                Rooted in faith, <span class="marker-underline">devoted to people.</span>
+              </h2>
+              <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+                For over two decades, Trust Zion Foundation has walked alongside families in their hardest seasons. We believe every person carries God-given dignity — and that lasting change grows from relationships, not handouts.
+              </p>
+              <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+                From feeding programs and tutoring to housing support and worship gatherings, our work is holistic: caring for the body, mind, and spirit of the whole community.
+              </p>
+              <div class="mt-8 grid grid-cols-2 gap-5">
+                <div class="rounded-xl bg-secondary p-4">
+                  <p class="font-display text-lg font-600">Integrity</p>
+                  <p class="text-sm text-muted-foreground mt-1">Transparent stewardship of every gift</p>
+                </div>
+                <div class="rounded-xl bg-secondary p-4">
+                  <p class="font-display text-lg font-600">Compassion</p>
+                  <p class="text-sm text-muted-foreground mt-1">Meeting people where they are</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact Metrics -->
+          <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden bg-border reveal">
+            <div class="bg-primary text-center py-9 px-4">
+              <p class="font-display text-4xl sm:text-5xl font-600 text-accent">14,200+</p>
+              <p class="mt-2 text-sm text-primary-foreground/75">Families served</p>
+            </div>
+            <div class="bg-primary text-center py-9 px-4">
+              <p class="font-display text-4xl sm:text-5xl font-600 text-accent">86</p>
+              <p class="mt-2 text-sm text-primary-foreground/75">Community programs</p>
+            </div>
+            <div class="bg-primary text-center py-9 px-4">
+              <p class="font-display text-4xl sm:text-5xl font-600 text-accent">1,900</p>
+              <p class="mt-2 text-sm text-primary-foreground/75">Active volunteers</p>
+            </div>
+            <div class="bg-primary text-center py-9 px-4">
+              <p class="font-display text-4xl sm:text-5xl font-600 text-accent">23</p>
+              <p class="mt-2 text-sm text-primary-foreground/75">Years of service</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Six Verticals, One Family Section -->
+      <section id="programs" class="py-24 sm:py-32 bg-secondary/35 border-t border-b border-border relative">
+        <div id="pets" class="absolute -top-20"></div>
+        <div id="verticals" class="absolute -top-20"></div>
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-600 text-[#24133B] dark:text-foreground tracking-tight leading-tight">
+              Six verticals, one family
+            </h2>
+          </div>
+
+          <div class="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+            <!-- Vertical 1: Zion Loyals -->
+            <a href="program.html?id=zion-loyals" id="vertical-zion-loyals" class="group relative rounded-3xl bg-card border border-border/80 p-7 sm:p-8 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[#24133B] text-white shadow-sm">
+                    Active
+                  </span>
+                  <span class="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-[#24133B] dark:text-foreground mt-5 mb-2.5 group-hover:text-primary transition-colors">
+                  Zion Loyals
+                </h3>
+                <p class="text-muted-foreground text-[0.98rem] leading-relaxed">
+                  Rescue, feeding and veterinary care for street animals.
+                </p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+                <span>Explore Vertical & Donate</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+
+            <!-- Vertical 2: Zion Academy -->
+            <a href="program.html?id=zion-academy" id="vertical-zion-academy" class="group relative rounded-3xl bg-card border border-border/80 p-7 sm:p-8 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[#24133B] text-white shadow-sm">
+                    Active
+                  </span>
+                  <span class="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-[#24133B] dark:text-foreground mt-5 mb-2.5 group-hover:text-primary transition-colors">
+                  Zion Academy
+                </h3>
+                <p class="text-muted-foreground text-[0.98rem] leading-relaxed">
+                  Free football coaching for children with talent but not the means.
+                </p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+                <span>Explore Vertical & Support</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+
+            <!-- Vertical 3: Zion Vidya -->
+            <a href="program.html?id=zion-vidya" id="vertical-zion-vidya" class="group relative rounded-3xl bg-card border border-border/80 p-7 sm:p-8 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[#DF4C76] text-white shadow-sm">
+                    Starting
+                  </span>
+                  <span class="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-[#24133B] dark:text-foreground mt-5 mb-2.5 group-hover:text-primary transition-colors">
+                  Zion Vidya
+                </h3>
+                <p class="text-muted-foreground text-[0.98rem] leading-relaxed">
+                  Learning and AI skills for people with physical disabilities.
+                </p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+                <span>Explore Vertical & Sponsor</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+
+            <!-- Vertical 4: Zion Home -->
+            <a href="program.html?id=zion-home" id="vertical-zion-home" class="group relative rounded-3xl bg-card border border-border/80 p-7 sm:p-8 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide border-2 border-dashed border-[#8E7C9E] text-[#635175] dark:text-[#C5B5D3] bg-transparent">
+                    Coming soon
+                  </span>
+                  <span class="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-[#24133B] dark:text-foreground mt-5 mb-2.5 group-hover:text-primary transition-colors">
+                  Zion Home
+                </h3>
+                <p class="text-muted-foreground text-[0.98rem] leading-relaxed">
+                  Foster support and protection for children who need care.
+                </p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+                <span>Explore Vision & Details</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+
+            <!-- Vertical 5: Zion Care -->
+            <a href="program.html?id=zion-care" id="vertical-zion-care" class="group relative rounded-3xl bg-card border border-border/80 p-7 sm:p-8 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide border-2 border-dashed border-[#8E7C9E] text-[#635175] dark:text-[#C5B5D3] bg-transparent">
+                    Coming soon
+                  </span>
+                  <span class="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-[#24133B] dark:text-foreground mt-5 mb-2.5 group-hover:text-primary transition-colors">
+                  Zion Care
+                </h3>
+                <p class="text-muted-foreground text-[0.98rem] leading-relaxed">
+                  Presence, prayer and comfort for the ill, the dying and their families.
+                </p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+                <span>Explore Vision & Details</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+
+            <!-- Vertical 6: Zion Mind -->
+            <a href="program.html?id=zion-mind" id="vertical-zion-mind" class="group relative rounded-3xl bg-card border border-border/80 p-7 sm:p-8 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide border-2 border-dashed border-[#8E7C9E] text-[#635175] dark:text-[#C5B5D3] bg-transparent">
+                    Coming soon
+                  </span>
+                  <span class="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-[#24133B] dark:text-foreground mt-5 mb-2.5 group-hover:text-primary transition-colors">
+                  Zion Mind
+                </h3>
+                <p class="text-muted-foreground text-[0.98rem] leading-relaxed">
+                  Mental health support and a safe place to reach out.
+                </p>
+              </div>
+              <div class="mt-8 pt-4 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+                <span>Explore Vision & Details</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Donate Section -->
+      <section id="donate" class="relative py-24 sm:py-32 overflow-hidden bg-primary text-primary-foreground">
+        <img src="assets/images/hands.png" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover opacity-15" />
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/85 to-primary"></div>
+
+        <div class="relative mx-auto max-w-[60rem] px-5 sm:px-8 text-center">
+          <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Give Generously</span>
+          <h2 class="mt-3 font-display text-4xl sm:text-6xl font-600 leading-tight">Your gift changes lives.</h2>
+          <p class="mt-5 text-lg text-primary-foreground/80 max-w-2xl mx-auto">
+            Every dollar goes further through the hands of our volunteers. Choose an amount and become part of the story of hope in our community.
+          </p>
+
+          <!-- Tiers -->
+          <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto" id="donateTiersContainer">
+            <button onclick="selectTier(0, 25)" class="tier-option rounded-2xl border p-6 text-left transition bg-white/5 border-white/15 hover:bg-white/10">
+              <p class="font-display text-3xl font-600">$25</p>
+              <p class="mt-2 text-sm text-primary-foreground/70">Feeds a family for a week</p>
+            </button>
+            <button onclick="selectTier(1, 60)" class="tier-option rounded-2xl border p-6 text-left transition bg-accent border-accent text-accent-foreground shadow-lg">
+              <p class="font-display text-3xl font-600">$60</p>
+              <p class="mt-2 text-sm text-accent-foreground/80">Sponsors a child's tutoring</p>
+            </button>
+            <button onclick="selectTier(2, 150)" class="tier-option rounded-2xl border p-6 text-left transition bg-white/5 border-white/15 hover:bg-white/10">
+              <p class="font-display text-3xl font-600">$150</p>
+              <p class="mt-2 text-sm text-primary-foreground/70">Funds emergency housing aid</p>
+            </button>
+          </div>
+
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <button id="mainDonateBtn" onclick="openDonateModal()" class="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              </svg>
+              Donate $60 Now
+            </button>
+            <button onclick="openDonateModal(true)" class="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-base font-600 hover:bg-white/10 active:scale-[0.98] transition">
+              Give Monthly
+            </button>
+          </div>
+
+          <p class="mt-6 text-sm text-primary-foreground/60">
+            Trust Zion Foundation is a registered 501(c)(3). Donations are tax-deductible.
+          </p>
+        </div>
+      </section>
+
+      <!-- Events Section -->
+      <section id="events" class="py-24 sm:py-32">
+        <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
+          <div class="flex flex-wrap items-end justify-between gap-4 reveal">
+            <div class="max-w-xl">
+              <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Join Us</span>
+              <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">Upcoming Events</h2>
+            </div>
+            <p class="text-muted-foreground max-w-xs">Come as you are. There's a place for everyone at our table.</p>
+          </div>
+
+          <div class="mt-12 divide-y divide-border border-y border-border reveal">
+            <!-- Event 1 -->
+            <div class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
+              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
+                <span class="block font-display text-xl font-600 leading-none">18</span>
+                <span class="block text-xs mt-1 tracking-widest text-accent">MAY</span>
+              </div>
+              <div class="flex-1">
+                <span class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Outreach</span>
+                <h3 class="mt-2 font-display text-2xl font-600">Community Food Drive</h3>
+                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    9:00 AM
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Zion Community Center
+                  </span>
+                </div>
+              </div>
+              <button onclick="openRsvp('Community Food Drive', 'May 18, 9:00 AM', 'Zion Community Center')" class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                RSVP
+              </button>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
+              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
+                <span class="block font-display text-xl font-600 leading-none">25</span>
+                <span class="block text-xs mt-1 tracking-widest text-accent">MAY</span>
+              </div>
+              <div class="flex-1">
+                <span class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Fundraiser</span>
+                <h3 class="mt-2 font-display text-2xl font-600">Youth Scholarship Gala</h3>
+                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    6:30 PM
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Grand Hall Downtown
+                  </span>
+                </div>
+              </div>
+              <button onclick="openRsvp('Youth Scholarship Gala', 'May 25, 6:30 PM', 'Grand Hall Downtown')" class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                RSVP
+              </button>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
+              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
+                <span class="block font-display text-xl font-600 leading-none">08</span>
+                <span class="block text-xs mt-1 tracking-widest text-accent">JUN</span>
+              </div>
+              <div class="flex-1">
+                <span class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Faith</span>
+                <h3 class="mt-2 font-display text-2xl font-600">Sunday Worship & Prayer</h3>
+                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    10:00 AM
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Trust Zion Chapel
+                  </span>
+                </div>
+              </div>
+              <button onclick="openRsvp('Sunday Worship & Prayer', 'June 08, 10:00 AM', 'Trust Zion Chapel')" class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                RSVP
+              </button>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
+              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
+                <span class="block font-display text-xl font-600 leading-none">21</span>
+                <span class="block text-xs mt-1 tracking-widest text-accent">JUN</span>
+              </div>
+              <div class="flex-1">
+                <span class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Volunteer</span>
+                <h3 class="mt-2 font-display text-2xl font-600">Neighborhood Rebuild Day</h3>
+                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    8:00 AM
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Maple District
+                  </span>
+                </div>
+              </div>
+              <button onclick="openRsvp('Neighborhood Rebuild Day', 'June 21, 8:00 AM', 'Maple District')" class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                RSVP
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stories & Updates Section -->
+      <section id="news" class="py-24 sm:py-32 bg-secondary/60">
+        <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
+          <div class="max-w-2xl reveal">
+            <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Stories & Updates</span>
+            <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">News & Blog</h2>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-3 gap-6">
+            <!-- Article 1 -->
+            <article class="group reveal rounded-2xl overflow-hidden bg-card border border-border shadow-sm hover:shadow-lg transition-shadow">
+              <div class="h-48 overflow-hidden">
+                <img src="assets/images/kids.png" alt="How mentorship transformed the Reyes family" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="p-6">
+                <span class="text-xs font-600 uppercase tracking-wider text-accent">Education</span>
+                <h3 class="mt-2 font-display text-xl font-600 leading-snug">How mentorship transformed the Reyes family</h3>
+                <p class="mt-2 text-sm text-muted-foreground leading-relaxed">A single mother of three shares how tutoring gave her children a new future.</p>
+                <button onclick="openStory('How mentorship transformed the Reyes family', 'Education', 'A single mother of three shares how tutoring gave her children a new future.', 'assets/images/kids.png')" class="mt-4 inline-flex items-center gap-1 text-sm font-600 text-primary hover:gap-2 transition-all">
+                  Read story
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                </button>
+              </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="group reveal rounded-2xl overflow-hidden bg-card border border-border shadow-sm hover:shadow-lg transition-shadow">
+              <div class="h-48 overflow-hidden">
+                <img src="assets/images/build.png" alt="30 homes restored after spring storms" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="p-6">
+                <span class="text-xs font-600 uppercase tracking-wider text-accent">Impact</span>
+                <h3 class="mt-2 font-display text-xl font-600 leading-snug">30 homes restored after spring storms</h3>
+                <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Volunteers rallied to rebuild an entire block in record time.</p>
+                <button onclick="openStory('30 homes restored after spring storms', 'Impact', 'Volunteers rallied to rebuild an entire block in record time.', 'assets/images/build.png')" class="mt-4 inline-flex items-center gap-1 text-sm font-600 text-primary hover:gap-2 transition-all">
+                  Read story
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                </button>
+              </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="group reveal rounded-2xl overflow-hidden bg-card border border-border shadow-sm hover:shadow-lg transition-shadow">
+              <div class="h-48 overflow-hidden">
+                <img src="assets/images/faith.png" alt="Finding hope: stories from our prayer circle" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="p-6">
+                <span class="text-xs font-600 uppercase tracking-wider text-accent">Faith</span>
+                <h3 class="mt-2 font-display text-xl font-600 leading-snug">Finding hope: stories from our prayer circle</h3>
+                <p class="mt-2 text-sm text-muted-foreground leading-relaxed">The quiet power of community gathered in faith and fellowship.</p>
+                <button onclick="openStory('Finding hope: stories from our prayer circle', 'Faith', 'The quiet power of community gathered in faith and fellowship.', 'assets/images/faith.png')" class="mt-4 inline-flex items-center gap-1 text-sm font-600 text-primary hover:gap-2 transition-all">
+                  Read story
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Volunteer / Get Involved Section -->
+      <section id="volunteer" class="py-24 sm:py-32">
+        <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
+          <div class="grid lg:grid-cols-2 gap-14 items-start">
+            <div class="reveal">
+              <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Get Involved</span>
+              <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">
+                Your hands can <span class="marker-underline">change a life.</span>
+              </h2>
+              <p class="mt-5 text-lg text-muted-foreground">
+                There are so many ways to make a difference. Find the one that fits your gifts and season of life.
+              </p>
+
+              <div class="mt-8 space-y-4">
+                <div class="flex gap-4 rounded-xl bg-secondary p-5">
+                  <span class="grid place-items-center h-12 w-12 flex-shrink-0 rounded-xl bg-primary">
+                    <svg class="h-5 w-5 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  </span>
+                  <div>
+                    <p class="font-display text-lg font-600">Volunteer</p>
+                    <p class="text-sm text-muted-foreground mt-0.5">Give your time at food drives, tutoring sessions, and community builds.</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4 rounded-xl bg-secondary p-5">
+                  <span class="grid place-items-center h-12 w-12 flex-shrink-0 rounded-xl bg-primary">
+                    <svg class="h-5 w-5 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                  </span>
+                  <div>
+                    <p class="font-display text-lg font-600">Donate</p>
+                    <p class="text-sm text-muted-foreground mt-0.5">Fuel our programs with a one-time or recurring gift of any size.</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4 rounded-xl bg-secondary p-5">
+                  <span class="grid place-items-center h-12 w-12 flex-shrink-0 rounded-xl bg-primary">
+                    <svg class="h-5 w-5 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 9h4"></path><path d="M12 7v5"></path><path d="M14 22v-4a2 2 0 0 0-4 0v4"></path><path d="M18 22V5.618a1 1 0 0 0-.553-.894l-4.553-2.277a2 2 0 0 0-1.788 0L6.553 4.724A1 1 0 0 0 6 5.618V22"></path><path d="m18 7 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.618a1 1 0 0 1 .553-.894L6 7"></path></svg>
+                  </span>
+                  <div>
+                    <p class="font-display text-lg font-600">Partner</p>
+                    <p class="text-sm text-muted-foreground mt-0.5">Bring your church, business, or school alongside our mission.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Volunteer Sign Up Form -->
+            <div class="reveal rounded-2xl bg-card border border-border shadow-lg p-7 sm:p-9">
+              <h3 class="font-display text-2xl font-600">Become a volunteer</h3>
+              <p class="text-muted-foreground mt-1 mb-6 text-sm">Tell us a little about you and we'll be in touch within 48 hours.</p>
+
+              <div id="volunteerSuccess" class="hidden rounded-xl bg-secondary p-8 text-center">
+                <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-accent text-accent-foreground">
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                </span>
+                <p class="mt-4 font-display text-xl font-600">Thank you!</p>
+                <p class="text-sm text-muted-foreground mt-1">Welcome to the Trust Zion family. We'll reach out soon.</p>
+                <button type="button" onclick="resetVolunteer()" class="mt-5 text-sm font-600 text-primary underline">Sign up another volunteer</button>
+              </div>
+
+              <form id="volunteerForm" onsubmit="submitVolunteer(event)" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-2">
+                    <label class="text-sm font-600" for="vName">Full name</label>
+                    <input id="vName" name="name" type="text" required class="rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="text-sm font-600" for="vEmail">Email</label>
+                    <input id="vEmail" name="email" type="email" required class="rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-600" for="vPhone">Phone</label>
+                  <input id="vPhone" name="phone" type="tel" class="rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-600" for="vInterest">Area of interest</label>
+                  <select id="vInterest" class="rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                    <option>Food & Relief</option>
+                    <option>Education & Youth</option>
+                    <option>Faith & Worship</option>
+                    <option>Housing & Rebuild</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-600 text-primary-foreground hover:bg-primary/90 active:scale-[0.99] transition">
+                  Sign me up
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reach Out / Contact Section -->
+      <section id="contact" class="py-24 sm:py-32 bg-secondary/60">
+        <div class="mx-auto max-w-[72rem] px-5 sm:px-8 grid lg:grid-cols-2 gap-14">
+          <div class="reveal">
+            <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Reach Out</span>
+            <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">We'd love to hear from you.</h2>
+            <p class="mt-5 text-lg text-muted-foreground">Whether you need help, want to give, or simply have a question — our doors and hearts are open.</p>
+
+            <div class="mt-8 space-y-5">
+              <div class="flex gap-4 items-start">
+                <span class="grid place-items-center h-11 w-11 flex-shrink-0 rounded-xl bg-primary text-primary-foreground">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </span>
+                <div>
+                  <p class="font-600">Visit us</p>
+                  <p class="text-muted-foreground">1204 Zion Avenue, Community District</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <span class="grid place-items-center h-11 w-11 flex-shrink-0 rounded-xl bg-primary text-primary-foreground">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </span>
+                <div>
+                  <p class="font-600">Call us</p>
+                  <p class="text-muted-foreground">(404) 555-0142</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <span class="grid place-items-center h-11 w-11 flex-shrink-0 rounded-xl bg-primary text-primary-foreground">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </span>
+                <div>
+                  <p class="font-600">Email us</p>
+                  <p class="text-muted-foreground">hello@trustzionfoundation.org</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <span class="grid place-items-center h-11 w-11 flex-shrink-0 rounded-xl bg-primary text-primary-foreground">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </span>
+                <div>
+                  <p class="font-600">Office hours</p>
+                  <p class="text-muted-foreground">Mon – Fri, 9:00 AM – 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form onsubmit="submitContact(event)" class="reveal rounded-2xl bg-card border border-border shadow-lg p-7 sm:p-9 space-y-4">
+            <h3 class="font-display text-2xl font-600">Send a message</h3>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-600" for="cName">Name</label>
+              <input id="cName" name="cname" required class="rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-600" for="cEmail">Email</label>
+              <input id="cEmail" name="cemail" type="email" required class="rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-600" for="cMsg">Message</label>
+              <textarea id="cMsg" name="msg" rows="4" required class="rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground hover:brightness-105 active:scale-[0.99] transition">
+              Send message
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-primary text-primary-foreground">
+        <div class="mx-auto max-w-[90rem] px-5 sm:px-8 py-16">
+          <div class="grid md:grid-cols-4 gap-10">
+            <div class="md:col-span-2 max-w-sm">
+              <div class="flex items-center gap-2.5">
+                <span class="grid place-items-center h-11 w-11 rounded-xl overflow-hidden bg-white">
+                  <img src="assets/images/logo.jpg" alt="Zion Foundation logo" class="h-full w-full object-cover" />
+                </span>
+                <span class="font-display text-lg font-600">Trust Zion Foundation</span>
+              </div>
+              <p class="mt-4 text-primary-foreground/70 leading-relaxed">
+                A charity, faith, and community organization serving families with compassion, education, and hope since 2001.
+              </p>
+              <button onclick="scrollToSection('donate')" class="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg>
+                Donate Now
+              </button>
+            </div>
+
+            <div>
+              <p class="font-600 mb-4">Explore</p>
+              <ul class="space-y-2.5">
+                <li><button onclick="scrollToSection('about')" class="text-primary-foreground/70 hover:text-accent transition">About</button></li>
+                <li><button onclick="scrollToSection('programs')" class="text-primary-foreground/70 hover:text-accent transition">Verticals</button></li>
+                <li><button onclick="scrollToSection('events')" class="text-primary-foreground/70 hover:text-accent transition">Events</button></li>
+                <li><button onclick="scrollToSection('news')" class="text-primary-foreground/70 hover:text-accent transition">News</button></li>
+                <li><button onclick="scrollToSection('volunteer')" class="text-primary-foreground/70 hover:text-accent transition">Volunteer</button></li>
+                <li><button onclick="scrollToSection('contact')" class="text-primary-foreground/70 hover:text-accent transition">Contact</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="font-600 mb-4">Contact</p>
+              <ul class="space-y-2.5 text-primary-foreground/70">
+                <li>1204 Zion Avenue</li>
+                <li>(404) 555-0142</li>
+                <li><a href="mailto:hello@trustzionfoundation.org" class="hover:underline">hello@trustzionfoundation.org</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-primary-foreground/60">
+            <p>© <span id="yearVal">2026</span> Trust Zion Foundation. A registered 501(c)(3) nonprofit.</p>
+            <p>Building Hope · Protecting Lives · Empowering Communities</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: Donation -->
+  <div id="modalDonate" class="modal-backdrop-custom">
+    <div class="modal-card-custom">
+      <button onclick="closeDonateModal()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+      <div id="donateModalBody">
+        <span class="text-xs font-600 uppercase tracking-wider text-accent">Make an Impact</span>
+        <h3 class="font-display text-2xl font-600 mt-1">Complete Your Gift</h3>
+        <p class="text-sm text-muted-foreground mt-1 mb-4">100% tax-deductible under 501(c)(3) status.</p>
+
+        <div class="flex gap-2 mb-4">
+          <button id="freqOnce" onclick="setFreq('one-time')" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground">One-Time</button>
+          <button id="freqMonthly" onclick="setFreq('monthly')" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground">Monthly</button>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-sm font-semibold mb-1" for="modalAmount">Amount ($ USD)</label>
+          <input id="modalAmount" type="number" min="5" value="60" class="w-full rounded-lg border border-input bg-background px-3.5 py-2.5 font-display text-xl font-bold text-accent focus:outline-none focus:ring-2 focus:ring-ring" />
+        </div>
+
+        <form onsubmit="processDonation(event)" class="space-y-3">
+          <div>
+            <label class="block text-sm font-semibold mb-1" for="dName">Your Full Name</label>
+            <input id="dName" required placeholder="Sarah Jenkins" class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1" for="dEmail">Receipt Email</label>
+            <input id="dEmail" type="email" required placeholder="sarah@example.com" class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1" for="dPayment">Payment Method</label>
+            <select id="dPayment" class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+              <option>Credit / Debit Card</option>
+              <option>PayPal</option>
+              <option>Bank Transfer (ACH)</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-600 text-accent-foreground hover:brightness-105 transition">
+            Confirm & Send Gift
+          </button>
+        </form>
+      </div>
+
+      <div id="donateSuccess" class="hidden text-center py-4">
+        <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-accent text-accent-foreground mb-3">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg>
+        </span>
+        <h3 class="font-display text-2xl font-600">Thank You For Your Gift!</h3>
+        <p class="text-sm text-muted-foreground mt-1">A receipt has been issued to <span id="confEmail" class="font-semibold text-foreground"></span>.</p>
+        <div class="bg-secondary rounded-xl p-4 my-4 text-left text-xs space-y-1">
+          <p><strong>Receipt #:</strong> <span id="confReceipt">TZF-2026-9182</span></p>
+          <p><strong>Amount:</strong> <span id="confAmt">$60.00 USD</span></p>
+          <p><strong>Charity:</strong> Trust Zion Foundation (501(c)(3) Nonprofit)</p>
+        </div>
+        <button onclick="closeDonateModal()" class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: RSVP -->
+  <div id="modalRsvp" class="modal-backdrop-custom">
+    <div class="modal-card-custom">
+      <button onclick="closeRsvp()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+      <div id="rsvpBody">
+        <span class="text-xs font-600 uppercase tracking-wider text-accent">Join Us</span>
+        <h3 id="rsvpTitle" class="font-display text-2xl font-600 mt-1">Event RSVP</h3>
+        <p id="rsvpSub" class="text-sm text-muted-foreground mt-0.5 mb-4"></p>
+        <form onsubmit="submitRsvp(event)" class="space-y-3">
+          <div>
+            <label class="block text-sm font-semibold mb-1" for="rName">Your Name</label>
+            <input id="rName" required class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold mb-1" for="rEmail">Email Address</label>
+            <input id="rEmail" type="email" required class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+          </div>
+          <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-600 text-accent-foreground hover:brightness-105 transition">
+            Confirm Attendance
+          </button>
+        </form>
+      </div>
+      <div id="rsvpSuccess" class="hidden text-center py-4">
+        <span class="grid place-items-center h-12 w-12 mx-auto rounded-full bg-accent text-accent-foreground mb-2">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"></path></svg>
+        </span>
+        <h3 class="font-display text-2xl font-600">You're Registered!</h3>
+        <p class="text-sm text-muted-foreground mt-1">We look forward to seeing you there.</p>
+        <button onclick="closeRsvp()" class="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: Story -->
+  <div id="modalStory" class="modal-backdrop-custom">
+    <div class="modal-card-custom" style="max-width: 38rem;">
+      <button onclick="closeStory()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+      <img id="storyImg" src="" alt="" class="w-full h-52 object-cover rounded-xl mb-4" />
+      <span id="storyCat" class="text-xs font-600 uppercase tracking-wider text-accent"></span>
+      <h3 id="storyHeading" class="font-display text-2xl font-600 mt-1 leading-snug"></h3>
+      <p id="storyContent" class="text-muted-foreground mt-3 leading-relaxed"></p>
+      <div class="mt-5 text-right">
+        <button onclick="closeStory()" class="rounded-full bg-primary px-6 py-2 text-sm font-600 text-primary-foreground">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container-custom"></div>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    // Smooth scroll helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Header scroll background toggle
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('siteHeader');
+      const brand = document.getElementById('brandName');
+      const navButtons = document.querySelectorAll('.nav-btn');
+      const mobileBtn = document.getElementById('mobileMenuOpenBtn');
+
+      if (window.scrollY > 40) {
+        header.className = "fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-md shadow-sm border-b border-border";
+        if (brand) brand.className = "font-display text-lg font-600 leading-tight text-foreground text-left";
+        if (mobileBtn) mobileBtn.className = "lg:hidden text-foreground";
+        navButtons.forEach(btn => {
+          btn.className = "nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary";
+        });
+      } else {
+        header.className = "fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-transparent";
+        if (brand) brand.className = "font-display text-lg font-600 leading-tight text-primary-foreground text-left";
+        if (mobileBtn) mobileBtn.className = "lg:hidden text-primary-foreground";
+        navButtons.forEach(btn => {
+          btn.className = "nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10";
+        });
+      }
+    }, { passive: true });
+
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobileMenu');
+    document.getElementById('mobileMenuOpenBtn').addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+    });
+    document.getElementById('mobileMenuCloseBtn').addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // Scroll reveal observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Donation selection state
+    let curAmount = 60;
+    let curFreq = 'one-time';
+    const tiers = [
+      { amt: '$25', label: 'Feeds a family for a week', val: 25 },
+      { amt: '$60', label: "Sponsors a child's tutoring", val: 60 },
+      { amt: '$150', label: 'Funds emergency housing aid', val: 150 }
+    ];
+
+    function selectTier(idx, val) {
+      curAmount = val;
+      const buttons = document.querySelectorAll('.tier-option');
+      buttons.forEach((btn, i) => {
+        if (i === idx) {
+          btn.className = "tier-option rounded-2xl border p-6 text-left transition bg-accent border-accent text-accent-foreground shadow-lg";
+          btn.querySelector('p:last-child').className = "mt-2 text-sm text-accent-foreground/80";
+        } else {
+          btn.className = "tier-option rounded-2xl border p-6 text-left transition bg-white/5 border-white/15 hover:bg-white/10";
+          btn.querySelector('p:last-child').className = "mt-2 text-sm text-primary-foreground/70";
+        }
+      });
+      document.getElementById('mainDonateBtn').innerHTML = `
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+        </svg>
+        Donate $${curAmount} Now
+      `;
+    }
+
+    function openDonateModal(isMonthly = false) {
+      document.getElementById('modalAmount').value = curAmount;
+      if (isMonthly) setFreq('monthly');
+      else setFreq('one-time');
+      document.getElementById('donateModalBody').classList.remove('hidden');
+      document.getElementById('donateSuccess').classList.add('hidden');
+      document.getElementById('modalDonate').classList.add('open');
+    }
+    function closeDonateModal() {
+      document.getElementById('modalDonate').classList.remove('open');
+    }
+
+    function setFreq(f) {
+      curFreq = f;
+      const o = document.getElementById('freqOnce');
+      const m = document.getElementById('freqMonthly');
+      if (f === 'monthly') {
+        m.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground";
+        o.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground";
+      } else {
+        o.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground";
+        m.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground";
+      }
+    }
+
+    function processDonation(e) {
+      e.preventDefault();
+      const amt = document.getElementById('modalAmount').value || curAmount;
+      const email = document.getElementById('dEmail').value;
+      document.getElementById('confAmt').textContent = `$${amt}.00 USD (${curFreq})`;
+      document.getElementById('confEmail').textContent = email;
+      document.getElementById('confReceipt').textContent = `TZF-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+      document.getElementById('donateModalBody').classList.add('hidden');
+      document.getElementById('donateSuccess').classList.remove('hidden');
+      triggerToast(`Thank you! Gift of $${amt} received.`);
+    }
+
+    // RSVP Modal
+    function openRsvp(title, time, place) {
+      document.getElementById('rsvpTitle').textContent = title;
+      document.getElementById('rsvpSub').textContent = `${time} · ${place}`;
+      document.getElementById('rsvpBody').classList.remove('hidden');
+      document.getElementById('rsvpSuccess').classList.add('hidden');
+      document.getElementById('modalRsvp').classList.add('open');
+    }
+    function closeRsvp() {
+      document.getElementById('modalRsvp').classList.remove('open');
+    }
+    function submitRsvp(e) {
+      e.preventDefault();
+      document.getElementById('rsvpBody').classList.add('hidden');
+      document.getElementById('rsvpSuccess').classList.remove('hidden');
+      triggerToast('RSVP confirmed!');
+    }
+
+    // Story Modal
+    function openStory(title, cat, excerpt, img) {
+      document.getElementById('storyHeading').textContent = title;
+      document.getElementById('storyCat').textContent = cat;
+      document.getElementById('storyImg').src = img;
+      document.getElementById('storyContent').textContent = excerpt + " Through dedicated volunteers and generous community sponsors, Trust Zion continues to offer sustained personal and family empowerment, ensuring long-term dignity and generational hope.";
+      document.getElementById('modalStory').classList.add('open');
+    }
+    function closeStory() {
+      document.getElementById('modalStory').classList.remove('open');
+    }
+
+    // Volunteer Form
+    function submitVolunteer(e) {
+      e.preventDefault();
+      document.getElementById('volunteerForm').classList.add('hidden');
+      document.getElementById('volunteerSuccess').classList.remove('hidden');
+      triggerToast('Welcome to the Trust Zion family!');
+    }
+    function resetVolunteer() {
+      document.getElementById('volunteerForm').reset();
+      document.getElementById('volunteerForm').classList.remove('hidden');
+      document.getElementById('volunteerSuccess').classList.add('hidden');
+    }
+
+    // Contact Form
+    function submitContact(e) {
+      e.preventDefault();
+      e.target.reset();
+      triggerToast('Message sent! We will reply within 24 hours.');
+    }
+
+    // Toast
+    function triggerToast(msg) {
+      const c = document.getElementById('toastContainer');
+      const t = document.createElement('div');
+      t.className = 'toast-custom';
+      t.innerHTML = `<span>✓</span><span>${msg}</span>`;
+      c.appendChild(t);
+      setTimeout(() => {
+        t.style.opacity = '0';
+        t.style.transform = 'translateY(10px)';
+        t.style.transition = 'all 0.3s ease';
+        setTimeout(() => t.remove(), 300);
+      }, 4000);
+    }
+
+    // Close on backdrop click
+    document.querySelectorAll('.modal-backdrop-custom').forEach(b => {
+      b.addEventListener('click', e => {
+        if (e.target === b) {
+          b.classList.remove('open');
+        }
+      });
+    });
+
+    document.getElementById('yearVal').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
