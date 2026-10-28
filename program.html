@@ -157,6 +157,9 @@
             <span id="progCategoryBadge" class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/20 px-3 py-0.5 rounded-full">
               Community Outreach
             </span>
+            <span id="progStatusBadge" class="inline-flex items-center px-3.5 py-0.5 rounded-full text-xs font-semibold tracking-wide">
+              Active
+            </span>
           </div>
 
           <h1 id="progTitle" class="font-display text-4xl sm:text-6xl font-600 leading-tight">
@@ -415,8 +418,65 @@
         </div>
       </section>
 
+      <!-- Core Strategic Pillars Section -->
+      <section class="py-20 sm:py-28 bg-secondary/35 border-t border-border">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
+          <div class="max-w-2xl mb-12">
+            <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Core Focus Areas</span>
+            <h2 id="pillarsHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600">
+              Strategic Pillars & Operational Focus
+            </h2>
+            <p id="pillarsSubheading" class="mt-3 text-muted-foreground text-base">
+              The foundational initiatives and methodology driving tangible daily impact across this domain.
+            </p>
+          </div>
+
+          <div id="pillarsGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Dynamic Pillars injected via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Operational Roadmap / Systematic Methodology Section -->
+      <section class="py-20 sm:py-28 border-t border-border bg-card">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
+          <div class="max-w-2xl mb-12">
+            <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Systematic Methodology</span>
+            <h2 id="roadmapHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600">
+              How This Domain Delivers Outcomes
+            </h2>
+            <p id="roadmapSubheading" class="mt-3 text-muted-foreground text-base">
+              A transparent, step-by-step roadmap from initial intake to lasting community empowerment.
+            </p>
+          </div>
+
+          <div id="roadmapGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Dynamic Roadmap Steps injected via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Domain FAQs Section -->
+      <section class="py-20 sm:py-28 bg-secondary/25 border-t border-border">
+        <div class="mx-auto max-w-[68rem] px-5 sm:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Clear Answers</span>
+            <h2 id="faqHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600">
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-3 text-muted-foreground text-base">
+              Everything you need to know about this vertical, participation, and designated support.
+            </p>
+          </div>
+
+          <div id="faqGrid" class="space-y-4">
+            <!-- Dynamic FAQs injected via JS -->
+          </div>
+        </div>
+      </section>
+
       <!-- Upcoming Volunteer Opportunities for this Program -->
-      <section class="py-20 sm:py-28 bg-secondary/40 border-t border-border">
+      <section class="py-20 sm:py-28 bg-card border-t border-border">
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
             <div>
@@ -600,25 +660,59 @@
         percentNum: 57,
         donors: '315',
         tiers: [
-          { amount: 500, title: 'Urgent Vet Care & First Aid', desc: 'Supplies antiseptic sprays, painkillers, wound bandages, and antibiotics for injured stray animals.', popular: false },
-          { amount: 1200, title: '10kg Nutrition Feed Bag', desc: 'Funds 10 kg high-protein dry dog food and puppy weaning milk formula for rescued or orphaned litters.', popular: true },
-          { amount: 3500, title: 'Rescue, Surgery & Boarding', desc: 'Covers emergency rescue transport, life-saving surgery or sterilization, and 2-week post-op recovery boarding.', popular: false }
+          { amount: 500, title: 'Urgent Vet Care & First Aid', desc: 'Supplies antiseptic sprays, painkillers, wound bandages, and antibiotics for injured stray dogs and cats.', popular: false },
+          { amount: 1200, title: '10kg Nutrition Feed Sack', desc: 'Funds 10 kg high-protein dry dog food and puppy weaning milk formula for rescued or orphaned litters.', popular: true },
+          { amount: 3500, title: 'Rescue, Surgery & Boarding', desc: 'Covers emergency ambulance rescue transport, life-saving surgery or sterilization, and 2-week post-op recovery boarding.', popular: false }
         ],
-        overviewHeading: 'Zion Loyals: Two meaningful ways to support voiceless companions.',
+        overviewHeading: 'Rescuing, healing, and nourishing voiceless street companions across every neighborhood.',
         overviewParas: [
-          'Zion Loyals is Trust Zion Foundation’s specialized animal welfare wing. We believe every animal deserves protection, shelter, and freedom from hunger. To empower every community member, we provide two distinct ways to make a difference: Donate Food or Donate Money.',
-          'With physical food donations, you can contribute unopened dog/cat kibble, rice, or supplements via drop-off or doorstep pickup. With monetary donations via secure Razorpay integration, you fund critical medical interventions, emergency trauma surgeries, and foster boarding.'
+          'Zion Loyals was born from a fundamental belief that the street animals walking our neighborhoods are part of our shared community. They face daily perils of vehicular collisions, severe malnutrition, untreated maggot infestations, and harsh weather conditions without voice or defense.',
+          'Our dedicated field teams operate scheduled daily feeding routes distributing cooked rice, wholesome broth, and high-protein kibble, while our rescue first-aid ambulance responds rapidly to community SOS calls. Through partnerships with licensed veterinary surgical clinics, we ensure injured strays receive immediate orthopedic triage, sterile recovery boarding, and humane Animal Birth Control (ABC) sterilizations and vaccinations.',
+          'To empower every supporter to contribute meaningfully, Zion Loyals uniquely offers two giving streams: Donate physical pet food supplies (via convenient drop-off or doorstep pickup) or donate securely online to sponsor critical veterinary surgeries and emergency rescue fuel.'
         ],
         metrics: [
-          { val: '2,800 kg', lbl: 'Animal food distributed' },
-          { val: '340+', lbl: 'Injured animals treated' },
-          { val: '2 Ways', lbl: 'Donate Food or Money' },
+          { val: '2,800+ kg', lbl: 'Animal food distributed' },
+          { val: '340+', lbl: 'Injured animals rescued & healed' },
+          { val: '180+', lbl: 'Sterilizations & vaccinations' },
           { val: '100%', lbl: 'Direct animal welfare impact' }
         ],
-        quote: '"Zion Loyals stepped in immediately when four abandoned puppies were left in the cold. With good food and medical attention, all four are thriving today."',
+        pillars: [
+          {
+            title: 'Daily Feeding & Water Routes',
+            desc: '18 designated morning and evening feeding routes ensuring over 300 street dogs and community cats receive fresh, protein-rich meals and clean water bowls daily.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"></path><path d="M7 12a5 5 0 0 1 10 0"></path><line x1="12" y1="3" x2="12" y2="7"></line></svg>'
+          },
+          {
+            title: 'Mobile Trauma & Rescue Unit',
+            desc: 'Rapid-response emergency van stocked with antiseptic sprays, sterile bandaging, fracture splints, and anti-maggot treatments for immediate roadside triage.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>'
+          },
+          {
+            title: 'Sterilization & Anti-Rabies Drives',
+            desc: 'Systematic, humane Animal Birth Control (ABC) surgical drives paired with 9-in-1 vaccinations and ear-notching to stabilize street populations ethically.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>'
+          },
+          {
+            title: 'Foster Sanctuary & Adoptions',
+            desc: 'A calm, peaceful sanctuary where convalescing animals, orphaned puppies, and injured survivors recuperate, undergo socialization, and find vetted forever homes.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>'
+          }
+        ],
+        roadmap: [
+          { step: 'Phase 01', title: 'Community Alert & Intake', desc: 'Citizens report an injured or hungry stray via our rescue line or field volunteers map underserved pack routes.' },
+          { step: 'Phase 02', title: 'On-Site First Aid & Transport', desc: 'Rescuers deliver immediate pain relief, maggot wound dressing, and transport severe trauma cases to hospital partners.' },
+          { step: 'Phase 03', title: 'Surgical Treatment & ABC', desc: 'Licensed veterinarians perform orthopedic surgery, sterilization, rabies vaccination, and post-op wound healing.' },
+          { step: 'Phase 04', title: 'Foster Recovery or Release', desc: 'Animals recuperate in foster sanctuary care until fully healthy, followed by verified adoption or safe community reintegration.' }
+        ],
+        faqs: [
+          { q: 'How does the physical food donation option work?', a: 'You can pledge unopened dog or cat kibble, rice, eggs, or veterinary supplements. Choose between dropping off supplies at our central depot or requesting a doorstep pickup for contributions of 10kg or more.' },
+          { q: 'How are monetary contributions via Razorpay utilized?', a: '100% of monetary funds go directly toward certified veterinary clinic surgical fees, rescue ambulance fuel, post-operative antibiotic courses, and foster boarding provisions.' },
+          { q: 'Can I adopt or foster a dog rescued by Zion Loyals?', a: 'Yes! We conduct loving home checks and provide full vaccination records, initial kibble packs, and ongoing behavioral support for all foster and adoptive pet parents.' }
+        ],
+        quote: '"Zion Loyals stepped in immediately when four abandoned newborn puppies were left in the cold rain. With dedicated bottle feeding and medical attention, all four are thriving and happily adopted today."',
         quoteAuthor: 'Vikram S., Animal Foster Volunteer',
         shifts: [
-          { title: 'Shelter Volunteer & Animal Feeding', time: 'Saturdays, 9:00 AM - 1:00 PM', place: 'Zion Loyals Foster Sanctuary', desc: 'Feed rescued pups, groom convalescing dogs, and assist with socialization exercises.' },
+          { title: 'Shelter Volunteer & Animal Socialization', time: 'Saturdays, 9:00 AM - 1:00 PM', place: 'Zion Loyals Foster Sanctuary', desc: 'Feed rescued pups, groom convalescing dogs, and assist with socialization exercises.' },
           { title: 'Food Donation Sorting & Inventory', time: 'Wednesdays, 4:00 PM - 7:00 PM', place: 'Zion Distribution Depot', desc: 'Inspect, catalog, and bag donated food supplies for daily field distribution.' }
         ]
       },
@@ -626,7 +720,7 @@
         id: 'zion-academy',
         title: 'Zion Academy',
         status: 'Active',
-        category: 'Sports & Youth Development',
+        category: 'Sports & Youth Football Coaching',
         shortDesc: 'Free football coaching for children with talent but not the means.',
         heroImg: 'assets/images/kids.png',
         hasFoodDonation: false,
@@ -638,22 +732,56 @@
         percentNum: 53,
         donors: '210',
         tiers: [
-          { amount: 600, title: 'Youth Football & Gear Kit', desc: 'Provides studs, shin pads, moisture-wicking training jersey, and match ball for one budding athlete.', popular: false },
-          { amount: 1500, title: 'Month of Grassroots Coaching', desc: 'Covers 4 weeks of structured coaching with licensed youth instructors, pitch fees, and sports nutrition.', popular: true },
-          { amount: 4000, title: 'Tournament Team Sponsorship', desc: 'Funds district tournament registration, team jersey sets, travel allowances, and injury medical care.', popular: false }
+          { amount: 600, title: 'Youth Football & Gear Kit', desc: 'Provides durable studs, shin guards, moisture-wicking training jersey, socks, and a match ball for one athlete.', popular: false },
+          { amount: 1500, title: 'Month of Grassroots Coaching', desc: 'Covers 4 weeks of structured coaching with licensed instructors, artificial turf fees, and sports nutrition.', popular: true },
+          { amount: 4000, title: 'Tournament Team Sponsorship', desc: 'Funds district tournament registration, team jersey sets, travel allowances, and injury medical care for district cups.', popular: false }
         ],
-        overviewHeading: 'Unlocking raw athletic potential and teaching teamwork on the football pitch.',
+        overviewHeading: 'Unlocking raw athletic potential, self-discipline, and life ambition on the football pitch.',
         overviewParas: [
-          'Zion Academy was created for young children across disadvantaged neighborhoods who display exceptional talent on the football field, but whose families cannot afford gear, coaching fees, or turf subscriptions.',
-          'Under the guidance of certified coaches, we provide free elite football training, physical conditioning, character-building mentorship, and academic study monitoring so every student athlete can achieve their highest potential.'
+          'Across disadvantaged neighborhoods and low-income settlements, thousands of young boys and girls possess extraordinary athletic talent, rapid footwork, and a profound passion for football. Yet, prohibitive turf fees, costly boots, and expensive private academy memberships prevent them from ever competing on an equal footing.',
+          'Zion Academy dismantles every economic barrier. We provide completely free, structured football coaching led by licensed youth instructors. Our training grounds serve as safe community sanctuaries where youth cultivate teamwork, physical endurance, emotional composure, and tactical game intelligence.',
+          'Beyond sports drills, we operate a mandatory academic check-in system and character mentorship program. We ensure every athlete stays enrolled in school, maintains their grades, learns fair play, and gains direct exposure to state league scouts and collegiate sports scholarship opportunities.'
         ],
         metrics: [
-          { val: '120+', lbl: 'Children coached weekly' },
-          { val: '18', lbl: 'Active neighborhood training hubs' },
-          { val: '100%', lbl: 'Free kits & coaching' },
-          { val: '14', lbl: 'Tournament scouts placed' }
+          { val: '140+', lbl: 'Children coached weekly' },
+          { val: '18', lbl: 'Active neighborhood training batches' },
+          { val: '100%', lbl: 'Free kits, boots & turf access' },
+          { val: '14', lbl: 'Athletes scouted for district leagues' }
         ],
-        quote: '"Before Zion Academy, our boys played barefoot on concrete. Today they walk onto proper turf with pride, discipline, and high ambitions."',
+        pillars: [
+          {
+            title: 'Grassroots Talent Scouting',
+            desc: 'Conducting open trial camps across municipal schools and low-income neighborhoods, discovering passionate raw talent purely based on agility, grit, and passion.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>'
+          },
+          {
+            title: 'Licensed Coaching Curriculum',
+            desc: 'Systematic AIFF/UEFA-aligned technical syllabus focusing on ball mastery, agility conditioning, spatial passing, defensive positioning, and match composure.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>'
+          },
+          {
+            title: 'Full Gear & Sports Nutrition',
+            desc: 'Equipping every enrolled player with quality boots, shin pads, moisture-wicking jerseys, post-practice protein meals, bananas, and electrolyte hydration.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path><circle cx="12" cy="12" r="4"></circle></svg>'
+          },
+          {
+            title: 'Academic Tutoring & Mentorship',
+            desc: 'Enforcing mandatory school attendance and grade monitoring, paired with after-training academic tutoring, anti-substance workshops, and leadership seminars.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 6h10"></path><path d="M6 10h10"></path></svg>'
+          }
+        ],
+        roadmap: [
+          { step: 'Phase 01', title: 'Open Scouting Camps', desc: 'Free trial sessions held across low-income communities to identify agile, hardworking children regardless of family income.' },
+          { step: 'Phase 02', title: 'Age-Bracket Squads', desc: 'Selected athletes join Under-10, Under-13, and Under-16 training squads with 3 weekly sessions on dedicated turf grounds.' },
+          { step: 'Phase 03', title: 'Inter-Academy Tournaments', desc: 'Competitive exhibition fixtures and district cup participation to test tactical discipline, teamwork, and big-match mentality.' },
+          { step: 'Phase 04', title: 'Scouting & Scholarship Entry', desc: 'High-performing players are showcased to professional club scouts, state selectors, and college athletic scholarship boards.' }
+        ],
+        faqs: [
+          { q: 'Who is eligible to join Zion Academy?', a: 'Any child aged 7 to 16 with athletic talent and a love for football whose family cannot afford private academy tuition or gear.' },
+          { q: 'Are uniforms and football boots genuinely 100% free?', a: 'Yes. Every student receives a full kit bag containing boots, shin guards, training jerseys, socks, and hydration supplements at zero cost to their family.' },
+          { q: 'How do you ensure children stay dedicated to their school studies?', a: 'Training participation requires maintaining satisfactory school attendance. We hold weekly academic review desks to tutor children in subjects where they need help.' }
+        ],
+        quote: '"Before Zion Academy, our boys played barefoot on sharp gravel. Today they step onto proper turf with pride, discipline, and high athletic ambitions."',
         quoteAuthor: 'Coach Rajesh, Youth Football Director',
         shifts: [
           { title: 'Weekend Football Coaching & Drills', time: 'Saturdays, 7:00 AM - 10:00 AM', place: 'Zion Youth Ground', desc: 'Assist coaches with agility cones, passing drills, and referee friendly matches.' },
@@ -666,7 +794,7 @@
         status: 'Starting',
         category: 'Inclusive Education & AI Skills',
         shortDesc: 'Learning and AI skills for people with physical disabilities.',
-        heroImg: 'assets/images/kids.png',
+        heroImg: 'assets/images/vidya.png',
         hasFoodDonation: false,
         currency: 'INR',
         currencySymbol: '₹',
@@ -676,14 +804,15 @@
         percentNum: 31,
         donors: '140',
         tiers: [
-          { amount: 800, title: 'Adaptive Learning Accessories', desc: 'Funds ergonomic adaptive mice, tactile keyboards, and voice-assisted AI screen reader software licenses.', popular: false },
-          { amount: 2200, title: '1-Month AI Skills Cohort', desc: 'Full scholarship covering prompt engineering, data curation, transcription, and generative AI productivity courses.', popular: true },
-          { amount: 6000, title: 'Accessible Tech Workstation', desc: 'Equips a remote learning desk with high-speed internet, ergonomic seating, and 6 months of career mentoring.', popular: false }
+          { amount: 800, title: 'Adaptive Learning Accessories', desc: 'Funds ergonomic adaptive trackball mice, tactile keyboards, and voice-assisted AI screen reader software licenses.', popular: false },
+          { amount: 2200, title: '1-Month AI Skills Cohort Scholarship', desc: 'Full scholarship covering prompt engineering, generative AI workflows, transcription, and remote job readiness.', popular: true },
+          { amount: 6000, title: 'Accessible Tech Workstation & Mentorship', desc: 'Equips a remote learner with a dedicated workstation, high-speed broadband, and 6 months of corporate 1-on-1 mentoring.', popular: false }
         ],
-        overviewHeading: 'Harnessing modern AI tools and digital technology to build independent livelihoods.',
+        overviewHeading: 'Harnessing modern generative AI and adaptive computing to unlock dignified, remote livelihoods.',
         overviewParas: [
-          'Zion Vidya is our newly starting initiative designed specifically to eliminate vocational barriers for individuals living with physical disabilities. While traditional physical workspaces often pose severe accessibility challenges, modern generative AI and remote computing unlock limitless career opportunities.',
-          'We train our students in practical AI workflows, remote data analysis, prompt engineering, digital transcription, and communication tools, pairing each learner with dedicated industry mentors who guide them toward dignified, flexible remote careers.'
+          'For millions of individuals living with physical disabilities, mobility challenges, or neuromuscular conditions, conventional physical office workplaces and exhausting daily commutes create immense barriers to career entry and financial independence. Yet, modern generative artificial intelligence and cloud computing have fundamentally eliminated the need for physical mobility to produce elite intellectual work.',
+          'Zion Vidya is our newly starting vertical dedicated to leveling the vocational playing field. We train persons with physical disabilities in high-demand, practical AI capabilities: structured prompt engineering, AI-assisted content editing, automated transcription, dataset annotation, and digital workflow automation.',
+          'Every learner is equipped with adaptive computing hardware tailored to their physical needs—from eye-tracking navigation and speech-to-text dictation to ergonomic adaptive controllers. Paired with 1-on-1 software industry mentors, our graduates transition directly into dignified remote freelance contracts and corporate diversity tech careers.'
         ],
         metrics: [
           { val: 'Starting', lbl: 'Pilot cohort launching' },
@@ -691,7 +820,40 @@
           { val: '₹0', lbl: 'Fee charged to learners' },
           { val: '1-on-1', lbl: 'Dedicated career mentorship' }
         ],
-        quote: '"When physical mobility is restricted, AI and computing open up whole universes of work. Zion Vidya makes that dream tangible."',
+        pillars: [
+          {
+            title: 'Adaptive Hardware & Assistive Lab',
+            desc: 'Customizing workstations with head-tracking controllers, ergonomic single-hand keyboards, voice-command software, and high-contrast screen magnification.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>'
+          },
+          {
+            title: 'Applied AI & Prompt Engineering',
+            desc: 'Structured curricula in state-of-the-art LLMs, multimodal creative tools, AI research synthesis, automated document formatting, and code assistance.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"></path><path d="m4.93 4.93 2.83 2.83"></path><path d="M2 12h4"></path><path d="m4.93 19.07 2.83-2.83"></path><path d="M12 22v-4"></path><path d="m19.07 19.07-2.83-2.83"></path><path d="M22 12h-4"></path><path d="m19.07 4.93-2.83 2.83"></path></svg>'
+          },
+          {
+            title: '1-on-1 Remote Tech Mentorship',
+            desc: 'Pairing each learner with a seasoned tech professional for weekly 1-on-1 pair-programming, project reviews, and flexible learning schedules paced around medical routines.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>'
+          },
+          {
+            title: 'Remote Placement & Freelancing',
+            desc: 'Building verified online client profiles, portfolio demonstrations, proposal writing, and connecting students with inclusive corporate remote hiring teams.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>'
+          }
+        ],
+        roadmap: [
+          { step: 'Phase 01', title: 'Ergonomic Tech Setup', desc: 'Individual assessment of physical mobility, adaptive input peripherals, voice dictation calibration, and home broadband setup.' },
+          { step: 'Phase 02', title: 'Core AI Skills (Weeks 1-4)', desc: 'Foundations of modern AI tooling, effective prompt structuring, generative writing, document summarization, and AI audio transcription.' },
+          { step: 'Phase 03', title: 'Applied Projects (Weeks 5-8)', desc: 'Hands-on client simulation projects: business research reporting, digital marketing copy, data cleansing, and workflow automation.' },
+          { step: 'Phase 04', title: 'Portfolio & Job Placement (Weeks 9-12)', desc: 'Publishing a professional digital portfolio, mock client interviews, and direct introduction to corporate remote diversity recruiters.' }
+        ],
+        faqs: [
+          { q: 'Who is eligible to enroll in Zion Vidya?', a: 'Any individual living with a documented physical disability or chronic mobility impairment who wants to build digital skills. Prior computer programming experience is not required.' },
+          { q: 'Is the program completely free for learners?', a: 'Yes, 100% free. Tuition, adaptive hardware accessories, AI software licenses, and learning materials are entirely funded through our generous donor community.' },
+          { q: 'How can technology companies hire Zion Vidya graduates?', a: 'We partner with progressive corporate employers seeking remote talent in AI prompt design, data quality verification, digital operations, and customer support.' }
+        ],
+        quote: '"When physical mobility is restricted, AI and computing unlock limitless creative and earning power. Zion Vidya makes that dream completely tangible."',
         quoteAuthor: 'Sneha Rao, Inclusive Technology Lead',
         shifts: [
           { title: 'Tech Lab & Virtual Classroom Setup', time: 'Tuesdays & Thursdays, 4:00 PM - 6:30 PM', place: 'Zion Digital Lab', desc: 'Configure screen readers, set up accessibility shortcuts, and assist students with AI exercises.' },
@@ -714,20 +876,54 @@
         percentNum: 15,
         donors: '88',
         tiers: [
-          { amount: 500, title: 'Warm Welcome Comfort Pack', desc: 'Covers warm bedding, personal hygiene toiletries, clothing set, and storybooks for a newly arrived child.', popular: false },
+          { amount: 500, title: 'Warm Welcome Comfort Pack', desc: 'Covers warm bedding, plush fleece blanket, hygiene essentials, clothing set, and comforting storybooks for a newly arrived child.', popular: false },
           { amount: 1500, title: 'Foster Care Family Support', desc: 'Provides monthly groceries, nutritional dairy, and medical aid to a kinship foster family caring for an at-risk youth.', popular: true },
           { amount: 5000, title: 'Safe Shelter Guardian', desc: 'Funds trauma-informed psychological counseling, school tuition fees, and emergency sanctuary boarding.', popular: false }
         ],
         overviewHeading: 'Providing safe shelter, unconditional affection, and healing for vulnerable children.',
         overviewParas: [
-          'Zion Home is our coming-soon vertical focused on protecting orphaned, abandoned, and distressed children who have experienced trauma, domestic disruption, or neglect.',
-          'We are preparing safe temporary residential facilities and developing kinship foster care programs to guarantee that every child receives wholesome nutrition, trauma-informed emotional healing, continuous education, and the warmth of a loving family environment.'
+          'Children who have lost parents, experienced severe neglect, or been displaced by domestic trauma bear invisible emotional scars that institutional orphanages cannot adequately address. Every child deserves to grow up in a secure, loving environment where their individuality is cherished.',
+          'Zion Home is our coming-soon vertical focused on two complementary pillars: developing a peaceful crisis cottage haven for temporary residential protection, and supporting kinship foster families so children can remain embedded in nurturing home settings.',
+          'Our model integrates certified child psychologists trained in trauma-informed play therapy, continuous educational sponsorship, wholesome organic nutrition, and active child rights advocacy in close coordination with statutory child welfare authorities.'
         ],
         metrics: [
-          { val: 'Coming Soon', lbl: 'Facility opening soon' },
+          { val: 'Coming Soon', lbl: 'Sanctuary facility opening soon' },
           { val: '24/7', lbl: 'Loving care & supervision' },
-          { val: '30+', lbl: 'Children accommodated in Phase 1' },
+          { val: '35+', lbl: 'Children accommodated in Phase 1' },
           { val: '100%', lbl: 'Trauma-informed healing' }
+        ],
+        pillars: [
+          {
+            title: 'Emergency Crisis Haven',
+            desc: 'A calm, family-style residential cottage providing immediate crisis beds, warm showers, clean clothing, and 24/7 loving house-parent supervision.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>'
+          },
+          {
+            title: 'Kinship & Foster Care Stipends',
+            desc: 'Direct financial subsidies and grocery allowances for grandparents and vetted foster families to ensure poverty never forces a child into an institution.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>'
+          },
+          {
+            title: 'Trauma-Informed Play Therapy',
+            desc: 'Licensed pediatric counselors conducting sensory art and play therapy to help children process grief, rebuild emotional trust, and overcome trauma.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>'
+          },
+          {
+            title: 'Educational Stability & Life Skills',
+            desc: 'Immediate school enrollment, textbooks, uniforms, evening tutoring desks, and extracurricular music and arts enrichment programs.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>'
+          }
+        ],
+        roadmap: [
+          { step: 'Phase 01', title: 'Crisis Reception & Medical Check', desc: 'Warm reception into the cottage haven, complete pediatric health checkup, and personal comfort pack allocation.' },
+          { step: 'Phase 02', title: 'Psychological Assessment & Calm', desc: 'Child counselors assess emotional state, establish safe routines, and initiate sensory-friendly play therapy.' },
+          { step: 'Phase 03', title: 'Foster Placement & Kinship Matching', desc: 'Careful matching with vetted foster parents or supporting biological extended relatives with monthly allowances.' },
+          { step: 'Phase 04', title: 'Long-Term Academic & Personal Growth', desc: 'Continuous educational monitoring, life-skills training, and emotional companioning through young adulthood.' }
+        ],
+        faqs: [
+          { q: 'How does Zion Home differ from a traditional orphanage?', a: 'Zion Home prioritizes small, family-style cottage living and kinship foster stipends over large dormitories, ensuring each child experiences individual parental love and attention.' },
+          { q: 'When is the Phase 1 cottage scheduled to open?', a: 'Facility renovation, safety licensing, and house-parent training are in active progress, with opening scheduled in the upcoming phases.' },
+          { q: 'How can supporters help before the facility launches?', a: 'You can contribute toward our comfort pack supplies, donate children’s books and educational toys, or sponsor our kinship family allowance fund.' }
         ],
         quote: '"Every single child deserves a door they can walk through knowing they are safe, valued, and unconditionally loved."',
         quoteAuthor: 'Sister Teresa, Child Protection Advocate',
@@ -759,13 +955,47 @@
         overviewHeading: 'Accompanying individuals and families with gentle presence, prayer, and dignity.',
         overviewParas: [
           'Zion Care is our coming-soon compassionate care ministry dedicated to walking beside the chronically ill, the bedridden, the elderly, and those in palliative or end-of-life journeys.',
-          'When illness strikes, isolation and emotional strain often weigh as heavily as physical distress. Zion Care volunteers offer gentle companionship, empathetic listening, bedside prayer, and practical respite assistance for weary caregivers.'
+          'When illness strikes, isolation and emotional strain often weigh as heavily as physical distress. Zion Care volunteers offer gentle companionship, empathetic listening, bedside prayer, and practical respite assistance for weary caregivers.',
+          'Our mission is to ensure that no patient ever faces suffering in loneliness, and no family caregiver breaks under the weight of unrelenting exhaustion. Through spiritual comfort and tangible medical consumables, we bring peace to the bedside.'
         ],
         metrics: [
           { val: 'Coming Soon', lbl: 'Volunteer hospice network' },
           { val: '24/7', lbl: 'Compassionate care hotline' },
-          { val: '50+ Hrs', lbl: 'Respite care hours planned' },
+          { val: '60+ Hrs', lbl: 'Respite care hours planned' },
           { val: '100%', lbl: 'Non-judgmental compassion' }
+        ],
+        pillars: [
+          {
+            title: 'Bedside Companionship',
+            desc: 'Trained volunteers visiting hospital palliative wards and home hospice beds, offering unhurried presence, soft conversation, and hand-holding.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>'
+          },
+          {
+            title: 'Caregiver Respite Relief',
+            desc: 'Providing 4 to 8 hours of vetted volunteer bedside coverage so exhausted primary family caregivers can sleep, run errands, and recharge.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>'
+          },
+          {
+            title: 'Palliative Consumables & Balms',
+            desc: 'Distributing anti-bedsore alternating pressure mattresses, gentle skin moisturizers, adult diapers, and sterile comfort dressings.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>'
+          },
+          {
+            title: 'Faith, Prayer & Bereavement',
+            desc: 'Interfaith spiritual comfort, devotional prayer, peaceful bedside chaplaincy, and post-loss bereavement circles for grieving spouses and children.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>'
+          }
+        ],
+        roadmap: [
+          { step: 'Phase 01', title: 'Family Care Referral', desc: 'Physicians, hospice nurses, or family members reach out to request compassionate bedside companionship or respite support.' },
+          { step: 'Phase 02', title: 'Gentle Comfort Assessment', desc: 'A care coordinator meets the patient and family to identify physical comfort needs and emotional/spiritual preferences.' },
+          { step: 'Phase 03', title: 'Bedside Presence & Respite', desc: 'Matched care companions provide bedside visitation, gentle prayer, and vital respite relief for exhausted family members.' },
+          { step: 'Phase 04', title: 'Bereavement Follow-Up', desc: 'Post-loss companioning through facilitated grief recovery circles, honoring memories and walking beside surviving loved ones.' }
+        ],
+        faqs: [
+          { q: 'Is Zion Care a medical hospital or hospice facility?', a: 'No. Zion Care is a non-clinical palliative companionship and chaplaincy service that works alongside medical teams to provide compassionate presence, caregiver respite, and emotional support.' },
+          { q: 'Do you offer spiritual support for people of different faiths?', a: 'Yes. Our chaplaincy volunteers serve with deep respect for all faiths and worldviews, offering non-judgmental presence, prayer, or quiet companionship according to each family’s desires.' },
+          { q: 'How does the Caregiver Respite Relief program operate?', a: 'We pair trained, background-checked volunteers with families caring for a bedridden loved one, allowing the family caregiver to step away for a few hours to rest, sleep, or recharge.' }
         ],
         quote: '"In our most vulnerable moments, knowing someone is sitting quietly beside you with prayer and care is the greatest gift."',
         quoteAuthor: 'Rev. David, Chaplaincy Coordinator',
@@ -797,13 +1027,47 @@
         overviewHeading: 'Breaking stigma, cultivating resilience, and offering a safe harbor for the mind.',
         overviewParas: [
           'Zion Mind is our upcoming mental health vertical established to shatter silence surrounding depression, anxiety, grief, burnout, and emotional trauma.',
-          'We are building a warm, confidential sanctuary where anyone can seek professional therapy, peer support circles, suicide prevention aid, and accessible self-care resources without shame or financial obstacle.'
+          'We are building a warm, confidential sanctuary where anyone can seek professional therapy, peer support circles, suicide prevention aid, and accessible self-care resources without shame or financial obstacle.',
+          'Through toll-free telephone helplines, subsidized clinical therapy sessions, and community listening circles, we ensure that no one struggles alone in psychological darkness.'
         ],
         metrics: [
           { val: 'Coming Soon', lbl: 'Helpline launch in preparation' },
           { val: '100%', lbl: 'Confidential & anonymous' },
           { val: '₹0', lbl: 'Cost barrier for students/seniors' },
           { val: '12+', lbl: 'Partner clinical therapists' }
+        ],
+        pillars: [
+          {
+            title: 'Free & Anonymous Distress Helpline',
+            desc: 'Confidential toll-free telephone and WhatsApp chat support for individuals experiencing acute panic, grief, anxiety, or loneliness.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>'
+          },
+          {
+            title: 'Subsidized 1-on-1 Clinical Counseling',
+            desc: 'Connecting at-risk individuals with verified, licensed clinical psychologists and counselors with 100% scholarship coverage.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>'
+          },
+          {
+            title: 'Youth & Campus Resilience Workshops',
+            desc: 'Interactive seminars across high schools and universities tackling academic anxiety, social media burnout, and emotional regulation.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>'
+          },
+          {
+            title: 'Community Safe Space Peer Circles',
+            desc: 'Facilitated weekly group circles where individuals can share lived experiences, break isolation, and discover mutual encouragement without stigma.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>'
+          }
+        ],
+        roadmap: [
+          { step: 'Phase 01', title: 'Confidential Reach-Out', desc: 'An individual reaches out via our anonymous chat, telephone helpline, or community partner referral.' },
+          { step: 'Phase 02', title: 'Active Listening & Triage', desc: 'Trained responders provide empathetic de-escalation, emotional validation, and immediate crisis risk assessment.' },
+          { step: 'Phase 03', title: 'Clinical Therapy Matching', desc: 'For sustained challenges, clients are paired with a licensed psychologist for fully subsidized 1-on-1 counseling.' },
+          { step: 'Phase 04', title: 'Peer Circles & Wellness', desc: 'Clients participate in weekly listening circles, mindfulness practices, and mutual encouragement for long-term resilience.' }
+        ],
+        faqs: [
+          { q: 'Is the helpline truly confidential and anonymous?', a: 'Yes. You do not need to share your real name, address, or personal identifiers. Our responders adhere to strict ethical and legal privacy guidelines.' },
+          { q: 'Who conducts the 1-on-1 counseling sessions?', a: 'Therapy sessions are conducted by licensed, accredited clinical psychologists and psychotherapists who partner with Zion Mind.' },
+          { q: 'How can I train to become a volunteer helpline listener?', a: 'We offer a rigorous 6-week active listening, emotional de-escalation, and suicide prevention certification course for volunteer responders.' }
         ],
         quote: '"Mental health struggles do not define your worth. Reaching out for help is an act of courage, and Zion Mind is here to hold that space."',
         quoteAuthor: 'Dr. Ananya K., Clinical Psychological Advisor',
@@ -840,6 +1104,22 @@
       document.getElementById('progTitle').textContent = currentProg.title;
       document.getElementById('progSubtitle').textContent = currentProg.shortDesc;
       document.getElementById('progCategoryBadge').textContent = currentProg.category;
+      
+      // Hero Status Badge
+      const statusEl = document.getElementById('progStatusBadge');
+      if (statusEl) {
+        if (currentProg.status === 'Active') {
+          statusEl.className = 'inline-flex items-center px-3.5 py-0.5 rounded-full text-xs font-semibold tracking-wide bg-[#24133B] text-white shadow-sm ring-1 ring-white/20';
+          statusEl.textContent = 'Active';
+        } else if (currentProg.status === 'Starting') {
+          statusEl.className = 'inline-flex items-center px-3.5 py-0.5 rounded-full text-xs font-semibold tracking-wide bg-[#DF4C76] text-white shadow-sm ring-1 ring-white/20';
+          statusEl.textContent = 'Starting';
+        } else {
+          statusEl.className = 'inline-flex items-center px-3.5 py-0.5 rounded-full text-xs font-semibold tracking-wide border-2 border-dashed border-white/60 text-white bg-transparent';
+          statusEl.textContent = 'Coming soon';
+        }
+      }
+
       document.getElementById('progHeroImg').src = currentProg.heroImg;
       document.getElementById('detailImg').src = currentProg.heroImg;
 
@@ -916,6 +1196,72 @@
       // Render Testimonial
       document.getElementById('testimonialQuote').textContent = currentProg.quote;
       document.getElementById('testimonialAuthor').textContent = `— ${currentProg.quoteAuthor}`;
+
+      // Render Core Strategic Pillars
+      const pillarsContainer = document.getElementById('pillarsGrid');
+      if (pillarsContainer && currentProg.pillars) {
+        pillarsContainer.innerHTML = '';
+        currentProg.pillars.forEach((p, idx) => {
+          const card = document.createElement('div');
+          card.className = 'rounded-3xl bg-card border border-border/80 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between';
+          card.innerHTML = `
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <span class="font-mono text-xs font-bold tracking-widest text-accent uppercase">Pillar 0${idx + 1}</span>
+                <span class="grid place-items-center h-10 w-10 rounded-2xl bg-primary/10 text-primary">
+                  ${p.iconSvg || '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>'}
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-[#24133B] dark:text-foreground mb-3">${p.title}</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">${p.desc}</p>
+            </div>
+          `;
+          pillarsContainer.appendChild(card);
+        });
+      }
+
+      // Render Systematic Methodology / Roadmap
+      const roadmapContainer = document.getElementById('roadmapGrid');
+      if (roadmapContainer && currentProg.roadmap) {
+        roadmapContainer.innerHTML = '';
+        currentProg.roadmap.forEach((r, idx) => {
+          const stepCard = document.createElement('div');
+          stepCard.className = 'rounded-3xl bg-secondary/50 border border-border p-6 sm:p-7 shadow-sm hover:shadow-md transition-all flex flex-col justify-between';
+          stepCard.innerHTML = `
+            <div>
+              <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-primary text-primary-foreground mb-4">
+                ${r.step || `Phase 0${idx + 1}`}
+              </span>
+              <h3 class="font-display text-lg font-bold text-foreground mb-2">${r.title}</h3>
+              <p class="text-sm text-muted-foreground leading-relaxed">${r.desc}</p>
+            </div>
+          `;
+          roadmapContainer.appendChild(stepCard);
+        });
+      }
+
+      // Render Domain FAQs
+      const faqContainer = document.getElementById('faqGrid');
+      if (faqContainer && currentProg.faqs) {
+        faqContainer.innerHTML = '';
+        currentProg.faqs.forEach((faq, idx) => {
+          const faqCard = document.createElement('details');
+          faqCard.className = 'group rounded-2xl bg-card border border-border p-5 sm:p-6 transition-all duration-200 cursor-pointer shadow-sm';
+          if (idx === 0) faqCard.open = true;
+          faqCard.innerHTML = `
+            <summary class="flex items-center justify-between font-display text-lg font-600 text-foreground list-none select-none">
+              <span>${faq.q}</span>
+              <span class="ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary text-primary group-open:rotate-180 transition-transform">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-muted-foreground leading-relaxed pt-3 border-t border-border/50">
+              ${faq.a}
+            </p>
+          `;
+          faqContainer.appendChild(faqCard);
+        });
+      }
 
       // Render Volunteer Shifts
       const shiftsContainer = document.getElementById('shiftsGrid');
