@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg" />
@@ -17,6 +18,7 @@
     html {
       scroll-behavior: smooth;
     }
+
     .progress-bar-track {
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 9999px;
@@ -24,12 +26,14 @@
       overflow: hidden;
       width: 100%;
     }
+
     .progress-bar-fill {
       background: linear-gradient(90deg, hsl(var(--accent)), #ff7b92);
       height: 100%;
       border-radius: 9999px;
       transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .modal-backdrop-custom {
       position: fixed;
       inset: 0;
@@ -44,10 +48,12 @@
       pointer-events: none;
       transition: opacity 0.25s ease;
     }
+
     .modal-backdrop-custom.open {
       opacity: 1;
       pointer-events: auto;
     }
+
     .modal-card-custom {
       position: relative;
       width: 100%;
@@ -63,9 +69,11 @@
       max-height: 90vh;
       overflow-y: auto;
     }
+
     .modal-backdrop-custom.open .modal-card-custom {
       transform: translateY(0) scale(1);
     }
+
     .toast-container-custom {
       position: fixed;
       bottom: 1.5rem;
@@ -76,6 +84,7 @@
       gap: 0.75rem;
       pointer-events: none;
     }
+
     .toast-custom {
       pointer-events: auto;
       display: flex;
@@ -91,20 +100,1210 @@
       font-weight: 500;
       animation: toastIn 0.3s ease-out;
     }
+
     @keyframes toastIn {
-      from { transform: translateY(100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+
+    /* ==========================================================================
+   Compact Professional Horizontal Sliding Gallery & Lightbox
+   ========================================================================== */
+    .loyals-gallery-slider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .loyals-gallery-track {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      gap: 1rem !important;
+      overflow-x: auto !important;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+      padding: 0.5rem 0.25rem 1rem 0.25rem;
+      width: 100% !important;
+    }
+
+    .loyals-gallery-track::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    .loyals-gallery-track.is-dragging {
+      cursor: grabbing !important;
+      scroll-behavior: auto !important;
+    }
+
+    .loyals-gallery-card {
+      flex: 0 0 160px !important;
+      width: 160px !important;
+      max-width: 160px !important;
+      min-width: 160px !important;
+      position: relative;
+      border-radius: 0.875rem;
+      overflow: hidden;
+      background-color: var(--color-card, #ffffff);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+      flex-shrink: 0 !important;
+      display: block !important;
+    }
+
+    @media (min-width: 640px) {
+      .loyals-gallery-card {
+        flex: 0 0 175px !important;
+        width: 175px !important;
+        max-width: 175px !important;
+        min-width: 175px !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .loyals-gallery-card {
+        flex: 0 0 190px !important;
+        width: 190px !important;
+        max-width: 190px !important;
+        min-width: 190px !important;
+      }
+    }
+
+    .loyals-gallery-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.18);
+      border-color: rgba(223, 76, 118, 0.6);
+    }
+
+    .loyals-gallery-card .img-wrapper {
+      position: relative;
+      width: 100% !important;
+      height: 130px !important;
+      max-height: 130px !important;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background-color: #1a0f28;
+    }
+
+    .loyals-gallery-card .img-wrapper img {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 130px !important;
+      object-fit: cover !important;
+      display: block !important;
+      transition: transform 0.35s ease;
+    }
+
+    .loyals-gallery-card:hover .img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .loyals-gallery-card .card-caption {
+      padding: 0.5rem 0.65rem;
+      background-color: var(--color-card, #ffffff);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .loyals-gallery-card .card-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #24133B;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+
+    .loyals-gallery-card .card-sub {
+      font-size: 0.65rem;
+      color: #716282;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 0.15rem;
+      display: block;
+    }
+
+    /* Lightbox Modal */
+    .loyals-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background-color: rgba(10, 5, 18, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1.25rem;
+    }
+
+    .loyals-lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .loyals-lightbox-content {
+      position: relative;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.96);
+      transition: transform 0.3s ease;
+    }
+
+    .loyals-lightbox.open .loyals-lightbox-content {
+      transform: scale(1);
+    }
+
+    .loyals-lightbox-img-wrapper {
+      position: relative;
+      max-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      background-color: #0d0617;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .loyals-lightbox-img-wrapper img {
+      max-height: 70vh;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+    }
+
+    .loyals-lightbox-footer {
+      width: 100%;
+      margin-top: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: #ffffff;
+    }
+
+    .loyals-lightbox-btn {
+      background-color: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+      backdrop-filter: blur(4px);
+    }
+
+    .loyals-lightbox-btn:hover {
+      background-color: #df4c76;
+      border-color: #df4c76;
+      transform: scale(1.08);
+    }
+
+    .loyals-lightbox-close {
+      position: absolute;
+      top: -2.75rem;
+      right: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .loyals-lightbox-close:hover {
+      background-color: #df4c76;
+      transform: rotate(90deg);
+    }
+
+    .loyals-lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+      height: 3rem;
+      z-index: 10;
+    }
+
+    .loyals-lightbox-nav.prev {
+      left: -3.5rem;
+    }
+
+    .loyals-lightbox-nav.next {
+      right: -3.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .loyals-lightbox-nav.prev {
+        left: 0.5rem;
+      }
+
+      .loyals-lightbox-nav.next {
+        right: 0.5rem;
+      }
+
+      .loyals-lightbox-close {
+        top: 0.5rem;
+        right: 0.5rem;
+      }
+    }
+
+
+    /* ==========================================================================
+   THE COMPASSION JOURNAL - Editorial Design System (Zion Loyals)
+   Palette: Warm Ivory #F8F6F0 | Forest Green #244B3A | Deep Charcoal #252925 | Muted Coral #D98779 | Soft Beige #EAE5D9
+   ========================================================================== */
+
+    .compassion-journal-wrapper {
+      background-color: #F8F6F0 !important;
+      color: #252925 !important;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      border-top: 1px solid #EAE5D9;
+      border-bottom: 1px solid #EAE5D9;
+      width: 100%;
+      display: block;
+    }
+
+    .journal-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* 1. Hero Section */
+    .journal-hero {
+      padding: 4.5rem 1.5rem 4rem 1.5rem;
+      background: linear-gradient(180deg, #F8F6F0 0%, #F3EFE6 100%);
+      border-bottom: 1px solid #EAE5D9;
+    }
+
+    .journal-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .journal-hero-inner {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 4rem;
+      }
+    }
+
+    .journal-issue-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background-color: #244B3A;
+      color: #F8F6F0;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .issue-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #D98779;
+      display: inline-block;
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.85);
+      }
+    }
+
+    .journal-hero-title {
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      font-size: 2.75rem;
+      line-height: 1.15;
+      color: #244B3A;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    @media (min-width: 768px) {
+      .journal-hero-title {
+        font-size: 3.75rem;
+      }
+    }
+
+    .journal-hero-title em {
+      font-style: italic;
+      color: #D98779;
+    }
+
+    .journal-hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #4A4E4A;
+      max-width: 36rem;
+      margin-bottom: 2rem;
+    }
+
+    .journal-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid #EAE5D9;
+      border-bottom: 1px solid #EAE5D9;
+      margin-bottom: 2rem;
+    }
+
+    .meta-item .meta-num {
+      display: block;
+      font-family: ui-serif, Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #244B3A;
+      line-height: 1;
+    }
+
+    .meta-item .meta-lbl {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6E726E;
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    .meta-divider {
+      width: 1px;
+      height: 2.25rem;
+      background-color: #D8D2C4;
+    }
+
+    .journal-scroll-indicator .scroll-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #244B3A;
+      transition: color 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+
+    .journal-scroll-indicator .scroll-link:hover {
+      color: #D98779;
+      transform: translateY(2px);
+    }
+
+    .mouse-icon {
+      width: 18px;
+      height: 28px;
+      border: 2px solid #244B3A;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      padding-top: 4px;
+    }
+
+    .mouse-wheel {
+      width: 3px;
+      height: 6px;
+      background-color: #D98779;
+      border-radius: 2px;
+      animation: mouseScroll 1.6s infinite;
+    }
+
+    @keyframes mouseScroll {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(8px);
+        opacity: 0;
+      }
+    }
+
+    .hero-frame {
+      position: relative;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(36, 75, 58, 0.25);
+      cursor: pointer;
+      background-color: #244B3A;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 50px -12px rgba(36, 75, 58, 0.35);
+    }
+
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-frame:hover .hero-img {
+      transform: scale(1.04);
+    }
+
+    .hero-frame-caption {
+      padding: 1.25rem 1.5rem;
+      background-color: #ffffff;
+      border-top: 1px solid #EAE5D9;
+    }
+
+    .caption-tag {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #D98779;
+    }
+
+    .caption-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #252925;
+      margin-top: 0.25rem;
+    }
+
+    /* 2. Interactive Rescue Journey Timeline */
+    .journal-journey-section {
+      padding: 5rem 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #EAE5D9;
+    }
+
+    .section-editorial-header {
+      text-align: center;
+      max-width: 44rem;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .journal-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #D98779;
+      margin-bottom: 0.75rem;
+    }
+
+    .journal-section-heading {
+      font-family: ui-serif, Georgia, serif;
+      font-size: 2.25rem;
+      color: #244B3A;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    @media (min-width: 768px) {
+      .journal-section-heading {
+        font-size: 2.85rem;
+      }
+    }
+
+    .journal-section-sub {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #5C605C;
+      margin-top: 0.75rem;
+    }
+
+    .journey-timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .journey-timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .journey-timeline-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem;
+      }
+    }
+
+    .journey-stage-card {
+      position: relative;
+      background-color: #F8F6F0;
+      border-radius: 1rem;
+      border: 1px solid #EAE5D9;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .journey-stage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 30px -10px rgba(36, 75, 58, 0.18);
+      border-color: #244B3A;
+    }
+
+    .stage-num-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 5;
+      background-color: rgba(36, 75, 58, 0.9);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+    }
+
+    .stage-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background-color: #1a0f28;
+    }
+
+    .stage-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .journey-stage-card:hover .stage-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .zoom-pill {
+      position: absolute;
+      bottom: 0.65rem;
+      right: 0.65rem;
+      background-color: rgba(0, 0, 0, 0.65);
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .journey-stage-card:hover .zoom-pill {
+      opacity: 1;
+    }
+
+    .stage-body {
+      padding: 1.25rem 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stage-theme {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #D98779;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .stage-title {
+      font-family: ui-serif, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #244B3A;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .stage-desc {
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: #4A4E4A;
+      margin-top: auto;
+    }
+
+    /* 3. Editorial Photo Gallery Spreads */
+    .journal-spreads-section {
+      padding: 5rem 0 6rem 0;
+      background-color: #F8F6F0;
+    }
+
+    .spread-block {
+      margin-bottom: 5.5rem;
+    }
+
+    .spread-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .spread-header {
+      border-bottom: 1px solid #D8D2C4;
+      padding-bottom: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .spread-meta-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #D98779;
+      margin-bottom: 0.4rem;
+    }
+
+    .spread-heading {
+      font-family: ui-serif, Georgia, serif;
+      font-size: 1.9rem;
+      color: #244B3A;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    @media (min-width: 768px) {
+      .spread-heading {
+        font-size: 2.35rem;
+      }
+    }
+
+    .spread-sub {
+      font-size: 0.95rem;
+      color: #606460;
+      margin-top: 0.35rem;
+    }
+
+    /* Layout A: 1 Large Feature + 3 Compact Columns */
+    .editorial-grid-layout-a {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 1024px) {
+      .editorial-grid-layout-a {
+        grid-template-columns: 1.25fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .editorial-featured-card {
+      background-color: #ffffff;
+      border-radius: 1.15rem;
+      border: 1px solid #EAE5D9;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -8px rgba(36, 75, 58, 0.12);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .editorial-featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 35px -10px rgba(36, 75, 58, 0.2);
+    }
+
+    .card-img-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: #1a0f28;
+    }
+
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .editorial-featured-card .card-img-container {
+      aspect-ratio: 16 / 11;
+    }
+
+    .editorial-featured-card:hover .card-img-container img {
+      transform: scale(1.04);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: rgba(36, 75, 58, 0.92);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+    }
+
+    .editorial-card-info {
+      padding: 1.5rem 1.65rem;
+    }
+
+    .journal-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #D98779;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-headline {
+      font-family: ui-serif, Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #244B3A;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-detail {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #4A4E4A;
+    }
+
+    .editorial-supporting-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .editorial-compact-card {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1.25rem;
+      background-color: #ffffff;
+      border: 1px solid #EAE5D9;
+      border-radius: 0.875rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      align-items: center;
+    }
+
+    .editorial-compact-card:hover {
+      transform: translateX(4px);
+      border-color: #244B3A;
+    }
+
+    .compact-img-wrap {
+      position: relative;
+      width: 110px;
+      height: 95px;
+      overflow: hidden;
+      background-color: #1a0f28;
+    }
+
+    .compact-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .editorial-compact-card:hover .compact-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    .compact-text {
+      padding: 0.75rem 1rem 0.75rem 0;
+    }
+
+    .compact-title {
+      font-family: ui-serif, Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #244B3A;
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .compact-desc {
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: #5C605C;
+    }
+
+    /* Layout B: Dual Magazine Feature + Pull Quote */
+    .editorial-grid-layout-b {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .editorial-grid-layout-b {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+      }
+    }
+
+    .layout-b-card {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      border: 1px solid #EAE5D9;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .layout-b-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px -10px rgba(36, 75, 58, 0.16);
+    }
+
+    .layout-b-card .card-img-container {
+      aspect-ratio: 16 / 11;
+    }
+
+    .layout-b-card:hover .card-img-container img {
+      transform: scale(1.05);
+    }
+
+    .editorial-pullquote-card {
+      background-color: #244B3A;
+      color: #F8F6F0;
+      border-radius: 1rem;
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 16px 35px -10px rgba(36, 75, 58, 0.35);
+    }
+
+    .quote-mark {
+      font-family: ui-serif, Georgia, serif;
+      font-size: 4rem;
+      line-height: 0.8;
+      color: #D98779;
+      margin-bottom: 0.5rem;
+    }
+
+    .quote-body {
+      font-family: ui-serif, Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .quote-author {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #D8D2C4;
+      font-style: normal;
+      display: block;
+    }
+
+    .quote-stat-pill {
+      margin-top: 1.5rem;
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.78rem;
+      background-color: rgba(217, 135, 121, 0.25);
+      border: 1px solid rgba(217, 135, 121, 0.4);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      color: #F8F6F0;
+    }
+
+    /* Layout C: 3 Asymmetrical Cards */
+    .editorial-grid-layout-c {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .editorial-grid-layout-c {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .layout-c-card {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      border: 1px solid #EAE5D9;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .layout-c-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px -10px rgba(36, 75, 58, 0.16);
+    }
+
+    .layout-c-card .aspect-square {
+      aspect-ratio: 1 / 1;
+    }
+
+    .layout-c-card:hover .card-img-container img {
+      transform: scale(1.05);
+    }
+
+    .feature-wildlife {
+      border-color: #D8D2C4;
+      background: linear-gradient(180deg, #ffffff 0%, #FAF8F3 100%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .hero-frame,
+      .hero-img,
+      .journey-stage-card,
+      .stage-img-wrap img,
+      .editorial-featured-card,
+      .layout-b-card,
+      .layout-c-card {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+
+
+    /* Fullscreen Lightbox - Fully visible, uncropped image presentation */
+    .loyals-lightbox {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 999999 !important;
+      background-color: rgba(10, 14, 12, 0.96) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      padding: 1rem !important;
+    }
+
+    .loyals-lightbox.open {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    .loyals-lightbox-content {
+      position: relative !important;
+      max-width: 1100px !important;
+      width: 100% !important;
+      max-height: 96vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .loyals-lightbox-img-wrapper {
+      position: relative !important;
+      max-height: 78vh !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: visible !important;
+      background-color: transparent !important;
+      border-radius: 0.75rem !important;
+    }
+
+    .loyals-lightbox-img-wrapper img {
+      max-height: 78vh !important;
+      max-width: 95vw !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
+      /* ALWAYS FULLY VISIBLE, NEVER CROPPED */
+      display: block !important;
+      border-radius: 0.85rem !important;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      transition: opacity 0.2s ease !important;
+    }
+
+    .loyals-lightbox-footer {
+      width: 100% !important;
+      max-width: 860px !important;
+      margin-top: 1rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.5rem !important;
+      padding: 0.75rem 1.25rem !important;
+      background-color: rgba(36, 75, 58, 0.6) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: 9999px !important;
+      backdrop-filter: blur(8px) !important;
+      color: #ffffff !important;
+    }
+
+    .loyals-lightbox-close {
+      position: absolute !important;
+      top: -2.75rem !important;
+      right: 0 !important;
+      width: 2.75rem !important;
+      height: 2.75rem !important;
+      background-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      border-radius: 9999px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: background-color 0.2s, transform 0.2s !important;
+      z-index: 20 !important;
+    }
+
+    .loyals-lightbox-close:hover {
+      background-color: #D98779 !important;
+      border-color: #D98779 !important;
+      transform: rotate(90deg) scale(1.08) !important;
+    }
+
+    .loyals-lightbox-nav {
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 3.25rem !important;
+      height: 3.25rem !important;
+      background-color: rgba(36, 75, 58, 0.75) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      border-radius: 9999px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: background-color 0.2s, transform 0.2s !important;
+      z-index: 20 !important;
+    }
+
+    .loyals-lightbox-nav:hover {
+      background-color: #D98779 !important;
+      border-color: #D98779 !important;
+      transform: translateY(-50%) scale(1.1) !important;
+    }
+
+    .loyals-lightbox-nav.prev {
+      left: -4rem !important;
+    }
+
+    .loyals-lightbox-nav.next {
+      right: -4rem !important;
+    }
+
+    @media (max-width: 900px) {
+      .loyals-lightbox-nav.prev {
+        left: 0.5rem !important;
+      }
+
+      .loyals-lightbox-nav.next {
+        right: 0.5rem !important;
+      }
+
+      .loyals-lightbox-close {
+        top: -3.25rem !important;
+        right: 0.5rem !important;
+      }
     }
   </style>
 </head>
+
 <body class="bg-background text-foreground">
   <div id="root">
     <div>
       <!-- Header -->
-      <header id="siteHeader" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-md shadow-sm border-b border-border">
+      <header id="siteHeader"
+        class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-md shadow-sm border-b border-border">
         <div class="mx-auto max-w-[90rem] px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
           <a href="index.html" class="flex items-center gap-2.5 group">
-            <span class="grid place-items-center h-11 w-11 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
+            <span
+              class="grid place-items-center h-11 w-11 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
               <img src="assets/images/logo.jpg" alt="Zion Foundation logo" class="h-full w-full object-cover" />
             </span>
             <span class="font-display text-lg font-600 leading-tight text-foreground text-left">
@@ -114,27 +1313,40 @@
           </a>
 
           <nav class="hidden lg:flex items-center gap-2">
-            <a href="index.html#programs" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <a href="index.html#programs"
+              class="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="m15 18-6-6 6-6"></path>
               </svg>
               All Verticals
             </a>
-            <a href="index.html#about" class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">About</a>
-            <a href="index.html#events" class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Events</a>
-            <a href="index.html#volunteer" class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Volunteer</a>
-            <a href="index.html#contact" class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Contact</a>
-            
-            <button onclick="scrollToDonation()" class="ml-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-600 text-accent-foreground shadow-sm hover:brightness-105 active:scale-[0.98] transition">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+            <a href="index.html#about"
+              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">About</a>
+            <a href="index.html#events"
+              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Events</a>
+            <a href="index.html#volunteer"
+              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Volunteer</a>
+            <a href="index.html#contact"
+              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Contact</a>
+
+            <button onclick="scrollToDonation()"
+              class="ml-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-600 text-accent-foreground shadow-sm hover:brightness-105 active:scale-[0.98] transition">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                </path>
               </svg>
               Donate to Program
             </button>
           </nav>
 
-          <a href="index.html#programs" class="lg:hidden inline-flex items-center gap-1 text-sm font-semibold text-primary">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg>
+          <a href="index.html#programs"
+            class="lg:hidden inline-flex items-center gap-1 text-sm font-semibold text-primary">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
             Back
           </a>
         </div>
@@ -150,14 +1362,17 @@
 
         <div class="relative mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="flex flex-wrap items-center gap-2 mb-4">
-            <a href="index.html#programs" class="inline-flex items-center gap-1 text-xs font-600 uppercase tracking-wider text-primary-foreground/70 hover:text-accent transition">
+            <a href="index.html#programs"
+              class="inline-flex items-center gap-1 text-xs font-600 uppercase tracking-wider text-primary-foreground/70 hover:text-accent transition">
               Programs
             </a>
             <span class="text-primary-foreground/50">/</span>
-            <span id="progCategoryBadge" class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/20 px-3 py-0.5 rounded-full">
+            <span id="progCategoryBadge"
+              class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/20 px-3 py-0.5 rounded-full">
               Community Outreach
             </span>
-            <span id="progStatusBadge" class="inline-flex items-center px-3.5 py-0.5 rounded-full text-xs font-semibold tracking-wide">
+            <span id="progStatusBadge"
+              class="inline-flex items-center px-3.5 py-0.5 rounded-full text-xs font-semibold tracking-wide">
               Active
             </span>
           </div>
@@ -167,7 +1382,8 @@
           </h1>
 
           <p id="progSubtitle" class="mt-4 text-lg sm:text-xl text-primary-foreground/85 leading-relaxed max-w-2xl">
-            Weekly food pantries, hot meals, and emergency crisis relief for families and individuals navigating hard seasons.
+            Weekly food pantries, hot meals, and emergency crisis relief for families and individuals navigating hard
+            seasons.
           </p>
 
           <!-- Campaign Progress Card -->
@@ -176,7 +1392,9 @@
               <div>
                 <p class="text-xs uppercase tracking-wider text-accent font-semibold">2026 Program Support Goal</p>
                 <p class="font-display text-3xl sm:text-4xl font-600 text-white mt-1">
-                  <span id="progRaised">$54,800</span> <span class="text-lg font-normal text-primary-foreground/70">raised of <span id="progGoal">$75,000</span> goal</span>
+                  <span id="progRaised">$54,800</span> <span
+                    class="text-lg font-normal text-primary-foreground/70">raised of <span id="progGoal">$75,000</span>
+                    goal</span>
                 </p>
               </div>
               <div class="text-right">
@@ -200,24 +1418,37 @@
       <section id="programDonateSection" class="py-20 sm:py-28 bg-secondary/50 border-b border-border">
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="text-center max-w-2xl mx-auto">
-            <span id="donateSubBadge" class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Designated Giving</span>
+            <span id="donateSubBadge" class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Designated
+              Giving</span>
             <h2 class="mt-2 font-display text-3xl sm:text-5xl font-600 leading-tight">
               Support <span id="donateTargetName">Food & Relief</span>
             </h2>
             <p id="donateSectionSubtitle" class="mt-4 text-muted-foreground text-base sm:text-lg">
-              Your donation directly funds supplies, emergency assistance, and local volunteer operations for this specific program.
+              Your donation directly funds supplies, emergency assistance, and local volunteer operations for this
+              specific program.
             </p>
           </div>
 
           <!-- Zion Loyals Two Ways to Contribute Tab Switcher -->
           <div id="contributionModeSwitcher" class="hidden mt-8 max-w-md mx-auto">
             <div class="bg-card p-1.5 rounded-2xl border border-border shadow-sm grid grid-cols-2 gap-2">
-              <button id="tabBtnFood" onclick="switchContributionMode('food')" class="py-3 px-4 rounded-xl text-sm font-600 transition flex items-center justify-center gap-2">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <button id="tabBtnFood" onclick="switchContributionMode('food')"
+                class="py-3 px-4 rounded-xl text-sm font-600 transition flex items-center justify-center gap-2">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                  </path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
                 1. Donate Food
               </button>
-              <button id="tabBtnMoney" onclick="switchContributionMode('money')" class="py-3 px-4 rounded-xl text-sm font-600 transition flex items-center justify-center gap-2">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+              <button id="tabBtnMoney" onclick="switchContributionMode('money')"
+                class="py-3 px-4 rounded-xl text-sm font-600 transition flex items-center justify-center gap-2">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                  <line x1="2" x2="22" y1="10" y2="10"></line>
+                </svg>
                 2. Donate Money
               </button>
             </div>
@@ -228,11 +1459,17 @@
             <div class="bg-card rounded-3xl border border-border p-6 sm:p-10 shadow-lg">
               <div class="flex items-center gap-3 mb-6">
                 <span class="grid place-items-center h-12 w-12 rounded-2xl bg-primary/10 text-primary">
-                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline></svg>
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  </svg>
                 </span>
                 <div>
                   <h3 class="font-display text-2xl font-600">Animal Food Donation Pledge</h3>
-                  <p class="text-sm text-muted-foreground">Contribute physical pet & animal food supplies. No online payment required.</p>
+                  <p class="text-sm text-muted-foreground">Contribute physical pet & animal food supplies. No online
+                    payment required.</p>
                 </div>
               </div>
 
@@ -240,34 +1477,45 @@
               <form id="foodDonationForm" onsubmit="submitFoodPledge(event)" class="space-y-4">
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="foodDonorName">Full Name *</label>
-                    <input id="foodDonorName" required placeholder="Priya Sharma" class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+                      for="foodDonorName">Full Name *</label>
+                    <input id="foodDonorName" required placeholder="Priya Sharma"
+                      class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                   </div>
                   <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="foodDonorPhone">Phone Number *</label>
-                    <input id="foodDonorPhone" type="tel" required placeholder="+91 98765 43210" class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+                      for="foodDonorPhone">Phone Number *</label>
+                    <input id="foodDonorPhone" type="tel" required placeholder="+91 98765 43210"
+                      class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                   </div>
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="foodDonorEmail">Email Address *</label>
-                  <input id="foodDonorEmail" type="email" required placeholder="priya@example.com" class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+                    for="foodDonorEmail">Email Address *</label>
+                  <input id="foodDonorEmail" type="email" required placeholder="priya@example.com"
+                    class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="foodItemType">Food Category *</label>
-                    <select id="foodItemType" class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+                      for="foodItemType">Food Category *</label>
+                    <select id="foodItemType"
+                      class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                       <option value="Dry Dog Food (Kibble)">Dry Dog Food (Commercial Kibble)</option>
                       <option value="Puppy Weaning Milk & Cerelac">Puppy Weaning Milk & Starter Formula</option>
                       <option value="Rice & Broth Grains">Rice, Lentils & Broth Grains (Bags)</option>
                       <option value="Canned Wet Dog/Cat Food">Canned Wet Meat & Gravy Pouches</option>
-                      <option value="Animal Biscuits & Calcium Supplements">Animal Biscuits & Calcium Supplements</option>
+                      <option value="Animal Biscuits & Calcium Supplements">Animal Biscuits & Calcium Supplements
+                      </option>
                     </select>
                   </div>
                   <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="foodQuantity">Quantity / Weight *</label>
-                    <select id="foodQuantity" class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+                      for="foodQuantity">Quantity / Weight *</label>
+                    <select id="foodQuantity"
+                      class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                       <option value="5 kg">5 kg (Feeds 3-5 dogs for a week)</option>
                       <option value="10 kg" selected>10 kg (Standard Feeding Bag)</option>
                       <option value="20 kg">20 kg (Feeds a street pack)</option>
@@ -278,31 +1526,48 @@
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">Handover Method *</label>
+                  <label
+                    class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">Handover
+                    Method *</label>
                   <div class="grid sm:grid-cols-2 gap-3 mt-1.5">
-                    <label class="flex items-center gap-3 p-3 rounded-xl border border-border bg-secondary/40 cursor-pointer hover:bg-secondary">
-                      <input type="radio" name="deliveryMethod" value="Drop-off at Station" checked onchange="togglePickupAddress(false)" class="text-accent focus:ring-accent" />
-                      <span class="text-xs font-semibold text-foreground">Self Drop-off at Station<br><span class="text-[0.7rem] text-muted-foreground font-normal">1204 Zion Avenue Feeding Post</span></span>
+                    <label
+                      class="flex items-center gap-3 p-3 rounded-xl border border-border bg-secondary/40 cursor-pointer hover:bg-secondary">
+                      <input type="radio" name="deliveryMethod" value="Drop-off at Station" checked
+                        onchange="togglePickupAddress(false)" class="text-accent focus:ring-accent" />
+                      <span class="text-xs font-semibold text-foreground">Self Drop-off at Station<br><span
+                          class="text-[0.7rem] text-muted-foreground font-normal">1204 Zion Avenue Feeding
+                          Post</span></span>
                     </label>
-                    <label class="flex items-center gap-3 p-3 rounded-xl border border-border bg-secondary/40 cursor-pointer hover:bg-secondary">
-                      <input type="radio" name="deliveryMethod" value="Volunteer Pickup" onchange="togglePickupAddress(true)" class="text-accent focus:ring-accent" />
-                      <span class="text-xs font-semibold text-foreground">Doorstep Volunteer Pickup<br><span class="text-[0.7rem] text-muted-foreground font-normal">Within local area radius</span></span>
+                    <label
+                      class="flex items-center gap-3 p-3 rounded-xl border border-border bg-secondary/40 cursor-pointer hover:bg-secondary">
+                      <input type="radio" name="deliveryMethod" value="Volunteer Pickup"
+                        onchange="togglePickupAddress(true)" class="text-accent focus:ring-accent" />
+                      <span class="text-xs font-semibold text-foreground">Doorstep Volunteer Pickup<br><span
+                          class="text-[0.7rem] text-muted-foreground font-normal">Within local area radius</span></span>
                     </label>
                   </div>
                 </div>
 
                 <div id="pickupAddressContainer" class="hidden">
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="foodPickupAddress">Pickup Address & Landmark</label>
-                  <input id="foodPickupAddress" placeholder="Flat / House No., Street, Landmark" class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+                    for="foodPickupAddress">Pickup Address & Landmark</label>
+                  <input id="foodPickupAddress" placeholder="Flat / House No., Street, Landmark"
+                    class="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="foodNotes">Special Instructions / Best Time to Contact</label>
-                  <textarea id="foodNotes" rows="2" placeholder="e.g. Please call before arriving, available post 4 PM..." class="w-full rounded-xl border border-input bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"></textarea>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+                    for="foodNotes">Special Instructions / Best Time to Contact</label>
+                  <textarea id="foodNotes" rows="2"
+                    placeholder="e.g. Please call before arriving, available post 4 PM..."
+                    class="w-full rounded-xl border border-input bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"></textarea>
                 </div>
 
-                <button type="submit" id="btnSubmitFoodPledge" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
-                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"></path></svg>
+                <button type="submit" id="btnSubmitFoodPledge"
+                  class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
                   Register Food Donation Pledge
                 </button>
               </form>
@@ -310,27 +1575,38 @@
               <!-- Food Pledge Confirmation Card -->
               <div id="foodPledgeConfirmation" class="hidden text-center py-6">
                 <span class="grid place-items-center h-16 w-16 mx-auto rounded-full bg-accent/20 text-accent mb-4">
-                  <svg class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg>
+                  <svg class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.5">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
                 </span>
-                <span class="inline-block text-xs font-semibold uppercase tracking-wider text-accent bg-accent/15 px-3 py-1 rounded-full mb-2">Pledge Registered</span>
+                <span
+                  class="inline-block text-xs font-semibold uppercase tracking-wider text-accent bg-accent/15 px-3 py-1 rounded-full mb-2">Pledge
+                  Registered</span>
                 <h3 class="font-display text-2xl font-600">Thank You for Feeding Animals!</h3>
                 <p class="text-sm text-muted-foreground mt-1 max-w-md mx-auto">
-                  Your animal food donation pledge has been recorded. Our animal welfare coordinator will get in touch shortly.
+                  Your animal food donation pledge has been recorded. Our animal welfare coordinator will get in touch
+                  shortly.
                 </p>
 
-                <div class="bg-secondary rounded-2xl p-5 my-6 text-left text-xs sm:text-sm space-y-2 border border-border">
-                  <p><strong>Pledge Reference:</strong> <span id="foodConfRef" class="font-mono text-primary font-bold">TZF-FOOD-202610-001</span></p>
+                <div
+                  class="bg-secondary rounded-2xl p-5 my-6 text-left text-xs sm:text-sm space-y-2 border border-border">
+                  <p><strong>Pledge Reference:</strong> <span id="foodConfRef"
+                      class="font-mono text-primary font-bold">TZF-FOOD-202610-001</span></p>
                   <p><strong>Food Contribution:</strong> <span id="foodConfItem">10 kg Dry Dog Food</span></p>
                   <p><strong>Handover Method:</strong> <span id="foodConfMethod">Drop-off at Station</span></p>
                   <p><strong>Donor Contact:</strong> <span id="foodConfDonor">Priya (+91 98765 43210)</span></p>
-                  <p><strong>Status:</strong> <span class="inline-flex items-center gap-1 text-accent font-semibold">● Active Pledge Confirmed</span></p>
+                  <p><strong>Status:</strong> <span class="inline-flex items-center gap-1 text-accent font-semibold">●
+                      Active Pledge Confirmed</span></p>
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-3">
-                  <button onclick="resetFoodDonationForm()" class="inline-flex items-center gap-1.5 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition">
+                  <button onclick="resetFoodDonationForm()"
+                    class="inline-flex items-center gap-1.5 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition">
                     Pledge Another Contribution
                   </button>
-                  <button onclick="switchContributionMode('money')" class="inline-flex items-center gap-1.5 rounded-full border border-border px-6 py-2.5 text-sm font-600 text-foreground hover:bg-secondary transition">
+                  <button onclick="switchContributionMode('money')"
+                    class="inline-flex items-center gap-1.5 rounded-full border border-border px-6 py-2.5 text-sm font-600 text-foreground hover:bg-secondary transition">
                     Switch to Monetary Donation
                   </button>
                 </div>
@@ -348,32 +1624,47 @@
             <!-- Amount & Razorpay Checkout Action -->
             <div class="mt-10 max-w-md mx-auto bg-card rounded-2xl border border-border p-6 shadow-md text-center">
               <div class="flex gap-2 mb-5">
-                <button id="freqBtnOnce" onclick="setDomainFreq('one-time')" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground transition">
+                <button id="freqBtnOnce" onclick="setDomainFreq('one-time')"
+                  class="flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground transition">
                   One-Time Gift
                 </button>
-                <button id="freqBtnMonthly" onclick="setDomainFreq('monthly')" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground hover:bg-muted transition">
+                <button id="freqBtnMonthly" onclick="setDomainFreq('monthly')"
+                  class="flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground hover:bg-muted transition">
                   Give Monthly
                 </button>
               </div>
 
               <div class="mb-5 text-left">
-                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">Selected Contribution Amount</label>
+                <label
+                  class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">Selected
+                  Contribution Amount</label>
                 <div class="relative">
-                  <span id="customAmountPrefix" class="absolute left-3.5 top-1/2 -translate-y-1/2 font-display text-xl font-bold text-foreground">₹</span>
-                  <input id="customDomainAmount" type="number" min="5" step="1" value="1050" oninput="onCustomAmountChange(this.value)" class="w-full pl-8 pr-4 py-2.5 rounded-lg border border-input bg-background font-display text-xl font-bold text-accent focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <span id="customAmountPrefix"
+                    class="absolute left-3.5 top-1/2 -translate-y-1/2 font-display text-xl font-bold text-foreground">₹</span>
+                  <input id="customDomainAmount" type="number" min="5" step="1" value="1050"
+                    oninput="onCustomAmountChange(this.value)"
+                    class="w-full pl-8 pr-4 py-2.5 rounded-lg border border-input bg-background font-display text-xl font-bold text-accent focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
               </div>
 
               <!-- Razorpay CTA Button -->
-              <button id="btnConfirmDomainDonate" onclick="openDomainDonateModal()" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              <button id="btnConfirmDomainDonate" onclick="openDomainDonateModal()"
+                class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                  </path>
                 </svg>
                 <span id="btnDonateLabel">Donate Now via Razorpay</span>
               </button>
 
-              <div class="mt-4 pt-3 border-t border-border/60 flex items-center justify-center gap-2 text-[0.72rem] text-muted-foreground font-medium">
-                <svg class="h-3.5 w-3.5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <div
+                class="mt-4 pt-3 border-t border-border/60 flex items-center justify-center gap-2 text-[0.72rem] text-muted-foreground font-medium">
+                <svg class="h-3.5 w-3.5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
                 <span>Secured by <strong>Razorpay Payment Gateway</strong> (256-Bit SSL)</span>
               </div>
             </div>
@@ -390,7 +1681,7 @@
               <h2 id="overviewHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600 leading-tight">
                 Meeting real, immediate needs with lasting compassion.
               </h2>
-              
+
               <div id="overviewBody" class="mt-6 space-y-4 text-muted-foreground text-base leading-relaxed">
                 <!-- Injected via JS -->
               </div>
@@ -403,13 +1694,17 @@
 
             <!-- Program Image & Testimonial Card -->
             <div class="relative">
-              <img id="detailImg" src="assets/images/hug.png" alt="Program in action" class="rounded-2xl w-full object-cover aspect-[4/3] shadow-xl" />
-              <div class="absolute -bottom-6 -left-4 sm:-left-8 bg-card rounded-2xl shadow-lg border border-border p-6 max-w-sm">
+              <img id="detailImg" src="assets/images/loyals/01-pup-cast.jpg" alt="Program in action"
+                class="rounded-2xl w-full object-cover aspect-[4/3] shadow-xl" />
+              <div
+                class="absolute -bottom-6 -left-4 sm:-left-8 bg-card rounded-2xl shadow-lg border border-border p-6 max-w-sm">
                 <p class="text-accent font-display text-3xl font-600 leading-none">“</p>
                 <p id="testimonialQuote" class="text-sm font-medium text-foreground leading-snug mt-1">
-                  "Having fresh groceries delivered to our porch when my hours were cut allowed us to keep our dignity and feed our kids."
+                  "Having fresh groceries delivered to our porch when my hours were cut allowed us to keep our dignity
+                  and feed our kids."
                 </p>
-                <p id="testimonialAuthor" class="mt-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                <p id="testimonialAuthor"
+                  class="mt-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                   — Elena & Marco, Community Members
                 </p>
               </div>
@@ -417,6 +1712,394 @@
           </div>
         </div>
       </section>
+
+      <!-- ==========================================================================
+           THE COMPASSION JOURNAL - Zion Loyals Editorial Experience
+           ========================================================================== -->
+      <section id="zionLoyalsEditorialJournal" class="compassion-journal-wrapper">
+
+        <!-- 1. Editorial Hero -->
+        <div class="journal-hero">
+          <div class="journal-hero-inner">
+            <div class="journal-hero-content">
+              <div class="journal-issue-badge">
+                <span class="issue-dot"></span>
+                <span>The Compassion Journal • Field Archive 2026</span>
+              </div>
+              <h1 class="journal-hero-title">
+                Every Life Deserves a <em>Second Chance.</em>
+              </h1>
+              <p class="journal-hero-desc">
+                An authentic documentary archive of emergency trauma triage, daily neighborhood pack feeding routes,
+                clinical orthopedics, and the restorative dignity of foster healing across our community.
+              </p>
+
+              <div class="journal-hero-meta">
+                <div class="meta-item">
+                  <span class="meta-num">340+</span>
+                  <span class="meta-lbl">Trauma Rescues</span>
+                </div>
+                <div class="meta-divider"></div>
+                <div class="meta-item">
+                  <span class="meta-num">2,800+</span>
+                  <span class="meta-lbl">Kg Food Served</span>
+                </div>
+                <div class="meta-divider"></div>
+                <div class="meta-item">
+                  <span class="meta-num">180+</span>
+                  <span class="meta-lbl">Orthopedic Casts</span>
+                </div>
+              </div>
+
+              <div class="journal-scroll-indicator">
+                <a href="#journal-spreads" class="scroll-link">
+                  <span class="mouse-icon"><span class="mouse-wheel"></span></span>
+                  <span>Explore The Archive</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="journal-hero-visual">
+              <div class="hero-frame" onclick="openLoyalsLightbox(11)">
+                <img src="assets/images/loyals/10-peaceful-sleep.jpg" alt="Rescued puppy resting peacefully"
+                  class="hero-img" />
+                <div class="hero-frame-caption">
+                  <span class="caption-tag">Plate 01 • Safe Haven</span>
+                  <p class="caption-text">Rescued orphan puppy resting soundly in loving arms after emergency roadside
+                    intake.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Interactive Rescue Journey Timeline (6 Stages) -->
+        <div class="journal-journey-section">
+          <div class="journal-container">
+            <div class="section-editorial-header">
+              <span class="journal-label">A Systematic Path to Healing</span>
+              <h2 class="journal-section-heading">The Rescue & Transformation Journey</h2>
+              <p class="journal-section-sub">
+                From emergency community alert to vetted forever homes — every vulnerable animal travels through six
+                compassionate stages of care.
+              </p>
+            </div>
+
+            <div class="journey-timeline-grid">
+              <!-- Stage 1 -->
+              <div class="journey-stage-card" onclick="openLoyalsLightbox(0)">
+                <div class="stage-num-badge">Stage 01</div>
+                <div class="stage-img-wrap">
+                  <img src="assets/images/loyals/01-pup-cast.jpg" alt="Rescue & Recovery" loading="lazy" />
+                  <span class="zoom-pill">🔍 Expand</span>
+                </div>
+                <div class="stage-body">
+                  <span class="stage-theme">Intake & Splints</span>
+                  <h3 class="stage-title">Emergency Rescue & Recovery</h3>
+                  <p class="stage-desc">Rapid-response roadside intake for vehicular collision victims, immediate pain
+                    relief, and temporary fracture splints.</p>
+                </div>
+              </div>
+
+              <!-- Stage 2 -->
+              <div class="journey-stage-card" onclick="openLoyalsLightbox(2)">
+                <div class="stage-num-badge">Stage 02</div>
+                <div class="stage-img-wrap">
+                  <img src="assets/images/loyals/03-xray-scan.jpg" alt="Medical Treatment" loading="lazy" />
+                  <span class="zoom-pill">🔍 Expand</span>
+                </div>
+                <div class="stage-body">
+                  <span class="stage-theme">Clinical Radiography</span>
+                  <h3 class="stage-title">Diagnostics & Surgical Care</h3>
+                  <p class="stage-desc">High-precision digital X-ray scans identify pelvic and limb fractures, followed
+                    by orthopedic alignment and casting.</p>
+                </div>
+              </div>
+
+              <!-- Stage 3 -->
+              <div class="journey-stage-card" onclick="openLoyalsLightbox(1)">
+                <div class="stage-num-badge">Stage 03</div>
+                <div class="stage-img-wrap">
+                  <img src="assets/images/loyals/02-cast-triage.jpg" alt="Rehabilitation" loading="lazy" />
+                  <span class="zoom-pill">🔍 Expand</span>
+                </div>
+                <div class="stage-body">
+                  <span class="stage-theme">Sterile Management</span>
+                  <h3 class="stage-title">Post-Op Rehabilitation</h3>
+                  <p class="stage-desc">Daily wound triage, antiseptic dressing, IV hydration, and supervised rest on
+                    clinic observation tables.</p>
+                </div>
+              </div>
+
+              <!-- Stage 4 -->
+              <div class="journey-stage-card" onclick="openLoyalsLightbox(6)">
+                <div class="stage-num-badge">Stage 04</div>
+                <div class="stage-img-wrap">
+                  <img src="assets/images/loyals/06-street-feeding.jpg" alt="Feeding & Nourishment" loading="lazy" />
+                  <span class="zoom-pill">🔍 Expand</span>
+                </div>
+                <div class="stage-body">
+                  <span class="stage-theme">Field Nutrition</span>
+                  <h3 class="stage-title">Feeding & Pack Nourishment</h3>
+                  <p class="stage-desc">Scheduled daily community routes serving wholesome cooked rice, nutrient broth,
+                    and water to prevent disease.</p>
+                </div>
+              </div>
+
+              <!-- Stage 5 -->
+              <div class="journey-stage-card" onclick="openLoyalsLightbox(9)">
+                <div class="stage-num-badge">Stage 05</div>
+                <div class="stage-img-wrap">
+                  <img src="assets/images/loyals/08-pup-and-beagle.jpg" alt="Foster Care" loading="lazy" />
+                  <span class="zoom-pill">🔍 Expand</span>
+                </div>
+                <div class="stage-body">
+                  <span class="stage-theme">Sanctuary Comfort</span>
+                  <h3 class="stage-title">Sanctuary & Foster Care</h3>
+                  <p class="stage-desc">Peaceful foster haven with warm winter sweaters, companion dogs, and specialized
+                    care for rescued swift birds.</p>
+                </div>
+              </div>
+
+              <!-- Stage 6 -->
+              <div class="journey-stage-card" onclick="openLoyalsLightbox(13)">
+                <div class="stage-num-badge">Stage 06</div>
+                <div class="stage-img-wrap">
+                  <img src="assets/images/loyals/12-healthy-thriving.jpg" alt="Happy Endings" loading="lazy" />
+                  <span class="zoom-pill">🔍 Expand</span>
+                </div>
+                <div class="stage-body">
+                  <span class="stage-theme">Restored Life</span>
+                  <h3 class="stage-title">Happy Endings & Adoption</h3>
+                  <p class="stage-desc">Full physical restoration, complete vaccination, and transition into loving,
+                    vetted forever families.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Editorial Photo Gallery Spreads -->
+        <div class="journal-spreads-section" id="journal-spreads">
+          <div class="journal-container">
+
+            <!-- Category Spread 1: Clinical Care & Medical Treatment -->
+            <div class="spread-block">
+              <div class="spread-header">
+                <div class="spread-meta-tag">Chapter 01 • Health & Clinical Treatment</div>
+                <h3 class="spread-heading">Emergency Triage & Orthopedic Surgery</h3>
+                <p class="spread-sub">Precision veterinary medicine delivering second chances to injured street
+                  companions.</p>
+              </div>
+
+              <!-- Asymmetrical Magazine Grid -->
+              <div class="editorial-grid-layout-a">
+                <!-- Large Featured Left -->
+                <div class="editorial-featured-card" onclick="openLoyalsLightbox(2)">
+                  <div class="card-img-container">
+                    <img src="assets/images/loyals/03-xray-scan.jpg" alt="Digital X-Ray Radiography Scan"
+                      loading="lazy" />
+                    <span class="featured-badge">Featured Diagnostic Scan</span>
+                  </div>
+                  <div class="editorial-card-info">
+                    <span class="journal-tag">Plate 03 • Digital Radiography</span>
+                    <h4 class="card-headline">Pelvic & Femoral Diagnostic Scan</h4>
+                    <p class="card-detail">Precision digital radiograph displayed in surgical theater, mapping
+                      structural fractures prior to cast stabilization.</p>
+                  </div>
+                </div>
+
+                <!-- 3 Smaller Supporting Right -->
+                <div class="editorial-supporting-col">
+                  <div class="editorial-compact-card" onclick="openLoyalsLightbox(0)">
+                    <div class="compact-img-wrap">
+                      <img src="assets/images/loyals/01-pup-cast.jpg" alt="Orthopedic Limb Cast" loading="lazy" />
+                    </div>
+                    <div class="compact-text">
+                      <span class="journal-tag">Plate 04 • Orthopedics</span>
+                      <h5 class="compact-title">Fracture Cast & Protective Collar</h5>
+                      <p class="compact-desc">Young puppy fitted with rigid pink cast and Elizabethan collar following
+                        accidental impact.</p>
+                    </div>
+                  </div>
+
+                  <div class="editorial-compact-card" onclick="openLoyalsLightbox(3)">
+                    <div class="compact-img-wrap">
+                      <img src="assets/images/loyals/04-radiology-room.jpg" alt="Veterinary Radiology Suite"
+                        loading="lazy" />
+                    </div>
+                    <div class="compact-text">
+                      <span class="journal-tag">Plate 05 • Radiology Room</span>
+                      <h5 class="compact-title">Veterinary Diagnostic Suite</h5>
+                      <p class="compact-desc">Veterinary medical team calibrating overhead radiology scanners for
+                        emergency trauma analysis.</p>
+                    </div>
+                  </div>
+
+                  <div class="editorial-compact-card" onclick="openLoyalsLightbox(4)">
+                    <div class="compact-img-wrap">
+                      <img src="assets/images/loyals/05-clinical-care.jpg" alt="Emergency Medical Stabilization"
+                        loading="lazy" />
+                    </div>
+                    <div class="compact-text">
+                      <span class="journal-tag">Plate 06 • Clinical Triage</span>
+                      <h5 class="compact-title">IV Hydration & Stabilization</h5>
+                      <p class="compact-desc">Dehydrated rescue dog undergoing intravenous fluid restoration and
+                        temperature stabilization on examination table.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Spread 2: Street Packs & Daily Feeding -->
+            <div class="spread-block">
+              <div class="spread-header">
+                <div class="spread-meta-tag">Chapter 02 • Field Nutrition & Sustenance</div>
+                <h3 class="spread-heading">Daily Feeding Drives & Street Pack Bonding</h3>
+                <p class="spread-sub">Wholesome cooked nourishment served consistently across neighborhood routes.</p>
+              </div>
+
+              <!-- Editorial Layout B: Dual Magazine Feature with Center Pull Quote -->
+              <div class="editorial-grid-layout-b">
+                <div class="layout-b-card" onclick="openLoyalsLightbox(6)">
+                  <div class="card-img-container">
+                    <img src="assets/images/loyals/06-street-feeding.jpg" alt="Community Pack Feeding Drive" loading="lazy" style="object-position: center bottom;" />
+                  </div>
+                  <div class="editorial-card-info">
+                    <span class="journal-tag">Plate 07 • Community Feeding</span>
+                    <h4 class="card-headline">Daily Community Pack Feeding</h4>
+                    <p class="card-detail">Field volunteers serving fresh cooked rice and protein broth to peaceful
+                      stray dogs in neighborhood lots.</p>
+                  </div>
+                </div>
+
+                <div class="editorial-pullquote-card">
+                  <div class="quote-mark">“</div>
+                  <blockquote class="quote-body">
+                    Hunger and road collisions should never be the accepted reality for our neighborhood companions.
+                    Dignity begins with a warm meal.
+                  </blockquote>
+                  <cite class="quote-author">— Zion Loyals Field Route Team</cite>
+                  <div class="quote-stat-pill">
+                    <strong>2,800+ kg</strong> distributed this season
+                  </div>
+                </div>
+
+                <div class="layout-b-card" onclick="openLoyalsLightbox(7)">
+                  <div class="card-img-container">
+                    <img src="assets/images/dog-feeding.jpg" alt="Neighborhood Street Pack Feeding" loading="lazy" style="object-position: center;" />
+                  </div>
+                  <div class="editorial-card-info">
+                    <span class="journal-tag">Plate 08 • Street Pack Care</span>
+                    <h4 class="card-headline">Building Trust & Affection</h4>
+                    <p class="card-detail">Field volunteer sharing moments of tenderness and wholesome meals with community street animals on afternoon feeding rounds.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Spread 3: Foster Sanctuary & Avian Care -->
+            <div class="spread-block">
+              <div class="spread-header">
+                <div class="spread-meta-tag">Chapter 03 • Sanctuary & Harmonious Living</div>
+                <h3 class="spread-heading">Foster Sanctuary, Recovery & Wildlife Care</h3>
+                <p class="spread-sub">A peaceful home environment where fragile bodies heal and cross-species
+                  friendships blossom.</p>
+              </div>
+
+              <!-- Editorial Layout C: 3-Card Asymmetrical Spread -->
+              <div class="editorial-grid-layout-c">
+                <!-- Card 1 -->
+                <div class="layout-c-card" onclick="openLoyalsLightbox(9)">
+                  <div class="card-img-container aspect-square">
+                    <img src="assets/images/loyals/08-pup-and-beagle.jpg" alt="Puppy in Sweater with Beagle"
+                      loading="lazy" />
+                  </div>
+                  <div class="editorial-card-info">
+                    <span class="journal-tag">Plate 09 • Companionship</span>
+                    <h4 class="card-headline">Sweaters & Resident Companions</h4>
+                    <p class="card-detail">Convalescing puppy wearing cozy striped winter clothing thriving happily
+                      beside gentle resident companion beagle.</p>
+                  </div>
+                </div>
+
+                <!-- Card 2: Wildlife Special Feature -->
+                <div class="layout-c-card feature-wildlife" onclick="openLoyalsLightbox(10)">
+                  <div class="card-img-container aspect-square">
+                    <img src="assets/images/loyals/09-bird-rescue.jpg" alt="Baby Swift Avian Rescue" loading="lazy" />
+                  </div>
+                  <div class="editorial-card-info">
+                    <span class="journal-tag">Plate 10 • Wildlife Protection</span>
+                    <h4 class="card-headline">Avian Swift Nestling Shelter</h4>
+                    <p class="card-detail">Gentle hand-nourishment, warmth, and safe sheltered rehabilitation for an
+                      orphaned baby swift bird.</p>
+                  </div>
+                </div>
+
+                <!-- Card 3: Harmony Dinner -->
+                <div class="layout-c-card" onclick="openLoyalsLightbox(12)">
+                  <div class="card-img-container aspect-square">
+                    <img src="assets/images/loyals/11-pack-feeding.jpg" alt="Sanctuary Pack Mealtime" loading="lazy" />
+                  </div>
+                  <div class="editorial-card-info">
+                    <span class="journal-tag">Plate 11 • Harmony</span>
+                    <h4 class="card-headline">Sanctuary Pack Family Meals</h4>
+                    <p class="card-detail">Rescued dogs of diverse breeds living together peacefully indoors, receiving
+                      daily nourishment in our home shelter.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- Full-Featured Lightbox Modal -->
+      <div id="loyalsLightbox" class="loyals-lightbox" onclick="handleLightboxBackdropClick(event)">
+        <div class="loyals-lightbox-content">
+          <button type="button" class="loyals-lightbox-close" onclick="closeLoyalsLightbox()"
+            aria-label="Close preview">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <button type="button" class="loyals-lightbox-btn loyals-lightbox-nav prev" onclick="prevLightboxImage()"
+            aria-label="Previous photograph">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <div class="loyals-lightbox-img-wrapper">
+            <img id="lightboxImg" src="" alt="Full preview" />
+          </div>
+
+          <button type="button" class="loyals-lightbox-btn loyals-lightbox-nav next" onclick="nextLightboxImage()"
+            aria-label="Next photograph">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div class="loyals-lightbox-footer">
+            <div>
+              <span id="lightboxCategory" class="text-xs uppercase font-semibold text-rose-400 tracking-wider">Rescue
+                & Clinical Care</span>
+              <h4 id="lightboxTitle" class="text-base font-semibold text-white mt-0.5">Title</h4>
+              <p id="lightboxDesc" class="text-xs text-white/80 max-w-xl mt-0.5">Description</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span id="lightboxCounter"
+                class="text-xs font-mono bg-white/10 px-3 py-1 rounded-full text-white/90">Photo 1 of 12</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Core Strategic Pillars Section -->
       <section class="py-20 sm:py-28 bg-secondary/35 border-t border-border">
@@ -483,8 +2166,12 @@
               <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Get Hands-On</span>
               <h2 class="mt-2 font-display text-3xl sm:text-4xl font-600">Upcoming Shifts & Activities</h2>
             </div>
-            <a href="index.html#volunteer" class="inline-flex items-center gap-1.5 text-sm font-600 text-primary hover:text-accent transition">
-              View All Opportunities <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+            <a href="index.html#volunteer"
+              class="inline-flex items-center gap-1.5 text-sm font-600 text-primary hover:text-accent transition">
+              View All Opportunities <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
             </a>
           </div>
 
@@ -498,8 +2185,10 @@
       <section class="py-20 bg-background border-t border-border">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <h3 class="font-display text-2xl sm:text-3xl font-600 text-[#24133B] dark:text-foreground">Explore Other Verticals</h3>
-            <a href="index.html#programs" class="text-sm font-600 text-accent hover:underline">View All Six Verticals →</a>
+            <h3 class="font-display text-2xl sm:text-3xl font-600 text-[#24133B] dark:text-foreground">Explore Other
+              Verticals</h3>
+            <a href="index.html#programs" class="text-sm font-600 text-accent hover:underline">View All Six Verticals
+              →</a>
           </div>
 
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="otherProgramsGrid">
@@ -520,11 +2209,16 @@
                 <span class="font-display text-lg font-600">Zion Foundation</span>
               </div>
               <p class="mt-4 text-primary-foreground/70 leading-relaxed">
-                A charity, faith, and community organization serving families with compassion, education, and hope since 2001.
+                A charity, faith, and community organization serving families with compassion, education, and hope
+                since 2001.
               </p>
-              <button onclick="scrollToDonation()" class="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              <button onclick="scrollToDonation()"
+                class="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                  </path>
                 </svg>
                 Donate to this Program
               </button>
@@ -533,12 +2227,18 @@
             <div>
               <p class="font-600 mb-4">Explore</p>
               <ul class="space-y-2.5">
-                <li><a href="index.html#about" class="text-primary-foreground/70 hover:text-accent transition">About</a></li>
-                <li><a href="index.html#programs" class="text-primary-foreground/70 hover:text-accent transition">Programs</a></li>
-                <li><a href="index.html#events" class="text-primary-foreground/70 hover:text-accent transition">Events</a></li>
-                <li><a href="index.html#news" class="text-primary-foreground/70 hover:text-accent transition">News</a></li>
-                <li><a href="index.html#volunteer" class="text-primary-foreground/70 hover:text-accent transition">Volunteer</a></li>
-                <li><a href="index.html#contact" class="text-primary-foreground/70 hover:text-accent transition">Contact</a></li>
+                <li><a href="index.html#about" class="text-primary-foreground/70 hover:text-accent transition">About</a>
+                </li>
+                <li><a href="index.html#programs"
+                    class="text-primary-foreground/70 hover:text-accent transition">Programs</a></li>
+                <li><a href="index.html#events"
+                    class="text-primary-foreground/70 hover:text-accent transition">Events</a></li>
+                <li><a href="index.html#news" class="text-primary-foreground/70 hover:text-accent transition">News</a>
+                </li>
+                <li><a href="index.html#volunteer"
+                    class="text-primary-foreground/70 hover:text-accent transition">Volunteer</a></li>
+                <li><a href="index.html#contact"
+                    class="text-primary-foreground/70 hover:text-accent transition">Contact</a></li>
               </ul>
             </div>
 
@@ -547,12 +2247,14 @@
               <ul class="space-y-2.5 text-primary-foreground/70">
                 <li>1204 Zion Avenue</li>
                 <li>(404) 555-0142</li>
-                <li><a href="mailto:hello@zionfoundation.org" class="hover:underline">hello@zionfoundation.org</a></li>
+                <li><a href="mailto:hello@zionfoundation.org" class="hover:underline">hello@zionfoundation.org</a>
+                </li>
               </ul>
             </div>
           </div>
 
-          <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-primary-foreground/60">
+          <div
+            class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-primary-foreground/60">
             <p>© <span id="yearVal">2026</span> Zion Foundation. A registered 501(c)(3) nonprofit.</p>
             <p>Building Hope · Protecting Lives · Empowering Communities</p>
           </div>
@@ -564,8 +2266,12 @@
   <!-- Domain Checkout Modal (Integrated with Razorpay) -->
   <div id="modalDomainDonate" class="modal-backdrop-custom">
     <div class="modal-card-custom">
-      <button onclick="closeDomainDonateModal()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      <button onclick="closeDomainDonateModal()"
+        class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
       </button>
 
       <div id="domainModalForm">
@@ -585,29 +2291,42 @@
 
         <form id="razorpayDonorForm" onsubmit="initiateRazorpayPayment(event)" class="space-y-3">
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorName">Your Full Name *</label>
-            <input id="donorName" required placeholder="Priya Sharma" class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+              for="donorName">Your Full Name *</label>
+            <input id="donorName" required placeholder="Priya Sharma"
+              class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorEmail">Receipt Email *</label>
-            <input id="donorEmail" type="email" required placeholder="priya@example.com" class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+              for="donorEmail">Receipt Email *</label>
+            <input id="donorEmail" type="email" required placeholder="priya@example.com"
+              class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorPhone">Phone Number *</label>
-            <input id="donorPhone" type="tel" required placeholder="+91 98765 43210" class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
+              for="donorPhone">Phone Number *</label>
+            <input id="donorPhone" type="tel" required placeholder="+91 98765 43210"
+              class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
 
           <div class="pt-2">
-            <button id="btnPayRazorpay" type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-md hover:brightness-105 active:scale-[0.98] transition">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+            <button id="btnPayRazorpay" type="submit"
+              class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-md hover:brightness-105 active:scale-[0.98] transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                <line x1="2" x2="22" y1="10" y2="10"></line>
+              </svg>
               <span id="btnPayRazorpayLabel">Proceed to Razorpay Checkout</span>
             </button>
           </div>
 
           <div class="pt-2 flex items-center justify-center gap-2 text-[0.72rem] text-muted-foreground text-center">
-            <svg class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <svg class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
             <span>Supports UPI (GPay/PhonePe), Credit & Debit Cards, Netbanking & Wallets</span>
           </div>
         </form>
@@ -616,23 +2335,33 @@
       <!-- Verified Success Receipt (Post Razorpay Verification) -->
       <div id="domainModalReceipt" class="hidden text-center py-4">
         <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-accent text-accent-foreground mb-3">
-          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg>
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M20 6 9 17l-5-5"></path>
+          </svg>
         </span>
-        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-accent bg-accent/15 px-3 py-1 rounded-full mb-1">Payment Verified</span>
+        <span
+          class="inline-block text-xs font-semibold uppercase tracking-wider text-accent bg-accent/15 px-3 py-1 rounded-full mb-1">Payment
+          Verified</span>
         <h3 class="font-display text-2xl font-600 mt-1">Thank You for Your Generosity!</h3>
-        <p class="text-sm text-muted-foreground mt-0.5">Your donation was securely verified and credited to animal welfare.</p>
-        
+        <p class="text-sm text-muted-foreground mt-0.5">Your donation was securely verified and credited to animal
+          welfare.</p>
+
         <div class="bg-secondary rounded-xl p-4 my-4 text-left text-xs space-y-1.5 border border-border">
           <p><strong>Designated Initiative:</strong> <span id="recProg">Zion Loyals Welfare</span></p>
-          <p><strong>Receipt #:</strong> <span id="recNum" class="font-mono text-primary font-bold">TZF-RZP-20261027-001</span></p>
-          <p><strong>Razorpay Payment ID:</strong> <span id="recPaymentId" class="font-mono">pay_simulated_10928</span></p>
+          <p><strong>Receipt #:</strong> <span id="recNum"
+              class="font-mono text-primary font-bold">TZF-RZP-20261027-001</span></p>
+          <p><strong>Razorpay Payment ID:</strong> <span id="recPaymentId" class="font-mono">pay_simulated_10928</span>
+          </p>
           <p><strong>Razorpay Order ID:</strong> <span id="recOrderId" class="font-mono">order_test_10928</span></p>
-          <p><strong>Contribution Amount:</strong> <span id="recAmt" class="font-bold text-foreground">₹1,050.00 INR</span></p>
+          <p><strong>Contribution Amount:</strong> <span id="recAmt" class="font-bold text-foreground">₹1,050.00
+              INR</span></p>
           <p><strong>Donor:</strong> <span id="recName">Priya Sharma</span></p>
-          <p><strong>Status:</strong> <span class="inline-flex items-center gap-1 text-emerald-600 font-semibold">● 100% Verified & Tax Deductible (501(c)(3))</span></p>
+          <p><strong>Status:</strong> <span class="inline-flex items-center gap-1 text-emerald-600 font-semibold">●
+              100% Verified & Tax Deductible (501(c)(3))</span></p>
         </div>
 
-        <button onclick="closeDomainDonateModal()" class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition">
+        <button onclick="closeDomainDonateModal()"
+          class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition">
           Done / Close Receipt
         </button>
       </div>
@@ -648,9 +2377,9 @@
         id: 'zion-loyals',
         title: 'Zion Loyals',
         status: 'Active',
-        category: 'Animal Welfare & Stray Care',
-        shortDesc: 'Rescue, feeding and veterinary care for street animals.',
-        heroImg: 'assets/images/dog-feeding.jpg',
+        category: 'Animal Welfare, Trauma Triage & Sanctuary',
+        shortDesc: 'Emergency roadside rescue, orthopedic surgeries, daily pack feeding, and foster sanctuary.',
+        heroImg: 'assets/images/loyals/01-pup-cast.jpg',
         hasFoodDonation: true,
         currency: 'INR',
         currencySymbol: '₹',
@@ -660,60 +2389,61 @@
         percentNum: 57,
         donors: '315',
         tiers: [
-          { amount: 500, title: 'Urgent Vet Care & First Aid', desc: 'Supplies antiseptic sprays, painkillers, wound bandages, and antibiotics for injured stray dogs and cats.', popular: false },
-          { amount: 1200, title: '10kg Nutrition Feed Sack', desc: 'Funds 10 kg high-protein dry dog food and puppy weaning milk formula for rescued or orphaned litters.', popular: true },
-          { amount: 3500, title: 'Rescue, Surgery & Boarding', desc: 'Covers emergency ambulance rescue transport, life-saving surgery or sterilization, and 2-week post-op recovery boarding.', popular: false }
+          { amount: 500, title: 'First Aid & Wound Dressing', desc: 'Funds antiseptic maggot wound sprays, painkiller injections, sterile bandages, and antibiotics for injured strays.', popular: false },
+          { amount: 1200, title: '15kg Pack Nutrition Feed', desc: 'Funds 15 kg wholesome dry food, rice, and recovery broth for daily pack feeding routes.', popular: true },
+          { amount: 3500, title: 'Orthopedic Surgery & Limb Cast', desc: 'Covers digital X-ray diagnostics, orthopedic fracture casting, surgical clinic fees, and 2-week post-op recovery boarding.', popular: false }
         ],
-        overviewHeading: 'Rescuing, healing, and nourishing voiceless street companions across every neighborhood.',
+        overviewHeading: 'On the frontlines: Rescuing, healing, and nourishing voiceless street companions.',
         overviewParas: [
-          'Zion Loyals was born from a fundamental belief that the street animals walking our neighborhoods are part of our shared community. They face daily perils of vehicular collisions, severe malnutrition, untreated maggot infestations, and harsh weather conditions without voice or defense.',
-          'Our dedicated field teams operate scheduled daily feeding routes distributing cooked rice, wholesome broth, and high-protein kibble, while our rescue first-aid ambulance responds rapidly to community SOS calls. Through partnerships with licensed veterinary surgical clinics, we ensure injured strays receive immediate orthopedic triage, sterile recovery boarding, and humane Animal Birth Control (ABC) sterilizations and vaccinations.',
-          'To empower every supporter to contribute meaningfully, Zion Loyals uniquely offers two giving streams: Donate physical pet food supplies (via convenient drop-off or doorstep pickup) or donate securely online to sponsor critical veterinary surgeries and emergency rescue fuel.'
+          'Zion Loyals exists to bring immediate hope and medical relief to suffering street animals. In bustling streets, community dogs and stray companions endure life-threatening hazards daily: high-speed vehicular collisions, limb fractures, untreated maggot infestations, dehydration, and starvation.',
+          'Our rapid-response rescue team answers emergency community SOS alerts 24/7. Rescued animals are brought directly to partnering licensed veterinary surgical hospitals for digital X-ray imaging, emergency orthopedic surgeries, sterile plaster casting, and IV fluid stabilization.',
+          'Beyond emergency hospitalizations, we operate daily structured feeding and clean water routes, distributing freshly cooked protein meals to street packs across local neighborhoods to keep them healthy and disease-resistant.',
+          'Recovering puppies and fragile survivors convalesce in our peaceful foster sanctuary — equipped with cozy sweaters, soft bedding, specialized nutrition, and veterinary checks. We also extend our shelter to urban wildlife, including injured or orphaned swift birds, ensuring every life is valued and loved.'
         ],
         metrics: [
           { val: '2,800+ kg', lbl: 'Animal food distributed' },
           { val: '340+', lbl: 'Injured animals rescued & healed' },
-          { val: '180+', lbl: 'Sterilizations & vaccinations' },
-          { val: '100%', lbl: 'Direct animal welfare impact' }
+          { val: '180+', lbl: 'Limb casts & orthopedic surgeries' },
+          { val: '100%', lbl: 'Direct rescue & medical impact' }
         ],
         pillars: [
           {
-            title: 'Daily Feeding & Water Routes',
-            desc: '18 designated morning and evening feeding routes ensuring over 300 street dogs and community cats receive fresh, protein-rich meals and clean water bowls daily.',
-            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"></path><path d="M7 12a5 5 0 0 1 10 0"></path><line x1="12" y1="3" x2="12" y2="7"></line></svg>'
-          },
-          {
-            title: 'Mobile Trauma & Rescue Unit',
-            desc: 'Rapid-response emergency van stocked with antiseptic sprays, sterile bandaging, fracture splints, and anti-maggot treatments for immediate roadside triage.',
+            title: 'Emergency Trauma & Orthopedics',
+            desc: 'Rapid ambulance triage for vehicular accident victims, immediate stabilization, digital radiographs, and specialized plaster cast application.',
             iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>'
           },
           {
-            title: 'Sterilization & Anti-Rabies Drives',
-            desc: 'Systematic, humane Animal Birth Control (ABC) surgical drives paired with 9-in-1 vaccinations and ear-notching to stabilize street populations ethically.',
-            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>'
+            title: 'Daily Neighborhood Feeding Routes',
+            desc: 'Structured daily meal drives delivering freshly prepared, nutrient-dense cooked protein meals and clean water across designated street pack zones.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>'
           },
           {
-            title: 'Foster Sanctuary & Adoptions',
+            title: 'Clinical Care & ABC Sterilization',
+            desc: 'Partnering with certified veterinary surgeons to conduct humane Animal Birth Control (ABC) surgeries, anti-rabies vaccines, and routine checkups.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path><path d="m8.5 8.5 7 7"></path></svg>'
+          },
+          {
+            title: 'Foster Sanctuary & Wildlife Care',
             desc: 'A calm, peaceful sanctuary where convalescing animals, orphaned puppies, and injured survivors recuperate, undergo socialization, and find vetted forever homes.',
             iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>'
           }
         ],
         roadmap: [
-          { step: 'Phase 01', title: 'Community Alert & Intake', desc: 'Citizens report an injured or hungry stray via our rescue line or field volunteers map underserved pack routes.' },
-          { step: 'Phase 02', title: 'On-Site First Aid & Transport', desc: 'Rescuers deliver immediate pain relief, maggot wound dressing, and transport severe trauma cases to hospital partners.' },
-          { step: 'Phase 03', title: 'Surgical Treatment & ABC', desc: 'Licensed veterinarians perform orthopedic surgery, sterilization, rabies vaccination, and post-op wound healing.' },
-          { step: 'Phase 04', title: 'Foster Recovery or Release', desc: 'Animals recuperate in foster sanctuary care until fully healthy, followed by verified adoption or safe community reintegration.' }
+          { step: 'Phase 01', title: 'Community Alert & SOS Triage', desc: 'Citizens report injured strays or road accident victims; rescuers dispatch with first-aid kits.' },
+          { step: 'Phase 02', title: 'Clinical Diagnostics & X-Rays', desc: 'Hospitalized patients undergo orthopedic radiograph scans, fracture alignment, and cast application.' },
+          { step: 'Phase 03', title: 'Foster Care & Physical Therapy', desc: 'Animals recuperate in our warm sanctuary with medicine, wound dressings, and nutritious meals.' },
+          { step: 'Phase 04', title: 'Vaccination & Forever Adoption', desc: 'Fully healed companions receive anti-rabies vaccines, ABC sterilization, and find vetted loving homes.' }
         ],
         faqs: [
-          { q: 'How does the physical food donation option work?', a: 'You can pledge unopened dog or cat kibble, rice, eggs, or veterinary supplements. Choose between dropping off supplies at our central depot or requesting a doorstep pickup for contributions of 10kg or more.' },
-          { q: 'How are monetary contributions via Razorpay utilized?', a: '100% of monetary funds go directly toward certified veterinary clinic surgical fees, rescue ambulance fuel, post-operative antibiotic courses, and foster boarding provisions.' },
+          { q: 'How does the food donation option work?', a: 'You can pledge dry dog/cat kibble, cooked rice, eggs, or veterinary wound care medicines. Choose either drop-off at our depot or doorstep pickup for 10kg+ contributions.' },
+          { q: 'How are monetary contributions via Razorpay utilized?', a: '100% of monetary donations go directly toward hospital bills, veterinary X-ray scans, orthopedic surgical materials, plaster casts, and emergency rescue vehicle fuel.' },
           { q: 'Can I adopt or foster a dog rescued by Zion Loyals?', a: 'Yes! We conduct loving home checks and provide full vaccination records, initial kibble packs, and ongoing behavioral support for all foster and adoptive pet parents.' }
         ],
-        quote: '"Zion Loyals stepped in immediately when four abandoned newborn puppies were left in the cold rain. With dedicated bottle feeding and medical attention, all four are thriving and happily adopted today."',
-        quoteAuthor: 'Vikram S., Animal Foster Volunteer',
+        quote: '"When this puppy was hit on the highway with a shattered hind leg, Zion Loyals took him in within the hour. Through X-rays, casting, and dedicated foster care, he is now running joyfully on all four legs."',
+        quoteAuthor: 'Dr. Neha M., Partner Veterinary Surgeon',
         shifts: [
-          { title: 'Shelter Volunteer & Animal Socialization', time: 'Saturdays, 9:00 AM - 1:00 PM', place: 'Zion Loyals Foster Sanctuary', desc: 'Feed rescued pups, groom convalescing dogs, and assist with socialization exercises.' },
-          { title: 'Food Donation Sorting & Inventory', time: 'Wednesdays, 4:00 PM - 7:00 PM', place: 'Zion Distribution Depot', desc: 'Inspect, catalog, and bag donated food supplies for daily field distribution.' }
+          { title: 'Sanctuary Puppy Care & Socialization', time: 'Saturdays, 10:00 AM - 1:00 PM', place: 'Zion Loyals Sanctuary', desc: 'Assist in feeding recovering puppies, changing cozy clothing, and socializing gentle rescues.' },
+          { title: 'Daily Street Feeding Route Volunteer', time: 'Evenings, 6:00 PM - 8:30 PM', place: 'Local Neighborhood Routes', desc: 'Accompany team members on designated street dog feeding routes to serve fresh food and water.' }
         ]
       },
       'zion-academy': {
@@ -1104,7 +2834,7 @@
       document.getElementById('progTitle').textContent = currentProg.title;
       document.getElementById('progSubtitle').textContent = currentProg.shortDesc;
       document.getElementById('progCategoryBadge').textContent = currentProg.category;
-      
+
       // Hero Status Badge
       const statusEl = document.getElementById('progStatusBadge');
       if (statusEl) {
@@ -1122,6 +2852,17 @@
 
       document.getElementById('progHeroImg').src = currentProg.heroImg;
       document.getElementById('detailImg').src = currentProg.heroImg;
+
+      // Show Zion Loyals Editorial Experience ONLY when inside Zion Loyals vertical
+      const loyalsJournal = document.getElementById('zionLoyalsEditorialJournal');
+      if (loyalsJournal) {
+        if (currentProgId === 'zion-loyals') {
+          loyalsJournal.style.display = 'block';
+          initLoyalsMultiSliderGallery();
+        } else {
+          loyalsJournal.style.display = 'none';
+        }
+      }
 
       document.getElementById('progRaised').textContent = currentProg.raised;
       document.getElementById('progGoal').textContent = currentProg.goal;
@@ -1150,11 +2891,10 @@
       currentProg.tiers.forEach((t) => {
         const isSelected = t.amount === selectedAmount;
         const card = document.createElement('div');
-        card.className = `tier-card cursor-pointer rounded-2xl border p-6 text-left transition-all ${
-          isSelected 
-            ? 'bg-accent border-accent text-accent-foreground shadow-xl ring-2 ring-accent scale-[1.02]' 
-            : 'bg-card border-border hover:border-primary hover:shadow-lg'
-        }`;
+        card.className = `tier-card cursor-pointer rounded-2xl border p-6 text-left transition-all ${isSelected
+          ? 'bg-accent border-accent text-accent-foreground shadow-xl ring-2 ring-accent scale-[1.02]'
+          : 'bg-card border-border hover:border-primary hover:shadow-lg'
+          }`;
         card.onclick = () => selectProgramTier(t.amount);
         card.innerHTML = `
           <div class="flex justify-between items-start">
@@ -1299,16 +3039,15 @@
 
           const opDiv = document.createElement('a');
           opDiv.href = `program.html?id=${op.id}`;
-          opDiv.className = 'group rounded-3xl bg-card border border-border/80 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer';
+          opDiv.className = 'group rounded-3xl bg-card border border-border/80 p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer';
           opDiv.innerHTML = `
             <div>
-              <div class="flex items-center justify-between">
-                ${badgeHtml}
-                <span class="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200">
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </span>
+              <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-secondary">
+                <img src="${op.heroImg}" alt="${op.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <div class="absolute top-2.5 left-2.5">${badgeHtml}</div>
               </div>
-              <h4 class="font-display text-xl font-bold text-[#24133B] dark:text-foreground mt-4 mb-2 group-hover:text-primary transition-colors">
+              <h4 class="font-display text-xl font-bold text-[#24133B] dark:text-foreground mb-1.5 group-hover:text-primary transition-colors">
                 ${op.title}
               </h4>
               <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
@@ -1414,7 +3153,7 @@
         }
       } catch (err) {
         // Fallback simulation if server API had network glitch
-        const pledgeId = `TZF-FOOD-${new Date().getFullYear()}${String(new Date().getMonth()+1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
+        const pledgeId = `TZF-FOOD-${new Date().getFullYear()}${String(new Date().getMonth() + 1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
         document.getElementById('foodConfRef').textContent = pledgeId;
         document.getElementById('foodConfItem').textContent = `${quantity} - ${foodType}`;
         document.getElementById('foodConfMethod').textContent = deliveryMethod;
@@ -1572,7 +3311,7 @@
             handler: async function (response) {
               // Step 2: Handle successful payment callback & verify on server
               btn.innerHTML = `<span class="inline-block animate-spin mr-2">⏳</span> Verifying Payment Signature...`;
-              
+
               try {
                 const verifyRes = await fetch('/api/verify-razorpay-payment', {
                   method: 'POST',
@@ -1704,8 +3443,377 @@
 
     document.getElementById('yearVal').textContent = new Date().getFullYear();
 
+    // ==========================================================
+    // Zion Loyals Multi-Category Visual Photo Gallery & Lightbox
+    // ==========================================================
+    const loyalsCategoriesData = {
+      rescue: {
+        title: 'Zion Loyal Moments: Emergency Rescue & Critical Veterinary Care',
+        categoryLabel: 'Rescue & Clinical Care',
+        items: [
+          {
+            src: 'assets/images/loyals/01-pup-cast.jpg',
+            title: 'Orthopedic Fracture Cast',
+            sub: 'Rescued puppy in post-trauma recovery',
+            desc: 'Rescued street puppy fitted with protective Elizabethan collar and pink orthopedic limb cast following accidental trauma.'
+          },
+          feeding: {
+            title: 'Activities & Engagements: Daily Street Pack Feeding',
+            categoryLabel: 'Street Feeding Drives',
+            items: [
+              {
+                src: 'assets/images/loyals/06-street-feeding.jpg',
+                title: 'Community Pack Feeding Drive',
+                sub: 'Freshly cooked rice & protein meal',
+                desc: 'Street dog pack enjoying freshly served cooked food drive in open community lot area.'
+              },
+              {
+                src: 'assets/images/dog-feeding.jpg',
+                title: 'Neighborhood Route Nourishment',
+                sub: 'Daily water bowls & wholesome meals',
+                desc: 'Field teams providing nutritious meals, broth, and clean drinking water to community dogs daily.'
+              },
+              {
+                src: 'assets/images/loyals/12-healthy-thriving.jpg',
+                title: 'Healthy, Restored & Thriving',
+                sub: 'Rescued street companion restored',
+                desc: 'Dedicated field volunteer serving meals, ensuring healthy thriving street dogs in our neighborhoods.'
+              }
+            ]
+          },
+          {
+            src: 'assets/images/loyals/03-xray-scan.jpg',
+            title: 'Digital X-Ray Radiography',
+            sub: 'Pelvic & limb fracture diagnostic scan',
+            desc: 'Precision digital radiograph displayed on clinic monitor identifying pelvic bone fractures in an injured stray.'
+          },
+          {
+            src: 'assets/images/loyals/04-radiology-room.jpg',
+            title: 'Veterinary Radiology Suite',
+            sub: 'Accurate clinical diagnostic imaging',
+            desc: 'Rescued puppy resting on radiology table as veterinary staff adjusts overhead equipment for trauma diagnostics.'
+          },
+          {
+            src: 'assets/images/loyals/05-clinical-care.jpg',
+            title: 'Emergency Medical Stabilization',
+            sub: 'Clinical triage and intensive monitoring',
+            desc: 'Dehydrated, injured dog receiving IV fluid support, temperature stabilization, and clinical examination on table.'
+          },
+          {
+            src: 'assets/images/loyals/07-vet-checkup.jpg',
+            title: 'Clinical Follow-Up Monitoring',
+            sub: 'Veterinary surgeon recovery checkup',
+            desc: 'Veterinary assistant monitoring recovering patient during routine radiograph and fracture healing checks.'
+          }
+        ]
+      },
+      feeding: {
+        title: 'Activities & Engagements: Daily Street Pack Feeding',
+        categoryLabel: 'Street Feeding Drives',
+        items: [
+          {
+            src: 'assets/images/loyals/06-street-feeding.jpg',
+            title: 'Community Pack Feeding Drive',
+            sub: 'Freshly cooked rice & protein meal',
+            desc: 'Street dog pack enjoying freshly served cooked food drive in open community lot area.'
+          },
+          {
+            src: 'assets/images/dog-feeding.jpg',
+            title: 'Neighborhood Route Nourishment',
+            sub: 'Daily water bowls & wholesome meals',
+            desc: 'Field teams providing nutritious meals, broth, and clean drinking water to community dogs daily.'
+          },
+          {
+            src: 'assets/images/zion-loyals.jpg',
+            title: 'Compassionate Field Bonding',
+            sub: 'Street companion care & affection',
+            desc: 'Dedicated field volunteer serving meals and connecting with community street dogs.'
+          }
+        ]
+      },
+      sanctuary: {
+        title: 'Special Memories: Foster Sanctuary, Recovery & Avian Care',
+        categoryLabel: 'Sanctuary & Healing',
+        items: [
+          {
+            src: 'assets/images/loyals/08-pup-and-beagle.jpg',
+            title: 'Foster Joy & Companionship',
+            sub: 'Puppy in sweater with resident beagle',
+            desc: 'Recovering puppy in warm striped sweater thriving happily beside gentle resident companion beagle.'
+          },
+          {
+            src: 'assets/images/loyals/09-bird-rescue.jpg',
+            title: 'Avian Wildlife Rescue',
+            sub: 'Injured swift bird in gentle shelter',
+            desc: 'Orphaned and injured swift bird sheltered, nourished, and kept warm in protective cushioned holder.'
+          },
+          {
+            src: 'assets/images/loyals/10-peaceful-sleep.jpg',
+            title: 'Safe Haven & Peaceful Slumbers',
+            sub: 'Resting safely in loving arms',
+            desc: 'Rescued orphan puppy sleeping peacefully in loving volunteer arms, completely safe from street perils.'
+          },
+          {
+            src: 'assets/images/loyals/11-pack-feeding.jpg',
+            title: 'Foster Pack Family Mealtime',
+            sub: 'Harmonious indoor pack living',
+            desc: 'Rescued dog family of multiple breeds living together harmoniously at sanctuary mealtime indoors.'
+          },
+          {
+            src: 'assets/images/loyals/12-healthy-thriving.jpg',
+            title: 'Fully Restored & Thriving',
+            sub: 'Healed companion ready for forever home',
+            desc: 'Healthy, radiant, and happy companion dog restored to full strength, resting on a bed.'
+          }
+        ]
+      }
+    };
+
+    // Pre-populated full authentic photos collection
+    const allLoyalsPhotos = [];
+    Object.keys(loyalsCategoriesData).forEach(catKey => {
+      const cat = loyalsCategoriesData[catKey];
+      cat.items.forEach((item, localIdx) => {
+        allLoyalsPhotos.push({
+          ...item,
+          categoryLabel: cat.categoryLabel,
+          catKey: catKey,
+          localIdx: localIdx
+        });
+      });
+    });
+
+    let currentLightboxIdx = 0;
+    let galleryInitialized = false;
+
+    function initLoyalsMultiSliderGallery() {
+      if (galleryInitialized) return;
+      galleryInitialized = true;
+
+      allLoyalsPhotos = [];
+
+      Object.keys(loyalsCategoriesData).forEach(catKey => {
+        const cat = loyalsCategoriesData[catKey];
+        const track = document.getElementById(`track-${catKey}`);
+        if (!track) return;
+
+        cat.items.forEach((item, localIdx) => {
+          allLoyalsPhotos.push({
+            ...item,
+            categoryLabel: cat.categoryLabel,
+            catKey: catKey,
+            localIdx: localIdx
+          });
+        });
+
+        setupTrackDragAndAutoScroll(track);
+      });
+
+      window.addEventListener('keydown', handleLightboxKeyDown);
+      setupLightboxTouch();
+      setupGalleryScrollAnimations();
+      setupAllImageClicks();
+    }
+
+    function setupAllImageClicks() {
+      // Allow clicking any image card across the page to open full lightbox
+      document.querySelectorAll('.hero-frame, .journey-stage-card, .editorial-featured-card, .editorial-compact-card, .layout-b-card, .layout-c-card').forEach(el => {
+        el.style.cursor = 'zoom-in';
+      });
+      const detailImg = document.getElementById('detailImg');
+      if (detailImg) {
+        detailImg.style.cursor = 'zoom-in';
+        detailImg.onclick = () => openLoyalsLightbox(0);
+      }
+    }
+
+    function setupTrackDragAndAutoScroll(track) {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+      let isDragging = false;
+      let autoScrollTimer = null;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        isDragging = false;
+        track.classList.add('is-dragging');
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+        stopAuto();
+      });
+
+      track.addEventListener('mouseleave', () => {
+        isDown = false;
+        track.classList.remove('is-dragging');
+        startAuto();
+      });
+
+      track.addEventListener('mouseup', () => {
+        isDown = false;
+        track.classList.remove('is-dragging');
+        setTimeout(() => {
+          if (isDragging) {
+            track.setAttribute('data-has-dragged', 'true');
+          } else {
+            track.removeAttribute('data-has-dragged');
+          }
+        }, 50);
+        startAuto();
+      });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        if (Math.abs(walk) > 6) {
+          isDragging = true;
+        }
+        track.scrollLeft = scrollLeft - walk;
+      });
+
+      track.addEventListener('mouseenter', stopAuto);
+
+      function startAuto() {
+        if (autoScrollTimer) clearInterval(autoScrollTimer);
+        autoScrollTimer = setInterval(() => {
+          if (!isDown) {
+            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
+              track.scrollLeft = 0;
+            } else {
+              track.scrollLeft += 1;
+            }
+          }
+        }, 55);
+      }
+
+      function stopAuto() {
+        if (autoScrollTimer) {
+          clearInterval(autoScrollTimer);
+          autoScrollTimer = null;
+        }
+      }
+
+      startAuto();
+    }
+
+    function scrollGalleryTrack(trackId, offset) {
+      const track = document.getElementById(trackId);
+      if (track) {
+        track.scrollBy({ left: offset, behavior: 'smooth' });
+      }
+    }
+
+    function openLoyalsLightbox(idx) {
+      if (typeof idx === 'string') {
+        const foundIdx = allLoyalsPhotos.findIndex(p => p.src.includes(idx) || idx.includes(p.src));
+        idx = foundIdx !== -1 ? foundIdx : 0;
+      }
+      if (typeof idx !== 'number' || idx < 0 || idx >= allLoyalsPhotos.length) {
+        idx = 0;
+      }
+      currentLightboxIdx = idx;
+      updateLightboxContent();
+
+      const lb = document.getElementById('loyalsLightbox');
+      if (lb) {
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLoyalsLightbox() {
+      const lb = document.getElementById('loyalsLightbox');
+      if (lb) {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function updateLightboxContent() {
+      const photo = allLoyalsPhotos[currentLightboxIdx];
+      if (!photo) return;
+
+      const imgEl = document.getElementById('lightboxImg');
+      const catEl = document.getElementById('lightboxCategory');
+      const titleEl = document.getElementById('lightboxTitle');
+      const descEl = document.getElementById('lightboxDesc');
+      const counterEl = document.getElementById('lightboxCounter');
+
+      if (imgEl) {
+        imgEl.style.opacity = '0';
+        imgEl.src = photo.src;
+        imgEl.alt = photo.title || 'Rescued animal in care';
+        imgEl.onload = () => { imgEl.style.opacity = '1'; };
+        setTimeout(() => { imgEl.style.opacity = '1'; }, 40);
+      }
+
+      if (catEl) catEl.textContent = photo.categoryLabel;
+      if (titleEl) titleEl.textContent = photo.title;
+      if (descEl) descEl.textContent = photo.desc;
+      if (counterEl) counterEl.textContent = `Photo ${currentLightboxIdx + 1} of ${allLoyalsPhotos.length}`;
+    }
+
+    function prevLightboxImage() {
+      currentLightboxIdx = (currentLightboxIdx - 1 + allLoyalsPhotos.length) % allLoyalsPhotos.length;
+      updateLightboxContent();
+    }
+
+    function nextLightboxImage() {
+      currentLightboxIdx = (currentLightboxIdx + 1) % allLoyalsPhotos.length;
+      updateLightboxContent();
+    }
+
+    function handleLightboxBackdropClick(e) {
+      if (e.target === document.getElementById('loyalsLightbox')) {
+        closeLoyalsLightbox();
+      }
+    }
+
+    function handleLightboxKeyDown(e) {
+      const lb = document.getElementById('loyalsLightbox');
+      if (!lb || !lb.classList.contains('open')) return;
+
+      if (e.key === 'Escape') closeLoyalsLightbox();
+      if (e.key === 'ArrowLeft') prevLightboxImage();
+      if (e.key === 'ArrowRight') nextLightboxImage();
+    }
+
+    function setupLightboxTouch() {
+      const lb = document.getElementById('loyalsLightbox');
+      if (!lb) return;
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      lb.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      lb.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const threshold = 45;
+        if (touchEndX < touchStartX - threshold) {
+          nextLightboxImage();
+        } else if (touchEndX > touchStartX + threshold) {
+          prevLightboxImage();
+        }
+      }, { passive: true });
+    }
+
+    function setupGalleryScrollAnimations() {
+      // Keep all rows fully visible with smooth hover transitions
+      const rows = document.querySelectorAll('.gallery-category-row');
+      rows.forEach((row) => {
+        row.classList.remove('opacity-0', 'translate-y-8');
+        row.classList.add('opacity-100');
+      });
+    }
+
     // Initial render
     renderProgramPage();
   </script>
 </body>
+
 </html>

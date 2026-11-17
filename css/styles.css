@@ -1660,3 +1660,759 @@ input, select, textarea {
     transform: translateY(0);
   }
 }
+
+/* ==========================================================================
+   Zion Loyals Animated Image Slider & Carousel
+   ========================================================================== */
+.loyals-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background-color: #160c23;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+.loyals-slider-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  height: 100%;
+}
+
+.loyals-slide {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.loyals-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease-out;
+}
+
+.loyals-slide.active img {
+  transform: scale(1.03);
+}
+
+.loyals-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 10, 32, 0.88) 0%, rgba(20, 10, 32, 0.35) 45%, rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
+}
+
+.loyals-slide-badge {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  color: #ffffff;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.loyals-slide-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  background-color: rgba(223, 76, 118, 0.9);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.loyals-slide-title {
+  font-family: var(--font-display, serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.loyals-slide-desc {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.loyals-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 25;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.88);
+  color: #24133B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.loyals-nav-btn:hover {
+  background-color: #ffffff;
+  transform: translateY(-50%) scale(1.12);
+  color: #df4c76;
+}
+
+.loyals-nav-btn.prev {
+  left: 0.65rem;
+}
+
+.loyals-nav-btn.next {
+  right: 0.65rem;
+}
+
+.loyals-dots-container {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  gap: 0.3rem;
+  z-index: 25;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  padding: 0.35rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.loyals-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.loyals-dot.active {
+  width: 1.25rem;
+  background-color: #df4c76;
+}
+
+/* Thumbnail strip in program.html */
+.loyals-thumb-strip {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  scrollbar-width: thin;
+}
+
+.loyals-thumb-strip::-webkit-scrollbar {
+  height: 5px;
+}
+
+.loyals-thumb-strip::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+
+.loyals-thumb-item {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.loyals-thumb-item.active {
+  border-color: #df4c76;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.loyals-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Zion Loyals Enhanced Horizontal Multi-Slider Gallery & Lightbox
+   ========================================================================== */
+.loyals-gallery-slider {
+  position: relative;
+  width: 100%;
+}
+
+.loyals-gallery-track {
+  display: flex;
+  gap: 0.85rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  user-select: none;
+  padding: 0.5rem 0.25rem 0.85rem 0.25rem;
+}
+
+.loyals-gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.loyals-gallery-track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.loyals-gallery-card {
+  flex: 0 0 calc(55% - 0.75rem);
+  max-width: calc(55% - 0.75rem);
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--color-card, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .loyals-gallery-card {
+    flex: 0 0 calc(33.333% - 0.75rem);
+    max-width: calc(33.333% - 0.75rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .loyals-gallery-card {
+    flex: 0 0 calc(25% - 0.75rem);
+    max-width: calc(25% - 0.75rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .loyals-gallery-card {
+    flex: 0 0 calc(18% - 0.75rem);
+    max-width: calc(18% - 0.75rem);
+    min-width: 180px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .loyals-gallery-card {
+    flex: 0 0 calc(15.5% - 0.75rem);
+    max-width: calc(15.5% - 0.75rem);
+    min-width: 175px;
+  }
+}
+
+.loyals-gallery-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.18);
+  border-color: rgba(223, 76, 118, 0.5);
+}
+
+.loyals-gallery-card .img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #1a0f28;
+}
+
+.loyals-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.loyals-gallery-card:hover img {
+  transform: scale(1.07);
+}
+
+.loyals-gallery-card .card-caption {
+  padding: 0.6rem 0.75rem;
+  background-color: var(--color-card, #ffffff);
+  border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
+}
+
+.loyals-gallery-card .card-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-foreground, #24133B);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.loyals-gallery-card .card-sub {
+  font-size: 0.68rem;
+  color: var(--color-muted-foreground, #716282);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.15rem;
+  display: block;
+}
+
+/* Lightbox Modal */
+.loyals-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: rgba(10, 5, 18, 0.94);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.25rem;
+}
+
+.loyals-lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loyals-lightbox-content {
+  position: relative;
+  max-width: 920px;
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loyals-lightbox.open .loyals-lightbox-content {
+  transform: scale(1);
+}
+
+.loyals-lightbox-img-wrapper {
+  position: relative;
+  max-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  background-color: #0d0617;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.loyals-lightbox-img-wrapper img {
+  max-height: 72vh;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+
+.loyals-lightbox-footer {
+  width: 100%;
+  margin-top: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #ffffff;
+}
+
+.loyals-lightbox-btn {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.loyals-lightbox-btn:hover {
+  background-color: #df4c76;
+  border-color: #df4c76;
+  transform: scale(1.08);
+}
+
+.loyals-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.loyals-lightbox-nav.prev {
+  left: -1.25rem;
+}
+
+.loyals-lightbox-nav.next {
+  right: -1.25rem;
+}
+
+@media (max-width: 640px) {
+  .loyals-lightbox-nav.prev { left: 0.25rem; }
+  .loyals-lightbox-nav.next { right: 0.25rem; }
+}
+
+.loyals-lightbox-close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loyals-lightbox-close:hover {
+  background-color: #df4c76;
+  transform: scale(1.1);
+}
+
+
+/* ==========================================================================
+   Compact Professional Horizontal Sliding Gallery & Lightbox
+   ========================================================================== */
+.loyals-gallery-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.loyals-gallery-track {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 1rem !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  user-select: none;
+  padding: 0.5rem 0.25rem 1rem 0.25rem;
+  width: 100% !important;
+}
+
+.loyals-gallery-track::-webkit-scrollbar {
+  display: none !important;
+}
+
+.loyals-gallery-track.is-dragging {
+  cursor: grabbing !important;
+  scroll-behavior: auto !important;
+}
+
+.loyals-gallery-card {
+  flex: 0 0 160px !important;
+  width: 160px !important;
+  max-width: 160px !important;
+  min-width: 160px !important;
+  position: relative;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  background-color: var(--color-card, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  flex-shrink: 0 !important;
+  display: block !important;
+}
+
+@media (min-width: 640px) {
+  .loyals-gallery-card {
+    flex: 0 0 175px !important;
+    width: 175px !important;
+    max-width: 175px !important;
+    min-width: 175px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loyals-gallery-card {
+    flex: 0 0 190px !important;
+    width: 190px !important;
+    max-width: 190px !important;
+    min-width: 190px !important;
+  }
+}
+
+.loyals-gallery-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.18);
+  border-color: rgba(223, 76, 118, 0.6);
+}
+
+.loyals-gallery-card .img-wrapper {
+  position: relative;
+  width: 100% !important;
+  height: 130px !important;
+  max-height: 130px !important;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #1a0f28;
+}
+
+.loyals-gallery-card .img-wrapper img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 130px !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.35s ease;
+}
+
+.loyals-gallery-card:hover .img-wrapper img {
+  transform: scale(1.06);
+}
+
+.loyals-gallery-card .card-caption {
+  padding: 0.5rem 0.65rem;
+  background-color: var(--color-card, #ffffff);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.loyals-gallery-card .card-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #24133B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.loyals-gallery-card .card-sub {
+  font-size: 0.65rem;
+  color: #716282;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.15rem;
+  display: block;
+}
+
+/* Lightbox Modal */
+.loyals-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: rgba(10, 5, 18, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 1.25rem;
+}
+
+.loyals-lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loyals-lightbox-content {
+  position: relative;
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.96);
+  transition: transform 0.3s ease;
+}
+
+.loyals-lightbox.open .loyals-lightbox-content {
+  transform: scale(1);
+}
+
+.loyals-lightbox-img-wrapper {
+  position: relative;
+  max-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  background-color: #0d0617;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.loyals-lightbox-img-wrapper img {
+  max-height: 70vh;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+
+.loyals-lightbox-footer {
+  width: 100%;
+  margin-top: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #ffffff;
+}
+
+.loyals-lightbox-btn {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.loyals-lightbox-btn:hover {
+  background-color: #df4c76;
+  border-color: #df4c76;
+  transform: scale(1.08);
+}
+
+.loyals-lightbox-close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.loyals-lightbox-close:hover {
+  background-color: #df4c76;
+  transform: rotate(90deg);
+}
+
+.loyals-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  z-index: 10;
+}
+
+.loyals-lightbox-nav.prev {
+  left: -3.5rem;
+}
+
+.loyals-lightbox-nav.next {
+  right: -3.5rem;
+}
+
+@media (max-width: 768px) {
+  .loyals-lightbox-nav.prev {
+    left: 0.5rem;
+  }
+  .loyals-lightbox-nav.next {
+    right: 0.5rem;
+  }
+  .loyals-lightbox-close {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+/* ==========================================================================
+   Vertical Card Thumbnails - Constrained, disciplined & proportional
+   ========================================================================== */
+.vertical-card-thumb {
+  position: relative !important;
+  width: 100% !important;
+  height: 180px !important;
+  min-height: 180px !important;
+  max-height: 180px !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+  margin-bottom: 1.25rem !important;
+  background-color: #f1f0ee !important;
+}
+
+.vertical-card-thumb img,
+.vertical-card-thumb-img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 180px !important;
+  max-height: 180px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.5s ease !important;
+}
+
+.group:hover .vertical-card-thumb img,
+.group:hover .vertical-card-thumb-img {
+  transform: scale(1.05) !important;
+}
