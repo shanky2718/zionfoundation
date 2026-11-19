@@ -45,6 +45,7 @@ HAS_REAL_KEYS = bool(
 DATA_DIR = os.path.dirname(__file__)
 DONATIONS_FILE = os.path.join(DATA_DIR, 'donations.json')
 FOOD_DONATIONS_FILE = os.path.join(DATA_DIR, 'food_donations.json')
+FOOTBALL_TRIALS_FILE = os.path.join(DATA_DIR, 'football_trials.json')
 
 def save_json_record(filepath, record):
     records = []
@@ -111,6 +112,8 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
             self.handle_verify_payment(payload)
         elif self.path == '/api/submit-food-donation':
             self.handle_food_donation(payload)
+        elif self.path == '/api/register-football-trial':
+            self.handle_football_trial(payload)
         else:
             self.send_json(404, {'error': 'API endpoint not found'})
 
@@ -295,6 +298,53 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
             })
         except Exception as e:
             self.send_json(500, {'success': False, 'error': f'Failed to register food donation: {str(e)}'})
+
+    def handle_football_trial(self, payload):
+        """Registers a child for a free trial week at Zion FC Academy"""
+        try:
+            parent_name = payload.get('parentName', '').strip()
+            parent_phone = payload.get('parentPhone', '').strip()
+            parent_email = payload.get('parentEmail', '').strip()
+            child_name = payload.get('childName', '').strip()
+            child_age = payload.get('childAge', '').strip()
+            school_name = payload.get('schoolName', '').strip()
+            experience = payload.get('experience', 'Beginner')
+            preferred_group = payload.get('preferredGroup', 'Foundation (Ages 6-8)')
+            goalkeeper = bool(payload.get('goalkeeper', False))
+            notes = payload.get('notes', '').strip()
+
+            if not parent_name or not parent_phone or not child_name:
+                self.send_json(400, {'success': False, 'error': 'Parent name, phone number, and child name are required'})
+                return
+
+            trial_id = f"ZFC-TRIAL-{datetime.now().strftime('%Y%m')}-{int(time.time()) % 10000:04d}"
+
+            record = {
+                'trial_id': trial_id,
+                'parent_name': parent_name,
+                'parent_phone': parent_phone,
+                'parent_email': parent_email,
+                'child_name': child_name,
+                'child_age': child_age,
+                'school_name': school_name,
+                'experience': experience,
+                'preferred_group': preferred_group,
+                'goalkeeper_interest': goalkeeper,
+                'notes': notes,
+                'timestamp': datetime.now().isoformat(),
+                'status': 'CONFIRMED'
+            }
+            save_json_record(FOOTBALL_TRIALS_FILE, record)
+
+            self.send_json(200, {
+                'success': True,
+                'trialId': trial_id,
+                'childName': child_name,
+                'group': preferred_group,
+                'message': f'Free Trial Week registered successfully for {child_name}! Our coaching staff will call you on {parent_phone} to confirm training pitch timings.'
+            })
+        except Exception as e:
+            self.send_json(500, {'success': False, 'error': f'Failed to register trial: {str(e)}'})
 
 def run_server():
     os.chdir(DATA_DIR)

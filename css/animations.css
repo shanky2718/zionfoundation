@@ -1,0 +1,848 @@
+/**
+ * Zion Foundation - Modern Animation & Motion System
+ * Senior Frontend Animation & UI/UX Architecture
+ */
+
+/* ==========================================================================
+   1. MOTION DESIGN TOKENS & ROOT VARIABLES
+   ========================================================================== */
+:root {
+  /* Durations */
+  --motion-duration-instant: 150ms;
+  --motion-duration-sm: 250ms;
+  --motion-duration-md: 400ms;
+  --motion-duration-lg: 700ms;
+  --motion-duration-xl: 1000ms;
+
+  /* Easing curves */
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --motion-ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --motion-ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Shadows for interactive elevation */
+  --motion-shadow-card: 0 4px 18px -2px rgba(36, 19, 59, 0.06), 0 2px 6px -1px rgba(36, 19, 59, 0.04);
+  --motion-shadow-card-hover: 0 20px 35px -10px rgba(36, 19, 59, 0.14), 0 8px 16px -4px rgba(36, 19, 59, 0.08);
+  --motion-shadow-btn-hover: 0 10px 24px -6px rgba(223, 76, 118, 0.42), 0 4px 8px -2px rgba(223, 76, 118, 0.2);
+  --motion-shadow-primary-hover: 0 10px 24px -6px rgba(36, 19, 59, 0.35);
+}
+
+/* ==========================================================================
+   2. PAGE LOAD & TRANSITION ANIMATIONS
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth page fade in on load */
+body {
+  opacity: 1;
+  transition: opacity var(--motion-duration-sm) var(--motion-ease-out);
+}
+
+html.motion-ready body {
+  animation: pageFadeIn 0.5s var(--motion-ease-out) forwards;
+}
+
+body.page-leaving {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 0.22s ease-in !important;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   3. HERO SECTION ANIMATIONS & MOTION
+   ========================================================================== */
+/* Subtle cinematic ambient background zoom */
+.hero-ambient-zoom {
+  animation: heroAmbientZoom 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroAmbientZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.045);
+  }
+}
+
+/* Hero text & element entrances */
+.hero-stagger-badge {
+  opacity: 0;
+  transform: translateY(-16px);
+  animation: heroItemIn 0.75s var(--motion-ease-out) 0.12s forwards;
+  will-change: transform, opacity;
+}
+
+.hero-stagger-title {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroItemIn 0.85s var(--motion-ease-out) 0.24s forwards;
+  will-change: transform, opacity;
+}
+
+.hero-stagger-desc {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroItemIn 0.85s var(--motion-ease-out) 0.38s forwards;
+  will-change: transform, opacity;
+}
+
+.hero-stagger-cta {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: heroItemIn 0.85s var(--motion-ease-out) 0.52s forwards;
+  will-change: transform, opacity;
+}
+
+.hero-stagger-card {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroItemIn 0.9s var(--motion-ease-out) 0.6s forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes heroItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating decorative elements & levitation */
+.float-gentle {
+  animation: floatGentle 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.float-gentle-delayed {
+  animation: floatGentle 6.5s ease-in-out 1.5s infinite;
+  will-change: transform;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Floating quote card on About mission */
+.quote-card-float {
+  animation: floatCardGentle 6s ease-in-out infinite;
+  will-change: transform, box-shadow;
+  transition: transform 0.3s var(--motion-ease-out), box-shadow 0.3s var(--motion-ease-out);
+}
+
+.quote-card-float:hover {
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 35px -8px rgba(36, 19, 59, 0.16);
+}
+
+@keyframes floatCardGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Subtle sparkle pulse for badges */
+.sparkle-pulse {
+  animation: sparklePulse 3.5s ease-in-out infinite;
+}
+
+@keyframes sparklePulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Ambient subtle background glow */
+.ambient-glow-pill {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: ambientFloat 14s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(25px, -20px) scale(1.08);
+  }
+}
+
+/* ==========================================================================
+   4. SCROLL REVEAL SYSTEM (Intersection Observer Powered)
+   ========================================================================== */
+/* Safe progressive enhancement: content is visible by default */
+.scroll-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* When JS motion engine is active, initialize hidden state */
+html.motion-ready .scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--motion-duration-lg) var(--motion-ease-out),
+              transform var(--motion-duration-lg) var(--motion-ease-out);
+  will-change: opacity, transform;
+}
+
+html.motion-ready .scroll-reveal.reveal-slide-left {
+  transform: translateX(-30px);
+}
+
+html.motion-ready .scroll-reveal.reveal-slide-right {
+  transform: translateX(30px);
+}
+
+html.motion-ready .scroll-reveal.reveal-scale {
+  transform: scale(0.95) translateY(15px);
+}
+
+/* Active revealed state */
+html.motion-ready .scroll-reveal.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+/* Staggered children container */
+html.motion-ready .stagger-children > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--motion-duration-lg) var(--motion-ease-out),
+              transform var(--motion-duration-lg) var(--motion-ease-out),
+              box-shadow var(--motion-duration-sm) var(--motion-ease-out),
+              border-color var(--motion-duration-sm) ease;
+  will-change: opacity, transform;
+}
+
+html.motion-ready .stagger-children.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay offsets */
+html.motion-ready .stagger-children.revealed > *:nth-child(1) { transition-delay: 0.05s; }
+html.motion-ready .stagger-children.revealed > *:nth-child(2) { transition-delay: 0.12s; }
+html.motion-ready .stagger-children.revealed > *:nth-child(3) { transition-delay: 0.19s; }
+html.motion-ready .stagger-children.revealed > *:nth-child(4) { transition-delay: 0.26s; }
+html.motion-ready .stagger-children.revealed > *:nth-child(5) { transition-delay: 0.33s; }
+html.motion-ready .stagger-children.revealed > *:nth-child(6) { transition-delay: 0.40s; }
+html.motion-ready .stagger-children.revealed > *:nth-child(7) { transition-delay: 0.47s; }
+html.motion-ready .stagger-children.revealed > *:nth-child(8) { transition-delay: 0.54s; }
+
+/* Existing .reveal class enhancement */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+html.motion-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--motion-ease-out), transform 0.7s var(--motion-ease-out);
+}
+html.motion-ready .reveal.in,
+html.motion-ready .reveal.revealed {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ==========================================================================
+   5. CARD INTERACTIONS & HOVER DYNAMICS
+   ========================================================================== */
+/* Universal base card animation behavior */
+.vertical-card,
+.event-card,
+.story-card,
+.impact-stat-card,
+.tier-option,
+.tier-card,
+.pillar-card,
+.phase-card,
+.volunteer-card,
+.shift-card,
+.other-prog-card {
+  transition: transform var(--motion-duration-md) var(--motion-ease-out),
+              box-shadow var(--motion-duration-md) var(--motion-ease-out),
+              border-color var(--motion-duration-sm) ease,
+              background-color var(--motion-duration-sm) ease !important;
+  will-change: transform, box-shadow;
+}
+
+/* Card image zoom effect on hover */
+.vertical-card-media,
+.event-card-media,
+.story-card-media,
+.gallery-card-media {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.vertical-card-img,
+.event-card-img,
+.story-card-img,
+.gallery-card-img {
+  transition: transform 0.6s var(--motion-ease-out), filter 0.4s ease !important;
+  will-change: transform;
+}
+
+/* Card hover states */
+.vertical-card:hover {
+  transform: translateY(-7px) !important;
+  box-shadow: var(--motion-shadow-card-hover) !important;
+  border-color: rgba(223, 76, 118, 0.45) !important;
+}
+
+.vertical-card:hover .vertical-card-img {
+  transform: scale(1.055) !important;
+}
+
+/* Event Cards */
+.event-card {
+  position: relative;
+  border-radius: 1.25rem;
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+  box-shadow: var(--motion-shadow-card);
+}
+
+.event-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--motion-shadow-card-hover) !important;
+  border-color: hsl(var(--primary) / 0.35) !important;
+}
+
+/* Story Cards */
+.story-card {
+  border-radius: 1.25rem;
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+  box-shadow: var(--motion-shadow-card);
+}
+
+.story-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--motion-shadow-card-hover) !important;
+  border-color: hsl(var(--accent) / 0.45) !important;
+}
+
+.story-card:hover .story-card-img {
+  transform: scale(1.055) !important;
+}
+
+/* Impact Statistics Cards */
+.impact-stat-card {
+  background-color: #F8F6F0 !important;
+  border: 1px solid #EAE5D9 !important;
+  border-radius: 1.25rem !important;
+  padding: 2rem 1.5rem !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: var(--motion-shadow-card) !important;
+}
+
+.impact-stat-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--motion-shadow-card-hover) !important;
+  border-color: rgba(223, 76, 118, 0.35) !important;
+}
+
+.impact-stat-card .stat-number {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  transition: transform 0.3s var(--motion-ease-spring);
+}
+
+.impact-stat-card:hover .stat-number {
+  transform: scale(1.04);
+}
+
+/* Pillar & Roadmap step cards in program.html */
+.pillar-card:hover,
+.phase-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: var(--motion-shadow-card-hover) !important;
+}
+
+/* Donation Tier Cards */
+.tier-option {
+  position: relative;
+  transition: transform var(--motion-duration-sm) var(--motion-ease-out),
+              box-shadow var(--motion-duration-sm) var(--motion-ease-out),
+              border-color var(--motion-duration-sm) ease,
+              background-color var(--motion-duration-sm) ease !important;
+}
+
+.tier-option:hover {
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.25) !important;
+}
+
+.tier-card:hover {
+  transform: translateY(-4px) scale(1.01) !important;
+}
+
+/* ==========================================================================
+   6. BUTTON MICRO-INTERACTIONS & ELEVATIONS
+   ========================================================================== */
+.btn-motion,
+.btn-explore,
+.btn-donate-card,
+button.rounded-full,
+a.rounded-full {
+  transition: transform var(--motion-duration-sm) var(--motion-ease-out),
+              box-shadow var(--motion-duration-sm) var(--motion-ease-out),
+              background-color var(--motion-duration-sm) ease,
+              border-color var(--motion-duration-sm) ease,
+              color var(--motion-duration-sm) ease !important;
+  will-change: transform;
+}
+
+/* Button hover lift & glow */
+.btn-primary-motion,
+.btn-donate-card,
+button.bg-accent,
+a.bg-accent {
+  position: relative;
+}
+
+.btn-primary-motion:hover,
+.btn-donate-card:hover,
+button.bg-accent:hover,
+a.bg-accent:hover {
+  transform: translateY(-2px) scale(1.015) !important;
+  box-shadow: var(--motion-shadow-btn-hover) !important;
+}
+
+.btn-primary-motion:active,
+.btn-donate-card:active,
+button.bg-accent:active,
+a.bg-accent:active {
+  transform: translateY(0) scale(0.975) !important;
+  box-shadow: 0 4px 10px -2px rgba(223, 76, 118, 0.3) !important;
+}
+
+/* Outline / Secondary button hover */
+.btn-secondary-motion:hover,
+.btn-explore:hover,
+button.border-white\/30:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-secondary-motion:active,
+.btn-explore:active,
+button.border-white\/30:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* Animated interactive arrow movement inside buttons */
+.btn-arrow-motion {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-arrow-motion svg,
+.btn-arrow-motion .arrow-icon,
+.btn-explore svg,
+.btn-donate-card svg,
+.hover-arrow svg {
+  transition: transform var(--motion-duration-sm) var(--motion-ease-out) !important;
+}
+
+.btn-arrow-motion:hover svg,
+.btn-arrow-motion:hover .arrow-icon,
+.btn-explore:hover svg,
+.btn-donate-card:hover svg,
+.hover-arrow:hover svg {
+  transform: translateX(4px) !important;
+}
+
+/* Keyboard accessibility outline */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(var(--accent)) !important;
+  outline-offset: 3px !important;
+}
+
+/* ==========================================================================
+   7. NAVIGATION ENHANCEMENTS
+   ========================================================================== */
+/* Glassmorphism navigation bar scroll transition */
+#siteHeader {
+  transition: background-color 0.35s var(--motion-ease-smooth),
+              backdrop-filter 0.35s var(--motion-ease-smooth),
+              -webkit-backdrop-filter 0.35s var(--motion-ease-smooth),
+              box-shadow 0.35s var(--motion-ease-smooth),
+              border-color 0.35s var(--motion-ease-smooth) !important;
+}
+
+/* Animated underline for navigation items */
+.nav-link-motion {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transition: color var(--motion-duration-sm) ease, background-color var(--motion-duration-sm) ease !important;
+}
+
+.nav-link-motion::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: hsl(var(--accent));
+  border-radius: 9999px;
+  transition: width 0.28s var(--motion-ease-out), left 0.28s var(--motion-ease-out);
+  pointer-events: none;
+}
+
+.nav-link-motion:hover::after,
+.nav-link-motion.active::after {
+  width: calc(100% - 1.25rem);
+  left: 0.625rem;
+}
+
+/* Mobile navigation drawer transition */
+#mobileMenu,
+#mobileNavOverlay {
+  transition: opacity 0.3s var(--motion-ease-out),
+              visibility 0.3s var(--motion-ease-out) !important;
+}
+
+#mobileMenu.drawer-animating-in {
+  animation: mobileDrawerSlideIn 0.35s var(--motion-ease-out) forwards;
+}
+
+@keyframes mobileDrawerSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile nav link staggered reveal */
+#mobileMenu.open nav button,
+#mobileMenu.open nav a {
+  animation: mobileNavItemIn 0.35s var(--motion-ease-out) backwards;
+}
+
+#mobileMenu.open nav button:nth-child(1), #mobileMenu.open nav a:nth-child(1) { animation-delay: 0.05s; }
+#mobileMenu.open nav button:nth-child(2), #mobileMenu.open nav a:nth-child(2) { animation-delay: 0.10s; }
+#mobileMenu.open nav button:nth-child(3), #mobileMenu.open nav a:nth-child(3) { animation-delay: 0.15s; }
+#mobileMenu.open nav button:nth-child(4), #mobileMenu.open nav a:nth-child(4) { animation-delay: 0.20s; }
+#mobileMenu.open nav button:nth-child(5), #mobileMenu.open nav a:nth-child(5) { animation-delay: 0.25s; }
+#mobileMenu.open nav button:nth-child(6), #mobileMenu.open nav a:nth-child(6) { animation-delay: 0.30s; }
+
+@keyframes mobileNavItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================================================
+   8. IMAGE & GALLERY MOTION (Zion Loyals & Vertical Galleries)
+   ========================================================================== */
+.loyals-gallery-card {
+  transition: transform var(--motion-duration-md) var(--motion-ease-out),
+              box-shadow var(--motion-duration-md) var(--motion-ease-out),
+              border-color var(--motion-duration-sm) ease !important;
+  will-change: transform, box-shadow;
+}
+
+.loyals-gallery-card:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: var(--motion-shadow-card-hover) !important;
+  border-color: rgba(223, 76, 118, 0.4) !important;
+}
+
+.loyals-gallery-card .img-wrapper img {
+  transition: transform 0.6s var(--motion-ease-out) !important;
+  will-change: transform;
+}
+
+.loyals-gallery-card:hover .img-wrapper img {
+  transform: scale(1.05) !important;
+}
+
+/* Lightbox Modal Animation */
+.loyals-lightbox {
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: opacity 0.3s var(--motion-ease-out) !important;
+}
+
+.loyals-lightbox.open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.loyals-lightbox-content {
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.35s var(--motion-ease-spring), opacity 0.3s ease !important;
+  will-change: transform, opacity;
+}
+
+.loyals-lightbox.open .loyals-lightbox-content {
+  transform: scale(1) translateY(0) !important;
+}
+
+.loyals-lightbox-nav {
+  transition: transform var(--motion-duration-sm) var(--motion-ease-spring),
+              background-color var(--motion-duration-sm) ease,
+              color var(--motion-duration-sm) ease !important;
+}
+
+.loyals-lightbox-nav:hover {
+  transform: translateY(-50%) scale(1.12) !important;
+}
+
+.loyals-lightbox-nav:active {
+  transform: translateY(-50%) scale(0.95) !important;
+}
+
+.loyals-lightbox-close:hover {
+  transform: scale(1.1) rotate(90deg) !important;
+  transition: transform 0.25s var(--motion-ease-out) !important;
+}
+
+/* Gallery track smooth snap scrolling */
+.loyals-gallery-track {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.loyals-gallery-card {
+  scroll-snap-align: start;
+}
+
+/* ==========================================================================
+   9. STATISTICS & PROGRESS BAR ANIMATIONS
+   ========================================================================== */
+.stat-counter-animate {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  will-change: contents;
+}
+
+/* Campaign Goal Progress Bar animation */
+.progress-bar-fill {
+  transition: width 1.4s var(--motion-ease-out) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: progressShimmer 2.8s infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ==========================================================================
+   10. TESTIMONIALS & FAQ ACCORDION ANIMATIONS
+   ========================================================================== */
+.testimonial-card-motion {
+  position: relative;
+  transition: transform var(--motion-duration-md) var(--motion-ease-out),
+              box-shadow var(--motion-duration-md) var(--motion-ease-out);
+}
+
+.testimonial-card-motion:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--motion-shadow-card-hover);
+}
+
+/* FAQ Details Smooth Toggle */
+details.group summary {
+  transition: color var(--motion-duration-sm) ease;
+}
+
+details.group summary svg,
+details.group summary span:last-child {
+  transition: transform 0.3s var(--motion-ease-spring) !important;
+}
+
+details.group[open] summary span:last-child {
+  transform: rotate(180deg);
+}
+
+details.group p {
+  animation: faqAccordionIn 0.35s var(--motion-ease-out);
+}
+
+@keyframes faqAccordionIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   11. FOOTER ANIMATIONS
+   ========================================================================== */
+.footer-social-icon {
+  transition: transform var(--motion-duration-sm) var(--motion-ease-spring),
+              background-color var(--motion-duration-sm) ease,
+              color var(--motion-duration-sm) ease,
+              box-shadow var(--motion-duration-sm) ease !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+.footer-social-icon:hover {
+  transform: translateY(-4px) scale(1.14) !important;
+  background-color: hsl(var(--accent)) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 18px -3px rgba(223, 76, 118, 0.5) !important;
+}
+
+.footer-social-icon:active {
+  transform: translateY(-1px) scale(0.98) !important;
+}
+
+.footer-link-underline {
+  position: relative;
+  display: inline-block;
+  transition: color var(--motion-duration-sm) ease !important;
+}
+
+.footer-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: hsl(var(--accent));
+  transition: width 0.28s var(--motion-ease-out);
+}
+
+.footer-link-underline:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   12. ACCESSIBILITY OVERRIDES (prefers-reduced-motion)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html.motion-ready body,
+  body {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .hero-ambient-zoom,
+  .float-gentle,
+  .float-gentle-delayed,
+  .quote-card-float,
+  .sparkle-pulse,
+  .ambient-glow-pill,
+  .progress-bar-fill::after {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .scroll-reveal,
+  html.motion-ready .scroll-reveal,
+  html.motion-ready .stagger-children > *,
+  .hero-stagger-badge,
+  .hero-stagger-title,
+  .hero-stagger-desc,
+  .hero-stagger-cta,
+  .hero-stagger-card,
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .vertical-card:hover,
+  .impact-stat-card:hover,
+  .event-card:hover,
+  .story-card:hover,
+  .btn-motion:hover,
+  .btn-primary-motion:hover,
+  .btn-donate-card:hover,
+  .btn-explore:hover,
+  .footer-social-icon:hover {
+    transform: none !important;
+  }
+}

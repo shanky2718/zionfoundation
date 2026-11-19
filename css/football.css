@@ -1,0 +1,1950 @@
+/* ==========================================================================
+   ZION FC ACADEMY — FOOTBALL VERTICAL STYLESHEET
+   Based on the official Zion FC matchday programme design system
+   ========================================================================== */
+
+:root {
+  --zfc-pitch: #0f3b2c;
+  --zfc-pitch-deep: #0a2a1f;
+  --zfc-pitch-darkest: #061912;
+  --zfc-pitch-light: #16533e;
+  --zfc-gold: #b8912f;
+  --zfc-gold-bright: #d8b65a;
+  --zfc-gold-soft: #fbf5e6;
+  --zfc-gold-border: rgba(184, 145, 47, 0.35);
+  --zfc-chalk: rgba(255, 255, 255, 0.22);
+  --zfc-chalk-soft: rgba(255, 255, 255, 0.12);
+  --zfc-surface: #ffffff;
+  --zfc-surface-subtle: #f8faf8;
+  --zfc-bg: #f4f6f3;
+  --zfc-ink: #112019;
+  --zfc-muted: #506158;
+  --zfc-line: #d7e0da;
+  --zfc-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --zfc-body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --zfc-radius-sm: 8px;
+  --zfc-radius-md: 14px;
+  --zfc-radius-lg: 22px;
+}
+
+/* Wrapper */
+#zionAcademyFootballExperience {
+  font-family: var(--zfc-body);
+  color: var(--zfc-ink);
+  background: var(--zfc-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#zionAcademyFootballExperience *,
+#zionAcademyFootballExperience *::before,
+#zionAcademyFootballExperience *::after {
+  box-sizing: border-box;
+}
+
+.zfc-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-wrap {
+    padding: 0 2rem;
+  }
+}
+
+/* Typography Helpers */
+.zfc-h1, .zfc-h2, .zfc-h3, .zfc-h4 {
+  font-family: var(--zfc-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+.zfc-h2 {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+}
+
+.zfc-h3 {
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+}
+
+.zfc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--zfc-gold);
+  margin-bottom: 0.75rem;
+}
+
+.zfc-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--zfc-gold);
+  border-radius: 50%;
+}
+
+.zfc-lead {
+  font-size: 1.1rem;
+  color: var(--zfc-muted);
+  max-width: 68ch;
+  line-height: 1.65;
+}
+
+.zfc-section-head {
+  margin-bottom: 3rem;
+}
+
+.zfc-section-head.center {
+  text-align: center;
+}
+
+.zfc-section-head.center .zfc-lead {
+  margin: 0 auto;
+}
+
+/* Common Section Padding */
+.zfc-section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .zfc-section {
+    padding: 3.5rem 0;
+  }
+}
+
+/* Buttons */
+.zfc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-family: var(--zfc-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid transparent;
+}
+
+.zfc-btn-gold {
+  background: var(--zfc-gold);
+  color: #111e17;
+  box-shadow: 0 4px 14px rgba(184, 145, 47, 0.3);
+}
+
+.zfc-btn-gold:hover {
+  background: var(--zfc-gold-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(184, 145, 47, 0.45);
+}
+
+.zfc-btn-ghost {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.zfc-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.zfc-btn-outline-green {
+  background: transparent;
+  color: var(--zfc-pitch);
+  border-color: var(--zfc-pitch);
+}
+
+.zfc-btn-outline-green:hover {
+  background: var(--zfc-pitch);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   SECTION 1: HERO SECTION (Floodlit Pitch + Chalk Lines)
+   ========================================================================== */
+.zfc-hero {
+  position: relative;
+  background: radial-gradient(circle at 50% 20%, var(--zfc-pitch-light) 0%, var(--zfc-pitch) 50%, var(--zfc-pitch-deep) 100%);
+  color: #ffffff;
+  padding: 7.5rem 0 5.5rem;
+  overflow: hidden;
+}
+
+/* SVG Pitch Chalk Lines */
+.zfc-pitch-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: 
+    radial-gradient(circle at 50% 50%, transparent 80px, var(--zfc-chalk) 81px, var(--zfc-chalk) 83px, transparent 84px),
+    linear-gradient(to right, transparent calc(50% - 1px), var(--zfc-chalk) calc(50% - 1px), var(--zfc-chalk) calc(50% + 1px), transparent calc(50% + 1px));
+  background-size: 100% 100%, 100% 100%;
+}
+
+.zfc-pitch-box {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(85%, 680px);
+  height: 190px;
+  border-left: 2px solid var(--zfc-chalk);
+  border-right: 2px solid var(--zfc-chalk);
+  border-bottom: 2px solid var(--zfc-chalk);
+  pointer-events: none;
+}
+
+.zfc-pitch-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 90px;
+  border-left: 2px solid var(--zfc-chalk);
+  border-right: 2px solid var(--zfc-chalk);
+  border-bottom: 2px solid var(--zfc-chalk);
+}
+
+.zfc-pitch-box::after {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--zfc-chalk);
+  border-radius: 50%;
+}
+
+.zfc-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 960px) {
+  .zfc-hero-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+  }
+}
+
+.zfc-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.zfc-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+.zfc-pill-badge.gold {
+  background: rgba(184, 145, 47, 0.22);
+  border-color: var(--zfc-gold);
+  color: var(--zfc-gold-bright);
+}
+
+.zfc-hero-title {
+  font-family: var(--zfc-display);
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.98;
+  margin-bottom: 1.25rem;
+}
+
+.zfc-hero-title em {
+  font-style: normal;
+  color: var(--zfc-gold-bright);
+  text-shadow: 0 0 25px rgba(216, 182, 90, 0.4);
+}
+
+.zfc-hero-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 2rem;
+  max-width: 58ch;
+}
+
+.zfc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.zfc-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 480px) {
+  .zfc-hero-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.zfc-stat-item .stat-num {
+  font-family: var(--zfc-display);
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--zfc-gold-bright);
+}
+
+.zfc-stat-item .stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.25rem;
+}
+
+/* Hero Right: Crest Card */
+.zfc-crest-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--zfc-radius-lg);
+  padding: 2.25rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  position: relative;
+}
+
+.zfc-crest-img {
+  width: 130px;
+  height: auto;
+  margin: 0 auto 1.25rem;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+
+.zfc-crest-card h3 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.zfc-crest-card p.subtitle {
+  color: var(--zfc-gold-bright);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.zfc-crest-features {
+  text-align: left;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.zfc-crest-features div {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.zfc-crest-features svg {
+  color: var(--zfc-gold-bright);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   SECTION 2: ABOUT ZION FC ACADEMY
+   ========================================================================== */
+.zfc-about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .zfc-about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.zfc-card-dual {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.zfc-role-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.75rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.zfc-role-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(15, 59, 44, 0.08);
+}
+
+.zfc-role-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--zfc-gold-soft);
+  color: var(--zfc-gold);
+  margin-bottom: 0.75rem;
+}
+
+.zfc-role-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--zfc-pitch);
+}
+
+.zfc-role-card p {
+  color: var(--zfc-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   SECTION 3: COACHING PHILOSOPHY (Three Pillars + FIFA 11+)
+   ========================================================================== */
+.zfc-philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .zfc-philosophy-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.zfc-philo-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.zfc-philo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--zfc-pitch);
+}
+
+.zfc-philo-card.featured::before {
+  background: var(--zfc-gold);
+}
+
+.zfc-philo-num {
+  font-family: var(--zfc-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--zfc-line);
+  line-height: 1;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+}
+
+.zfc-philo-title {
+  font-family: var(--zfc-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  color: var(--zfc-pitch);
+}
+
+.zfc-philo-sub {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--zfc-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.zfc-philo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--zfc-muted);
+}
+
+.zfc-philo-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.zfc-philo-list li::before {
+  content: "•";
+  color: var(--zfc-gold);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* FIFA 11+ Safety Bar */
+.zfc-fifa-bar {
+  margin-top: 2.5rem;
+  background: linear-gradient(135deg, var(--zfc-pitch-deep) 0%, var(--zfc-pitch) 100%);
+  color: #ffffff;
+  border-radius: var(--zfc-radius-md);
+  padding: 2rem 2.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .zfc-fifa-bar {
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+  }
+}
+
+.zfc-fifa-badge {
+  background: var(--zfc-gold);
+  color: #111e17;
+  font-family: var(--zfc-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--zfc-radius-sm);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   SECTION 4: MEET OUR COACHES (Authentic Photos & Profiles)
+   ========================================================================== */
+.zfc-coaches-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .zfc-coaches-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
+
+.zfc-coach-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.zfc-coach-header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2.25rem;
+  background: linear-gradient(180deg, #f7f9f7 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--zfc-line);
+}
+
+@media (min-width: 540px) {
+  .zfc-coach-header {
+    grid-template-columns: 140px 1fr;
+    align-items: center;
+  }
+}
+
+.zfc-coach-photo-wrapper {
+  position: relative;
+  width: 140px;
+  height: 180px;
+  border-radius: var(--zfc-radius-md);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 3px solid #ffffff;
+  background: var(--zfc-pitch-deep);
+}
+
+.zfc-coach-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.zfc-coach-monogram {
+  width: 140px;
+  height: 180px;
+  border-radius: var(--zfc-radius-md);
+  background: linear-gradient(145deg, var(--zfc-pitch) 0%, var(--zfc-pitch-deep) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--zfc-gold-bright);
+  font-family: var(--zfc-display);
+  font-size: 3.5rem;
+  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 3px solid #ffffff;
+}
+
+.zfc-coach-monogram small {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  font-family: var(--zfc-body);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.zfc-coach-info h3 {
+  font-size: 1.85rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-coach-info .coach-role {
+  color: var(--zfc-gold);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
+.zfc-coach-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.zfc-coach-tag {
+  background: var(--zfc-surface-subtle);
+  border: 1px solid var(--zfc-line);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--zfc-muted);
+}
+
+.zfc-coach-tag.accent {
+  background: #eef5f1;
+  border-color: #bcd4c7;
+  color: var(--zfc-pitch);
+  font-weight: 700;
+}
+
+.zfc-coach-body {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.zfc-coach-bio {
+  font-size: 0.95rem;
+  color: var(--zfc-muted);
+  line-height: 1.6;
+}
+
+.zfc-career-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.zfc-career-table th {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 2px solid var(--zfc-line);
+  font-weight: 700;
+  color: var(--zfc-pitch);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.zfc-career-table td {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--zfc-line);
+  color: var(--zfc-muted);
+}
+
+.zfc-career-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   SECTION 5: PROGRAMMES BY AGE GROUP (Foundation, Dev, Youth, Perf)
+   ========================================================================== */
+.zfc-programmes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-programmes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .zfc-programmes-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.zfc-prog-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.75rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  position: relative;
+}
+
+.zfc-prog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(15, 59, 44, 0.1);
+  border-color: var(--zfc-pitch);
+}
+
+.zfc-prog-phase {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--zfc-gold);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-prog-card h3 {
+  font-size: 1.75rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.35rem;
+}
+
+.zfc-prog-age {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #eef5f1;
+  color: var(--zfc-pitch);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.zfc-prog-aim {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--zfc-ink);
+  margin-bottom: 0.75rem;
+}
+
+.zfc-prog-desc {
+  font-size: 0.88rem;
+  color: var(--zfc-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.zfc-prog-meta {
+  border-top: 1px solid var(--zfc-line);
+  padding-top: 1rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--zfc-muted);
+}
+
+.zfc-prog-meta b {
+  color: var(--zfc-pitch);
+}
+
+/* Goalkeeper & Girls Feature Cards */
+.zfc-specialist-cards {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .zfc-specialist-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.zfc-spec-box {
+  background: linear-gradient(135deg, var(--zfc-surface) 0%, var(--zfc-surface-subtle) 100%);
+  border: 1px solid var(--zfc-line);
+  border-left: 4px solid var(--zfc-gold);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.zfc-spec-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--zfc-gold-soft);
+  color: var(--zfc-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   SECTION 6: TRAINING SCHEDULE
+   ========================================================================== */
+.zfc-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--zfc-radius-md);
+  border: 1px solid var(--zfc-line);
+  background: var(--zfc-surface);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.zfc-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.zfc-table th {
+  background: var(--zfc-pitch-deep);
+  color: #ffffff;
+  font-family: var(--zfc-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 1rem 1.25rem;
+  text-align: left;
+}
+
+.zfc-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--zfc-line);
+  font-size: 0.95rem;
+  color: var(--zfc-ink);
+}
+
+.zfc-table tr:last-child td {
+  border-bottom: none;
+}
+
+.zfc-table tr:hover td {
+  background: var(--zfc-surface-subtle);
+}
+
+/* Term Schedule Grid */
+.zfc-terms-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .zfc-terms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.zfc-term-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.5rem;
+  border-top: 3px solid var(--zfc-pitch);
+}
+
+.zfc-term-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.35rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-term-card .term-dates {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--zfc-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+/* ==========================================================================
+   SECTION 7: HOW OUR TRAINING WORKS (5-Stage Session Breakdown)
+   ========================================================================== */
+.zfc-stages-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .zfc-stages-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.zfc-stage-step {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.zfc-stage-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--zfc-pitch);
+  color: #ffffff;
+  font-family: var(--zfc-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 0.85rem;
+}
+
+.zfc-stage-time {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--zfc-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+}
+
+.zfc-stage-step h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.3rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.5rem;
+}
+
+.zfc-stage-step p {
+  font-size: 0.85rem;
+  color: var(--zfc-muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ==========================================================================
+   SECTION 8: SERVICES AND FACILITIES
+   ========================================================================== */
+.zfc-services-tabs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .zfc-services-tabs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.zfc-svc-column {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-lg);
+  padding: 2.25rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.zfc-svc-column h3 {
+  color: var(--zfc-pitch);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--zfc-line);
+}
+
+.zfc-svc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.zfc-svc-item {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.zfc-svc-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #eef5f1;
+  color: var(--zfc-pitch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.zfc-svc-item strong {
+  display: block;
+  font-size: 0.98rem;
+  color: var(--zfc-ink);
+}
+
+.zfc-svc-item span {
+  font-size: 0.88rem;
+  color: var(--zfc-muted);
+}
+
+/* Specialist Cards */
+.zfc-specialist-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-specialist-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.zfc-specialist-card {
+  background: linear-gradient(145deg, #f8fbf9 0%, #ffffff 100%);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.5rem;
+}
+
+.zfc-specialist-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.3rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.35rem;
+}
+
+/* ==========================================================================
+   SECTION 9: FEES AND SCHOLARSHIPS
+   ========================================================================== */
+.zfc-pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .zfc-pricing-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.zfc-price-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-lg);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.zfc-price-card.featured {
+  border-color: var(--zfc-gold);
+  box-shadow: 0 10px 30px rgba(184, 145, 47, 0.18);
+}
+
+.zfc-price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 34px rgba(15, 59, 44, 0.12);
+}
+
+.zfc-price-tag-ribbon {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--zfc-gold);
+  color: #111e17;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.zfc-price-card h3 {
+  font-size: 1.6rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-price-age {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--zfc-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.25rem;
+}
+
+.zfc-price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.zfc-price-amount .currency {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--zfc-pitch);
+}
+
+.zfc-price-amount .num {
+  font-family: var(--zfc-display);
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--zfc-pitch);
+  line-height: 1;
+}
+
+.zfc-price-amount .period {
+  font-size: 0.85rem;
+  color: var(--zfc-muted);
+}
+
+.zfc-price-options {
+  background: var(--zfc-surface-subtle);
+  border-radius: var(--zfc-radius-sm);
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--zfc-muted);
+}
+
+.zfc-price-options div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.zfc-price-options b {
+  color: var(--zfc-pitch);
+}
+
+.zfc-price-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: grid;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--zfc-muted);
+  flex: 1;
+}
+
+.zfc-price-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.zfc-price-features li::before {
+  content: "✓";
+  color: var(--zfc-pitch);
+  font-weight: 800;
+}
+
+/* Discount & Scholarship Banner */
+.zfc-scholarship-banner {
+  margin-top: 2.5rem;
+  background: linear-gradient(135deg, var(--zfc-pitch-deep) 0%, var(--zfc-pitch) 100%);
+  color: #ffffff;
+  border-radius: var(--zfc-radius-lg);
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 800px) {
+  .zfc-scholarship-banner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.zfc-scholarship-banner h3 {
+  color: var(--zfc-gold-bright);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.zfc-discount-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.zfc-discount-chip {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--zfc-radius-md);
+  padding: 1rem;
+  text-align: center;
+}
+
+.zfc-discount-chip b {
+  display: block;
+  font-family: var(--zfc-display);
+  font-size: 1.8rem;
+  color: var(--zfc-gold-bright);
+  line-height: 1;
+}
+
+.zfc-discount-chip span {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   SECTION 10: FOOTBALL KIT AND EQUIPMENT
+   ========================================================================== */
+.zfc-kits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-kits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .zfc-kits-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.zfc-kit-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.zfc-kit-color-preview {
+  height: 90px;
+  border-radius: var(--zfc-radius-sm);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.zfc-kit-color-preview.training {
+  background: linear-gradient(135deg, #0f3b2c 0%, #0a2a1f 100%);
+  border: 2px solid var(--zfc-gold);
+}
+
+.zfc-kit-color-preview.home {
+  background: linear-gradient(135deg, #24133b 0%, #170b28 100%);
+  border: 2px solid #b8912f;
+}
+
+.zfc-kit-color-preview.away {
+  background: linear-gradient(135deg, #ffffff 0%, #eef5f1 100%);
+  border: 2px solid #0f3b2c;
+}
+
+.zfc-kit-color-preview.gk {
+  background: linear-gradient(135deg, #ff9800 0%, #e65100 100%);
+  border: 2px solid #ffffff;
+}
+
+.zfc-kit-badge {
+  font-family: var(--zfc-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.8rem;
+  border-radius: 4px;
+}
+
+.training .zfc-kit-badge { color: #ffffff; }
+.home .zfc-kit-badge { color: #fbf5e6; }
+.away .zfc-kit-badge { color: #0f3b2c; }
+.gk .zfc-kit-badge { color: #ffffff; }
+
+.zfc-kit-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.4rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-kit-worn {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--zfc-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.zfc-kit-desc {
+  font-size: 0.85rem;
+  color: var(--zfc-muted);
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.zfc-kit-cost {
+  border-top: 1px solid var(--zfc-line);
+  padding-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--zfc-pitch);
+}
+
+/* Compulsory Checklist Box */
+.zfc-gear-checklist {
+  margin-top: 2rem;
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .zfc-gear-checklist {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ==========================================================================
+   SECTION 11: PLAYER DEVELOPMENT PATHWAY (5-Level Ladder)
+   ========================================================================== */
+.zfc-ladder {
+  display: grid;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.zfc-ladder-step {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease;
+}
+
+@media (min-width: 640px) {
+  .zfc-ladder-step {
+    grid-template-columns: 80px 1fr auto;
+    gap: 2rem;
+  }
+}
+
+.zfc-ladder-step:hover {
+  transform: translateX(6px);
+  border-color: var(--zfc-pitch);
+}
+
+.zfc-ladder-level {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--zfc-pitch-deep);
+  color: var(--zfc-gold-bright);
+  font-family: var(--zfc-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zfc-ladder-content h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.55rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-ladder-content p {
+  font-size: 0.92rem;
+  color: var(--zfc-muted);
+  line-height: 1.5;
+}
+
+.zfc-ladder-target {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--zfc-gold-soft);
+  color: var(--zfc-gold);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   SECTION 12: COMPETITIONS AND TOURNAMENTS
+   ========================================================================== */
+.zfc-comps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-comps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .zfc-comps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.zfc-comp-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.75rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.zfc-comp-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.45rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-comp-org {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--zfc-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.zfc-comp-card p {
+  font-size: 0.88rem;
+  color: var(--zfc-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   SECTION 13: INTERNATIONAL FOOTBALL PATHWAY (FIFA Article 19 & Partners)
+   ========================================================================== */
+.zfc-intl-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .zfc-intl-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.zfc-steps-intl {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.zfc-intl-step-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.5rem;
+  border-left: 4px solid var(--zfc-pitch);
+}
+
+.zfc-intl-step-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.35rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-intl-rule {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.zfc-intl-sidebar {
+  background: linear-gradient(145deg, #f7faf8 0%, #ffffff 100%);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   SECTION 14: PLAYER ASSESSMENT (TIPS DASHBOARD)
+   ========================================================================== */
+.zfc-tips-board {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-lg);
+  padding: 2.5rem;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+}
+
+.zfc-tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .zfc-tips-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.zfc-tips-card {
+  background: var(--zfc-surface-subtle);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.75rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.zfc-tips-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--zfc-pitch);
+}
+
+.zfc-tips-letter {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--zfc-pitch);
+  color: var(--zfc-gold-bright);
+  font-family: var(--zfc-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.zfc-tips-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.5rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.25rem;
+}
+
+.zfc-tips-card p {
+  font-size: 0.85rem;
+  color: var(--zfc-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.zfc-tips-rating-pill {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.zfc-tips-star {
+  color: var(--zfc-gold);
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   SECTION 15: SAFEGUARDING AND PLAYER SAFETY
+   ========================================================================== */
+.zfc-safety-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-safety-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .zfc-safety-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.zfc-safety-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 1.75rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.zfc-safety-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #eef5f1;
+  color: var(--zfc-pitch);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.zfc-safety-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.35rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.35rem;
+}
+
+.zfc-safety-card p {
+  font-size: 0.88rem;
+  color: var(--zfc-muted);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   SECTION 16: FREE TRIAL REGISTRATION FORM
+   ========================================================================== */
+.zfc-trial-section {
+  background: linear-gradient(135deg, var(--zfc-pitch-deep) 0%, var(--zfc-pitch) 100%);
+  color: #ffffff;
+  border-radius: var(--zfc-radius-lg);
+  padding: 3.5rem 1.5rem;
+  margin: 3rem 0;
+  box-shadow: 0 15px 40px rgba(10, 42, 31, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .zfc-trial-section {
+    padding: 4rem 3rem;
+  }
+}
+
+.zfc-trial-form-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.zfc-trial-form {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--zfc-radius-md);
+  padding: 2.25rem;
+  backdrop-filter: blur(12px);
+  margin-top: 2rem;
+}
+
+.zfc-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .zfc-form-grid.two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.zfc-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.zfc-form-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--zfc-gold-bright);
+}
+
+.zfc-input, .zfc-select, .zfc-textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--zfc-radius-sm);
+  background: rgba(255, 255, 255, 0.95);
+  color: #112019;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: var(--zfc-body);
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+}
+
+.zfc-input:focus, .zfc-select:focus, .zfc-textarea:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: var(--zfc-gold);
+  box-shadow: 0 0 0 3px rgba(184, 145, 47, 0.35);
+}
+
+.zfc-form-msg {
+  display: none;
+  padding: 1.25rem;
+  border-radius: var(--zfc-radius-sm);
+  margin-top: 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.zfc-form-msg.success {
+  display: block;
+  background: #1e6345;
+  color: #ffffff;
+  border: 1px solid #3eb881;
+}
+
+.zfc-form-msg.error {
+  display: block;
+  background: #7a1b1b;
+  color: #ffffff;
+  border: 1px solid #d44;
+}
+
+/* ==========================================================================
+   SECTION 17: CONTACT INFORMATION & HELPLINES
+   ========================================================================== */
+.zfc-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .zfc-contact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.zfc-contact-card {
+  background: var(--zfc-surface);
+  border: 1px solid var(--zfc-line);
+  border-radius: var(--zfc-radius-md);
+  padding: 2rem 1.75rem;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.zfc-contact-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--zfc-gold-soft);
+  color: var(--zfc-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.zfc-contact-card h4 {
+  font-family: var(--zfc-display);
+  font-size: 1.45rem;
+  color: var(--zfc-pitch);
+  margin-bottom: 0.5rem;
+}
+
+.zfc-contact-card p {
+  font-size: 0.92rem;
+  color: var(--zfc-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.zfc-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: var(--zfc-surface-subtle);
+  border: 1px solid var(--zfc-line);
+  color: var(--zfc-pitch);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zfc-copy-btn:hover {
+  background: var(--zfc-pitch);
+  color: #ffffff;
+  border-color: var(--zfc-pitch);
+}
+
+/* Motion / Hover polish */
+.zfc-interactive-card {
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.zfc-interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(15, 59, 44, 0.08);
+}

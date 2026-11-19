@@ -1,0 +1,17 @@
+[
+  {
+    "trial_id": "ZFC-TRIAL-202611-6050",
+    "parent_name": "Arun Verma",
+    "parent_phone": "+91 98450 12345",
+    "parent_email": "arun.verma@example.com",
+    "child_name": "Karan Verma",
+    "child_age": "10",
+    "school_name": "DPS Bangalore South",
+    "experience": "School Player",
+    "preferred_group": "Development (Ages 9-11)",
+    "goalkeeper_interest": true,
+    "notes": "Left-footed, interested in goalkeeper training.",
+    "timestamp": "2026-11-18T12:44:10.061845",
+    "status": "CONFIRMED"
+  }
+]

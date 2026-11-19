@@ -3,13 +3,15 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="pageTitle">Program Details | Zion Foundation</title>
   <meta name="description" content="Explore programs and support community initiatives through Zion Foundation." />
 
   <!-- Exact Production Stylesheet -->
   <link rel="stylesheet" href="css/original.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 
   <!-- Razorpay Checkout SDK -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -1292,6 +1294,12 @@
       }
     }
   </style>
+
+  <!-- Zion FC Academy Google Fonts & Football Vertical Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/football.css" />
 </head>
 
 <body class="bg-background text-foreground">
@@ -1303,8 +1311,8 @@
         <div class="mx-auto max-w-[90rem] px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
           <a href="index.html" class="flex items-center gap-2.5 group">
             <span
-              class="grid place-items-center h-11 w-11 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
-              <img src="assets/images/logo.jpg" alt="Zion Foundation logo" class="h-full w-full object-cover" />
+              class="grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-xl bg-white shadow-md ring-1 ring-black/10 p-1 shrink-0 transition-transform group-hover:scale-105">
+              <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain drop-shadow-xs" />
             </span>
             <span class="font-display text-lg font-600 leading-tight text-foreground text-left">
               Zion
@@ -1353,15 +1361,19 @@
       </header>
 
       <!-- Program Hero -->
-      <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-primary text-primary-foreground">
-        <div class="absolute inset-0">
-          <img id="progHeroImg" src="assets/images/hug.png" alt="" class="h-full w-full object-cover opacity-20" />
+      <section id="genericProgramHero" class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-primary text-primary-foreground">
+        <div class="absolute inset-0 overflow-hidden">
+          <img id="progHeroImg" src="assets/images/hug.png" alt=""
+            class="h-full w-full object-cover opacity-20 hero-ambient-zoom" />
           <div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-transparent to-primary/40"></div>
+          <!-- Ambient subtle glow -->
+          <div class="ambient-glow-pill -top-20 -left-20 w-80 h-80 bg-accent/20"></div>
+          <div class="ambient-glow-pill -bottom-20 right-10 w-96 h-96 bg-accent/10" style="animation-delay: -5s;"></div>
         </div>
 
         <div class="relative mx-auto max-w-[72rem] px-5 sm:px-8">
-          <div class="flex flex-wrap items-center gap-2 mb-4">
+          <div class="hero-stagger-badge flex flex-wrap items-center gap-2 mb-4">
             <a href="index.html#programs"
               class="inline-flex items-center gap-1 text-xs font-600 uppercase tracking-wider text-primary-foreground/70 hover:text-accent transition">
               Programs
@@ -1377,22 +1389,24 @@
             </span>
           </div>
 
-          <h1 id="progTitle" class="font-display text-4xl sm:text-6xl font-600 leading-tight">
+          <h1 id="progTitle" class="hero-stagger-title font-display text-4xl sm:text-6xl font-600 leading-tight">
             Food & Relief Initiative
           </h1>
 
-          <p id="progSubtitle" class="mt-4 text-lg sm:text-xl text-primary-foreground/85 leading-relaxed max-w-2xl">
+          <p id="progSubtitle"
+            class="hero-stagger-desc mt-4 text-lg sm:text-xl text-primary-foreground/85 leading-relaxed max-w-2xl">
             Weekly food pantries, hot meals, and emergency crisis relief for families and individuals navigating hard
             seasons.
           </p>
 
           <!-- Campaign Progress Card -->
-          <div class="mt-8 rounded-2xl bg-white/10 border border-white/20 p-6 sm:p-8 backdrop-blur-md max-w-2xl">
+          <div
+            class="hero-stagger-card mt-8 rounded-2xl bg-white/10 border border-white/20 p-6 sm:p-8 backdrop-blur-md max-w-2xl shadow-lg">
             <div class="flex flex-wrap items-end justify-between gap-3 mb-3">
               <div>
                 <p class="text-xs uppercase tracking-wider text-accent font-semibold">2026 Program Support Goal</p>
                 <p class="font-display text-3xl sm:text-4xl font-600 text-white mt-1">
-                  <span id="progRaised">$54,800</span> <span
+                  <span id="progRaised" class="stat-counter-animate">$54,800</span> <span
                     class="text-lg font-normal text-primary-foreground/70">raised of <span id="progGoal">$75,000</span>
                     goal</span>
                 </p>
@@ -1415,7 +1429,8 @@
       </section>
 
       <!-- Targeted Donation Section for this Domain -->
-      <section id="programDonateSection" class="py-20 sm:py-28 bg-secondary/50 border-b border-border">
+      <div id="genericProgramDetails">
+        <section id="programDonateSection" class="py-20 sm:py-28 bg-secondary/50 border-b border-border">
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="text-center max-w-2xl mx-auto">
             <span id="donateSubBadge" class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Designated
@@ -1676,7 +1691,7 @@
       <section class="py-20 sm:py-28">
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="grid lg:grid-cols-2 gap-14 items-center">
-            <div>
+            <div class="scroll-reveal reveal-slide-left">
               <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">How It Works</span>
               <h2 id="overviewHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600 leading-tight">
                 Meeting real, immediate needs with lasting compassion.
@@ -1687,17 +1702,19 @@
               </div>
 
               <!-- Domain Impact Metrics -->
-              <div class="mt-8 grid grid-cols-2 gap-4" id="domainMetricsGrid">
+              <div class="mt-8 grid grid-cols-2 gap-4 stagger-children scroll-reveal" id="domainMetricsGrid">
                 <!-- Injected via JS -->
               </div>
             </div>
 
             <!-- Program Image & Testimonial Card -->
-            <div class="relative">
-              <img id="detailImg" src="assets/images/loyals/01-pup-cast.jpg" alt="Program in action"
-                class="rounded-2xl w-full object-cover aspect-[4/3] shadow-xl" />
+            <div class="relative scroll-reveal reveal-slide-right">
+              <div class="overflow-hidden rounded-2xl shadow-xl">
+                <img id="detailImg" src="assets/images/loyals/01-pup-cast.jpg" alt="Program in action"
+                  class="rounded-2xl w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-700" />
+              </div>
               <div
-                class="absolute -bottom-6 -left-4 sm:-left-8 bg-card rounded-2xl shadow-lg border border-border p-6 max-w-sm">
+                class="absolute -bottom-6 -left-4 sm:-left-8 bg-card rounded-2xl shadow-lg border border-border p-6 max-w-sm quote-card-float">
                 <p class="text-accent font-display text-3xl font-600 leading-none">“</p>
                 <p id="testimonialQuote" class="text-sm font-medium text-foreground leading-snug mt-1">
                   "Having fresh groceries delivered to our porch when my hours were cut allowed us to keep our dignity
@@ -1712,6 +1729,1547 @@
           </div>
         </div>
       </section>
+
+      </div>
+
+      <!-- ==========================================================================
+     ZION FC ACADEMY — COMPLETE FOOTBALL VERTICAL EXPERIENCE
+     17 Sections fully integrated with authentic proposal and club website data
+     ========================================================================== -->
+<div id="zionAcademyFootballExperience" style="display: none;">
+
+  <!-- SECTION 1: HERO SECTION -->
+  <section class="zfc-hero">
+    <div class="zfc-pitch-lines"></div>
+    <div class="zfc-pitch-box"></div>
+
+    <div class="zfc-wrap">
+      <div class="zfc-hero-grid">
+        <div class="zfc-hero-left">
+          <div class="zfc-hero-badges">
+            <span class="zfc-pill-badge gold">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              Zion Foundation Vertical
+            </span>
+            <span class="zfc-pill-badge">Ages 6–17</span>
+            <span class="zfc-pill-badge">Bengaluru, Karnataka</span>
+            <span class="zfc-pill-badge">Affiliated Club</span>
+          </div>
+
+          <h1 class="zfc-hero-title">
+            Building Champions, <em>One Kick</em> at a Time.
+          </h1>
+
+          <p class="zfc-hero-desc">
+            Developing young football talent through professional coaching, structured training, competitive opportunities, and a clear pathway from grassroots football to professional aspirations.
+          </p>
+
+          <div class="zfc-hero-actions">
+            <a href="#trial-section" class="zfc-btn zfc-btn-gold">
+              Book a Free Trial Week
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <a href="#programmes-section" class="zfc-btn zfc-btn-ghost">
+              Explore Programmes
+            </a>
+          </div>
+
+          <div class="zfc-hero-stats">
+            <div class="zfc-stat-item">
+              <div class="stat-num">20+</div>
+              <div class="stat-label">Years Pro Experience</div>
+            </div>
+            <div class="zfc-stat-item">
+              <div class="stat-num">4</div>
+              <div class="stat-label">Age Phases</div>
+            </div>
+            <div class="zfc-stat-item">
+              <div class="stat-num">&#8377;1,500</div>
+              <div class="stat-label">Starting / Month</div>
+            </div>
+            <div class="zfc-stat-item">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Scholarships Available</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zfc-hero-right">
+          <div class="zfc-crest-card">
+            <img src="assets/football/logo/crest.png" alt="Zion FC Academy Official Crest" class="zfc-crest-img" />
+            <h3 class="zfc-h3">Zion FC Academy</h3>
+            <p class="subtitle">Bangalore Youth Football System</p>
+            <div class="zfc-crest-features">
+              <div>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>AIFF D & AFC C licensed coaching staff</span>
+              </div>
+              <div>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>FC Barcelona & Ajax TIPS curriculum</span>
+              </div>
+              <div>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>BDFA & KSFA competitive league pathways</span>
+              </div>
+              <div>
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>FIFA 11+ injury prevention in every session</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: ABOUT ZION FC ACADEMY -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-about-grid">
+        <div>
+          <span class="zfc-eyebrow">Institutional Overview</span>
+          <h2 class="zfc-h2" style="color: var(--zfc-pitch); margin-bottom: 1rem;">
+            An Academy and a Competitive Club in One
+          </h2>
+          <p class="zfc-lead" style="margin-bottom: 1.5rem;">
+            Zion FC Academy is the flagship sporting and youth empowerment vertical of <strong>Zion Foundation</strong>. We believe sports should build character, resilience, and lifelong health alongside technical excellence.
+          </p>
+          <p style="color: var(--zfc-muted); font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.5rem;">
+            Unlike commercial coaching camps that operate strictly as after-school activities with no future progression, Zion FC functions as both an intensive grassroots training academy and an affiliated competitive club. Talented student-athletes are scouted directly into Zion FC's club squads to contest official Bangalore District Football Association (BDFA) and Karnataka State Football Association (KSFA) leagues.
+          </p>
+          <div style="background: var(--zfc-surface-subtle); border-left: 4px solid var(--zfc-gold); padding: 1.25rem 1.5rem; border-radius: var(--zfc-radius-sm);">
+            <p style="font-size: 0.95rem; font-weight: 600; color: var(--zfc-pitch); margin: 0;">
+              "Our mission is to ensure every young footballer with raw talent and passion receives professional training, regardless of financial background."
+            </p>
+          </div>
+        </div>
+
+        <div class="zfc-card-dual">
+          <div class="zfc-role-card">
+            <span class="zfc-role-tag">Pillar 1 · The Academy</span>
+            <h4>Grassroots Technical Academy</h4>
+            <p>
+              Structured, year-round curriculum tailored for ages 6 to 17. Emphasizes individual ball mastery, fast thinking in tight spaces, sportsmanship, and academic balance with termly TIPS progress reports for parents.
+            </p>
+          </div>
+
+          <div class="zfc-role-card">
+            <span class="zfc-role-tag">Pillar 2 · The Club</span>
+            <h4>Zion FC Competitive Club Squads</h4>
+            <p>
+              Top-performing players progress into official Zion FC teams representing the club in BDFA divisions, the Subroto Cup, Karnataka State championships, and exposure friendlies across South India.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: COACHING PHILOSOPHY -->
+  <section class="zfc-section" style="background: var(--zfc-bg); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head center">
+        <span class="zfc-eyebrow">Methodology & Influences</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Coached the Barça and Ajax Way</h2>
+        <p class="zfc-lead">
+          We combine the positional possession principles of FC Barcelona with the analytical player evaluation framework of AFC Ajax and the holistic FA Four-Corner model.
+        </p>
+      </div>
+
+      <div class="zfc-philosophy-grid">
+        <div class="zfc-philo-card">
+          <div class="zfc-philo-num">01</div>
+          <h3 class="zfc-philo-title">FC Barcelona</h3>
+          <div class="zfc-philo-sub">La Masia Positional Play</div>
+          <p style="font-size: 0.9rem; color: var(--zfc-muted); margin-bottom: 1rem;">
+            Rooted in Johan Cruyff's philosophy: whoever controls the ball controls the tempo, space, and outcome of the match.
+          </p>
+          <ul class="zfc-philo-list">
+            <li><strong>Ball Mastery:</strong> Unmatched confidence with both feet under heavy pressure</li>
+            <li><strong>Rondo-Based Training:</strong> Rapid 1-touch and 2-touch passing in tight triangles</li>
+            <li><strong>Positional Geometry:</strong> Always creating numerical superiority across every pitch zone</li>
+            <li><strong>Decision-Making:</strong> Scanning before receiving to execute intelligent forward options</li>
+          </ul>
+        </div>
+
+        <div class="zfc-philo-card featured">
+          <div class="zfc-philo-num">02</div>
+          <h3 class="zfc-philo-title">AFC Ajax</h3>
+          <div class="zfc-philo-sub">TIPS Development Model</div>
+          <p style="font-size: 0.9rem; color: var(--zfc-muted); margin-bottom: 1rem;">
+            The world's premier talent scouting and development system, evaluating players beyond raw physical size.
+          </p>
+          <ul class="zfc-philo-list">
+            <li><strong>Technique (T):</strong> First touch, body balance, receiving on the half-turn</li>
+            <li><strong>Insight (I):</strong> Reading tactical game patterns and off-the-ball spatial awareness</li>
+            <li><strong>Personality (P):</strong> Grit, coachability, emotional poise, and mutual team respect</li>
+            <li><strong>Speed (S):</strong> Speed of thought, agility, acceleration, and dynamic reaction</li>
+          </ul>
+        </div>
+
+        <div class="zfc-philo-card">
+          <div class="zfc-philo-num">03</div>
+          <h3 class="zfc-philo-title">The FA Model</h3>
+          <div class="zfc-philo-sub">Four-Corner Holistic Growth</div>
+          <p style="font-size: 0.9rem; color: var(--zfc-muted); margin-bottom: 1rem;">
+            Recognized by football associations worldwide for producing well-rounded, emotionally mature athletes.
+          </p>
+          <ul class="zfc-philo-list">
+            <li><strong>Technical:</strong> Core executing mechanics, passing ranges, and striking purity</li>
+            <li><strong>Physical:</strong> Agility, balance, core stability, and injury resistance</li>
+            <li><strong>Psychological:</strong> Confidence, focus, decision courage, and resilience after mistakes</li>
+            <li><strong>Social:</strong> Communication, empathy, accountability, and team cohesion</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FIFA 11+ Safety Integration Banner -->
+      <div class="zfc-fifa-bar">
+        <div class="zfc-fifa-badge">FIFA 11+ Kids</div>
+        <div>
+          <h4 style="font-family: var(--zfc-display); font-size: 1.4rem; color: #ffffff; margin-bottom: 0.25rem;">
+            FIFA 11+ Injury Prevention Built into Every Single Session
+          </h4>
+          <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); margin: 0;">
+            Every training session opens with the certified FIFA 11+ dynamic warmup, scientifically proven by FIFA's Medical Assessment and Research Centre (F-MARC) to reduce youth muscular and ligament injuries by up to 50%.
+          </p>
+        </div>
+        <div style="font-family: var(--zfc-display); font-size: 1.15rem; color: var(--zfc-gold-bright); text-transform: uppercase; font-weight: 800; text-align: center;">
+          Learning Before Winning
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: MEET OUR COACHES -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head">
+        <span class="zfc-eyebrow">Professional Leadership</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Meet Our Coaches</h2>
+        <p class="zfc-lead">
+          Our coaches combine professional playing backgrounds in African, Asian, and Indian leagues with AIFF, AFC, and international certifications to guide your child.
+        </p>
+      </div>
+
+      <div class="zfc-coaches-grid">
+        <!-- Coach David Wale Oladunni -->
+        <div class="zfc-coach-card">
+          <div class="zfc-coach-header">
+            <div class="zfc-coach-photo-wrapper">
+              <img src="assets/football/coaches/david-oladunni.png" alt="Head Coach David Wale Oladunni" />
+            </div>
+            <div class="zfc-coach-info">
+              <h3 class="zfc-h3">David Wale Oladunni</h3>
+              <div class="coach-role">Head Coach & Football Development Specialist</div>
+              <p style="font-size: 0.85rem; color: var(--zfc-muted);">
+                Former professional footballer with over 20 years of international playing and coaching experience across Nigeria, Côte d'Ivoire, Bangladesh, and India.
+              </p>
+              <div class="zfc-coach-badges">
+                <span class="zfc-coach-tag accent">AIFF D Licence</span>
+                <span class="zfc-coach-tag">20+ Yrs Exp</span>
+                <span class="zfc-coach-tag">Carmel Academy Head Coach</span>
+                <span class="zfc-coach-tag">Defensive Tactics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="zfc-coach-body">
+            <p class="zfc-coach-bio">
+              A commanding central defender and inspirational on-pitch captain during his playing career, Coach David is renowned for instilling discipline, tactical intelligence, and defensive organisation. He trains and mentors young players technically, tactically, physically, and mentally, preparing them for top-tier school tournaments and league football.
+            </p>
+
+            <div>
+              <h4 style="font-family: var(--zfc-display); font-size: 1.15rem; color: var(--zfc-pitch); margin-bottom: 0.5rem; text-transform: uppercase;">
+                Professional Playing Career
+              </h4>
+              <table class="zfc-career-table">
+                <thead>
+                  <tr>
+                    <th>Period</th>
+                    <th>Club</th>
+                    <th>Country</th>
+                    <th>Achievements</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>2005–2007</strong></td>
+                    <td>Brothers Union FC</td>
+                    <td>Bangladesh</td>
+                    <td>Professional defender; 3rd-place league finish</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2004–2005</strong></td>
+                    <td>Gateway FC</td>
+                    <td>Nigeria</td>
+                    <td>Professional defender; Best Defender of the Season</td>
+                  </tr>
+                  <tr>
+                    <td><strong>1998–2004</strong></td>
+                    <td>Buafelay FC</td>
+                    <td>Côte d'Ivoire</td>
+                    <td>Professional defender; National League Runner-up</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="background: var(--zfc-surface-subtle); border-radius: var(--zfc-radius-sm); padding: 0.85rem 1rem; border: 1px solid var(--zfc-line);">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--zfc-gold); text-transform: uppercase; display: block; margin-bottom: 0.2rem;">
+                Coaching Philosophy
+              </span>
+              <p style="font-size: 0.88rem; color: var(--zfc-ink); margin: 0; font-style: italic;">
+                "To inspire, educate and develop the next generation of footballers through structured training, positive mentorship and unwavering professional standards."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coach Rohan Kevin -->
+        <div class="zfc-coach-card">
+          <div class="zfc-coach-header">
+            <div class="zfc-coach-monogram" role="img" aria-label="Coach Rohan Kevin Monogram">
+              RK
+              <small>COACH</small>
+            </div>
+            <div class="zfc-coach-info">
+              <h3 class="zfc-h3">Rohan Kevin</h3>
+              <div class="coach-role">Coach & Performance Conditioning Specialist</div>
+              <p style="font-size: 0.85rem; color: var(--zfc-muted);">
+                Over 10 years of youth and senior coaching experience across Kerala and Bengaluru, including Kerala Blasters Football Schools and Victoria Football Academy.
+              </p>
+              <div class="zfc-coach-badges">
+                <span class="zfc-coach-tag accent">AFC C Licence</span>
+                <span class="zfc-coach-tag accent">AIFF D Licence</span>
+                <span class="zfc-coach-tag">AFC Futsal L1</span>
+                <span class="zfc-coach-tag">ISSA Certified Trainer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="zfc-coach-body">
+            <p class="zfc-coach-bio">
+              Rohan specialises in youth technical refinement, agility conditioning, futsal ball control, and match tactical transitions. Having developed multiple players selected for state and national youth squads, he bridges grassroots fundamentals with elite performance preparation.
+            </p>
+
+            <div>
+              <h4 style="font-family: var(--zfc-display); font-size: 1.15rem; color: var(--zfc-pitch); margin-bottom: 0.5rem; text-transform: uppercase;">
+                Proven Coaching Achievements
+              </h4>
+              <ul style="padding-left: 1.2rem; margin: 0; font-size: 0.88rem; color: var(--zfc-muted); display: grid; gap: 0.4rem;">
+                <li><strong>India U-14 National Player:</strong> Developed one India U-14 national player in 2026</li>
+                <li><strong>State Selections:</strong> Trained 3 Kerala U-14 state players and 4 district players in 2025</li>
+                <li><strong>All Kerala Talent Cup:</strong> Champion coach with SRJ FC U-12 in 2022</li>
+                <li><strong>Youth Super League:</strong> 3rd place in YSL with Kerala Blasters (Malappuram) U-14 & U-17</li>
+                <li><strong>Inter-School Honours:</strong> Runners-up in Kerala inter-school U-14 tournament</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--zfc-surface-subtle); border-radius: var(--zfc-radius-sm); padding: 0.85rem 1rem; border: 1px solid var(--zfc-line);">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--zfc-gold); text-transform: uppercase; display: block; margin-bottom: 0.2rem;">
+                Qualifications & Certifications
+              </span>
+              <p style="font-size: 0.85rem; color: var(--zfc-ink); margin: 0;">
+                AFC C Licence · AIFF D Licence · AFC Futsal Licence · ISSA (USA) Personal Fitness Trainer · Sports Nutrition & First-Aid Certified · BA Economics (University of Calicut).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: PROGRAMMES BY AGE GROUP -->
+  <section id="programmes-section" class="zfc-section" style="background: var(--zfc-bg); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head center">
+        <span class="zfc-eyebrow">Developmental Ladder</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">A Squad for Every Age</h2>
+        <p class="zfc-lead">
+          Students are grouped into four clear phases by age, then sub-grouped by ability. Each phase has structured developmental targets and appropriate match formats.
+        </p>
+      </div>
+
+      <div class="zfc-programmes-grid">
+        <!-- Foundation Phase -->
+        <div class="zfc-prog-card">
+          <div class="zfc-prog-phase">Phase 1 · U7–U9</div>
+          <h3 class="zfc-h3">Foundation</h3>
+          <span class="zfc-prog-age">Ages 6 to 8</span>
+          <div class="zfc-prog-aim">Aim: Love of the Ball</div>
+          <p class="zfc-prog-desc">
+            Instilling a joyful relationship with football through fun agility games, foundational ball mastery, 1v1 challenges, balance, and bilateral coordination.
+          </p>
+          <div class="zfc-prog-meta">
+            <div><b>Match Format:</b> 4v4 / 5v5 (Mini-goals)</div>
+            <div><b>Sessions:</b> 2 per week (60 mins)</div>
+            <div><b>Focus:</b> Dribbling, touches, joy of play</div>
+          </div>
+        </div>
+
+        <!-- Development Phase -->
+        <div class="zfc-prog-card" style="border-color: var(--zfc-pitch);">
+          <div class="zfc-prog-phase">Phase 2 · U10–U12</div>
+          <h3 class="zfc-h3">Development</h3>
+          <span class="zfc-prog-age">Ages 9 to 11</span>
+          <div class="zfc-prog-aim">Aim: Master the Ball</div>
+          <p class="zfc-prog-desc">
+            Technical sharpening on both feet, receiving under pressure, basic 3v1 and 4v2 rondos, spatial awareness, and small-sided passing combinations.
+          </p>
+          <div class="zfc-prog-meta">
+            <div><b>Match Format:</b> 7v7 (Mid-size pitch)</div>
+            <div><b>Sessions:</b> 3 per week (75 mins)</div>
+            <div><b>Focus:</b> Passing, receiving, teamwork</div>
+          </div>
+        </div>
+
+        <!-- Youth Phase -->
+        <div class="zfc-prog-card">
+          <div class="zfc-prog-phase">Phase 3 · U13–U15</div>
+          <h3 class="zfc-h3">Youth</h3>
+          <span class="zfc-prog-age">Ages 12 to 14</span>
+          <div class="zfc-prog-aim">Aim: Decide Faster</div>
+          <p class="zfc-prog-desc">
+            Transition to tactical game reading, positional discipline, zonal defending as a collective unit, scanning frequencies, and FIFA 11+ injury resilience.
+          </p>
+          <div class="zfc-prog-meta">
+            <div><b>Match Format:</b> 9v9 / 11v11</div>
+            <div><b>Sessions:</b> 3 per week + Weekend matches</div>
+            <div><b>Focus:</b> Tactics, role responsibilities</div>
+          </div>
+        </div>
+
+        <!-- Performance Phase -->
+        <div class="zfc-prog-card">
+          <div class="zfc-prog-phase">Phase 4 · U16–U18</div>
+          <h3 class="zfc-h3">Performance</h3>
+          <span class="zfc-prog-age">Ages 15 to 17</span>
+          <div class="zfc-prog-aim">Aim: Compete to Excel</div>
+          <p class="zfc-prog-desc">
+            High-tempo competitive play, advanced match strategy, video analysis, athletic conditioning, leadership under pressure, and preparation for club/state trials.
+          </p>
+          <div class="zfc-prog-meta">
+            <div><b>Match Format:</b> Full 11v11 Competitive</div>
+            <div><b>Sessions:</b> 3 per week + League matches</div>
+            <div><b>Focus:</b> Match results, trial readiness</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dedicated Specialist & Girls Participation Features -->
+      <div class="zfc-specialist-cards">
+        <div class="zfc-spec-box">
+          <div class="zfc-spec-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 style="font-family: var(--zfc-display); font-size: 1.35rem; color: var(--zfc-pitch); margin-bottom: 0.35rem;">
+              Dedicated Goalkeeping Programme
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--zfc-muted); line-height: 1.5; margin: 0;">
+              Goalkeepers receive specialised coaching starting from the Development phase (Ages 9+), including a dedicated weekly goalkeeper block covering handling, diving mechanics, distribution, angle narrowing, and commanding the penalty box.
+            </p>
+          </div>
+        </div>
+
+        <div class="zfc-spec-box" style="border-left-color: var(--zfc-pitch);">
+          <div class="zfc-spec-icon" style="background: #eef5f1; color: var(--zfc-pitch);">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 style="font-family: var(--zfc-display); font-size: 1.35rem; color: var(--zfc-pitch); margin-bottom: 0.35rem;">
+              Girls' Football Pathway
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--zfc-muted); line-height: 1.5; margin: 0;">
+              Girls are actively welcomed in every age phase with equal coaching rigor and mentoring. Where batch registrations permit, we run dedicated girls-only training squads from the Development phase upwards with female coaching staff present.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: TRAINING SCHEDULE -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head">
+        <span class="zfc-eyebrow">Weekly Logistics</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Training Days & Schedule</h2>
+        <p class="zfc-lead">
+          Sessions run across a 40-week academic calendar with approximately 144 structured sessions. Batch schedules follow school timing with exam breaks respected.
+        </p>
+      </div>
+
+      <div class="zfc-table-wrap">
+        <table class="zfc-table">
+          <thead>
+            <tr>
+              <th>Age Phase</th>
+              <th>Sessions / Wk</th>
+              <th>Session Duration</th>
+              <th>Suggested Training Days</th>
+              <th>Annual Sessions</th>
+              <th>Coach-to-Player Ratio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Foundation (6–8)</strong></td>
+              <td>2 sessions</td>
+              <td>60 minutes</td>
+              <td>Tuesday, Friday (4:30 PM)</td>
+              <td>~80 sessions</td>
+              <td>1 : 10</td>
+            </tr>
+            <tr>
+              <td><strong>Development (9–11)</strong></td>
+              <td>3 sessions</td>
+              <td>75 minutes</td>
+              <td>Monday, Wednesday, Friday (4:30 PM)</td>
+              <td>~120 sessions</td>
+              <td>1 : 14</td>
+            </tr>
+            <tr>
+              <td><strong>Youth (12–14)</strong></td>
+              <td>3 sessions + matches</td>
+              <td>90 minutes</td>
+              <td>Tuesday, Thursday, Saturday</td>
+              <td>~120 + matchdays</td>
+              <td>1 : 14</td>
+            </tr>
+            <tr>
+              <td><strong>Performance (15–17)</strong></td>
+              <td>3 sessions + matches</td>
+              <td>90 minutes</td>
+              <td>Tuesday, Thursday, Saturday</td>
+              <td>~120 + matchdays</td>
+              <td>1 : 14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Term Roadmap -->
+      <div class="zfc-terms-grid">
+        <div class="zfc-term-card">
+          <h4>Term 1 · Technical Foundation</h4>
+          <div class="term-dates">June – September</div>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); line-height: 1.5; margin: 0;">
+            Focus on ball mastery, first touch, agility benchmarks, and introducing team playing principles. Ends with the Term 1 TIPS report card.
+          </p>
+        </div>
+
+        <div class="zfc-term-card" style="border-top-color: var(--zfc-gold);">
+          <h4>Term 2 · Tactical Coordination</h4>
+          <div class="term-dates">October – December</div>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); line-height: 1.5; margin: 0;">
+            Rondo variations, positional roles, defensive shape, transition speed, and preliminary selection for inter-school cups.
+          </p>
+        </div>
+
+        <div class="zfc-term-card">
+          <h4>Term 3 · League & Competition</h4>
+          <div class="term-dates">January – April</div>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); line-height: 1.5; margin: 0;">
+            Inter-school matches, BDFA tournament cycles, annual parent-player matches, final TIPS evaluations, and state trial nominations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: HOW OUR TRAINING WORKS (5-Stage Breakdown) -->
+  <section class="zfc-section" style="background: var(--zfc-bg); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head center">
+        <span class="zfc-eyebrow">Session Architecture</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">How Every 90-Minute Session Works</h2>
+        <p class="zfc-lead">
+          Every training session adheres to a rigorous, five-stage pedagogical structure ensuring no wasted minutes and zero chaotic free-for-alls.
+        </p>
+      </div>
+
+      <div class="zfc-stages-container">
+        <div class="zfc-stage-step">
+          <div class="zfc-stage-badge">1</div>
+          <div class="zfc-stage-time">15 Minutes</div>
+          <h4>FIFA 11+ Warmup</h4>
+          <p>
+            Dynamic stretching, neuromuscular running drills, agility ladders, and balance coordination proven to prevent growth-plate and knee injuries.
+          </p>
+        </div>
+
+        <div class="zfc-stage-step">
+          <div class="zfc-stage-badge">2</div>
+          <div class="zfc-stage-time">10–15 Minutes</div>
+          <h4>Rondo & Mastery</h4>
+          <p>
+            High-tempo Barça possession boxes (3v1, 4v2, 5v2). Trains players to anticipate, play with one touch, and stay composed under intense pressing.
+          </p>
+        </div>
+
+        <div class="zfc-stage-step" style="border-top: 3px solid var(--zfc-gold);">
+          <div class="zfc-stage-badge" style="background: var(--zfc-gold); color: #111e17;">3</div>
+          <div class="zfc-stage-time">25–35 Minutes</div>
+          <h4>Main Tactical Theme</h4>
+          <p>
+            The session's core instructional topic: 1v1 attacking, overlapping full-backs, zonal pressing traps, or combination play in the final third.
+          </p>
+        </div>
+
+        <div class="zfc-stage-step">
+          <div class="zfc-stage-badge">4</div>
+          <div class="zfc-stage-time">15–20 Minutes</div>
+          <h4>Conditioned Game</h4>
+          <p>
+            Small-sided match play applying the day's theme with realistic constraints (e.g., goals only after 5 passes or switch of play) to test decision-making.
+          </p>
+        </div>
+
+        <div class="zfc-stage-step">
+          <div class="zfc-stage-badge">5</div>
+          <div class="zfc-stage-time">5 Minutes</div>
+          <h4>Cool-Down & Debrief</h4>
+          <p>
+            Static stretching, core lowering, hydration check, and group debrief where the coach reinforces one fundamental tactical takeaway of the day.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: SERVICES AND FACILITIES -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head">
+        <span class="zfc-eyebrow">Comprehensive Athlete Support</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Services & Facilities</h2>
+        <p class="zfc-lead">
+          We combine transparent monthly inclusions with elite specialist sports medicine, fitness conditioning, and family engagement events.
+        </p>
+      </div>
+
+      <div class="zfc-services-tabs">
+        <!-- Included Services -->
+        <div class="zfc-svc-column">
+          <h3 class="zfc-h3">Included in Standard Monthly Tuition</h3>
+          <ul class="zfc-svc-list">
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check">✓</div>
+              <div>
+                <strong>Licensed Professional Coaching</strong>
+                <span>Direct on-pitch instruction by AIFF and AFC licensed head and assistant coaches.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check">✓</div>
+              <div>
+                <strong>FIFA-Standard Training Equipment</strong>
+                <span>Balls, cones, speed ladders, resistance bands, tactical boards, and portable match goals.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check">✓</div>
+              <div>
+                <strong>Termly TIPS Report Cards</strong>
+                <span>Formal individual assessment across Technique, Insight, Personality, and Speed every term.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check">✓</div>
+              <div>
+                <strong>School Team Tournament Coaching</strong>
+                <span>Selection trials and tactical coaching for representation in Bengaluru inter-school cups.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check">✓</div>
+              <div>
+                <strong>First-Aid & Emergency Safety</strong>
+                <span>CPR/First-aid certified staff and medical kit present throughout every single session.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Optional & Add-on Services -->
+        <div class="zfc-svc-column">
+          <h3 class="zfc-h3">Optional Add-ons & Specialist Services</h3>
+          <ul class="zfc-svc-list">
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check" style="background: var(--zfc-gold-soft); color: var(--zfc-gold);">+</div>
+              <div>
+                <strong>Specialist Goalkeeper Work (+&#8377;800/mo)</strong>
+                <span>One weekly dedicated goalkeeper masterclass covering shot stopping and distribution.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check" style="background: var(--zfc-gold-soft); color: var(--zfc-gold);">+</div>
+              <div>
+                <strong>Zion FC Club Squad & BDFA Leagues (+&#8377;1,500/mo)</strong>
+                <span>Weekend competitive club league registration, match management, and tournament tours.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check" style="background: var(--zfc-gold-soft); color: var(--zfc-gold);">+</div>
+              <div>
+                <strong>High-Performance Holiday Camps (&#8377;1,500 / 5 days)</strong>
+                <span>Intensive 5-day holiday training blocks during Dasara, Christmas, and summer breaks.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check" style="background: var(--zfc-gold-soft); color: var(--zfc-gold);">+</div>
+              <div>
+                <strong>Match Video Analysis & Scouting Reels</strong>
+                <span>Veo camera tactical tracking and personalized Wyscout highlight reels for trials.</span>
+              </div>
+            </li>
+            <li class="zfc-svc-item">
+              <div class="zfc-svc-check" style="background: var(--zfc-gold-soft); color: var(--zfc-gold);">+</div>
+              <div>
+                <strong>Family Matches & Technical Consultations</strong>
+                <span>Free termly 1-on-1 parent reviews with the Head Coach and annual parent-child matches.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Specialist Medicine Grid -->
+      <div class="zfc-specialist-grid">
+        <div class="zfc-specialist-card">
+          <h4>Sports Physiotherapy</h4>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); margin: 0;">
+            Termly screening for growth-plate, knee, and postural strain included. Customized injury rehabilitation protocols with licensed sports physiotherapists.
+          </p>
+        </div>
+
+        <div class="zfc-specialist-card">
+          <h4>Sports Neurologist</h4>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); margin: 0;">
+            Specialist concussion protocols and cognitive assessments following head collisions, plus sports psychology referrals for competitive confidence.
+          </p>
+        </div>
+
+        <div class="zfc-specialist-card">
+          <h4>Youth Gym Conditioning</h4>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); margin: 0;">
+            Ages 15–17 strictly supervised strength and conditioning emphasizing technique and explosive core power, avoiding unsafe heavy weightlifting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: FEES AND SCHOLARSHIPS -->
+  <section class="zfc-section" style="background: var(--zfc-bg); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head center">
+        <span class="zfc-eyebrow">Affordable Excellence</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Transparent Fee Structure</h2>
+        <p class="zfc-lead">
+          Bengaluru venue-based academies charge &#8377;2,700–&#8377;3,500 a month. Zion FC offers world-class coaching from &#8377;1,500, with waived registration, free welcome kits, sibling discounts, and 100% scholarships.
+        </p>
+      </div>
+
+      <div class="zfc-pricing-grid">
+        <!-- Foundation Tier -->
+        <div class="zfc-price-card">
+          <h3>Foundation</h3>
+          <div class="zfc-price-age">Ages 6 to 8 · 2 sessions/wk</div>
+          <div class="zfc-price-amount">
+            <span class="currency">&#8377;</span>
+            <span class="num">1,500</span>
+            <span class="period">/ month</span>
+          </div>
+          <div class="zfc-price-options">
+            <div><span>Termly (5% off):</span> <b>&#8377;4,275</b></div>
+            <div><span>Annual (10% off):</span> <b>&#8377;13,500</b></div>
+          </div>
+          <ul class="zfc-price-features">
+            <li>2 sessions per week (60m)</li>
+            <li>Free registration fee</li>
+            <li>Free welcome training kit</li>
+            <li>Termly TIPS report card</li>
+            <li>1:10 Coach-to-player ratio</li>
+          </ul>
+          <a href="#trial-section" class="zfc-btn zfc-btn-outline-green" style="width: 100%;">Enroll Phase</a>
+        </div>
+
+        <!-- Development Tier -->
+        <div class="zfc-price-card featured">
+          <div class="zfc-price-tag-ribbon">Most Popular</div>
+          <h3>Development</h3>
+          <div class="zfc-price-age">Ages 9 to 11 · 3 sessions/wk</div>
+          <div class="zfc-price-amount">
+            <span class="currency">&#8377;</span>
+            <span class="num">2,000</span>
+            <span class="period">/ month</span>
+          </div>
+          <div class="zfc-price-options">
+            <div><span>Termly (5% off):</span> <b>&#8377;5,700</b></div>
+            <div><span>Annual (10% off):</span> <b>&#8377;18,000</b></div>
+          </div>
+          <ul class="zfc-price-features">
+            <li>3 sessions per week (75m)</li>
+            <li>Both-feet technical mastery</li>
+            <li>7v7 match format drills</li>
+            <li>Free welcome kit included</li>
+            <li>Termly parent review</li>
+          </ul>
+          <a href="#trial-section" class="zfc-btn zfc-btn-gold" style="width: 100%;">Enroll Phase</a>
+        </div>
+
+        <!-- Youth Tier -->
+        <div class="zfc-price-card">
+          <h3>Youth</h3>
+          <div class="zfc-price-age">Ages 12 to 14 · 3 sessions/wk</div>
+          <div class="zfc-price-amount">
+            <span class="currency">&#8377;</span>
+            <span class="num">2,500</span>
+            <span class="period">/ month</span>
+          </div>
+          <div class="zfc-price-options">
+            <div><span>Termly (5% off):</span> <b>&#8377;7,125</b></div>
+            <div><span>Annual (10% off):</span> <b>&#8377;22,500</b></div>
+          </div>
+          <ul class="zfc-price-features">
+            <li>3 sessions (90m) + matches</li>
+            <li>11v11 positional tactics</li>
+            <li>FIFA 11+ conditioning</li>
+            <li>School team tournament trials</li>
+            <li>Physiotherapy screening</li>
+          </ul>
+          <a href="#trial-section" class="zfc-btn zfc-btn-outline-green" style="width: 100%;">Enroll Phase</a>
+        </div>
+
+        <!-- Performance Tier -->
+        <div class="zfc-price-card">
+          <h3>Performance</h3>
+          <div class="zfc-price-age">Ages 15 to 17 · 3 sessions/wk</div>
+          <div class="zfc-price-amount">
+            <span class="currency">&#8377;</span>
+            <span class="num">2,800</span>
+            <span class="period">/ month</span>
+          </div>
+          <div class="zfc-price-options">
+            <div><span>Termly (5% off):</span> <b>&#8377;7,980</b></div>
+            <div><span>Annual (10% off):</span> <b>&#8377;25,200</b></div>
+          </div>
+          <ul class="zfc-price-features">
+            <li>3 sessions (90m) + league</li>
+            <li>High-performance tactics</li>
+            <li>BDFA club squad selection</li>
+            <li>State & ISL trial readiness</li>
+            <li>Wyscout profile guidance</li>
+          </ul>
+          <a href="#trial-section" class="zfc-btn zfc-btn-outline-green" style="width: 100%;">Enroll Phase</a>
+        </div>
+      </div>
+
+      <!-- Discounts & Scholarships Banner -->
+      <div class="zfc-scholarship-banner">
+        <div>
+          <h3>Inclusivity & Scholarship Programme</h3>
+          <p style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0;">
+            Through the backing of <strong>Zion Foundation</strong>, we ensure that economic limitations never hold back talented footballers. Scholarships are awarded strictly on developmental merit, dedication, and economic need.
+          </p>
+        </div>
+        <div class="zfc-discount-chips">
+          <div class="zfc-discount-chip">
+            <b>30% OFF</b>
+            <span>Sibling Discount (2nd child)</span>
+          </div>
+          <div class="zfc-discount-chip">
+            <b>30% OFF</b>
+            <span>School Staff & Teachers</span>
+          </div>
+          <div class="zfc-discount-chip">
+            <b>UP TO 100%</b>
+            <span>Merit & Need Scholarships</span>
+          </div>
+          <div class="zfc-discount-chip">
+            <b>&#8377;0</b>
+            <span>Waived Registration Fee</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: FOOTBALL KIT AND EQUIPMENT -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head">
+        <span class="zfc-eyebrow">Matchday & Training Gear</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Kit & Dress Code</h2>
+        <p class="zfc-lead">
+          Colours follow the official Zion FC crest: pitch deep green with gold trim. Every student wears official academy gear for unity, identity, and pitch safety.
+        </p>
+      </div>
+
+      <div class="zfc-kits-grid">
+        <div class="zfc-kit-card">
+          <div class="zfc-kit-color-preview training">
+            <span class="zfc-kit-badge">Training Kit</span>
+          </div>
+          <h4>Official Training Kit</h4>
+          <div class="zfc-kit-worn">Worn: Every Training Session</div>
+          <p class="zfc-kit-desc">
+            Deep pitch green moisture-wicking jersey featuring the embroidered Zion crest, paired with athletic shorts and green football socks.
+          </p>
+          <div class="zfc-kit-cost">Cost: 1 Tee + Socks FREE in Welcome Kit</div>
+        </div>
+
+        <div class="zfc-kit-card">
+          <div class="zfc-kit-color-preview home">
+            <span class="zfc-kit-badge">Home Kit</span>
+          </div>
+          <h4>Home Match Kit</h4>
+          <div class="zfc-kit-worn">Worn: Home Matches & Inter-School</div>
+          <p class="zfc-kit-desc">
+            Zion signature royal dark purple/pitch jersey with gold piping and player squad numbers, white shorts, and green matchday socks.
+          </p>
+          <div class="zfc-kit-cost">Cost: Selected Match Players</div>
+        </div>
+
+        <div class="zfc-kit-card">
+          <div class="zfc-kit-color-preview away">
+            <span class="zfc-kit-badge">Away Kit</span>
+          </div>
+          <h4>Away Match Kit</h4>
+          <div class="zfc-kit-worn">Worn: Away Matches & Colour Clashes</div>
+          <p class="zfc-kit-desc">
+            Crisp white performance match jersey with pitch-green and gold accents, matching dark green shorts and clean white socks.
+          </p>
+          <div class="zfc-kit-cost">Cost: Selected Match Players</div>
+        </div>
+
+        <div class="zfc-kit-card">
+          <div class="zfc-kit-color-preview gk">
+            <span class="zfc-kit-badge">Keeper Kit</span>
+          </div>
+          <h4>Goalkeeper Kit</h4>
+          <div class="zfc-kit-worn">Worn: All Matches & GK Sessions</div>
+          <p class="zfc-kit-desc">
+            High-visibility gold or safety orange long-sleeved jersey with padded elbow protection; professional match gloves supplied or procured.
+          </p>
+          <div class="zfc-kit-cost">Cost: Available on Request</div>
+        </div>
+      </div>
+
+      <!-- Compulsory Gear Checklist & Safety Rules -->
+      <div class="zfc-gear-checklist">
+        <div>
+          <h4 style="font-family: var(--zfc-display); font-size: 1.35rem; color: var(--zfc-pitch); margin-bottom: 0.75rem;">
+            Compulsory Equipment Checklist
+          </h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; font-size: 0.9rem; color: var(--zfc-muted);">
+            <li style="display: flex; gap: 0.5rem; align-items: center;">
+              <span style="color: var(--zfc-pitch); font-weight: 800;">✓</span>
+              <span><strong>Football Boots:</strong> Moulded plastic/rubber studs for turf and firm ground. Metal studs strictly prohibited.</span>
+            </li>
+            <li style="display: flex; gap: 0.5rem; align-items: center;">
+              <span style="color: var(--zfc-pitch); font-weight: 800;">✓</span>
+              <span><strong>Shin Guards:</strong> Compulsory under football socks at all times before stepping onto the pitch.</span>
+            </li>
+            <li style="display: flex; gap: 0.5rem; align-items: center;">
+              <span style="color: var(--zfc-pitch); font-weight: 800;">✓</span>
+              <span><strong>Hydration:</strong> Personal 1-litre reusable water bottle labelled with child's name.</span>
+            </li>
+            <li style="display: flex; gap: 0.5rem; align-items: center;">
+              <span style="color: var(--zfc-pitch); font-weight: 800;">✓</span>
+              <span><strong>Official Zion Kit:</strong> Clean training jersey and socks at every session.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="background: var(--zfc-surface-subtle); border-radius: var(--zfc-radius-sm); padding: 1.25rem 1.5rem; border-left: 4px solid #c0392b;">
+          <h4 style="font-family: var(--zfc-display); font-size: 1.3rem; color: #c0392b; margin-bottom: 0.5rem;">
+            Pitch Dress Code & Safety Regulations
+          </h4>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); line-height: 1.5; margin-bottom: 0.6rem;">
+            <strong>No Jewellery:</strong> Watches, fitness bands, necklaces, rings, and earrings must be removed prior to kickoff to prevent lacerations.
+          </p>
+          <p style="font-size: 0.85rem; color: var(--zfc-muted); line-height: 1.5; margin: 0;">
+            <strong>No Shin Guards = No Training:</strong> In accordance with AIFF youth safety regulations, players arriving without shin guards will not be permitted into contact drills.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 11: PLAYER DEVELOPMENT PATHWAY -->
+  <section class="zfc-section" style="background: var(--zfc-bg); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head center">
+        <span class="zfc-eyebrow">Clear Sporting Progression</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">The 5-Level Zion FC Pathway</h2>
+        <p class="zfc-lead">
+          Every player starts at grassroots school training. The hardest workers keep climbing through club squads, state selections, and professional trials.
+        </p>
+      </div>
+
+      <div class="zfc-ladder">
+        <div class="zfc-ladder-step">
+          <div class="zfc-ladder-level">1</div>
+          <div class="zfc-ladder-content">
+            <h4>Level 1 · Grassroots School & Academy Programme</h4>
+            <p>
+              Year-round foundation training, fun small-sided matches, ball mastery, basic tactical concepts, and termly TIPS assessment report cards.
+            </p>
+          </div>
+          <div class="zfc-ladder-target">Open Enrolment</div>
+        </div>
+
+        <div class="zfc-ladder-step">
+          <div class="zfc-ladder-level">2</div>
+          <div class="zfc-ladder-content">
+            <h4>Level 2 · School Representative Teams</h4>
+            <p>
+              Top performers selected to represent their school in inter-school tournaments, friendly cups, and district qualifiers under Zion FC coaching.
+            </p>
+          </div>
+          <div class="zfc-ladder-target">School Squad Selection</div>
+        </div>
+
+        <div class="zfc-ladder-step" style="border-left: 4px solid var(--zfc-gold);">
+          <div class="zfc-ladder-level" style="background: var(--zfc-gold); color: #111e17;">3</div>
+          <div class="zfc-ladder-content">
+            <h4>Level 3 · Zion FC Competitive Club Squads</h4>
+            <p>
+              Elite academy players drafted into Zion FC club teams contesting official Bangalore District Football Association (BDFA) and KSFA youth leagues.
+            </p>
+          </div>
+          <div class="zfc-ladder-target">BDFA League Squad</div>
+        </div>
+
+        <div class="zfc-ladder-step">
+          <div class="zfc-ladder-level">4</div>
+          <div class="zfc-ladder-content">
+            <h4>Level 4 · Karnataka State & ISL Academy Trials</h4>
+            <p>
+              Direct nominations for Karnataka state youth team selections (Subroto Cup, Mir Iqbal Hussain Trophy, B.C. Roy Trophy) and trials with Bengaluru FC / Kerala Blasters youth academies.
+            </p>
+          </div>
+          <div class="zfc-ladder-target">State / ISL Scouts</div>
+        </div>
+
+        <div class="zfc-ladder-step">
+          <div class="zfc-ladder-level">5</div>
+          <div class="zfc-ladder-content">
+            <h4>Level 5 · Professional Contracts & International Exposure</h4>
+            <p>
+              Preparation for professional club contracts in India (I-League / ISL) and European academy exchange programmes from age 16 (FIFA Article 19 compliant).
+            </p>
+          </div>
+          <div class="zfc-ladder-target">Professional Aspirations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 12: COMPETITIONS AND TOURNAMENTS -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head">
+        <span class="zfc-eyebrow">Matchday Stage</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Competitions & Tournaments</h2>
+        <p class="zfc-lead">
+          Our athletes test their skills in premier local, district, state, and national tournaments to gain real competitive maturity.
+        </p>
+      </div>
+
+      <div class="zfc-comps-grid">
+        <div class="zfc-comp-card">
+          <h4>Subroto Cup</h4>
+          <div class="zfc-comp-org">Air Force Sports Education Society</div>
+          <p>
+            India's most prestigious all-India inter-school tournament. School teams coached by Zion FC contest regional qualifiers for a chance to play at the national finals in New Delhi.
+          </p>
+        </div>
+
+        <div class="zfc-comp-card">
+          <h4>BDFA & KSFA Youth Leagues</h4>
+          <div class="zfc-comp-org">Bangalore District & Karnataka State FA</div>
+          <p>
+            Official competitive district and state leagues. Zion FC club teams compete in age categories from U-10 to U-17 against the best academies in Karnataka.
+          </p>
+        </div>
+
+        <div class="zfc-comp-card">
+          <h4>Inter-School Invitational Cups</h4>
+          <div class="zfc-comp-org">Bangalore Independent Schools</div>
+          <p>
+            Friendly and invitational tournaments hosted by leading Bangalore institutions across the academic year, building match sharpness and school pride.
+          </p>
+        </div>
+
+        <div class="zfc-comp-card">
+          <h4>Inter-State Football Tours</h4>
+          <div class="zfc-comp-org">Zion FC Partner Clubs</div>
+          <p>
+            Travel exposure trips to Goa, Kerala, and Maharashtra, pitting our squads against top academies to build independence, camaraderie, and adaptability.
+          </p>
+        </div>
+
+        <div class="zfc-comp-card">
+          <h4>National Trophy Selections</h4>
+          <div class="zfc-comp-org">AIFF National Championships</div>
+          <p>
+            Zion FC scouts recommend top performers to Karnataka state selectors for the Sub-Junior (Mir Iqbal Hussain Trophy U-13) and Junior (B.C. Roy Trophy) teams.
+          </p>
+        </div>
+
+        <div class="zfc-comp-card">
+          <h4>AIFF Youth Leagues (Institutional Goal)</h4>
+          <div class="zfc-comp-org">All India Football Federation</div>
+          <p>
+            As Zion FC advances towards national AIFF Academy Accreditation, our youth squads will compete in the official national AIFF U-13, U-15, and U-17 Youth Leagues.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 13: INTERNATIONAL FOOTBALL PATHWAY -->
+  <section class="zfc-section" style="background: var(--zfc-bg); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head">
+        <span class="zfc-eyebrow">Global Aspirations</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">International Football Pathway</h2>
+        <p class="zfc-lead">
+          We guide players towards global football exposure through structured, ethical stages adhering strictly to FIFA regulations.
+        </p>
+      </div>
+
+      <div class="zfc-intl-grid">
+        <div class="zfc-steps-intl">
+          <div class="zfc-intl-step-card">
+            <span class="zfc-intl-rule">FIFA Step 1 · Ages 12 to 17</span>
+            <h4>International Academy Tie-Ups & Training Blocks</h4>
+            <p style="font-size: 0.9rem; color: var(--zfc-muted); line-height: 1.5; margin-bottom: 0.5rem;">
+              Coach exchanges, joint online tactical sessions, and 1- to 4-month residential training blocks with partner academies in Spain, the UK, and Portugal during school holidays.
+            </p>
+            <span style="font-size: 0.78rem; font-weight: 600; color: #27ae60;">
+              ✓ Regulated: Training & friendlies only; no official match registration abroad prior to age 18.
+            </span>
+          </div>
+
+          <div class="zfc-intl-step-card">
+            <span class="zfc-intl-rule">FIFA Step 2 · Ages 16 to 17</span>
+            <h4>European Club Trials & Wyscout Profiles</h4>
+            <p style="font-size: 0.9rem; color: var(--zfc-muted); line-height: 1.5; margin-bottom: 0.5rem;">
+              Curated player video portfolios, GPS tracking statistics, and invitation-only trial blocks with European clubs arranged via licensed FIFA football agents.
+            </p>
+            <span style="font-size: 0.78rem; font-weight: 600; color: #27ae60;">
+              ✓ Regulated: Maximum 2 trials per year, up to 8 weeks per season, requiring written parental consent.
+            </span>
+          </div>
+
+          <div class="zfc-intl-step-card">
+            <span class="zfc-intl-rule">FIFA Step 3 · Age 18+</span>
+            <h4>Professional Contracts in Europe & Asia</h4>
+            <p style="font-size: 0.9rem; color: var(--zfc-muted); line-height: 1.5; margin-bottom: 0.5rem;">
+              Full international registration opens at age 18 under FIFA Article 19. Players either sign direct overseas professional contracts or launch in India's ISL before transferring abroad.
+            </p>
+            <span style="font-size: 0.78rem; font-weight: 600; color: #27ae60;">
+              ✓ Modelled on the proven Japan and Gurpreet Singh Sandhu (Stabæk FC, Norway) pathways.
+            </span>
+          </div>
+        </div>
+
+        <div class="zfc-intl-sidebar">
+          <div>
+            <h4 style="font-family: var(--zfc-display); font-size: 1.35rem; color: var(--zfc-pitch); margin-bottom: 0.5rem;">
+              Potential Partner Academies
+            </h4>
+            <ul style="padding-left: 1.2rem; margin: 0; font-size: 0.85rem; color: var(--zfc-muted); display: grid; gap: 0.4rem;">
+              <li><strong>Alicante Football Academy</strong> (Spain) — 4- to 10-month residential immersion</li>
+              <li><strong>AFC Bournemouth International</strong> (UK) — High-intensity academy camps for ages 13–17</li>
+              <li><strong>IFDP / GD Estoril Praia</strong> (Portugal) — Comprehensive schooling and football training</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--zfc-surface); border: 1px solid var(--zfc-line); border-radius: var(--zfc-radius-sm); padding: 1rem;">
+            <h5 style="font-family: var(--zfc-display); font-size: 1.15rem; color: var(--zfc-pitch); margin-bottom: 0.35rem;">
+              Transparent Ethics & Protection
+            </h5>
+            <p style="font-size: 0.82rem; color: var(--zfc-muted); line-height: 1.5; margin: 0;">
+              We actively protect families from predatory commercial scouting agents promising fake overseas pro contracts for minors. Academic progression must always proceed hand-in-hand with sports.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 14: PLAYER ASSESSMENT SYSTEM (TIPS DASHBOARD) -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-tips-board">
+        <div class="zfc-section-head center" style="margin-bottom: 1.5rem;">
+          <span class="zfc-eyebrow">Measurable Growth</span>
+          <h2 class="zfc-h2" style="color: var(--zfc-pitch);">The TIPS Player Assessment Dashboard</h2>
+          <p class="zfc-lead">
+            Every term, players receive a detailed report card scored 1 to 5 by their head coach across the four Ajax TIPS pillars, keeping parents fully informed of tangible athletic progress.
+          </p>
+        </div>
+
+        <div class="zfc-tips-grid">
+          <div class="zfc-tips-card">
+            <div class="zfc-tips-letter">T</div>
+            <h4>Technique</h4>
+            <p>
+              First touch, passing accuracy over varying distances, ball retention, dribbling on both feet, and striking technique.
+            </p>
+            <div class="zfc-tips-rating-pill">
+              <span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span>
+            </div>
+          </div>
+
+          <div class="zfc-tips-card">
+            <div class="zfc-tips-letter">I</div>
+            <h4>Insight</h4>
+            <p>
+              Scanning frequencies before receiving, tactical awareness, anticipation of opponents' passes, and positioning in transitions.
+            </p>
+            <div class="zfc-tips-rating-pill">
+              <span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span>
+            </div>
+          </div>
+
+          <div class="zfc-tips-card">
+            <div class="zfc-tips-letter">P</div>
+            <h4>Personality</h4>
+            <p>
+              Leadership on the pitch, grit after making a mistake, listening attitude, respect towards match officials, and coachability.
+            </p>
+            <div class="zfc-tips-rating-pill">
+              <span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span>
+            </div>
+          </div>
+
+          <div class="zfc-tips-card">
+            <div class="zfc-tips-letter">S</div>
+            <h4>Speed</h4>
+            <p>
+              Speed of thought under defensive pressure, acceleration off the mark, agility change of direction, and reaction sharpness.
+            </p>
+            <div class="zfc-tips-rating-pill">
+              <span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span><span class="zfc-tips-star">★</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--zfc-surface-subtle); border-radius: var(--zfc-radius-md); border: 1px solid var(--zfc-line); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+          <div>
+            <h5 style="font-family: var(--zfc-display); font-size: 1.25rem; color: var(--zfc-pitch); margin: 0 0 0.25rem;">
+              Termly Parent-Coach Review Meetings
+            </h5>
+            <p style="font-size: 0.88rem; color: var(--zfc-muted); margin: 0;">
+              Every term concludes with a 1-on-1 meeting with Head Coach David Wale Oladunni to review the report card, highlight one core strength, and set one goal for next term.
+            </p>
+          </div>
+          <span style="font-family: var(--zfc-display); font-size: 1.2rem; color: var(--zfc-gold); font-weight: 800; text-transform: uppercase;">
+            Progress Over Perfection
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 15: SAFEGUARDING AND PLAYER SAFETY -->
+  <section class="zfc-section" style="background: var(--zfc-bg); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head">
+        <span class="zfc-eyebrow">Child Protection & Well-being</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Safeguarding & Player Safety</h2>
+        <p class="zfc-lead">
+          We operate under uncompromising child protection and health protocols aligned with POCSO guidelines and school safeguarding policies.
+        </p>
+      </div>
+
+      <div class="zfc-safety-grid">
+        <div class="zfc-safety-card">
+          <div class="zfc-safety-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h4>Police-Verified Staff</h4>
+          <p>
+            Every coach and staff member holds licensed credentials and has undergone mandatory police background verification prior to coaching children.
+          </p>
+        </div>
+
+        <div class="zfc-safety-card">
+          <div class="zfc-safety-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h4>Certified First Aid & CPR</h4>
+          <p>
+            A first-aid trained coach and full emergency trauma medical kit is stationed on the pitch at every training session and competitive fixture.
+          </p>
+        </div>
+
+        <div class="zfc-safety-card">
+          <div class="zfc-safety-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h4>20-Minute Hydration Breaks</h4>
+          <p>
+            Training is dynamically adjusted for Bengaluru heat and air quality. Mandatory shaded hydration intervals are strictly enforced every 20 minutes.
+          </p>
+        </div>
+
+        <div class="zfc-safety-card">
+          <div class="zfc-safety-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          </div>
+          <h4>Sign-In & Sign-Out Register</h4>
+          <p>
+            Every student is signed in on arrival and signed out upon departure. No child is released without authorized parent or guardian pickup.
+          </p>
+        </div>
+
+        <div class="zfc-safety-card">
+          <div class="zfc-safety-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </div>
+          <h4>POCSO Compliance</h4>
+          <p>
+            Strict adherence to the Protection of Children from Sexual Offences (POCSO) Act. Two-deep supervision ensures coaches are never alone out of sight.
+          </p>
+        </div>
+
+        <div class="zfc-safety-card">
+          <div class="zfc-safety-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h4>Incident Logging & Insurance</h4>
+          <p>
+            Comprehensive incident logging with parents informed immediately. Public liability insurance cover active for all academy sessions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 16: FREE TRIAL REGISTRATION FORM -->
+  <section id="trial-section" class="zfc-wrap" style="padding-top: 1rem; padding-bottom: 1rem;">
+    <div class="zfc-trial-section">
+      <div class="zfc-trial-form-wrapper">
+        <div style="text-align: center;">
+          <span class="zfc-eyebrow" style="color: var(--zfc-gold-bright);">Experience Zion FC</span>
+          <h2 class="zfc-h2" style="color: #ffffff; margin-bottom: 0.5rem;">Book a Free Trial Week</h2>
+          <p style="color: rgba(255, 255, 255, 0.88); font-size: 1.05rem; max-width: 58ch; margin: 0 auto;">
+            Bring your child for a full week of training at zero cost. Meet our licensed coaches, experience the Barça/Ajax curriculum, and discover if Zion FC is the right fit.
+          </p>
+        </div>
+
+        <form id="zfcTrialForm" onsubmit="submitFootballTrial(event)" class="zfc-trial-form">
+          <div class="zfc-form-grid two-col">
+            <div class="zfc-form-group">
+              <label for="zfcParentName">Parent / Guardian Name *</label>
+              <input type="text" id="zfcParentName" required placeholder="e.g. Ramesh Kumar" class="zfc-input" />
+            </div>
+
+            <div class="zfc-form-group">
+              <label for="zfcParentPhone">Phone Number / WhatsApp *</label>
+              <input type="tel" id="zfcParentPhone" required placeholder="+91 90357 72512" class="zfc-input" />
+            </div>
+          </div>
+
+          <div class="zfc-form-grid two-col" style="margin-top: 1.25rem;">
+            <div class="zfc-form-group">
+              <label for="zfcParentEmail">Email Address</label>
+              <input type="email" id="zfcParentEmail" placeholder="parent@example.com" class="zfc-input" />
+            </div>
+
+            <div class="zfc-form-group">
+              <label for="zfcChildName">Child's Full Name *</label>
+              <input type="text" id="zfcChildName" required placeholder="e.g. Aarav Kumar" class="zfc-input" />
+            </div>
+          </div>
+
+          <div class="zfc-form-grid two-col" style="margin-top: 1.25rem;">
+            <div class="zfc-form-group">
+              <label for="zfcChildAge">Child's Age (6 to 17) *</label>
+              <input type="number" id="zfcChildAge" min="6" max="17" required placeholder="e.g. 9" class="zfc-input" />
+            </div>
+
+            <div class="zfc-form-group">
+              <label for="zfcSchoolName">School Attending</label>
+              <input type="text" id="zfcSchoolName" placeholder="e.g. Carmel Academy, Bangalore" class="zfc-input" />
+            </div>
+          </div>
+
+          <div class="zfc-form-grid two-col" style="margin-top: 1.25rem;">
+            <div class="zfc-form-group">
+              <label for="zfcExperience">Playing Experience *</label>
+              <select id="zfcExperience" class="zfc-select">
+                <option value="Beginner (First time structured coaching)">Beginner (First time structured coaching)</option>
+                <option value="School Player (Plays for school or colony)">School Player (Plays for school or colony)</option>
+                <option value="Club / Academy Player (Previous academy training)">Club / Academy Player (Previous academy training)</option>
+                <option value="Advanced Competitive">Advanced Competitive</option>
+              </select>
+            </div>
+
+            <div class="zfc-form-group">
+              <label for="zfcPreferredGroup">Preferred Age Phase *</label>
+              <select id="zfcPreferredGroup" class="zfc-select">
+                <option value="Foundation (Ages 6-8)">Foundation Phase (Ages 6–8)</option>
+                <option value="Development (Ages 9-11)" selected>Development Phase (Ages 9–11)</option>
+                <option value="Youth (Ages 12-14)">Youth Phase (Ages 12–14)</option>
+                <option value="Performance (Ages 15-17)">Performance Phase (Ages 15–17)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; color: rgba(255, 255, 255, 0.95); font-size: 0.9rem;">
+              <input type="checkbox" id="zfcGoalkeeper" style="width: 18px; height: 18px; accent-color: var(--zfc-gold);" />
+              <span>My child is specifically interested in <strong>Goalkeeper Training</strong></span>
+            </label>
+          </div>
+
+          <div class="zfc-form-group" style="margin-top: 1.25rem;">
+            <label for="zfcNotes">Medical Conditions or Specific Notes</label>
+            <textarea id="zfcNotes" rows="2" placeholder="Any allergies, previous injuries, or schedule preferences..." class="zfc-textarea"></textarea>
+          </div>
+
+          <div id="zfcFormMsg" class="zfc-form-msg"></div>
+
+          <div style="margin-top: 1.75rem; text-align: center;">
+            <button type="submit" id="zfcSubmitBtn" class="zfc-btn zfc-btn-gold" style="font-size: 1.05rem; padding: 1rem 2.5rem; width: 100%; max-width: 420px;">
+              Confirm Free Trial Booking
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+            <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); margin-top: 0.75rem;">
+              No payment details required. Our coaches will call you to confirm your child's batch slot and training pitch arrival time.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 17: CONTACT INFORMATION & HELPLINES -->
+  <section class="zfc-section" style="background: var(--zfc-surface); border-bottom: 1px solid var(--zfc-line);">
+    <div class="zfc-wrap">
+      <div class="zfc-section-head center">
+        <span class="zfc-eyebrow">Connect with Coaches</span>
+        <h2 class="zfc-h2" style="color: var(--zfc-pitch);">Academy Ground & Helplines</h2>
+        <p class="zfc-lead">
+          Have questions about registrations, ground timings, school partnership options, or trial slots? Reach our coaching and foundation directors directly.
+        </p>
+      </div>
+
+      <div class="zfc-contact-grid">
+        <!-- Ground Location -->
+        <div class="zfc-contact-card">
+          <div class="zfc-contact-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h4>Academy Pitch Ground</h4>
+          <p>
+            <strong>Zion FC Training Grounds & Partner Schools</strong><br />
+            Electronic City Phase 1, S. Bingipura,<br />
+            Bengaluru, Karnataka 560105
+          </p>
+          <span class="zfc-pill-badge" style="background: #eef5f1; color: var(--zfc-pitch); border-color: var(--zfc-line);">
+            Bengaluru Hub
+          </span>
+        </div>
+
+        <!-- Phone / WhatsApp -->
+        <div class="zfc-contact-card">
+          <div class="zfc-contact-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <h4>Phone & WhatsApp</h4>
+          <p>
+            Primary: <strong>+91 90357 72512</strong><br />
+            Helpline: <strong>+91 91135 56781</strong><br />
+            Desk: <strong>+91 81236 77210</strong>
+          </p>
+          <button type="button" class="zfc-copy-btn" onclick="copyContactText('+919035772512', this)">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            <span>Copy Number</span>
+          </button>
+        </div>
+
+        <!-- Email & Social -->
+        <div class="zfc-contact-card">
+          <div class="zfc-contact-icon">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h4>Official Email & Social</h4>
+          <p>
+            <strong>connect@trustzionfnd.org</strong><br />
+            <strong>zionfoundation@gmail.com</strong><br />
+            Instagram: <strong>@zion.academyblr</strong>
+          </p>
+          <button type="button" class="zfc-copy-btn" onclick="copyContactText('connect@trustzionfnd.org', this)">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            <span>Copy Email</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Foundation Affiliation Declaration -->
+      <div style="margin-top: 3rem; text-align: center; border-top: 1px solid var(--zfc-line); padding-top: 2rem;">
+        <p style="font-size: 0.85rem; color: var(--zfc-muted); max-width: 70ch; margin: 0 auto;">
+          Zion FC Academy is an official programme of <strong>Zion Foundation</strong> (Trust Reg. No. 198/2026-27). All donations, scholarship endowments, and youth sponsorship funds are managed under the registered charitable oversight of Zion Foundation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
 
       <!-- ==========================================================================
            THE COMPASSION JOURNAL - Zion Loyals Editorial Experience
@@ -1964,7 +3522,8 @@
               <div class="editorial-grid-layout-b">
                 <div class="layout-b-card" onclick="openLoyalsLightbox(6)">
                   <div class="card-img-container">
-                    <img src="assets/images/loyals/06-street-feeding.jpg" alt="Community Pack Feeding Drive" loading="lazy" style="object-position: center bottom;" />
+                    <img src="assets/images/loyals/06-street-feeding.jpg" alt="Community Pack Feeding Drive"
+                      loading="lazy" style="object-position: center bottom;" />
                   </div>
                   <div class="editorial-card-info">
                     <span class="journal-tag">Plate 07 • Community Feeding</span>
@@ -1988,12 +3547,14 @@
 
                 <div class="layout-b-card" onclick="openLoyalsLightbox(7)">
                   <div class="card-img-container">
-                    <img src="assets/images/dog-feeding.jpg" alt="Neighborhood Street Pack Feeding" loading="lazy" style="object-position: center;" />
+                    <img src="assets/images/dog-feeding.jpg" alt="Neighborhood Street Pack Feeding" loading="lazy"
+                      style="object-position: center;" />
                   </div>
                   <div class="editorial-card-info">
                     <span class="journal-tag">Plate 08 • Street Pack Care</span>
                     <h4 class="card-headline">Building Trust & Affection</h4>
-                    <p class="card-detail">Field volunteer sharing moments of tenderness and wholesome meals with community street animals on afternoon feeding rounds.</p>
+                    <p class="card-detail">Field volunteer sharing moments of tenderness and wholesome meals with
+                      community street animals on afternoon feeding rounds.</p>
                   </div>
                 </div>
               </div>
@@ -2101,10 +3662,11 @@
         </div>
       </div>
 
+      <div id="genericProgramExtras">
       <!-- Core Strategic Pillars Section -->
       <section class="py-20 sm:py-28 bg-secondary/35 border-t border-border">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
-          <div class="max-w-2xl mb-12">
+          <div class="max-w-2xl mb-12 scroll-reveal reveal-slide-up">
             <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Core Focus Areas</span>
             <h2 id="pillarsHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600">
               Strategic Pillars & Operational Focus
@@ -2114,7 +3676,7 @@
             </p>
           </div>
 
-          <div id="pillarsGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div id="pillarsGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children scroll-reveal">
             <!-- Dynamic Pillars injected via JS -->
           </div>
         </div>
@@ -2123,7 +3685,7 @@
       <!-- Operational Roadmap / Systematic Methodology Section -->
       <section class="py-20 sm:py-28 border-t border-border bg-card">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
-          <div class="max-w-2xl mb-12">
+          <div class="max-w-2xl mb-12 scroll-reveal reveal-slide-up">
             <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Systematic Methodology</span>
             <h2 id="roadmapHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600">
               How This Domain Delivers Outcomes
@@ -2133,7 +3695,7 @@
             </p>
           </div>
 
-          <div id="roadmapGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div id="roadmapGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children scroll-reveal">
             <!-- Dynamic Roadmap Steps injected via JS -->
           </div>
         </div>
@@ -2142,7 +3704,7 @@
       <!-- Domain FAQs Section -->
       <section class="py-20 sm:py-28 bg-secondary/25 border-t border-border">
         <div class="mx-auto max-w-[68rem] px-5 sm:px-8">
-          <div class="text-center max-w-2xl mx-auto mb-12">
+          <div class="text-center max-w-2xl mx-auto mb-12 scroll-reveal reveal-slide-up">
             <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Clear Answers</span>
             <h2 id="faqHeading" class="mt-2 font-display text-3xl sm:text-4xl font-600">
               Frequently Asked Questions
@@ -2152,7 +3714,7 @@
             </p>
           </div>
 
-          <div id="faqGrid" class="space-y-4">
+          <div id="faqGrid" class="space-y-4 scroll-reveal reveal-slide-up">
             <!-- Dynamic FAQs injected via JS -->
           </div>
         </div>
@@ -2161,13 +3723,13 @@
       <!-- Upcoming Volunteer Opportunities for this Program -->
       <section class="py-20 sm:py-28 bg-card border-t border-border">
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
-          <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-10 scroll-reveal reveal-slide-up">
             <div>
               <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Get Hands-On</span>
               <h2 class="mt-2 font-display text-3xl sm:text-4xl font-600">Upcoming Shifts & Activities</h2>
             </div>
             <a href="index.html#volunteer"
-              class="inline-flex items-center gap-1.5 text-sm font-600 text-primary hover:text-accent transition">
+              class="btn-motion inline-flex items-center gap-1.5 text-sm font-600 text-primary hover:text-accent transition">
               View All Opportunities <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2">
                 <path d="m9 18 6-6-6-6"></path>
@@ -2175,23 +3737,28 @@
             </a>
           </div>
 
-          <div class="grid md:grid-cols-2 gap-6" id="shiftsGrid">
+          <div class="grid md:grid-cols-2 gap-6 stagger-children scroll-reveal" id="shiftsGrid">
             <!-- Shifts injected via JS -->
           </div>
         </div>
       </section>
 
+      </div>
+
       <!-- Other Verticals Carousel / Links -->
-      <section class="py-20 bg-background border-t border-border">
+      <section class="py-12 sm:py-16 bg-background border-t border-border">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
-          <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <h3 class="font-display text-2xl sm:text-3xl font-600 text-[#24133B] dark:text-foreground">Explore Other
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-6 scroll-reveal reveal-slide-up">
+            <h3 class="font-display text-xl sm:text-2xl font-600 text-[#24133B] dark:text-foreground">Explore Other
               Verticals</h3>
-            <a href="index.html#programs" class="text-sm font-600 text-accent hover:underline">View All Six Verticals
+            <a href="index.html#programs" class="text-xs sm:text-sm font-600 text-accent hover:underline">View All Six
+              Verticals
               →</a>
           </div>
 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="otherProgramsGrid">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 stagger-children scroll-reveal"
+            id="otherProgramsGrid">
             <!-- Other 5 verticals injected dynamically -->
           </div>
         </div>
@@ -2200,20 +3767,20 @@
       <!-- Footer -->
       <footer class="bg-primary text-primary-foreground">
         <div class="mx-auto max-w-[90rem] px-5 sm:px-8 py-16">
-          <div class="grid md:grid-cols-4 gap-10">
+          <div class="grid md:grid-cols-4 gap-10 stagger-children scroll-reveal">
             <div class="md:col-span-2 max-w-sm">
-              <div class="flex items-center gap-2.5">
-                <span class="grid place-items-center h-11 w-11 rounded-xl overflow-hidden bg-white">
-                  <img src="assets/images/logo.jpg" alt="Zion Foundation logo" class="h-full w-full object-cover" />
+              <div class="flex items-center gap-3">
+                <span class="grid place-items-center h-12 w-12 rounded-xl bg-white shadow-md p-1 shrink-0">
+                  <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
                 </span>
-                <span class="font-display text-lg font-600">Zion Foundation</span>
+                <span class="font-display text-xl font-600">Zion Foundation</span>
               </div>
               <p class="mt-4 text-primary-foreground/70 leading-relaxed">
                 A charity, faith, and community organization serving families with compassion, education, and hope
                 since 2001.
               </p>
               <button onclick="scrollToDonation()"
-                class="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
+                class="btn-motion btn-primary-motion btn-arrow-motion mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path
@@ -2222,23 +3789,64 @@
                 </svg>
                 Donate to this Program
               </button>
+
+              <!-- Social Links -->
+              <div class="mt-6 flex items-center gap-2.5">
+                <a href="#" aria-label="Facebook"
+                  class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z">
+                    </path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="Instagram"
+                  class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                    </path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="YouTube" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
+                    </path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn"
+                  class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                    </path>
+                  </svg>
+                </a>
+              </div>
             </div>
 
             <div>
               <p class="font-600 mb-4">Explore</p>
               <ul class="space-y-2.5">
-                <li><a href="index.html#about" class="text-primary-foreground/70 hover:text-accent transition">About</a>
+                <li><a href="index.html#about"
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">About</a>
                 </li>
                 <li><a href="index.html#programs"
-                    class="text-primary-foreground/70 hover:text-accent transition">Programs</a></li>
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Programs</a>
+                </li>
                 <li><a href="index.html#events"
-                    class="text-primary-foreground/70 hover:text-accent transition">Events</a></li>
-                <li><a href="index.html#news" class="text-primary-foreground/70 hover:text-accent transition">News</a>
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Events</a>
+                </li>
+                <li><a href="index.html#news"
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">News</a>
                 </li>
                 <li><a href="index.html#volunteer"
-                    class="text-primary-foreground/70 hover:text-accent transition">Volunteer</a></li>
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Volunteer</a>
+                </li>
                 <li><a href="index.html#contact"
-                    class="text-primary-foreground/70 hover:text-accent transition">Contact</a></li>
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Contact</a>
+                </li>
               </ul>
             </div>
 
@@ -2247,7 +3855,8 @@
               <ul class="space-y-2.5 text-primary-foreground/70">
                 <li>1204 Zion Avenue</li>
                 <li>(404) 555-0142</li>
-                <li><a href="mailto:hello@zionfoundation.org" class="hover:underline">hello@zionfoundation.org</a>
+                <li><a href="mailto:hello@zionfoundation.org"
+                    class="footer-link-underline hover:underline">hello@zionfoundation.org</a>
                 </li>
               </ul>
             </div>
@@ -2448,23 +4057,24 @@
       },
       'zion-academy': {
         id: 'zion-academy',
-        title: 'Zion Academy',
+        title: 'Zion FC Academy',
         status: 'Active',
-        category: 'Sports & Youth Football Coaching',
-        shortDesc: 'Free football coaching for children with talent but not the means.',
-        heroImg: 'assets/images/kids.png',
+        category: 'Youth Football Academy & Club',
+        shortDesc: 'Building Champions, One Kick at a Time. Professional youth coaching, structured training, competitive opportunities and a clear pathway from grassroots football to professional aspirations.',
+        heroImg: 'assets/football/logo/crest.png',
         hasFoodDonation: false,
         currency: 'INR',
         currencySymbol: '₹',
-        raised: '₹95,000',
-        goal: '₹1,80,000',
-        percent: '53%',
-        percentNum: 53,
-        donors: '210',
+        raised: '₹1,95,000',
+        goal: '₹3,50,000',
+        percent: '56%',
+        percentNum: 56,
+        donors: '184',
         tiers: [
-          { amount: 600, title: 'Youth Football & Gear Kit', desc: 'Provides durable studs, shin guards, moisture-wicking training jersey, socks, and a match ball for one athlete.', popular: false },
-          { amount: 1500, title: 'Month of Grassroots Coaching', desc: 'Covers 4 weeks of structured coaching with licensed instructors, artificial turf fees, and sports nutrition.', popular: true },
-          { amount: 4000, title: 'Tournament Team Sponsorship', desc: 'Funds district tournament registration, team jersey sets, travel allowances, and injury medical care for district cups.', popular: false }
+          { amount: 1500, title: 'Foundation Phase (Ages 6–8)', desc: 'Monthly tuition for grassroots ball familiarity, 4v4/5v5 fun challenges, agility, and balance (2 sessions/week).', popular: false },
+          { amount: 2000, title: 'Development Phase (Ages 9–11)', desc: 'Monthly tuition covering both-feet ball mastery, receiving under pressure, 7v7 matches, and TIPS reports (3 sessions/week).', popular: true },
+          { amount: 2500, title: 'Youth Phase (Ages 12–14)', desc: 'Monthly tuition covering positional tactics, 11v11 match formats, and FIFA 11+ conditioning (3 sessions/week + matches).', popular: false },
+          { amount: 2800, title: 'Performance Phase (Ages 15–17)', desc: 'Monthly tuition for advanced tactics, high-tempo match play, video analysis, and BDFA/ISL trials preparation.', popular: false }
         ],
         overviewHeading: 'Unlocking raw athletic potential, self-discipline, and life ambition on the football pitch.',
         overviewParas: [
@@ -2853,22 +4463,58 @@
       document.getElementById('progHeroImg').src = currentProg.heroImg;
       document.getElementById('detailImg').src = currentProg.heroImg;
 
-      // Show Zion Loyals Editorial Experience ONLY when inside Zion Loyals vertical
+      // Toggle between Bespoke Experiences (Football Academy vs Zion Loyals vs Generic Verticals)
+      const footballExp = document.getElementById('zionAcademyFootballExperience');
       const loyalsJournal = document.getElementById('zionLoyalsEditorialJournal');
-      if (loyalsJournal) {
-        if (currentProgId === 'zion-loyals') {
+      const genericHero = document.getElementById('genericProgramHero');
+      const genericDetails = document.getElementById('genericProgramDetails');
+      const genericExtras = document.getElementById('genericProgramExtras');
+
+      if (currentProgId === 'zion-academy') {
+        if (footballExp) footballExp.style.display = 'block';
+        if (loyalsJournal) loyalsJournal.style.display = 'none';
+        if (genericHero) genericHero.style.display = 'none';
+        if (genericDetails) genericDetails.style.display = 'none';
+        if (genericExtras) genericExtras.style.display = 'none';
+      } else if (currentProgId === 'zion-loyals') {
+        if (footballExp) footballExp.style.display = 'none';
+        if (genericHero) genericHero.style.display = 'block';
+        if (genericDetails) genericDetails.style.display = 'block';
+        if (genericExtras) genericExtras.style.display = 'block';
+        if (loyalsJournal) {
           loyalsJournal.style.display = 'block';
           initLoyalsMultiSliderGallery();
-        } else {
-          loyalsJournal.style.display = 'none';
         }
+      } else {
+        if (footballExp) footballExp.style.display = 'none';
+        if (loyalsJournal) loyalsJournal.style.display = 'none';
+        if (genericHero) genericHero.style.display = 'block';
+        if (genericDetails) genericDetails.style.display = 'block';
+        if (genericExtras) genericExtras.style.display = 'block';
       }
 
-      document.getElementById('progRaised').textContent = currentProg.raised;
-      document.getElementById('progGoal').textContent = currentProg.goal;
-      document.getElementById('progPercent').textContent = currentProg.percent;
-      document.getElementById('progBarFill').style.width = currentProg.percent;
-      document.getElementById('progDonors').textContent = currentProg.donors;
+      const raisedEl = document.getElementById('progRaised');
+      const goalEl = document.getElementById('progGoal');
+      const percentEl = document.getElementById('progPercent');
+      const donorsEl = document.getElementById('progDonors');
+      const barFill = document.getElementById('progBarFill');
+
+      raisedEl.textContent = currentProg.raised;
+      raisedEl.setAttribute('data-counter-target', currentProg.raised);
+      raisedEl.removeAttribute('data-has-animated');
+
+      goalEl.textContent = currentProg.goal;
+
+      percentEl.textContent = currentProg.percent;
+      percentEl.setAttribute('data-counter-target', currentProg.percent);
+      percentEl.removeAttribute('data-has-animated');
+
+      barFill.style.width = currentProg.percent;
+      barFill.setAttribute('data-target-width', currentProg.percent);
+
+      donorsEl.textContent = currentProg.donors;
+      donorsEl.setAttribute('data-counter-target', currentProg.donors);
+      donorsEl.removeAttribute('data-has-animated');
 
       document.getElementById('donateTargetName').textContent = currentProg.title;
       document.getElementById('modalProgramTarget').textContent = currentProg.title;
@@ -2925,9 +4571,9 @@
       metricsContainer.innerHTML = '';
       currentProg.metrics.forEach(m => {
         const mDiv = document.createElement('div');
-        mDiv.className = 'rounded-xl bg-secondary p-4';
+        mDiv.className = 'rounded-xl bg-secondary p-4 hover:-translate-y-1 hover:shadow-md transition-all';
         mDiv.innerHTML = `
-          <p class="font-display text-2xl font-600 text-accent">${m.val}</p>
+          <p class="stat-counter-animate font-display text-2xl font-600 text-accent" data-counter-target="${m.val}">${m.val}</p>
           <p class="text-xs text-muted-foreground mt-0.5 font-medium">${m.lbl}</p>
         `;
         metricsContainer.appendChild(mDiv);
@@ -2943,7 +4589,7 @@
         pillarsContainer.innerHTML = '';
         currentProg.pillars.forEach((p, idx) => {
           const card = document.createElement('div');
-          card.className = 'rounded-3xl bg-card border border-border/80 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between';
+          card.className = 'pillar-card rounded-3xl bg-card border border-border/80 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between';
           card.innerHTML = `
             <div>
               <div class="flex items-center justify-between mb-5">
@@ -2966,7 +4612,7 @@
         roadmapContainer.innerHTML = '';
         currentProg.roadmap.forEach((r, idx) => {
           const stepCard = document.createElement('div');
-          stepCard.className = 'rounded-3xl bg-secondary/50 border border-border p-6 sm:p-7 shadow-sm hover:shadow-md transition-all flex flex-col justify-between';
+          stepCard.className = 'phase-card rounded-3xl bg-secondary/50 border border-border p-6 sm:p-7 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between';
           stepCard.innerHTML = `
             <div>
               <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-primary text-primary-foreground mb-4">
@@ -3008,14 +4654,14 @@
       shiftsContainer.innerHTML = '';
       currentProg.shifts.forEach(s => {
         const sCard = document.createElement('div');
-        sCard.className = 'rounded-2xl bg-card border border-border p-6 shadow-sm';
+        sCard.className = 'shift-card rounded-2xl bg-card border border-border p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300';
         sCard.innerHTML = `
           <span class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">${currentProg.category}</span>
           <h4 class="mt-2 font-display text-xl font-600">${s.title}</h4>
           <p class="mt-1 text-sm font-semibold text-primary">${s.time}</p>
           <p class="text-xs text-muted-foreground">${s.place}</p>
           <p class="mt-3 text-sm text-muted-foreground leading-relaxed">${s.desc}</p>
-          <a href="index.html#volunteer" class="mt-4 inline-flex items-center gap-1.5 text-sm font-600 text-accent hover:underline">
+          <a href="index.html#volunteer" class="btn-motion mt-4 inline-flex items-center gap-1.5 text-sm font-600 text-accent hover:underline">
             Register for this shift →
           </a>
         `;
@@ -3030,31 +4676,31 @@
           const op = PROGRAMS_DATA[k];
           let badgeHtml = '';
           if (op.status === 'Active') {
-            badgeHtml = '<span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide bg-[#24133B] text-white shadow-sm">Active</span>';
+            badgeHtml = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.68rem] font-semibold tracking-wide bg-[#24133B] text-white shadow-sm">Active</span>';
           } else if (op.status === 'Starting') {
-            badgeHtml = '<span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide bg-[#DF4C76] text-white shadow-sm">Starting</span>';
+            badgeHtml = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.68rem] font-semibold tracking-wide bg-[#DF4C76] text-white shadow-sm">Starting</span>';
           } else {
-            badgeHtml = '<span class="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide border-2 border-dashed border-[#8E7C9E] text-[#635175] dark:text-[#C5B5D3] bg-transparent">Coming soon</span>';
+            badgeHtml = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.68rem] font-semibold tracking-wide border border-dashed border-[#8E7C9E] text-[#635175] dark:text-[#C5B5D3] bg-transparent">Coming soon</span>';
           }
 
           const opDiv = document.createElement('a');
           opDiv.href = `program.html?id=${op.id}`;
-          opDiv.className = 'group rounded-3xl bg-card border border-border/80 p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between block cursor-pointer';
+          opDiv.className = 'other-prog-card group rounded-2xl bg-card border border-border/80 p-3.5 sm:p-4 shadow-sm hover:shadow-lg hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between block cursor-pointer';
           opDiv.innerHTML = `
             <div>
-              <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-4 bg-secondary">
+              <div class="relative w-full h-36 sm:h-40 rounded-xl overflow-hidden mb-3 bg-secondary">
                 <img src="${op.heroImg}" alt="${op.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <div class="absolute top-2.5 left-2.5">${badgeHtml}</div>
+                <div class="absolute top-2 left-2">${badgeHtml}</div>
               </div>
-              <h4 class="font-display text-xl font-bold text-[#24133B] dark:text-foreground mb-1.5 group-hover:text-primary transition-colors">
+              <h4 class="font-display text-base sm:text-lg font-bold text-[#24133B] dark:text-foreground mb-1 group-hover:text-primary transition-colors">
                 ${op.title}
               </h4>
-              <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p class="text-xs text-muted-foreground leading-snug line-clamp-2">
                 ${op.shortDesc}
               </p>
             </div>
-            <div class="mt-6 pt-3 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+            <div class="mt-3 pt-2.5 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
               <span>Explore Vertical</span>
               <span class="group-hover:translate-x-1 transition-transform">→</span>
             </div>
@@ -3062,6 +4708,10 @@
           otherContainer.appendChild(opDiv);
         }
       });
+
+      if (window.reinitVerticalAnimations) {
+        window.reinitVerticalAnimations();
+      }
     }
 
     // Switch between Food Donation and Monetary Donation (Zion Loyals)
@@ -3293,7 +4943,7 @@
             currency: orderData.currency || currencyCode,
             name: "Zion Foundation",
             description: `${currentProg.title} Donation`,
-            image: "assets/images/logo.jpg",
+            image: "assets/images/logo.png",
             order_id: orderId.startsWith('order_test_') ? undefined : orderId,
             prefill: {
               name: donorName,
@@ -3457,29 +5107,11 @@
             sub: 'Rescued puppy in post-trauma recovery',
             desc: 'Rescued street puppy fitted with protective Elizabethan collar and pink orthopedic limb cast following accidental trauma.'
           },
-          feeding: {
-            title: 'Activities & Engagements: Daily Street Pack Feeding',
-            categoryLabel: 'Street Feeding Drives',
-            items: [
-              {
-                src: 'assets/images/loyals/06-street-feeding.jpg',
-                title: 'Community Pack Feeding Drive',
-                sub: 'Freshly cooked rice & protein meal',
-                desc: 'Street dog pack enjoying freshly served cooked food drive in open community lot area.'
-              },
-              {
-                src: 'assets/images/dog-feeding.jpg',
-                title: 'Neighborhood Route Nourishment',
-                sub: 'Daily water bowls & wholesome meals',
-                desc: 'Field teams providing nutritious meals, broth, and clean drinking water to community dogs daily.'
-              },
-              {
-                src: 'assets/images/loyals/12-healthy-thriving.jpg',
-                title: 'Healthy, Restored & Thriving',
-                sub: 'Rescued street companion restored',
-                desc: 'Dedicated field volunteer serving meals, ensuring healthy thriving street dogs in our neighborhoods.'
-              }
-            ]
+          {
+            src: 'assets/images/loyals/02-cast-triage.jpg',
+            title: 'Critical Triage Examination',
+            sub: 'Clinical evaluation and stabilizing splint',
+            desc: 'Veterinary team carefully examining and stabilizing injured stray puppy prior to orthopedic surgery.'
           },
           {
             src: 'assets/images/loyals/03-xray-scan.jpg',
@@ -3570,7 +5202,7 @@
     };
 
     // Pre-populated full authentic photos collection
-    const allLoyalsPhotos = [];
+    let allLoyalsPhotos = [];
     Object.keys(loyalsCategoriesData).forEach(catKey => {
       const cat = loyalsCategoriesData[catKey];
       cat.items.forEach((item, localIdx) => {
@@ -3594,9 +5226,6 @@
 
       Object.keys(loyalsCategoriesData).forEach(catKey => {
         const cat = loyalsCategoriesData[catKey];
-        const track = document.getElementById(`track-${catKey}`);
-        if (!track) return;
-
         cat.items.forEach((item, localIdx) => {
           allLoyalsPhotos.push({
             ...item,
@@ -3606,7 +5235,10 @@
           });
         });
 
-        setupTrackDragAndAutoScroll(track);
+        const track = document.getElementById(`track-${catKey}`);
+        if (track) {
+          setupTrackDragAndAutoScroll(track);
+        }
       });
 
       window.addEventListener('keydown', handleLightboxKeyDown);
@@ -3674,6 +5306,7 @@
       });
 
       track.addEventListener('mouseenter', stopAuto);
+      track.addEventListener('mouseleave', startAuto);
 
       function startAuto() {
         if (autoScrollTimer) clearInterval(autoScrollTimer);
@@ -3706,6 +5339,21 @@
     }
 
     function openLoyalsLightbox(idx) {
+      if (!allLoyalsPhotos || allLoyalsPhotos.length === 0) {
+        allLoyalsPhotos = [];
+        Object.keys(loyalsCategoriesData).forEach(catKey => {
+          const cat = loyalsCategoriesData[catKey];
+          cat.items.forEach((item, localIdx) => {
+            allLoyalsPhotos.push({
+              ...item,
+              categoryLabel: cat.categoryLabel,
+              catKey: catKey,
+              localIdx: localIdx
+            });
+          });
+        });
+      }
+
       if (typeof idx === 'string') {
         const foundIdx = allLoyalsPhotos.findIndex(p => p.src.includes(idx) || idx.includes(p.src));
         idx = foundIdx !== -1 ? foundIdx : 0;
@@ -3732,6 +5380,25 @@
     }
 
     function updateLightboxContent() {
+      if (!allLoyalsPhotos || allLoyalsPhotos.length === 0) {
+        allLoyalsPhotos = [];
+        Object.keys(loyalsCategoriesData).forEach(catKey => {
+          const cat = loyalsCategoriesData[catKey];
+          cat.items.forEach((item, localIdx) => {
+            allLoyalsPhotos.push({
+              ...item,
+              categoryLabel: cat.categoryLabel,
+              catKey: catKey,
+              localIdx: localIdx
+            });
+          });
+        });
+      }
+
+      if (currentLightboxIdx < 0 || currentLightboxIdx >= allLoyalsPhotos.length) {
+        currentLightboxIdx = 0;
+      }
+
       const photo = allLoyalsPhotos[currentLightboxIdx];
       if (!photo) return;
 
@@ -3742,11 +5409,9 @@
       const counterEl = document.getElementById('lightboxCounter');
 
       if (imgEl) {
-        imgEl.style.opacity = '0';
         imgEl.src = photo.src;
         imgEl.alt = photo.title || 'Rescued animal in care';
-        imgEl.onload = () => { imgEl.style.opacity = '1'; };
-        setTimeout(() => { imgEl.style.opacity = '1'; }, 40);
+        imgEl.style.opacity = '1';
       }
 
       if (catEl) catEl.textContent = photo.categoryLabel;
@@ -3813,7 +5478,96 @@
 
     // Initial render
     renderProgramPage();
+
+    if (urlParams.get('preview') !== null) {
+      setTimeout(() => openLoyalsLightbox(parseInt(urlParams.get('preview')) || 0), 300);
+    }
+
+    // ==========================================================================
+    // ZION FC ACADEMY — FOOTBALL VERTICAL CLIENT INTERACTION LOGIC
+    // ==========================================================================
+    async function submitFootballTrial(e) {
+      e.preventDefault();
+      const parentName = document.getElementById('zfcParentName').value.trim();
+      const parentPhone = document.getElementById('zfcParentPhone').value.trim();
+      const parentEmail = document.getElementById('zfcParentEmail').value.trim();
+      const childName = document.getElementById('zfcChildName').value.trim();
+      const childAge = document.getElementById('zfcChildAge').value.trim();
+      const schoolName = document.getElementById('zfcSchoolName').value.trim();
+      const experience = document.getElementById('zfcExperience').value;
+      const preferredGroup = document.getElementById('zfcPreferredGroup').value;
+      const goalkeeper = document.getElementById('zfcGoalkeeper').checked;
+      const notes = document.getElementById('zfcNotes').value.trim();
+
+      const msgEl = document.getElementById('zfcFormMsg');
+      const btn = document.getElementById('zfcSubmitBtn');
+
+      if (!parentName || !parentPhone || !childName || !childAge) {
+        msgEl.className = 'zfc-form-msg error';
+        msgEl.textContent = 'Please fill out all required fields marked with *';
+        return;
+      }
+
+      btn.disabled = true;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Registering Trial...';
+
+      try {
+        const res = await fetch('/api/register-football-trial', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            parentName, parentPhone, parentEmail, childName, childAge, schoolName, experience, preferredGroup, goalkeeper, notes
+          })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msgEl.className = 'zfc-form-msg success';
+          msgEl.innerHTML = `<strong>Booking Confirmed! (Ref: ${data.trialId})</strong><br/>` +
+            `We have registered a free trial week for <strong>${data.childName}</strong> in <strong>${data.group}</strong>.<br/>` +
+            `Our coaching staff will contact you on <strong>${parentPhone}</strong> shortly to confirm batch timing and pitch details.`;
+          document.getElementById('zfcTrialForm').reset();
+        } else {
+          throw new Error(data.error || 'Server returned an error');
+        }
+      } catch (err) {
+        msgEl.className = 'zfc-form-msg error';
+        msgEl.textContent = 'Failed to submit registration: ' + err.message + '. Please call us at +91 90357 72512.';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }
+    }
+
+    function copyContactText(text, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showCopiedBadge(btn));
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showCopiedBadge(btn);
+      }
+    }
+
+    function showCopiedBadge(btn) {
+      const span = btn.querySelector('span');
+      if (span) {
+        const prev = span.textContent;
+        span.textContent = 'Copied!';
+        btn.style.borderColor = 'var(--zfc-gold)';
+        setTimeout(() => {
+          span.textContent = prev;
+          btn.style.borderColor = '';
+        }, 2000);
+      }
+    }
   </script>
+  <!-- Modern Animation System Controller -->
+  <script src="js/animations.js"></script>
 </body>
 
 </html>
