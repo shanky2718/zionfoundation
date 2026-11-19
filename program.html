@@ -9,6 +9,11 @@
   <title id="pageTitle">Program Details | Zion Foundation</title>
   <meta name="description" content="Explore programs and support community initiatives through Zion Foundation." />
 
+  <!-- Google Fonts: Poppins (Single Master Font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
   <!-- Exact Production Stylesheet -->
   <link rel="stylesheet" href="css/original.css" />
   <link rel="stylesheet" href="css/animations.css" />
@@ -17,6 +22,48 @@
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
   <style>
+    /* Primary Global Font: Poppins */
+    :root {
+      --font-sans: 'Poppins', sans-serif;
+      --font-display: 'Poppins', sans-serif;
+    }
+
+    *, html, body, button, input, select, textarea, [class*="font-"] {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 400;
+    }
+
+    h1, .h1 {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    h2, h3, h4, h5, h6, .h2, .h3, .h4 {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    p, span, li, label, input, textarea, select {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    nav a, nav button, .nav-btn, button, .btn-motion {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 500 !important;
+    }
+
+    .font-display {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    .font-sans {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -3776,8 +3823,7 @@
                 <span class="font-display text-xl font-600">Zion Foundation</span>
               </div>
               <p class="mt-4 text-primary-foreground/70 leading-relaxed">
-                A charity, faith, and community organization serving families with compassion, education, and hope
-                since 2001.
+                Compassion in action — turning concern into practical, life-changing support for one soul, one life, and one community at a time.
               </p>
               <button onclick="scrollToDonation()"
                 class="btn-motion btn-primary-motion btn-arrow-motion mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
@@ -3852,11 +3898,11 @@
 
             <div>
               <p class="font-600 mb-4">Contact</p>
-              <ul class="space-y-2.5 text-primary-foreground/70">
-                <li>1204 Zion Avenue</li>
-                <li>(404) 555-0142</li>
-                <li><a href="mailto:hello@zionfoundation.org"
-                    class="footer-link-underline hover:underline">hello@zionfoundation.org</a>
+              <ul class="space-y-2.5 text-primary-foreground/70 text-sm">
+                <li>Coliseo Atletico Sports Ventures, NICE Ring Road, Bengaluru</li>
+                <li>+91 81236 77210 | +91 90357 72512</li>
+                <li><a href="mailto:contact@trustzionfoundation.org"
+                    class="footer-link-underline hover:underline">contact@trustzionfoundation.org</a>
                 </li>
               </ul>
             </div>
@@ -3864,8 +3910,8 @@
 
           <div
             class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-primary-foreground/60">
-            <p>© <span id="yearVal">2026</span> Zion Foundation. A registered 501(c)(3) nonprofit.</p>
-            <p>Building Hope · Protecting Lives · Empowering Communities</p>
+            <p>© <span id="yearVal">2026</span> Trust Zion Foundation. All rights reserved.</p>
+            <p>Compassion in Action · One Soul at a Time</p>
           </div>
         </div>
       </footer>
@@ -4057,11 +4103,11 @@
       },
       'zion-academy': {
         id: 'zion-academy',
-        title: 'Zion FC Academy',
+        title: 'Zion Academy',
         status: 'Active',
-        category: 'Youth Football Academy & Club',
-        shortDesc: 'Building Champions, One Kick at a Time. Professional youth coaching, structured training, competitive opportunities and a clear pathway from grassroots football to professional aspirations.',
-        heroImg: 'assets/football/logo/crest.png',
+        category: 'Football, Fitness & Coaching',
+        shortDesc: 'Accessible football coaching, fitness and sports opportunities for talented children and young people.',
+        heroImg: 'assets/images/kids.png',
         hasFoodDonation: false,
         currency: 'INR',
         currencySymbol: '₹',
@@ -4202,10 +4248,10 @@
       },
       'zion-home': {
         id: 'zion-home',
-        title: 'Zion Home',
+        title: 'Zion Room',
         status: 'Coming soon',
-        category: 'Child Protection & Foster Care',
-        shortDesc: 'Foster support and protection for children who need care.',
+        category: 'Foster Care for Children',
+        shortDesc: 'A safe place and nurturing foster care that helps a child move forward.',
         heroImg: 'assets/images/hug.png',
         hasFoodDonation: false,
         currency: 'INR',
@@ -4685,24 +4731,24 @@
 
           const opDiv = document.createElement('a');
           opDiv.href = `program.html?id=${op.id}`;
-          opDiv.className = 'other-prog-card group rounded-2xl bg-card border border-border/80 p-3.5 sm:p-4 shadow-sm hover:shadow-lg hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between block cursor-pointer';
+          opDiv.className = 'other-prog-card group rounded-2xl bg-card border border-border/80 p-4 shadow-sm hover:shadow-lg hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between block cursor-pointer min-h-[22rem] h-full';
           opDiv.innerHTML = `
-            <div>
-              <div class="relative w-full h-36 sm:h-40 rounded-xl overflow-hidden mb-3 bg-secondary">
+            <div class="flex-1 flex flex-col">
+              <div class="relative w-full h-40 rounded-xl overflow-hidden mb-3 bg-secondary shrink-0">
                 <img src="${op.heroImg}" alt="${op.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <div class="absolute top-2 left-2">${badgeHtml}</div>
+                <div class="absolute top-2.5 left-2.5">${badgeHtml}</div>
               </div>
-              <h4 class="font-display text-base sm:text-lg font-bold text-[#24133B] dark:text-foreground mb-1 group-hover:text-primary transition-colors">
+              <h4 class="font-display text-base font-bold text-[#24133B] dark:text-foreground mb-1.5 group-hover:text-primary transition-colors leading-snug">
                 ${op.title}
               </h4>
-              <p class="text-xs text-muted-foreground leading-snug line-clamp-2">
+              <p class="text-xs text-muted-foreground leading-relaxed line-clamp-2 min-h-[2.5rem]">
                 ${op.shortDesc}
               </p>
             </div>
-            <div class="mt-3 pt-2.5 border-t border-border/50 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors">
+            <div class="mt-4 pt-3 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-primary group-hover:text-accent transition-colors shrink-0">
               <span>Explore Vertical</span>
-              <span class="group-hover:translate-x-1 transition-transform">→</span>
+              <span class="group-hover:translate-x-1 transition-transform font-bold">→</span>
             </div>
           `;
           otherContainer.appendChild(opDiv);

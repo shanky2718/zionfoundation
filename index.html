@@ -10,6 +10,11 @@
   <meta name="description"
     content="Zion Foundation serves families through compassion, education, and faith — meeting real needs and nurturing lasting change across our neighborhoods." />
 
+  <!-- Google Fonts: Poppins (Single Master Font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
   <!-- Exact Production Stylesheet -->
   <link rel="stylesheet" href="css/original.css" />
   <link rel="stylesheet" href="css/animations.css" />
@@ -19,6 +24,68 @@
 
   <!-- Interactive Enhancements Styles -->
   <style>
+    /* Primary Global Font: Poppins */
+    :root {
+      --font-sans: 'Poppins', sans-serif;
+      --font-display: 'Poppins', sans-serif;
+    }
+
+    *, html, body, button, input, select, textarea, [class*="font-"] {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 400;
+    }
+
+    h1, .h1 {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    h2, h3, h4, h5, h6, .h2, .h3, .h4 {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    p, span, li, label, input, textarea, select {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    nav a, nav button, .nav-btn, button, .btn-motion {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 500 !important;
+    }
+
+    .font-display {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    .font-sans {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    .vertical-card-title {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    .vertical-card-desc {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    .founder-name {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    .founder-role {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 500 !important;
+    }
+
     /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
@@ -235,9 +302,9 @@
     }
 
     .vertical-card-title {
-      font-family: 'Fraunces', serif !important;
+      font-family: 'Poppins', sans-serif !important;
       font-size: 1.4rem !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       color: #24133B !important;
       margin: 0 0 0.5rem 0 !important;
       line-height: 1.25 !important;
@@ -252,7 +319,7 @@
     }
 
     .vertical-card-desc {
-      font-family: 'Inter', sans-serif !important;
+      font-family: 'Poppins', sans-serif !important;
       font-size: 0.925rem !important;
       line-height: 1.55 !important;
       color: #5C605C !important;
@@ -459,7 +526,7 @@
                 <path d="M4 17v2"></path>
                 <path d="M5 18H3"></path>
               </svg>
-              Building Hope. Protecting Lives. Empowering Communities.
+              Zion Foundation &mdash; Compassion in Action &bull; One Soul at a Time
             </span>
 
             <h1
@@ -468,9 +535,12 @@
               time.
             </h1>
 
-            <p class="hero-stagger-desc mt-6 text-lg sm:text-xl text-primary-foreground/85 leading-relaxed max-w-xl">
-              Zion Foundation serves families through compassion, education, and faith — meeting real needs and
-              nurturing lasting change across our neighborhoods.
+            <p class="hero-stagger-desc mt-6 text-base sm:text-lg text-primary-foreground/90 leading-relaxed max-w-xl">
+              Every day, something moves us. We see a person in need, an animal in distress, a child who deserves an opportunity, or someone facing a difficult season. Many people care. Some wish they could do more. We believe compassion becomes meaningful when someone takes the first step.
+            </p>
+
+            <p class="mt-4 text-sm sm:text-base text-primary-foreground/80 leading-relaxed max-w-xl">
+              At Zion Foundation, we turn concern into action &mdash; one person, one child, one animal and one opportunity at a time. The help may be small. It may be only one step. But for the life it touches, it can make a real difference.
             </p>
 
             <div class="hero-stagger-cta mt-9 flex flex-wrap gap-4">
@@ -500,56 +570,233 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" class="py-24 sm:py-32">
-        <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
-          <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            <div class="relative scroll-reveal reveal-slide-left">
-              <div class="overflow-hidden rounded-2xl shadow-xl">
-                <img src="assets/images/mission-realistic.jpg"
-                  alt="A caring volunteer supporting an elder in the community"
-                  class="rounded-2xl w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-700" />
-              </div>
-              <div
-                class="absolute -bottom-6 -right-4 sm:-right-8 bg-card rounded-2xl shadow-lg border border-border p-5 max-w-[13rem] quote-card-float">
-                <svg class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                  </path>
-                  <path
-                    d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                  </path>
-                </svg>
-                <p class="mt-2 text-sm font-500 text-foreground leading-snug">"Whatever you did for the least of these,
-                  you did for me."</p>
-              </div>
+      <section id="about" class="py-16 sm:py-20 lg:py-24">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
+          
+          <!-- Top Story: Mission & Philosophy -->
+          <div class="max-w-4xl mx-auto scroll-reveal reveal-slide-up text-center">
+            <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#DF4C76]">About Zion Foundation</span>
+            <h2 class="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#24133B] leading-tight">
+              Compassion is more than a feeling. <span class="marker-underline">It is a decision to act.</span>
+            </h2>
+            
+            <div class="mt-5 space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed text-left sm:text-center max-w-3xl mx-auto">
+              <p>
+                People are moved by different things. A child who needs a chance. An animal abandoned or injured. A young person with talent but without access to coaching. A person living with disability who needs education, skills or a fair opportunity. Someone grieving, or someone struggling to find hope.
+              </p>
+              <p>
+                We may not be able to solve every problem, and we do not claim to do everything. But we can choose not to look away. We can take one practical step, connect with people who have the right expertise, and help make support possible.
+              </p>
+              <p class="font-medium text-foreground">
+                That is the heart of Zion Foundation: compassion put into action, one soul at a time.
+              </p>
             </div>
 
-            <div class="scroll-reveal reveal-slide-right">
-              <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Our Mission</span>
-              <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">
-                Rooted in faith, <span class="marker-underline">devoted to people.</span>
-              </h2>
-              <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-                For over two decades, Zion Foundation has walked alongside families in their hardest seasons. We believe
-                every person carries God-given dignity — and that lasting change grows from relationships, not handouts.
-              </p>
-              <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
-                From feeding programs and tutoring to housing support and worship gatherings, our work is holistic:
-                caring for the body, mind, and spirit of the whole community.
-              </p>
-              <div class="mt-8 grid grid-cols-2 gap-5 stagger-children scroll-reveal">
-                <div class="rounded-xl bg-secondary p-4 hover:-translate-y-1 hover:shadow-md transition-all">
-                  <p class="font-display text-lg font-600">Integrity</p>
-                  <p class="text-sm text-muted-foreground mt-1">Transparent stewardship of every gift</p>
-                </div>
-                <div class="rounded-xl bg-secondary p-4 hover:-translate-y-1 hover:shadow-md transition-all">
-                  <p class="font-display text-lg font-600">Compassion</p>
-                  <p class="text-sm text-muted-foreground mt-1">Meeting people where they are</p>
-                </div>
+            <!-- Vision & Mission Pillars -->
+            <div class="mt-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto stagger-children scroll-reveal">
+              <div class="rounded-xl bg-secondary/80 border border-border/60 p-4 hover:-translate-y-0.5 hover:shadow-md transition-all text-left">
+                <span class="text-[0.7rem] font-bold uppercase tracking-wider text-[#DF4C76]">Our Vision</span>
+                <p class="mt-0.5 text-sm sm:text-base font-semibold text-[#24133B]">A More Compassionate World</p>
+                <p class="mt-1 text-xs text-muted-foreground leading-relaxed">Changed one soul, one life, and one community at a time.</p>
+              </div>
+              <div class="rounded-xl bg-secondary/80 border border-border/60 p-4 hover:-translate-y-0.5 hover:shadow-md transition-all text-left">
+                <span class="text-[0.7rem] font-bold uppercase tracking-wider text-[#5B2C6F]">Our Mission</span>
+                <p class="mt-0.5 text-sm sm:text-base font-semibold text-[#24133B]">Practical Action</p>
+                <p class="mt-1 text-xs text-muted-foreground leading-relaxed">To turn deep compassion into tangible, life-changing support.</p>
               </div>
             </div>
           </div>
+
+          <!-- Dedicated Founders Section: Sized as Verticals (aspect-video 16:9), single horizontal row on desktop -->
+          <div class="mt-16 sm:mt-20 pt-12 sm:pt-14 border-t border-border/70 scroll-reveal reveal-slide-up">
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+              <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#DF4C76]">Founding Leadership</span>
+              <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#24133B]">
+                Meet Our Founders
+              </h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                United by a shared commitment to serve with dignity, integrity, and hands-on dedication across every community we touch.
+              </p>
+            </div>
+
+            <!-- Founders 3-Card Grid: Desktop 1 horizontal row, equal widths, heights, & 16:9 image aspect ratio -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+              
+              <!-- Founder 1: Veronica Solomon -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals, full face & smile completely framed -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/veronica-solomon.jpg"
+                      alt="Veronica Solomon - Co-Founder"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Veronica Solomon</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#DF4C76]/10 text-[#DF4C76]">
+                      Co-Founder & Compassionate Care Lead
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Directing foster welfare, family support, and compassionate community outreach for vulnerable individuals and children.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Founder 2: David Wale Oladunni -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/david-oladunni.jpg"
+                      alt="David Wale Oladunni - Co-Founder"
+                      style="object-position: center 15%;"
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">David Wale Oladunni</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#5B2C6F]/10 text-[#5B2C6F]">
+                      Co-Founder & Head Coach, Zion FC Academy
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Leading grassroots athletic development, youth football coaching, discipline, and competitive pathways for young players.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Founder 3: Sai Kiran -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/sai-kiran.jpg"
+                      alt="Sai Kiran - Co-Founder"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Sai Kiran</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#2563EB]/10 text-[#1D4ED8]">
+                      Co-Founder & Operations Lead
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Guiding community outreach logistics, foundation operations, and strategic partnerships to turn every initiative into practical impact.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Dedicated Interns Section: Sized as Verticals (aspect-video 16:9), 3-card horizontal grid -->
+          <div id="interns" class="mt-16 sm:mt-20 pt-12 sm:pt-14 border-t border-border/70 scroll-reveal reveal-slide-up">
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+              <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#2563EB]">Youth Leadership & Innovation</span>
+              <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#24133B]">
+                Meet Our Interns
+              </h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Empowered interns driving technological development, creative media production, and digital storytelling to uplift Zion Foundation initiatives.
+              </p>
+            </div>
+
+            <!-- Interns 3-Card Grid: Desktop 1 horizontal row, matching Founders layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+              
+              <!-- Intern 1: Shashank MV -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals, full face & head framed -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/shashank-mv.jpg"
+                      alt="Shashank MV - Web Developer"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Shashank MV</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#2563EB]/10 text-[#1D4ED8]">
+                      Web Developer
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Engineering digital platforms, interactive donor features, and modern web infrastructure powering Zion Foundation's online presence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Intern 2: Harshit Sai -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals, full face & head framed -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/harshit-sai.jpg"
+                      alt="Harshit Sai - Media Intern"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Harshit Sai</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#DF4C76]/10 text-[#DF4C76]">
+                      Media Intern
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Crafting visual narratives, creative multimedia campaigns, and digital assets that bring community stories and volunteer moments to life.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Intern 3: Sailesh -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals, full face & head framed -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/sailesh.jpg"
+                      alt="Sailesh - Media Intern"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Sailesh</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#7C3AED]/10 text-[#7C3AED]">
+                      Media Intern
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Capturing on-ground outreach initiatives, videography documentation, and dynamic social content highlighting real community impact.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Volunteers Showcase: Placed Directly Below Interns, Small & Reduced Image Sizing -->
+          <div class="mt-14 sm:mt-16 pt-10 sm:pt-12 border-t border-border/70 scroll-reveal reveal-slide-up">
+            <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden max-w-lg mx-auto flex flex-col items-center text-center">
+              <!-- Small, reduced photo container: compact aspect-video (16:9) -->
+              <div class="w-full aspect-video overflow-hidden bg-secondary relative max-h-[220px]">
+                <img src="assets/images/volunteers.jpg"
+                  alt="Zion Foundation community and volunteers together"
+                  class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 text-[0.7rem] font-medium rounded-full bg-white/95 text-[#DF4C76] shadow-xs">
+                  Community in Action
+                </span>
+              </div>
+              <div class="p-5 flex flex-col items-center">
+                <h4 class="text-lg font-semibold text-[#24133B] leading-snug">Our Volunteer Community</h4>
+                <p class="text-xs sm:text-sm text-muted-foreground mt-1.5 leading-relaxed max-w-sm">
+                  Dedicated volunteers walking alongside families, delivering nutritious meals, tutoring young learners, and bringing compassionate care to every doorstep.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -614,8 +861,7 @@
               <div class="vertical-card-content">
                 <div>
                   <h3 class="vertical-card-title">Zion Academy</h3>
-                  <p class="vertical-card-desc">Free football coaching, sports mentorship, and life skills development
-                    for talented children from underserved backgrounds.</p>
+                  <p class="vertical-card-desc">Free and accessible football coaching, sports mentorship, and opportunities for children and young people (Ages 10–18). Training at Coliseo Atletico Sports Ventures (NICE Ring Rd, Bengaluru) &bull; Mon/Wed 5:15 PM, Sat/Sun 4:00 PM &bull; Helplines: +91 81236 77210 | +91 90357 72512.</p>
                 </div>
                 <div class="vertical-card-actions">
                   <a href="program.html?id=zion-academy" class="btn-explore">
@@ -671,9 +917,8 @@
               </div>
               <div class="vertical-card-content">
                 <div>
-                  <h3 class="vertical-card-title">Zion Home</h3>
-                  <p class="vertical-card-desc">Foster support, safe temporary shelter, and enduring protection for
-                    vulnerable children and orphans who need care.</p>
+                  <h3 class="vertical-card-title">Zion Room</h3>
+                  <p class="vertical-card-desc">Zion Room is Zion Foundation’s foster-care initiative for children — providing a safe place, nurturing care, and child-centred protection that helps every child move forward.</p>
                 </div>
                 <div class="vertical-card-actions">
                   <a href="program.html?id=zion-home" class="btn-explore">
@@ -730,8 +975,7 @@
               <div class="vertical-card-content">
                 <div>
                   <h3 class="vertical-card-title">Zion Mind</h3>
-                  <p class="vertical-card-desc">Compassionate mental health counseling, crisis de-escalation, and a
-                    safe, confidential sanctuary to reach out for help.</p>
+                  <p class="vertical-card-desc">Compassionate mental-health support and a safe sanctuary to reach out. If in immediate danger, contact crisis support: Tele-MANAS (14416 / 1800-891-4416) | Kiran (1800-599-0019) | 112.</p>
                 </div>
                 <div class="vertical-card-actions">
                   <a href="program.html?id=zion-mind" class="btn-explore">
@@ -747,56 +991,6 @@
                   </a>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Impact Statistics Section -->
-      <section id="impact" class="py-20 sm:py-24 bg-white border-b border-border/80 relative overflow-hidden">
-        <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
-          <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14 scroll-reveal reveal-slide-up">
-            <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#DF4C76]">Proven Community
-              Impact</span>
-            <h2 class="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#24133B] tracking-tight">
-              Every number represents a life transformed.
-            </h2>
-            <p class="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Over two decades of consistent presence, direct relief, and sustainable neighborhood development across
-              our communities.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 stagger-children scroll-reveal">
-            <!-- Stat 1 -->
-            <div class="impact-stat-card">
-              <span
-                class="stat-counter-animate stat-number font-display text-4xl sm:text-5xl font-bold text-[#24133B] tracking-tight block" data-counter-target="14,200+">14,200+</span>
-              <p class="mt-3 text-base font-semibold text-[#24133B]">Families Served</p>
-              <p class="mt-1 text-sm text-muted-foreground">Emergency food parcels, relief supplies, and ongoing family
-                support.</p>
-            </div>
-            <!-- Stat 2 -->
-            <div class="impact-stat-card">
-              <span class="stat-counter-animate stat-number font-display text-4xl sm:text-5xl font-bold text-[#DF4C76] tracking-tight block" data-counter-target="86">86</span>
-              <p class="mt-3 text-base font-semibold text-[#24133B]">Active Programs</p>
-              <p class="mt-1 text-sm text-muted-foreground">Targeted initiatives spanning animal welfare, education, and
-                shelter.</p>
-            </div>
-            <!-- Stat 3 -->
-            <div class="impact-stat-card">
-              <span
-                class="stat-counter-animate stat-number font-display text-4xl sm:text-5xl font-bold text-[#244B3A] tracking-tight block" data-counter-target="1,900+">1,900+</span>
-              <p class="mt-3 text-base font-semibold text-[#24133B]">Dedicated Volunteers</p>
-              <p class="mt-1 text-sm text-muted-foreground">Passionate changemakers serving on weekly community routes.
-              </p>
-            </div>
-            <!-- Stat 4 -->
-            <div class="impact-stat-card">
-              <span class="stat-counter-animate stat-number font-display text-4xl sm:text-5xl font-bold text-[#24133B] tracking-tight block" data-counter-target="23">23</span>
-              <p class="mt-3 text-base font-semibold text-[#24133B]">Years of Service</p>
-              <p class="mt-1 text-sm text-muted-foreground">Steadfast community stewardship and faith-driven commitment
-                since 2003.</p>
             </div>
           </div>
         </div>
@@ -1085,15 +1279,34 @@
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="grid lg:grid-cols-2 gap-14 items-start">
             <div class="scroll-reveal reveal-slide-left">
-              <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Get Involved</span>
-              <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">
+              <span class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">Get Involved</span>
+              <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#24133B]">
                 Your hands can <span class="marker-underline">change a life.</span>
               </h2>
-              <p class="mt-5 text-lg text-muted-foreground">
+              <p class="mt-4 text-base text-muted-foreground leading-relaxed">
                 There are so many ways to make a difference. Find the one that fits your gifts and season of life.
               </p>
 
-              <div class="mt-8 space-y-4 stagger-children scroll-reveal">
+              <!-- Volunteer Spotlight Card: Matching Verticals aspect-video sizing -->
+              <div class="mt-8 mb-8 rounded-2xl bg-card border border-border/80 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
+                <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                  <img src="assets/images/volunteers.jpg"
+                    alt="Zion Foundation community and volunteers together"
+                    style="object-position: center 25%;"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 text-xs font-medium rounded-full bg-white/95 text-[#DF4C76] shadow-sm">
+                    Community in Action
+                  </span>
+                </div>
+                <div class="p-5 flex flex-col">
+                  <h4 class="text-xl font-semibold text-[#24133B] leading-snug">Our Volunteer Community</h4>
+                  <p class="text-sm text-muted-foreground mt-2 leading-relaxed">
+                    Dedicated volunteers walking alongside families, delivering nutritious meals, tutoring young learners, and bringing compassionate care to every doorstep.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-6 space-y-4 stagger-children scroll-reveal">
                 <div class="flex gap-4 rounded-xl bg-secondary p-5 hover:-translate-y-1 hover:shadow-md transition-all">
                   <span class="grid place-items-center h-12 w-12 flex-shrink-0 rounded-xl bg-primary">
                     <svg class="h-5 w-5 text-primary-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1295,7 +1508,7 @@
                 </span>
                 <div>
                   <p class="font-600">Visit us</p>
-                  <p class="text-muted-foreground">1204 Zion Avenue, Community District</p>
+                  <p class="text-muted-foreground">Coliseo Atletico Sports Ventures, 11/6/2, NICE Ring Road, off Bannerghatta Road Junction, Bengaluru, Karnataka</p>
                 </div>
               </div>
 
@@ -1311,7 +1524,7 @@
                 </span>
                 <div>
                   <p class="font-600">Call us</p>
-                  <p class="text-muted-foreground">(404) 555-0142</p>
+                  <p class="text-muted-foreground">+91 81236 77210 | +91 90357 72512</p>
                 </div>
               </div>
 
@@ -1326,7 +1539,7 @@
                 </span>
                 <div>
                   <p class="font-600">Email us</p>
-                  <p class="text-muted-foreground">hello@zionfoundation.org</p>
+                  <p class="text-muted-foreground">contact@trustzionfoundation.org <span class="text-xs text-muted-foreground/80 block">[Official Email]</span></p>
                 </div>
               </div>
 
@@ -1390,8 +1603,7 @@
                 <span class="font-display text-xl font-600">Zion Foundation</span>
               </div>
               <p class="mt-4 text-primary-foreground/70 leading-relaxed">
-                A charity, faith, and community organization serving families with compassion, education, and hope since
-                2001.
+                Compassion in action — turning concern into practical, life-changing support for one soul, one life, and one community at a time.
               </p>
               <button onclick="scrollToSection('donate')"
                 class="btn-motion btn-primary-motion btn-arrow-motion mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
@@ -1441,20 +1653,18 @@
 
             <div>
               <p class="font-600 mb-4">Contact</p>
-              <ul class="space-y-2.5 text-primary-foreground/70">
-                <li>1204 Zion Avenue</li>
-                <li>(404) 555-0142</li>
-                <li><a href="mailto:hello@zionfoundation.org" class="footer-link-underline hover:underline">hello@zionfoundation.org</a></li>
-              </ul>
-            </div>
+              <ul class="space-y-2.5 text-primary-foreground/70 text-sm">
+                <li>Coliseo Atletico Sports Ventures, NICE Ring Road, Bengaluru</li>
+                <li>+91 81236 77210 | +91 90357 72512</li>
+                <li><a href="mailto:contact@trustzionfoundation.org" class="footer-link-underline hover:underline">contact@trustzionfoundation.org</a></li>
               </ul>
             </div>
           </div>
 
           <div
             class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-primary-foreground/60">
-            <p>© <span id="yearVal">2026</span> Zion Foundation. A registered 501(c)(3) nonprofit.</p>
-            <p>Building Hope · Protecting Lives · Empowering Communities</p>
+            <p>© <span id="yearVal">2026</span> Trust Zion Foundation. All rights reserved.</p>
+            <p>Compassion in Action · One Soul at a Time</p>
           </div>
         </div>
       </footer>
