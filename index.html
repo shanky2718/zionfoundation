@@ -86,6 +86,39 @@
       font-weight: 500 !important;
     }
 
+    /* Volunteers Showcase Row: Matches exact width & height of Founders and Interns 3-card grid */
+    .volunteers-grid-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .volunteers-grid-row > div {
+      width: 100%;
+      max-width: 22rem;
+    }
+    @media (min-width: 768px) {
+      .volunteers-grid-row {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        gap: 1.5rem;
+      }
+      .volunteers-grid-row > div {
+        width: calc((100% - 3rem) / 3);
+        max-width: 360px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .volunteers-grid-row {
+        gap: 2rem;
+      }
+      .volunteers-grid-row > div {
+        width: calc((100% - 4rem) / 3);
+        max-width: 360px;
+      }
+    }
+
     /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
@@ -844,8 +877,8 @@
               </p>
             </div>
 
-            <!-- Volunteers Cards Grid: Balanced layout with individual volunteer and volunteer community -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto items-stretch">
+            <!-- Volunteers Cards Row: Perfectly sized to match Founders & Interns cards -->
+            <div class="volunteers-grid-row max-w-6xl mx-auto">
               
               <!-- Volunteer 1: Nedya S D -->
               <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
