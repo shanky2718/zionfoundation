@@ -1948,3 +1948,75 @@
   transform: translateY(-4px);
   box-shadow: 0 10px 25px rgba(15, 59, 44, 0.08);
 }
+
+/* ==========================================================================
+   ACADEMY PROMO VIDEO SHOWCASE SECTION
+   ========================================================================== */
+.zfc-video-section {
+  position: relative;
+  background: radial-gradient(circle at 50% 18%, #16533e 0%, #0a2a1f 55%, #051811 100%);
+  color: #ffffff;
+  padding: 4.5rem 0;
+  border-bottom: 2px solid var(--zfc-gold);
+  overflow: hidden;
+}
+
+.zfc-video-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(216, 182, 90, 0.16), transparent 70%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.015) 0, rgba(255, 255, 255, 0.015) 1px, transparent 0, transparent 40px);
+  pointer-events: none;
+}
+
+.zfc-video-wrapper {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.zfc-video-container {
+  position: relative;
+  border-radius: var(--zfc-radius-md);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--zfc-gold-border), 0 0 40px rgba(216, 182, 90, 0.25);
+  background: #000000;
+  aspect-ratio: 16 / 9;
+}
+
+.zfc-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000000;
+}
+
+.zfc-video-badge-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding: 1rem 1.5rem;
+  background: rgba(10, 42, 31, 0.75);
+  border: 1px solid var(--zfc-gold-border);
+  border-radius: var(--zfc-radius-sm);
+  backdrop-filter: blur(8px);
+}
+
+.zfc-video-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--zfc-gold-bright);
+}
+
+.zfc-video-badge-item span {
+  color: rgba(255, 255, 255, 0.92);
+}
