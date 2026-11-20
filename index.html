@@ -832,24 +832,65 @@
             </div>
           </div>
 
-          <!-- Volunteers Showcase: Placed Directly Below Interns, Small & Reduced Image Sizing -->
-          <div class="mt-14 sm:mt-16 pt-10 sm:pt-12 border-t border-border/70 scroll-reveal reveal-slide-up">
-            <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden max-w-lg mx-auto flex flex-col items-center text-center">
-              <!-- Small, reduced photo container: compact aspect-video (16:9) -->
-              <div class="w-full aspect-video overflow-hidden bg-secondary relative max-h-[220px]">
-                <img src="assets/images/volunteers.jpg"
-                  alt="Zion Foundation community and volunteers together"
-                  class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
-                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 text-[0.7rem] font-medium rounded-full bg-white/95 text-[#DF4C76] shadow-xs">
-                  Community in Action
-                </span>
+          <!-- Dedicated Volunteers Section: Sized as Verticals & Interns (aspect-video 16:9) -->
+          <div id="volunteers" class="mt-16 sm:mt-20 pt-12 sm:pt-14 border-t border-border/70 scroll-reveal reveal-slide-up">
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+              <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#DF4C76]">Heart of Our Service</span>
+              <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#24133B]">
+                Meet Our Volunteers
+              </h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Selfless volunteers giving their time, skills, and heart to walk beside families, uplift communities, and put compassion into daily action.
+              </p>
+            </div>
+
+            <!-- Volunteers Cards Grid: Balanced layout with individual volunteer and volunteer community -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto items-stretch">
+              
+              <!-- Volunteer 1: Nedya S D -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals & Interns -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/nedya-sd.jpg"
+                      alt="Nedya S D - Volunteer"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Nedya S D</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#DF4C76]/10 text-[#DF4C76]">
+                      Volunteer
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Dedicated volunteer supporting on-ground community outreach, family welfare initiatives, and bringing warm compassion and care to people in need.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="p-5 flex flex-col items-center">
-                <h4 class="text-lg font-semibold text-[#24133B] leading-snug">Our Volunteer Community</h4>
-                <p class="text-xs sm:text-sm text-muted-foreground mt-1.5 leading-relaxed max-w-sm">
-                  Dedicated volunteers walking alongside families, delivering nutritious meals, tutoring young learners, and bringing compassionate care to every doorstep.
-                </p>
+
+              <!-- Volunteer Community: Community in Action -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals & Interns -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/volunteers.jpg"
+                      alt="Zion Foundation community and volunteers together"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Our Volunteer Community</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#059669]/10 text-[#059669]">
+                      Community in Action
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Walking alongside families, delivering nutritious meals, tutoring young learners, and bringing compassionate care to every doorstep.
+                    </p>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
 
