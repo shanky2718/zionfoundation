@@ -137,6 +137,55 @@
       transform: translateY(0) scale(1);
     }
 
+    /* Donation Modal 2-Column Responsive Layout & Compact QR Card */
+    .donate-modal-layout {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .donate-modal-form-col {
+      flex: 1 1 60%;
+      min-width: 0;
+    }
+    .donate-modal-qr-col {
+      flex: 0 0 230px;
+      max-width: 230px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .donate-qr-wrapper {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 0.35rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      width: 130px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .donate-qr-img {
+      width: 100%;
+      max-width: 120px;
+      max-height: 175px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: 0.5rem;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .donate-modal-layout {
+        flex-direction: column;
+      }
+      .donate-modal-qr-col {
+        max-width: 100% !important;
+        flex: 1 1 auto;
+      }
+    }
+
     .toast-container-custom {
       position: fixed;
       bottom: 1.5rem;
@@ -1715,9 +1764,9 @@
         </p>
 
         <form id="donationForm" onsubmit="processDonation(event)" class="space-y-4">
-          <div class="grid md:grid-cols-12 gap-6 items-start">
-            <!-- Left: Donor Details & Amount (7 cols) -->
-            <div class="md:col-span-7 space-y-3.5">
+          <div class="donate-modal-layout">
+            <!-- Left: Donor Details & Amount -->
+            <div class="donate-modal-form-col space-y-3.5">
               <!-- Frequency Toggle -->
               <div class="flex gap-2 p-1 bg-secondary rounded-xl">
                 <button type="button" id="freqOnce" onclick="setFreq('one-time')"
@@ -1787,44 +1836,38 @@
               </div>
             </div>
 
-            <!-- Right: South Indian Bank Scan & Pay QR (5 cols) -->
-            <div class="md:col-span-5 bg-gradient-to-b from-emerald-950/5 to-emerald-950/15 dark:from-white/5 dark:to-white/10 border border-emerald-900/20 dark:border-white/15 rounded-2xl p-4 text-center flex flex-col items-center">
-              <div class="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-400 text-[0.72rem] font-bold uppercase tracking-wider mb-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                <span>South Indian Bank · Scan & Pay</span>
+            <!-- Right: South Indian Bank Compact Scan & Pay QR -->
+            <div class="donate-modal-qr-col bg-gradient-to-b from-card to-secondary/30 rounded-2xl border border-border p-3 text-center space-y-2.5">
+              <div class="flex items-center justify-between text-[0.68rem] font-bold text-muted-foreground uppercase tracking-wider px-1">
+                <span>Scan & Pay UPI</span>
+                <span class="text-emerald-600 flex items-center gap-1 font-semibold">
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span> SIB Verified
+                </span>
               </div>
 
-              <!-- High-Res QR Code Card -->
-              <div class="relative bg-white p-2 rounded-xl shadow-md border border-border/80 w-full max-w-[210px] overflow-hidden">
-                <img src="assets/images/zion-qr-code.jpg" alt="Zion Foundation South Indian Bank UPI QR Code" class="w-full h-auto object-contain rounded-lg" />
+              <!-- Compact QR Image Container -->
+              <div class="donate-qr-wrapper" style="width: 130px; margin: 0 auto; background: #fff; padding: 6px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                <img src="assets/images/zion-qr-code.jpg" alt="Zion Foundation South Indian Bank UPI QR Code"
+                  class="donate-qr-img" style="max-width: 118px; max-height: 170px; width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px;" />
               </div>
 
               <!-- UPI ID Pill with Quick Copy -->
-              <div class="mt-3 w-full bg-white dark:bg-card border border-border rounded-xl p-2.5 flex items-center justify-between gap-1.5 shadow-xs">
-                <div class="text-left overflow-hidden">
-                  <p class="text-[0.6rem] uppercase tracking-wider text-muted-foreground font-semibold">Official UPI ID</p>
-                  <p class="font-mono text-xs font-bold text-foreground truncate select-all">qr.zion1110@sib</p>
+              <div class="rounded-xl bg-background border border-border p-2 text-left">
+                <div class="text-[0.65rem] text-muted-foreground uppercase font-semibold">Official UPI ID:</div>
+                <div class="flex items-center justify-between gap-1 mt-0.5">
+                  <span class="font-mono text-xs font-bold text-primary select-all">qr.zion1110@sib</span>
+                  <button type="button" onclick="copyUpiId(this)"
+                    class="px-2 py-0.5 rounded bg-secondary hover:bg-accent hover:text-accent-foreground text-[0.68rem] font-semibold transition shrink-0">
+                    Copy
+                  </button>
                 </div>
-                <button type="button" onclick="copyUpiId(this)"
-                  class="px-2.5 py-1 text-[0.7rem] font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 transition shrink-0 flex items-center gap-1">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                  <span>Copy</span>
-                </button>
               </div>
 
               <!-- Bank Details -->
-              <div class="mt-2 text-[0.7rem] text-muted-foreground leading-tight">
-                <p><strong>Bank:</strong> South Indian Bank</p>
-                <p><strong>Account Name:</strong> ZION FOUNDATION</p>
-              </div>
-
-              <!-- Supported Apps Badges -->
-              <div class="mt-2.5 pt-2 border-t border-border/50 w-full flex flex-wrap items-center justify-center gap-1 text-[0.64rem] text-muted-foreground font-medium">
-                <span class="px-1.5 py-0.5 rounded bg-secondary/80">GPay</span>
-                <span class="px-1.5 py-0.5 rounded bg-secondary/80">PhonePe</span>
-                <span class="px-1.5 py-0.5 rounded bg-secondary/80">Paytm</span>
-                <span class="px-1.5 py-0.5 rounded bg-secondary/80">BHIM</span>
-                <span class="px-1.5 py-0.5 rounded bg-secondary/80">Amazon Pay</span>
+              <div class="text-[0.65rem] text-muted-foreground text-left space-y-0.5 bg-secondary/50 rounded-lg p-2 leading-snug">
+                <div><strong>Beneficiary:</strong> ZION FOUNDATION</div>
+                <div><strong>Bank:</strong> South Indian Bank</div>
+                <div class="text-[0.6rem] text-muted-foreground pt-0.5">GPay · PhonePe · Paytm · BHIM · Amazon Pay</div>
               </div>
             </div>
           </div>

@@ -123,6 +123,55 @@
       transform: translateY(0) scale(1);
     }
 
+    /* Donation Modal 2-Column Responsive Layout & Compact QR Card */
+    .donate-modal-layout {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .donate-modal-form-col {
+      flex: 1 1 60%;
+      min-width: 0;
+    }
+    .donate-modal-qr-col {
+      flex: 0 0 230px;
+      max-width: 230px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .donate-qr-wrapper {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 0.35rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      width: 130px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .donate-qr-img {
+      width: 100%;
+      max-width: 120px;
+      max-height: 175px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: 0.5rem;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .donate-modal-layout {
+        flex-direction: column;
+      }
+      .donate-modal-qr-col {
+        max-width: 100% !important;
+        flex: 1 1 auto;
+      }
+    }
+
     .toast-container-custom {
       position: fixed;
       bottom: 1.5rem;
@@ -4004,9 +4053,9 @@
         <div id="razorpayStatusAlert" class="hidden rounded-xl p-3 text-xs mb-3 font-medium"></div>
 
         <form id="domainDonationForm" onsubmit="processDomainDonation(event)" class="space-y-4">
-          <div class="grid md:grid-cols-12 gap-6 items-start">
-            <!-- Left: Donor Details & Amount (7 cols) -->
-            <div class="md:col-span-7 space-y-3.5">
+          <div class="donate-modal-layout">
+            <!-- Left: Donor Details & Amount -->
+            <div class="donate-modal-form-col space-y-3.5">
               <div class="rounded-xl bg-secondary p-3 flex justify-between items-center text-sm font-semibold">
                 <span class="text-muted-foreground">Allocated Initiative:</span>
                 <span id="modalProgramTargetBadge" class="font-bold text-primary">Selected Vertical</span>
@@ -4020,19 +4069,19 @@
               <div>
                 <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorName">Your Full Name *</label>
                 <input id="donorName" required placeholder="Priya Sharma"
-                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorEmail">Receipt Email *</label>
                   <input id="donorEmail" type="email" required placeholder="priya@example.com"
-                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
                 <div>
                   <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorPhone">Phone Number *</label>
                   <input id="donorPhone" type="tel" required placeholder="+91 98765 43210"
-                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
               </div>
 
@@ -4041,7 +4090,7 @@
                   UPI Ref / UTR / Transaction ID <span class="text-muted-foreground text-[0.7rem] font-normal">(Optional, from your UPI app receipt)</span>
                 </label>
                 <input id="donorUTR" placeholder="e.g. 429381749281"
-                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring" />
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring" />
               </div>
 
               <div class="pt-2 space-y-2">
@@ -4054,7 +4103,7 @@
                 </button>
 
                 <button type="button" onclick="initiateRazorpayPayment(event)" id="btnPayRazorpay"
-                  class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-secondary hover:bg-secondary/80 text-foreground px-4 py-2.5 text-xs font-600 border border-border transition">
+                  class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-secondary hover:bg-secondary/80 text-foreground px-4 py-2 text-xs font-600 border border-border transition">
                   <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                     <line x1="2" x2="22" y1="10" y2="10"></line>
@@ -4071,38 +4120,38 @@
               </div>
             </div>
 
-            <!-- Right: South Indian Bank QR Code Card (5 cols) -->
-            <div class="md:col-span-5 bg-gradient-to-b from-card to-secondary/30 rounded-2xl border border-border p-4 text-center space-y-3">
+            <!-- Right: South Indian Bank Compact QR Card -->
+            <div class="donate-modal-qr-col bg-gradient-to-b from-card to-secondary/30 rounded-2xl border border-border p-3 text-center space-y-2.5">
               <div class="flex items-center justify-between text-[0.68rem] font-bold text-muted-foreground uppercase tracking-wider px-1">
-                <span>Scan & Pay via UPI</span>
+                <span>Scan & Pay UPI</span>
                 <span class="text-emerald-600 flex items-center gap-1 font-semibold">
                   <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span> SIB Verified
                 </span>
               </div>
 
-              <!-- Official South Indian Bank QR Image -->
-              <div class="relative bg-white rounded-xl p-2.5 shadow-sm border border-border/80 mx-auto max-w-[240px]">
+              <!-- Compact QR Image Container -->
+              <div class="donate-qr-wrapper" style="width: 130px; margin: 0 auto; background: #fff; padding: 6px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
                 <img src="assets/images/zion-qr-code.jpg" alt="South Indian Bank UPI QR Code - Zion Foundation"
-                  class="w-full h-auto rounded-lg object-contain mx-auto" />
+                  class="donate-qr-img" style="max-width: 118px; max-height: 170px; width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px;" />
               </div>
 
               <!-- UPI ID with Copy button -->
-              <div class="rounded-xl bg-background border border-border p-2.5 text-left">
-                <div class="text-[0.68rem] text-muted-foreground uppercase font-semibold">Official UPI ID:</div>
-                <div class="flex items-center justify-between gap-1.5 mt-0.5">
+              <div class="rounded-xl bg-background border border-border p-2 text-left">
+                <div class="text-[0.65rem] text-muted-foreground uppercase font-semibold">Official UPI ID:</div>
+                <div class="flex items-center justify-between gap-1 mt-0.5">
                   <span class="font-mono text-xs font-bold text-primary select-all">qr.zion1110@sib</span>
                   <button type="button" onclick="copyDomainUpiId(this)"
-                    class="px-2 py-1 rounded bg-secondary hover:bg-accent hover:text-accent-foreground text-[0.7rem] font-semibold transition shrink-0">
+                    class="px-2 py-0.5 rounded bg-secondary hover:bg-accent hover:text-accent-foreground text-[0.68rem] font-semibold transition shrink-0">
                     Copy
                   </button>
                 </div>
               </div>
 
               <!-- Beneficiary Details -->
-              <div class="text-[0.68rem] text-muted-foreground text-left space-y-0.5 bg-secondary/50 rounded-lg p-2">
+              <div class="text-[0.65rem] text-muted-foreground text-left space-y-0.5 bg-secondary/50 rounded-lg p-2 leading-snug">
                 <div><strong>Beneficiary:</strong> ZION FOUNDATION</div>
                 <div><strong>Bank:</strong> South Indian Bank</div>
-                <div><strong>All UPI Apps:</strong> BHIM, GPay, PhonePe, Paytm, Amazon Pay, MobiKwik</div>
+                <div class="text-[0.6rem] text-muted-foreground pt-0.5">GPay · PhonePe · Paytm · BHIM · Amazon Pay</div>
               </div>
             </div>
           </div>
