@@ -123,30 +123,30 @@
       transform: translateY(0) scale(1);
     }
 
-    /* Donation Modal 2-Column Responsive Layout & Balanced QR Card */
+    /* Donation Modal 2-Column Responsive Layout & Prominent Large QR Card */
     .donate-modal-layout {
       display: flex;
       flex-direction: row;
-      gap: 1.75rem;
+      gap: 2rem;
       align-items: flex-start;
     }
     .donate-modal-form-col {
-      flex: 1 1 58%;
+      flex: 1 1 50%;
       min-width: 0;
     }
     .donate-modal-qr-col {
-      flex: 0 0 280px;
-      max-width: 280px;
+      flex: 0 0 340px;
+      max-width: 350px;
       width: 100%;
       box-sizing: border-box;
     }
     .donate-qr-wrapper {
       background: #ffffff;
-      border-radius: 0.85rem;
-      padding: 0.5rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border-radius: 1rem;
+      padding: 0.65rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(0, 0, 0, 0.12);
-      width: 185px;
+      width: 290px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
@@ -154,12 +154,12 @@
     }
     .donate-qr-img {
       width: 100%;
-      max-width: 172px;
-      max-height: 255px;
+      max-width: 275px;
+      max-height: 405px;
       height: auto;
       object-fit: contain;
       display: block;
-      border-radius: 0.5rem;
+      border-radius: 0.65rem;
       margin: 0 auto;
     }
     @media (max-width: 768px) {
@@ -171,11 +171,12 @@
         flex: 1 1 auto;
       }
       .donate-qr-wrapper {
-        width: 180px;
+        width: 280px;
+        max-width: 90vw;
       }
       .donate-qr-img {
-        max-width: 168px;
-        max-height: 248px;
+        max-width: 265px;
+        max-height: 390px;
       }
     }
 
@@ -4034,7 +4035,7 @@
 
   <!-- Domain Checkout Modal (Integrated with South Indian Bank UPI QR Code & Razorpay) -->
   <div id="modalDomainDonate" class="modal-backdrop-custom">
-    <div class="modal-card-custom" style="max-width: 52rem; max-height: 92vh; overflow-y: auto;">
+    <div class="modal-card-custom" style="max-width: 58rem; max-height: 94vh; overflow-y: auto;">
       <button onclick="closeDomainDonateModal()"
         class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground z-10 rounded-lg hover:bg-secondary transition"
         aria-label="Close donation modal">
@@ -4127,38 +4128,38 @@
               </div>
             </div>
 
-            <!-- Right: South Indian Bank Compact QR Card -->
-            <div class="donate-modal-qr-col bg-gradient-to-b from-card to-secondary/30 rounded-2xl border border-border p-3 text-center space-y-2.5">
-              <div class="flex items-center justify-between text-[0.68rem] font-bold text-muted-foreground uppercase tracking-wider px-1">
+            <!-- Right: South Indian Bank Prominent QR Card -->
+            <div class="donate-modal-qr-col bg-gradient-to-b from-card to-secondary/30 rounded-2xl border border-border p-3.5 text-center space-y-3">
+              <div class="flex items-center justify-between text-[0.72rem] font-bold text-muted-foreground uppercase tracking-wider px-1">
                 <span>Scan & Pay UPI</span>
                 <span class="text-emerald-600 flex items-center gap-1 font-semibold">
-                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span> SIB Verified
+                  <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> SIB Verified
                 </span>
               </div>
 
-              <!-- Balanced QR Image Container -->
-              <div class="donate-qr-wrapper" style="width: 185px; margin: 0 auto; background: #fff; padding: 8px; border-radius: 14px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+              <!-- Prominent Large QR Image Container -->
+              <div class="donate-qr-wrapper" style="width: 290px; margin: 0 auto; background: #fff; padding: 10px; border-radius: 16px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
                 <img src="assets/images/zion-qr-code.jpg" alt="South Indian Bank UPI QR Code - Zion Foundation"
-                  class="donate-qr-img" style="max-width: 172px; max-height: 255px; width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px;" />
+                  class="donate-qr-img" style="max-width: 275px; max-height: 405px; width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 10px;" />
               </div>
 
               <!-- UPI ID with Copy button -->
-              <div class="rounded-xl bg-background border border-border p-2 text-left">
-                <div class="text-[0.65rem] text-muted-foreground uppercase font-semibold">Official UPI ID:</div>
-                <div class="flex items-center justify-between gap-1 mt-0.5">
-                  <span class="font-mono text-xs font-bold text-primary select-all">qr.zion1110@sib</span>
+              <div class="rounded-xl bg-background border border-border p-2.5 text-left">
+                <div class="text-[0.68rem] text-muted-foreground uppercase font-semibold">Official UPI ID:</div>
+                <div class="flex items-center justify-between gap-1.5 mt-0.5">
+                  <span class="font-mono text-sm font-bold text-primary select-all">qr.zion1110@sib</span>
                   <button type="button" onclick="copyDomainUpiId(this)"
-                    class="px-2 py-0.5 rounded bg-secondary hover:bg-accent hover:text-accent-foreground text-[0.68rem] font-semibold transition shrink-0">
+                    class="px-2.5 py-1 rounded-lg bg-secondary hover:bg-accent hover:text-accent-foreground text-xs font-semibold transition shrink-0">
                     Copy
                   </button>
                 </div>
               </div>
 
               <!-- Beneficiary Details -->
-              <div class="text-[0.65rem] text-muted-foreground text-left space-y-0.5 bg-secondary/50 rounded-lg p-2 leading-snug">
+              <div class="text-xs text-muted-foreground text-left space-y-0.5 bg-secondary/50 rounded-lg p-2.5 leading-snug">
                 <div><strong>Beneficiary:</strong> ZION FOUNDATION</div>
                 <div><strong>Bank:</strong> South Indian Bank</div>
-                <div class="text-[0.6rem] text-muted-foreground pt-0.5">GPay · PhonePe · Paytm · BHIM · Amazon Pay</div>
+                <div class="text-[0.68rem] text-muted-foreground pt-0.5">BHIM · Google Pay · PhonePe · Paytm · Amazon Pay · MobiKwik</div>
               </div>
             </div>
           </div>
