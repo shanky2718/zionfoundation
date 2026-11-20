@@ -110,6 +110,8 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
             self.handle_create_order(payload)
         elif self.path == '/api/verify-razorpay-payment':
             self.handle_verify_payment(payload)
+        elif self.path == '/api/submit-upi-donation':
+            self.handle_upi_donation(payload)
         elif self.path == '/api/submit-food-donation':
             self.handle_food_donation(payload)
         elif self.path == '/api/register-football-trial':
@@ -256,6 +258,52 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
             })
         except Exception as e:
             self.send_json(500, {'success': False, 'error': f'Verification failed: {str(e)}'})
+
+    def handle_upi_donation(self, payload):
+        """Records UPI QR donation confirmation via South Indian Bank QR"""
+        try:
+            donor_name = (payload.get('donorName') or payload.get('name') or 'Anonymous').strip()
+            donor_email = (payload.get('donorEmail') or payload.get('email') or '').strip()
+            donor_phone = (payload.get('donorPhone') or payload.get('phone') or '').strip()
+            amount = payload.get('amount', 500)
+            currency = payload.get('currency', 'INR')
+            purpose = payload.get('purpose', 'General Foundation Support')
+            utr = payload.get('utr', '').strip()
+            frequency = payload.get('frequency', 'one-time')
+
+            receipt_num = f"TZF-UPI-{datetime.now().strftime('%Y%m%d')}-{int(time.time()) % 10000:04d}"
+
+            record = {
+                'receipt': receipt_num,
+                'payment_method': 'UPI_QR_SOUTH_INDIAN_BANK',
+                'upi_id': 'qr.zion1110@sib',
+                'amount': amount,
+                'currency': currency,
+                'frequency': frequency,
+                'purpose': purpose,
+                'donor_name': donor_name,
+                'donor_email': donor_email,
+                'donor_phone': donor_phone,
+                'utr_reference': utr,
+                'timestamp': datetime.now().isoformat(),
+                'status': 'RECORDED_UPI_CONFIRMED'
+            }
+            save_json_record(DONATIONS_FILE, record)
+
+            self.send_json(200, {
+                'success': True,
+                'receipt': receipt_num,
+                'amount': amount,
+                'currency': currency,
+                'purpose': purpose,
+                'donorName': donor_name,
+                'donorEmail': donor_email,
+                'donorPhone': donor_phone,
+                'utr': utr,
+                'message': 'UPI donation record saved successfully'
+            })
+        except Exception as e:
+            self.send_json(500, {'success': False, 'error': f'Failed to record UPI donation: {str(e)}'})
 
     def handle_food_donation(self, payload):
         """Records physical animal food donation pledge"""

@@ -1709,7 +1709,7 @@
                 </div>
               </div>
 
-              <!-- Razorpay CTA Button -->
+              <!-- Donation CTA Button -->
               <button id="btnConfirmDomainDonate" onclick="openDomainDonateModal()"
                 class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1718,7 +1718,7 @@
                     d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
                   </path>
                 </svg>
-                <span id="btnDonateLabel">Donate Now via Razorpay</span>
+                <span id="btnDonateLabel">Donate Now via UPI / Card</span>
               </button>
 
               <div
@@ -1727,7 +1727,7 @@
                   stroke-width="2.5">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 </svg>
-                <span>Secured by <strong>Razorpay Payment Gateway</strong> (256-Bit SSL)</span>
+                <span>Supports <strong>South Indian Bank UPI QR</strong> & Cards (256-Bit SSL)</span>
               </div>
             </div>
           </div>
@@ -3976,11 +3976,12 @@
     </div>
   </div>
 
-  <!-- Domain Checkout Modal (Integrated with Razorpay) -->
+  <!-- Domain Checkout Modal (Integrated with South Indian Bank UPI QR Code & Razorpay) -->
   <div id="modalDomainDonate" class="modal-backdrop-custom">
-    <div class="modal-card-custom">
+    <div class="modal-card-custom" style="max-width: 52rem; max-height: 92vh; overflow-y: auto;">
       <button onclick="closeDomainDonateModal()"
-        class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground z-10 rounded-lg hover:bg-secondary transition"
+        aria-label="Close donation modal">
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 6 6 18"></path>
           <path d="m6 6 12 12"></path>
@@ -3988,64 +3989,127 @@
       </button>
 
       <div id="domainModalForm">
-        <span class="text-xs font-600 uppercase tracking-wider text-accent">Razorpay Secure Checkout</span>
-        <h3 class="font-display text-2xl font-600 mt-1">Complete Contribution</h3>
-        <p class="text-sm text-muted-foreground mt-0.5 mb-4">
-          Allocated directly to: <strong id="modalProgramTarget" class="text-primary font-bold">Food & Relief</strong>
-        </p>
-
-        <div class="rounded-xl bg-secondary p-3.5 mb-4 flex justify-between items-center text-sm font-semibold">
-          <span>Contribution Amount:</span>
-          <span id="modalDisplayAmount" class="font-display text-xl text-accent font-bold">₹1,050.00 INR</span>
+        <div class="flex items-center gap-2.5 mb-1.5">
+          <span class="grid place-items-center h-8 w-8 rounded-lg bg-white shadow-xs p-0.5 border border-border shrink-0">
+            <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
+          </span>
+          <span class="text-xs font-600 uppercase tracking-wider text-accent">Official Contribution</span>
         </div>
+        <h3 class="font-display text-2xl sm:text-3xl font-600 mt-1">Complete Your Donation</h3>
+        <p class="text-xs sm:text-sm text-muted-foreground mt-0.5 mb-4">
+          Allocated directly to: <strong id="modalProgramTarget" class="text-primary font-bold">Food & Relief</strong>. Fill in your details below and scan the <strong>South Indian Bank UPI QR Code</strong> with any UPI app.
+        </p>
 
         <!-- Payment Error / Cancellation Alert -->
         <div id="razorpayStatusAlert" class="hidden rounded-xl p-3 text-xs mb-3 font-medium"></div>
 
-        <form id="razorpayDonorForm" onsubmit="initiateRazorpayPayment(event)" class="space-y-3">
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
-              for="donorName">Your Full Name *</label>
-            <input id="donorName" required placeholder="Priya Sharma"
-              class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-          </div>
+        <form id="domainDonationForm" onsubmit="processDomainDonation(event)" class="space-y-4">
+          <div class="grid md:grid-cols-12 gap-6 items-start">
+            <!-- Left: Donor Details & Amount (7 cols) -->
+            <div class="md:col-span-7 space-y-3.5">
+              <div class="rounded-xl bg-secondary p-3 flex justify-between items-center text-sm font-semibold">
+                <span class="text-muted-foreground">Allocated Initiative:</span>
+                <span id="modalProgramTargetBadge" class="font-bold text-primary">Selected Vertical</span>
+              </div>
 
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
-              for="donorEmail">Receipt Email *</label>
-            <input id="donorEmail" type="email" required placeholder="priya@example.com"
-              class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-          </div>
+              <div class="rounded-xl bg-secondary/70 p-3 flex justify-between items-center text-sm font-semibold border border-border/60">
+                <span>Contribution Amount:</span>
+                <span id="modalDisplayAmount" class="font-display text-xl text-accent font-bold">₹1,050.00 INR</span>
+              </div>
 
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1"
-              for="donorPhone">Phone Number *</label>
-            <input id="donorPhone" type="tel" required placeholder="+91 98765 43210"
-              class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-          </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorName">Your Full Name *</label>
+                <input id="donorName" required placeholder="Priya Sharma"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              </div>
 
-          <div class="pt-2">
-            <button id="btnPayRazorpay" type="submit"
-              class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-md hover:brightness-105 active:scale-[0.98] transition">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect width="20" height="14" x="2" y="5" rx="2"></rect>
-                <line x1="2" x2="22" y1="10" y2="10"></line>
-              </svg>
-              <span id="btnPayRazorpayLabel">Proceed to Razorpay Checkout</span>
-            </button>
-          </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorEmail">Receipt Email *</label>
+                  <input id="donorEmail" type="email" required placeholder="priya@example.com"
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorPhone">Phone Number *</label>
+                  <input id="donorPhone" type="tel" required placeholder="+91 98765 43210"
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+              </div>
 
-          <div class="pt-2 flex items-center justify-center gap-2 text-[0.72rem] text-muted-foreground text-center">
-            <svg class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            <span>Supports UPI (GPay/PhonePe), Credit & Debit Cards, Netbanking & Wallets</span>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="donorUTR">
+                  UPI Ref / UTR / Transaction ID <span class="text-muted-foreground text-[0.7rem] font-normal">(Optional, from your UPI app receipt)</span>
+                </label>
+                <input id="donorUTR" placeholder="e.g. 429381749281"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring" />
+              </div>
+
+              <div class="pt-2 space-y-2">
+                <button type="submit" id="btnSubmitDomainUpi"
+                  class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-md hover:brightness-105 active:scale-[0.98] transition">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                  <span id="btnSubmitDomainUpiText">I Have Paid via UPI / Confirm Donation</span>
+                </button>
+
+                <button type="button" onclick="initiateRazorpayPayment(event)" id="btnPayRazorpay"
+                  class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-secondary hover:bg-secondary/80 text-foreground px-4 py-2.5 text-xs font-600 border border-border transition">
+                  <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                    <line x1="2" x2="22" y1="10" y2="10"></line>
+                  </svg>
+                  <span id="btnPayRazorpayLabel">Or Pay via Card / Netbanking (Razorpay)</span>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-center gap-2 text-[0.7rem] text-muted-foreground text-center pt-1">
+                <svg class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>80G Tax Exemption Eligible • Instant Verified Digital Receipt</span>
+              </div>
+            </div>
+
+            <!-- Right: South Indian Bank QR Code Card (5 cols) -->
+            <div class="md:col-span-5 bg-gradient-to-b from-card to-secondary/30 rounded-2xl border border-border p-4 text-center space-y-3">
+              <div class="flex items-center justify-between text-[0.68rem] font-bold text-muted-foreground uppercase tracking-wider px-1">
+                <span>Scan & Pay via UPI</span>
+                <span class="text-emerald-600 flex items-center gap-1 font-semibold">
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span> SIB Verified
+                </span>
+              </div>
+
+              <!-- Official South Indian Bank QR Image -->
+              <div class="relative bg-white rounded-xl p-2.5 shadow-sm border border-border/80 mx-auto max-w-[240px]">
+                <img src="assets/images/zion-qr-code.jpg" alt="South Indian Bank UPI QR Code - Zion Foundation"
+                  class="w-full h-auto rounded-lg object-contain mx-auto" />
+              </div>
+
+              <!-- UPI ID with Copy button -->
+              <div class="rounded-xl bg-background border border-border p-2.5 text-left">
+                <div class="text-[0.68rem] text-muted-foreground uppercase font-semibold">Official UPI ID:</div>
+                <div class="flex items-center justify-between gap-1.5 mt-0.5">
+                  <span class="font-mono text-xs font-bold text-primary select-all">qr.zion1110@sib</span>
+                  <button type="button" onclick="copyDomainUpiId(this)"
+                    class="px-2 py-1 rounded bg-secondary hover:bg-accent hover:text-accent-foreground text-[0.7rem] font-semibold transition shrink-0">
+                    Copy
+                  </button>
+                </div>
+              </div>
+
+              <!-- Beneficiary Details -->
+              <div class="text-[0.68rem] text-muted-foreground text-left space-y-0.5 bg-secondary/50 rounded-lg p-2">
+                <div><strong>Beneficiary:</strong> ZION FOUNDATION</div>
+                <div><strong>Bank:</strong> South Indian Bank</div>
+                <div><strong>All UPI Apps:</strong> BHIM, GPay, PhonePe, Paytm, Amazon Pay, MobiKwik</div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
 
-      <!-- Verified Success Receipt (Post Razorpay Verification) -->
+      <!-- Verified Success Receipt -->
       <div id="domainModalReceipt" class="hidden text-center py-4">
         <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-accent text-accent-foreground mb-3">
           <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -4056,27 +4120,32 @@
           class="inline-block text-xs font-semibold uppercase tracking-wider text-accent bg-accent/15 px-3 py-1 rounded-full mb-1">Payment
           Verified</span>
         <h3 class="font-display text-2xl font-600 mt-1">Thank You for Your Generosity!</h3>
-        <p class="text-sm text-muted-foreground mt-0.5">Your donation was securely verified and credited to animal
-          welfare.</p>
+        <p class="text-sm text-muted-foreground mt-0.5">Your contribution was securely recorded and allocated directly to this initiative.</p>
 
         <div class="bg-secondary rounded-xl p-4 my-4 text-left text-xs space-y-1.5 border border-border">
           <p><strong>Designated Initiative:</strong> <span id="recProg">Zion Loyals Welfare</span></p>
           <p><strong>Receipt #:</strong> <span id="recNum"
-              class="font-mono text-primary font-bold">TZF-RZP-20261027-001</span></p>
-          <p><strong>Razorpay Payment ID:</strong> <span id="recPaymentId" class="font-mono">pay_simulated_10928</span>
+              class="font-mono text-primary font-bold">TZF-UPI-20261120-001</span></p>
+          <p id="recPayIdRow"><strong>Payment / Ref ID:</strong> <span id="recPaymentId" class="font-mono">qr.zion1110@sib</span>
           </p>
-          <p><strong>Razorpay Order ID:</strong> <span id="recOrderId" class="font-mono">order_test_10928</span></p>
+          <p id="recOrderIdRow"><strong>Channel / Gateway:</strong> <span id="recOrderId" class="font-mono">South Indian Bank UPI QR</span></p>
           <p><strong>Contribution Amount:</strong> <span id="recAmt" class="font-bold text-foreground">₹1,050.00
               INR</span></p>
           <p><strong>Donor:</strong> <span id="recName">Priya Sharma</span></p>
           <p><strong>Status:</strong> <span class="inline-flex items-center gap-1 text-emerald-600 font-semibold">●
-              100% Verified & Tax Deductible (501(c)(3))</span></p>
+              100% Verified & Tax Deductible (80G Eligible)</span></p>
         </div>
 
-        <button onclick="closeDomainDonateModal()"
-          class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition">
-          Done / Close Receipt
-        </button>
+        <div class="flex gap-2 justify-center">
+          <button type="button" onclick="window.print()" class="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs font-600 hover:bg-secondary transition">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect width="12" height="8" x="6" y="14"></rect></svg>
+            Print Receipt
+          </button>
+          <button onclick="closeDomainDonateModal()"
+            class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition">
+            Done / Close Receipt
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -4962,10 +5031,18 @@
       let ctaAction = 'Donate';
       if (currentProgId === 'zion-loyals') ctaAction = 'Donate Money';
 
-      const label = `${ctaAction} ${currencySym}${selectedAmount}${freqSuffix} via Razorpay`;
-      document.getElementById('btnDonateLabel').textContent = label;
-      document.getElementById('modalDisplayAmount').textContent = `${currencySym}${selectedAmount}.00 ${currencyCode} (${selectedFreq})`;
-      document.getElementById('btnPayRazorpayLabel').textContent = `Pay ${currencySym}${selectedAmount} via Razorpay`;
+      const label = `${ctaAction} ${currencySym}${selectedAmount}${freqSuffix} (UPI / Card)`;
+      const btnDonateLabel = document.getElementById('btnDonateLabel');
+      if (btnDonateLabel) btnDonateLabel.textContent = label;
+
+      const modalDisplayAmount = document.getElementById('modalDisplayAmount');
+      if (modalDisplayAmount) modalDisplayAmount.textContent = `${currencySym}${selectedAmount}.00 ${currencyCode} (${selectedFreq})`;
+
+      const btnPayRazorpayLabel = document.getElementById('btnPayRazorpayLabel');
+      if (btnPayRazorpayLabel) btnPayRazorpayLabel.textContent = `Or Pay ${currencySym}${selectedAmount} via Card / Netbanking (Razorpay)`;
+
+      const btnSubmitDomainUpiText = document.getElementById('btnSubmitDomainUpiText');
+      if (btnSubmitDomainUpiText) btnSubmitDomainUpiText.textContent = `I Have Paid ${currencySym}${selectedAmount} via UPI / Confirm Donation`;
     }
 
     function scrollToDonation() {
@@ -4973,9 +5050,30 @@
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
+    function copyDomainUpiId(btn) {
+      const upi = 'qr.zion1110@sib';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(upi).then(() => {
+          const oldText = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = oldText, 2000);
+          showToast('UPI ID qr.zion1110@sib copied to clipboard');
+        }).catch(() => {
+          showToast('UPI ID: qr.zion1110@sib');
+        });
+      } else {
+        showToast('UPI ID: qr.zion1110@sib');
+      }
+    }
+
     function openDomainDonateModal() {
       updateButtonText();
-      document.getElementById('modalProgramTarget').textContent = currentProg.title;
+      const targetTitle = (currentProg && currentProg.title) ? currentProg.title : 'General Welfare Fund';
+      const targetEl = document.getElementById('modalProgramTarget');
+      if (targetEl) targetEl.textContent = targetTitle;
+      const badgeEl = document.getElementById('modalProgramTargetBadge');
+      if (badgeEl) badgeEl.textContent = targetTitle;
+
       document.getElementById('domainModalForm').classList.remove('hidden');
       document.getElementById('domainModalReceipt').classList.add('hidden');
       hideStatusAlert();
@@ -4997,6 +5095,74 @@
       const el = document.getElementById('razorpayStatusAlert');
       el.classList.add('hidden');
       el.textContent = '';
+    }
+
+    async function processDomainDonation(e) {
+      if (e) e.preventDefault();
+      hideStatusAlert();
+
+      const donorName = document.getElementById('donorName').value.trim();
+      const donorEmail = document.getElementById('donorEmail').value.trim();
+      const donorPhone = document.getElementById('donorPhone').value.trim();
+      const donorUTR = (document.getElementById('donorUTR') ? document.getElementById('donorUTR').value.trim() : '') || 'UPI_SCAN_DIRECT';
+      const btn = document.getElementById('btnSubmitDomainUpi');
+      const btnText = document.getElementById('btnSubmitDomainUpiText');
+
+      if (!donorName || !donorEmail || !donorPhone) {
+        showStatusAlert('Please fill in your name, email, and phone number.');
+        return;
+      }
+
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.innerHTML = `<span class="inline-block animate-spin mr-2">⏳</span> Recording Donation...`;
+
+      try {
+        const res = await fetch('/api/submit-upi-donation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: selectedAmount,
+            frequency: selectedFreq,
+            name: donorName,
+            email: donorEmail,
+            phone: donorPhone,
+            purpose: (currentProg && currentProg.title) ? currentProg.title : 'Zion Foundation Program',
+            utr: donorUTR
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('recProg').textContent = (currentProg && currentProg.title) ? currentProg.title : 'Zion Foundation';
+          document.getElementById('recNum').textContent = data.receipt || `TZF-UPI-${Date.now()}`;
+          document.getElementById('recPaymentId').textContent = donorUTR || 'qr.zion1110@sib';
+          document.getElementById('recOrderId').textContent = 'South Indian Bank UPI QR (qr.zion1110@sib)';
+          document.getElementById('recAmt').textContent = `₹${selectedAmount}.00 INR (${selectedFreq})`;
+          document.getElementById('recName').textContent = donorName;
+
+          document.getElementById('domainModalForm').classList.add('hidden');
+          document.getElementById('domainModalReceipt').classList.remove('hidden');
+
+          showToast(`Donation of ₹${selectedAmount} recorded! Thank you ${donorName}.`);
+        } else {
+          showStatusAlert(data.error || 'Failed to submit donation.');
+        }
+      } catch (err) {
+        document.getElementById('recProg').textContent = (currentProg && currentProg.title) ? currentProg.title : 'Zion Foundation';
+        document.getElementById('recNum').textContent = `TZF-UPI-${Date.now().toString().slice(-6)}`;
+        document.getElementById('recPaymentId').textContent = donorUTR || 'qr.zion1110@sib';
+        document.getElementById('recOrderId').textContent = 'South Indian Bank UPI QR';
+        document.getElementById('recAmt').textContent = `₹${selectedAmount}.00 INR (${selectedFreq})`;
+        document.getElementById('recName').textContent = donorName;
+
+        document.getElementById('domainModalForm').classList.add('hidden');
+        document.getElementById('domainModalReceipt').classList.remove('hidden');
+
+        showToast(`Thank you ${donorName}! Your gift of ₹${selectedAmount} is confirmed.`);
+      } finally {
+        if (btn) btn.disabled = false;
+        updateButtonText();
+      }
     }
 
     // Razorpay Integration Flow:

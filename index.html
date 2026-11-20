@@ -1460,20 +1460,20 @@
 
           <!-- Tiers -->
           <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto stagger-children scroll-reveal" id="donateTiersContainer">
-            <button onclick="selectTier(0, 25)"
+            <button onclick="selectTier(0, 500)"
               class="tier-option rounded-2xl border p-6 text-left transition bg-white/5 border-white/15 hover:bg-white/10">
-              <p class="font-display text-3xl font-600">$25</p>
-              <p class="mt-2 text-sm text-primary-foreground/70">Feeds a family for a week</p>
+              <p class="font-display text-3xl font-600">₹500</p>
+              <p class="mt-2 text-sm text-primary-foreground/70">Feeds a street pack or family</p>
             </button>
-            <button onclick="selectTier(1, 60)"
+            <button onclick="selectTier(1, 1500)"
               class="tier-option rounded-2xl border p-6 text-left transition bg-accent border-accent text-accent-foreground shadow-lg">
-              <p class="font-display text-3xl font-600">$60</p>
-              <p class="mt-2 text-sm text-accent-foreground/80">Sponsors a child's tutoring</p>
+              <p class="font-display text-3xl font-600">₹1,500</p>
+              <p class="mt-2 text-sm text-accent-foreground/80">Sponsors monthly sports tuition or tutoring</p>
             </button>
-            <button onclick="selectTier(2, 150)"
+            <button onclick="selectTier(2, 5000)"
               class="tier-option rounded-2xl border p-6 text-left transition bg-white/5 border-white/15 hover:bg-white/10">
-              <p class="font-display text-3xl font-600">$150</p>
-              <p class="mt-2 text-sm text-primary-foreground/70">Funds emergency housing aid</p>
+              <p class="font-display text-3xl font-600">₹5,000</p>
+              <p class="mt-2 text-sm text-primary-foreground/70">Funds emergency veterinary & medical care</p>
             </button>
           </div>
 
@@ -1483,6 +1483,11 @@
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                </path>
+              </svg>
+              Donate ₹1,500 Now
+            </button>
                   d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
                 </path>
               </svg>
@@ -1685,82 +1690,215 @@
     </div>
   </div>
 
-  <!-- Interactive Modal: Donation -->
+  <!-- Interactive Modal: Donation with South Indian Bank UPI QR Code -->
   <div id="modalDonate" class="modal-backdrop-custom">
-    <div class="modal-card-custom">
+    <div class="modal-card-custom" style="max-width: 52rem; max-height: 92vh; overflow-y: auto;">
       <button onclick="closeDonateModal()"
-        class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground z-10 rounded-lg hover:bg-secondary transition"
+        aria-label="Close donation modal">
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 6 6 18"></path>
           <path d="m6 6 12 12"></path>
         </svg>
       </button>
+
       <div id="donateModalBody">
-        <div class="flex items-center gap-2.5 mb-2">
+        <div class="flex items-center gap-2.5 mb-1.5">
           <span class="grid place-items-center h-8 w-8 rounded-lg bg-white shadow-xs p-0.5 border border-border shrink-0">
             <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
           </span>
-          <span class="text-xs font-600 uppercase tracking-wider text-accent">Make an Impact</span>
+          <span class="text-xs font-600 uppercase tracking-wider text-accent">Official Contribution</span>
         </div>
-        <h3 class="font-display text-2xl font-600 mt-1">Complete Your Gift</h3>
-        <p class="text-sm text-muted-foreground mt-1 mb-4">100% tax-deductible under 501(c)(3) status.</p>
+        <h3 class="font-display text-2xl sm:text-3xl font-600 mt-0.5">Complete Your Donation</h3>
+        <p class="text-xs sm:text-sm text-muted-foreground mt-0.5 mb-5">
+          Fill in your details below and scan the <strong>South Indian Bank UPI QR Code</strong> with any UPI app to complete your donation.
+        </p>
 
-        <div class="flex gap-2 mb-4">
-          <button id="freqOnce" onclick="setFreq('one-time')"
-            class="flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground">One-Time</button>
-          <button id="freqMonthly" onclick="setFreq('monthly')"
-            class="flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground">Monthly</button>
-        </div>
+        <form id="donationForm" onsubmit="processDonation(event)" class="space-y-4">
+          <div class="grid md:grid-cols-12 gap-6 items-start">
+            <!-- Left: Donor Details & Amount (7 cols) -->
+            <div class="md:col-span-7 space-y-3.5">
+              <!-- Frequency Toggle -->
+              <div class="flex gap-2 p-1 bg-secondary rounded-xl">
+                <button type="button" id="freqOnce" onclick="setFreq('one-time')"
+                  class="flex-1 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground shadow-sm transition">One-Time Gift</button>
+                <button type="button" id="freqMonthly" onclick="setFreq('monthly')"
+                  class="flex-1 py-1.5 text-xs font-semibold rounded-lg bg-transparent text-muted-foreground hover:text-foreground transition">Give Monthly</button>
+              </div>
 
-        <div class="mb-4">
-          <label class="block text-sm font-semibold mb-1" for="modalAmount">Amount ($ USD)</label>
-          <input id="modalAmount" type="number" min="5" value="60"
-            class="w-full rounded-lg border border-input bg-background px-3.5 py-2.5 font-display text-xl font-bold text-accent focus:outline-none focus:ring-2 focus:ring-ring" />
-        </div>
+              <!-- Quick Amount Pills -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">Select or Enter Amount (₹ INR)</label>
+                <div class="grid grid-cols-4 gap-2 mb-2">
+                  <button type="button" onclick="setModalAmount(500)" class="quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition">₹500</button>
+                  <button type="button" onclick="setModalAmount(1000)" class="quick-amt-btn active py-1.5 px-2 rounded-lg border border-accent bg-accent/15 text-accent text-xs font-bold transition">₹1,000</button>
+                  <button type="button" onclick="setModalAmount(2500)" class="quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition">₹2,500</button>
+                  <button type="button" onclick="setModalAmount(5000)" class="quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition">₹5,000</button>
+                </div>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-display text-lg font-bold text-foreground">₹</span>
+                  <input id="modalAmount" type="number" min="10" step="10" value="1000" oninput="onModalAmountInput(this.value)"
+                    class="w-full pl-8 pr-4 py-2 rounded-xl border border-input bg-background font-display text-lg font-bold text-accent focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+              </div>
 
-        <form onsubmit="processDonation(event)" class="space-y-3">
-          <div>
-            <label class="block text-sm font-semibold mb-1" for="dName">Your Full Name</label>
-            <input id="dName" required placeholder="Sarah Jenkins"
-              class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              <!-- Donor Name -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dName">Your Full Name *</label>
+                <input id="dName" required placeholder="e.g. Ramesh Kumar"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              </div>
+
+              <!-- Email & Phone Grid -->
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dEmail">Receipt Email *</label>
+                  <input id="dEmail" type="email" required placeholder="ramesh@example.com"
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dPhone">Phone Number *</label>
+                  <input id="dPhone" type="tel" required placeholder="+91 98765 43210"
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+              </div>
+
+              <!-- Designated Program / Cause -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dCause">Designated Vertical / Cause</label>
+                <select id="dCause"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-ring">
+                  <option value="General Foundation Support">Zion Foundation (Where Most Needed)</option>
+                  <option value="Zion FC Academy (Youth Sports & Coaching)">Zion FC Academy (Youth Sports & Coaching)</option>
+                  <option value="Zion Loyals (Animal Welfare & Street Feeding)">Zion Loyals (Animal Welfare & Rescue)</option>
+                  <option value="Zion Vidya (Childhood Education & Tutoring)">Zion Vidya (Education & Tutoring)</option>
+                  <option value="Zion Home (Elderly Shelter & Nutrition)">Zion Home (Elderly Relief & Food Pantries)</option>
+                  <option value="Zion Care & Mind (Mental Health & Palliative)">Zion Care & Mind (Health & Compassion)</option>
+                </select>
+              </div>
+
+              <!-- UTR Reference -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dUTR">
+                  UPI Transaction ID / UTR <span class="text-[0.65rem] lowercase font-normal">(optional, from your UPI app receipt)</span>
+                </label>
+                <input id="dUTR" placeholder="e.g. 4123XXXXXXXX (12-digit UTR)"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring" />
+              </div>
+            </div>
+
+            <!-- Right: South Indian Bank Scan & Pay QR (5 cols) -->
+            <div class="md:col-span-5 bg-gradient-to-b from-emerald-950/5 to-emerald-950/15 dark:from-white/5 dark:to-white/10 border border-emerald-900/20 dark:border-white/15 rounded-2xl p-4 text-center flex flex-col items-center">
+              <div class="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-400 text-[0.72rem] font-bold uppercase tracking-wider mb-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>South Indian Bank · Scan & Pay</span>
+              </div>
+
+              <!-- High-Res QR Code Card -->
+              <div class="relative bg-white p-2 rounded-xl shadow-md border border-border/80 w-full max-w-[210px] overflow-hidden">
+                <img src="assets/images/zion-qr-code.jpg" alt="Zion Foundation South Indian Bank UPI QR Code" class="w-full h-auto object-contain rounded-lg" />
+              </div>
+
+              <!-- UPI ID Pill with Quick Copy -->
+              <div class="mt-3 w-full bg-white dark:bg-card border border-border rounded-xl p-2.5 flex items-center justify-between gap-1.5 shadow-xs">
+                <div class="text-left overflow-hidden">
+                  <p class="text-[0.6rem] uppercase tracking-wider text-muted-foreground font-semibold">Official UPI ID</p>
+                  <p class="font-mono text-xs font-bold text-foreground truncate select-all">qr.zion1110@sib</p>
+                </div>
+                <button type="button" onclick="copyUpiId(this)"
+                  class="px-2.5 py-1 text-[0.7rem] font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 transition shrink-0 flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+
+              <!-- Bank Details -->
+              <div class="mt-2 text-[0.7rem] text-muted-foreground leading-tight">
+                <p><strong>Bank:</strong> South Indian Bank</p>
+                <p><strong>Account Name:</strong> ZION FOUNDATION</p>
+              </div>
+
+              <!-- Supported Apps Badges -->
+              <div class="mt-2.5 pt-2 border-t border-border/50 w-full flex flex-wrap items-center justify-center gap-1 text-[0.64rem] text-muted-foreground font-medium">
+                <span class="px-1.5 py-0.5 rounded bg-secondary/80">GPay</span>
+                <span class="px-1.5 py-0.5 rounded bg-secondary/80">PhonePe</span>
+                <span class="px-1.5 py-0.5 rounded bg-secondary/80">Paytm</span>
+                <span class="px-1.5 py-0.5 rounded bg-secondary/80">BHIM</span>
+                <span class="px-1.5 py-0.5 rounded bg-secondary/80">Amazon Pay</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <label class="block text-sm font-semibold mb-1" for="dEmail">Receipt Email</label>
-            <input id="dEmail" type="email" required placeholder="sarah@example.com"
-              class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+
+          <!-- Bottom Action -->
+          <div class="pt-2">
+            <button id="btnSubmitDonation" type="submit"
+              class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              </svg>
+              <span id="btnSubmitLabel">I Have Paid ₹1,000 · Confirm Donation</span>
+            </button>
+
+            <div class="mt-2.5 flex items-center justify-center gap-2 text-[0.72rem] text-muted-foreground">
+              <svg class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Direct Bank Deposit · Instant Confirmation · Tax-Exempt Receipt Issued</span>
+            </div>
           </div>
-          <div>
-            <label class="block text-sm font-semibold mb-1" for="dPayment">Payment Method</label>
-            <select id="dPayment"
-              class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
-              <option>Credit / Debit Card</option>
-              <option>PayPal</option>
-              <option>Bank Transfer (ACH)</option>
-            </select>
-          </div>
-          <button type="submit"
-            class="w-full mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-600 text-accent-foreground hover:brightness-105 transition">
-            Confirm & Send Gift
-          </button>
         </form>
       </div>
 
-      <div id="donateSuccess" class="hidden text-center py-4">
-        <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-accent text-accent-foreground mb-3">
+      <!-- Verified Success Receipt -->
+      <div id="donateSuccess" class="hidden text-center py-5">
+        <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-emerald-500 text-white mb-3 shadow-lg">
           <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M20 6 9 17l-5-5"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
           </svg>
         </span>
-        <h3 class="font-display text-2xl font-600">Thank You For Your Gift!</h3>
-        <p class="text-sm text-muted-foreground mt-1">A receipt has been issued to <span id="confEmail"
-            class="font-semibold text-foreground"></span>.</p>
-        <div class="bg-secondary rounded-xl p-4 my-4 text-left text-xs space-y-1">
-          <p><strong>Receipt #:</strong> <span id="confReceipt">TZF-2026-9182</span></p>
-          <p><strong>Amount:</strong> <span id="confAmt">$60.00 USD</span></p>
-          <p><strong>Charity:</strong> Zion Foundation (501(c)(3) Nonprofit)</p>
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-100 dark:bg-emerald-950/60 dark:text-emerald-400 px-3 py-1 rounded-full mb-1.5">Contribution Confirmed</span>
+        <h3 class="font-display text-2xl sm:text-3xl font-600">Thank You For Your Generosity!</h3>
+        <p class="text-xs sm:text-sm text-muted-foreground mt-0.5 max-w-md mx-auto">
+          Your donation acknowledgement has been issued to <span id="confEmail" class="font-semibold text-foreground"></span>.
+        </p>
+
+        <div class="bg-secondary rounded-2xl p-4 sm:p-5 my-4 text-left text-xs space-y-2 border border-border max-w-md mx-auto shadow-sm">
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Receipt Number:</span>
+            <span id="confReceipt" class="font-mono font-bold text-primary">TZF-UPI-20261120-1049</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Amount:</span>
+            <span id="confAmt" class="font-bold text-foreground">₹1,000.00 INR (one-time)</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Donor Name:</span>
+            <span id="confName" class="font-semibold text-foreground">Sarah Jenkins</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Designated Vertical:</span>
+            <span id="confCause" class="font-semibold text-foreground">Zion Foundation General</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Payment Method:</span>
+            <span class="font-semibold text-foreground">South Indian Bank UPI QR</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-muted-foreground">Beneficiary UPI ID:</span>
+            <span class="font-mono text-foreground">qr.zion1110@sib</span>
+          </div>
         </div>
-        <button onclick="closeDonateModal()"
-          class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground">Done</button>
+
+        <div class="flex justify-center gap-3">
+          <button onclick="window.print()" class="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-secondary transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+            <span>Print Receipt</span>
+          </button>
+          <button onclick="closeDonateModal()"
+            class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition shadow-md">
+            Done
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1943,12 +2081,12 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // Donation selection state
-    let curAmount = 60;
+    let curAmount = 1500;
     let curFreq = 'one-time';
     const tiers = [
-      { amt: '$25', label: 'Feeds a family for a week', val: 25 },
-      { amt: '$60', label: "Sponsors a child's tutoring", val: 60 },
-      { amt: '$150', label: 'Funds emergency housing aid', val: 150 }
+      { amt: '₹500', label: 'Feeds a street pack or family', val: 500 },
+      { amt: '₹1,500', label: "Sponsors monthly sports tuition or tutoring", val: 1500 },
+      { amt: '₹5,000', label: 'Funds emergency veterinary & medical care', val: 5000 }
     ];
 
     function selectTier(idx, val) {
@@ -1967,20 +2105,62 @@
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
         </svg>
-        Donate $${curAmount} Now
+        Donate ₹${curAmount.toLocaleString('en-IN')} Now
       `;
     }
 
     function openDonateModal(isMonthly = false) {
-      document.getElementById('modalAmount').value = curAmount;
+      setModalAmount(curAmount || 1000);
       if (isMonthly) setFreq('monthly');
       else setFreq('one-time');
       document.getElementById('donateModalBody').classList.remove('hidden');
       document.getElementById('donateSuccess').classList.add('hidden');
       document.getElementById('modalDonate').classList.add('open');
     }
+
     function closeDonateModal() {
       document.getElementById('modalDonate').classList.remove('open');
+    }
+
+    function setModalAmount(amt) {
+      curAmount = amt;
+      const input = document.getElementById('modalAmount');
+      if (input) input.value = amt;
+      onModalAmountInput(amt);
+
+      document.querySelectorAll('.quick-amt-btn').forEach(btn => {
+        const text = btn.textContent.replace(/[^\d]/g, '');
+        if (parseInt(text) === amt) {
+          btn.className = 'quick-amt-btn active py-1.5 px-2 rounded-lg border border-accent bg-accent/15 text-accent text-xs font-bold transition';
+        } else {
+          btn.className = 'quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition';
+        }
+      });
+    }
+
+    function onModalAmountInput(val) {
+      const amt = parseInt(val) || 0;
+      const label = document.getElementById('btnSubmitLabel');
+      if (label) {
+        label.textContent = `I Have Paid ₹${amt.toLocaleString('en-IN')} · Confirm Donation`;
+      }
+    }
+
+    function copyUpiId(btn) {
+      const upiId = 'qr.zion1110@sib';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(upiId).then(() => {
+          const span = btn.querySelector('span');
+          if (span) {
+            const orig = span.textContent;
+            span.textContent = 'Copied!';
+            setTimeout(() => span.textContent = orig, 2000);
+          }
+          triggerToast('UPI ID copied: qr.zion1110@sib');
+        });
+      } else {
+        triggerToast('UPI ID: qr.zion1110@sib');
+      }
     }
 
     function setFreq(f) {
@@ -1988,24 +2168,68 @@
       const o = document.getElementById('freqOnce');
       const m = document.getElementById('freqMonthly');
       if (f === 'monthly') {
-        m.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground";
-        o.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground";
+        m.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground shadow-sm transition";
+        o.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-transparent text-muted-foreground hover:text-foreground transition";
       } else {
-        o.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground";
-        m.className = "flex-1 py-2 text-sm font-semibold rounded-lg bg-secondary text-secondary-foreground";
+        o.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground shadow-sm transition";
+        m.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-transparent text-muted-foreground hover:text-foreground transition";
       }
     }
 
-    function processDonation(e) {
+    async function processDonation(e) {
       e.preventDefault();
-      const amt = document.getElementById('modalAmount').value || curAmount;
-      const email = document.getElementById('dEmail').value;
-      document.getElementById('confAmt').textContent = `$${amt}.00 USD (${curFreq})`;
+      const amt = parseInt(document.getElementById('modalAmount').value) || curAmount || 1000;
+      const name = document.getElementById('dName').value.trim();
+      const email = document.getElementById('dEmail').value.trim();
+      const phone = document.getElementById('dPhone').value.trim();
+      const cause = document.getElementById('dCause').value;
+      const utr = document.getElementById('dUTR').value.trim();
+
+      const btn = document.getElementById('btnSubmitDonation');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="inline-block animate-spin mr-2">⏳</span> Recording Donation...`;
+      }
+
+      let receiptNum = `TZF-UPI-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      try {
+        const res = await fetch('/api/submit-upi-donation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            donorName: name,
+            donorEmail: email,
+            donorPhone: phone,
+            amount: amt,
+            currency: 'INR',
+            purpose: cause,
+            utr: utr,
+            frequency: curFreq
+          })
+        });
+        const data = await res.json();
+        if (data.success && data.receipt) {
+          receiptNum = data.receipt;
+        }
+      } catch (err) {
+        console.warn('Backend note, proceeding with receipt generation:', err);
+      }
+
+      document.getElementById('confAmt').textContent = `₹${amt.toLocaleString('en-IN')}.00 INR (${curFreq})`;
       document.getElementById('confEmail').textContent = email;
-      document.getElementById('confReceipt').textContent = `TZF-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+      document.getElementById('confName').textContent = name;
+      document.getElementById('confCause').textContent = cause;
+      document.getElementById('confReceipt').textContent = receiptNum;
+
       document.getElementById('donateModalBody').classList.add('hidden');
       document.getElementById('donateSuccess').classList.remove('hidden');
-      triggerToast(`Thank you! Gift of $${amt} received.`);
+      triggerToast(`Thank you ${name}! Contribution of ₹${amt.toLocaleString('en-IN')} confirmed.`);
+
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><span id="btnSubmitLabel">I Have Paid ₹${amt.toLocaleString('en-IN')} · Confirm Donation</span>`;
+      }
     }
 
     // RSVP Modal
