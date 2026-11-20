@@ -137,30 +137,30 @@
       transform: translateY(0) scale(1);
     }
 
-    /* Donation Modal 2-Column Responsive Layout & Compact QR Card */
+    /* Donation Modal 2-Column Responsive Layout & Balanced QR Card */
     .donate-modal-layout {
       display: flex;
       flex-direction: row;
-      gap: 1.5rem;
+      gap: 1.75rem;
       align-items: flex-start;
     }
     .donate-modal-form-col {
-      flex: 1 1 60%;
+      flex: 1 1 58%;
       min-width: 0;
     }
     .donate-modal-qr-col {
-      flex: 0 0 230px;
-      max-width: 230px;
+      flex: 0 0 280px;
+      max-width: 280px;
       width: 100%;
       box-sizing: border-box;
     }
     .donate-qr-wrapper {
       background: #ffffff;
-      border-radius: 0.75rem;
-      padding: 0.35rem;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      border-radius: 0.85rem;
+      padding: 0.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.12);
-      width: 130px;
+      width: 185px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
@@ -168,8 +168,8 @@
     }
     .donate-qr-img {
       width: 100%;
-      max-width: 120px;
-      max-height: 175px;
+      max-width: 172px;
+      max-height: 255px;
       height: auto;
       object-fit: contain;
       display: block;
@@ -183,6 +183,13 @@
       .donate-modal-qr-col {
         max-width: 100% !important;
         flex: 1 1 auto;
+      }
+      .donate-qr-wrapper {
+        width: 180px;
+      }
+      .donate-qr-img {
+        max-width: 168px;
+        max-height: 248px;
       }
     }
 
@@ -1845,10 +1852,10 @@
                 </span>
               </div>
 
-              <!-- Compact QR Image Container -->
-              <div class="donate-qr-wrapper" style="width: 130px; margin: 0 auto; background: #fff; padding: 6px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+              <!-- Balanced QR Image Container -->
+              <div class="donate-qr-wrapper" style="width: 185px; margin: 0 auto; background: #fff; padding: 8px; border-radius: 14px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
                 <img src="assets/images/zion-qr-code.jpg" alt="Zion Foundation South Indian Bank UPI QR Code"
-                  class="donate-qr-img" style="max-width: 118px; max-height: 170px; width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px;" />
+                  class="donate-qr-img" style="max-width: 172px; max-height: 255px; width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px;" />
               </div>
 
               <!-- UPI ID Pill with Quick Copy -->
