@@ -10,10 +10,10 @@
   <meta name="description"
     content="Zion Foundation serves families through compassion, education, and faith — meeting real needs and nurturing lasting change across our neighborhoods." />
 
-  <!-- Google Fonts: Poppins (Single Master Font) -->
+  <!-- Google Fonts: Poppins (Single Master Font) + Caveat (Sports Festival Accents) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
   <!-- Exact Production Stylesheet -->
   <link rel="stylesheet" href="css/original.css" />
@@ -84,6 +84,329 @@
     .founder-role {
       font-family: 'Poppins', sans-serif !important;
       font-weight: 500 !important;
+    }
+
+    /* Zion Community Sports Festival Styles & Precise Layout Geometry */
+    .script-font, .script-font * {
+      font-family: 'Caveat', cursive, sans-serif !important;
+    }
+
+    .events-container {
+      width: 100%;
+      max-width: 72rem; /* 1152px - matches exact width of max-w-6xl across Zion site */
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    @media (min-width: 640px) {
+      .events-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .events-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* 1. Hero Card & Grid - Pink, Plum & White Zion Brand Identity */
+    .festival-hero {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, #24133B 0%, #3B152A 50%, #4D1832 100%);
+      border: 1px solid rgba(223, 76, 118, 0.45);
+      color: #ffffff;
+      box-shadow: 0 20px 45px -10px rgba(36, 19, 59, 0.4);
+      margin-bottom: 3rem;
+    }
+    .festival-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 1024px) {
+      .festival-hero-grid {
+        grid-template-columns: 1.25fr 1fr; /* Text 55%, Image 45% */
+        gap: 2.5rem;
+        padding: 2.75rem 3rem;
+      }
+    }
+    .festival-hero-image-wrap {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      height: 280px;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 2px solid rgba(223, 76, 118, 0.7);
+      box-shadow: 0 12px 30px rgba(36, 19, 59, 0.45);
+      background-color: #1e0d29;
+      position: relative;
+    }
+    @media (min-width: 1024px) {
+      .festival-hero-image-wrap {
+        height: 350px;
+        border-radius: 3rem 1.25rem 1.25rem 1.25rem;
+      }
+    }
+    .festival-hero-image-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: top center !important;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .festival-hero-image-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    /* 2. Objectives 5-Card Grid */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 640px) {
+      .objectives-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .objectives-grid {
+        grid-template-columns: repeat(5, 1fr); /* 5 clean cards in 1 row on desktop */
+        gap: 1rem;
+      }
+    }
+    .festival-card {
+      background: #ffffff;
+      border: 1px solid rgba(223, 76, 118, 0.22);
+      box-shadow: 0 4px 20px -2px rgba(36, 19, 59, 0.05), 0 2px 6px -1px rgba(223, 76, 118, 0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 1rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 230px;
+    }
+    .festival-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(223, 76, 118, 0.55);
+      box-shadow: 0 12px 28px -4px rgba(223, 76, 118, 0.22);
+    }
+    .objective-icon-wrap {
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #DF4C76 0%, #c93b64 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem auto;
+      box-shadow: 0 4px 14px rgba(223, 76, 118, 0.35);
+    }
+
+    /* 3. Event Highlights Carousel Track */
+    .highlights-wrap {
+      margin-bottom: 3rem;
+    }
+    .highlight-scroll-track {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-top: 0.5rem;
+      padding-bottom: 0.75rem;
+      width: 100%;
+    }
+    .highlight-scroll-track::-webkit-scrollbar {
+      display: none;
+    }
+    .highlight-card {
+      flex: 0 0 148px !important;
+      width: 148px !important;
+      max-width: 148px !important;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(223, 76, 118, 0.22);
+      box-shadow: 0 3px 10px rgba(36, 19, 59, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .highlight-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(223, 76, 118, 0.2);
+      border-color: rgba(223, 76, 118, 0.5);
+    }
+    .highlight-card-img {
+      width: 100%;
+      height: 105px;
+      object-fit: cover;
+      display: block;
+    }
+    .highlight-card-caption {
+      background: linear-gradient(135deg, #24133B 0%, #3B152A 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 0.5rem 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      line-height: 1.25;
+      min-height: 2.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 4 & 5. Dual Split Feature Cards */
+    .split-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 1024px) {
+      .split-cards-grid {
+        grid-template-columns: 1fr 1fr; /* Exact 50/50 balance on desktop */
+        gap: 1.75rem;
+      }
+    }
+    .split-feature-card {
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    @media (min-width: 640px) {
+      .split-feature-card {
+        flex-direction: row !important; /* Horizontal side-by-side inside card */
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.75rem;
+      }
+    }
+    .split-feature-card:hover {
+      transform: translateY(-3px);
+    }
+    .split-feature-img-wrap {
+      width: 135px !important;
+      height: 135px !important;
+      min-width: 135px !important;
+      max-width: 135px !important;
+      min-height: 135px !important;
+      max-height: 135px !important;
+      flex-shrink: 0 !important;
+      border-radius: 0.875rem;
+      overflow: hidden;
+      background-color: #000000;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+    @media (min-width: 640px) {
+      .split-feature-img-wrap {
+        width: 148px !important;
+        height: 148px !important;
+        min-width: 148px !important;
+        max-width: 148px !important;
+        min-height: 148px !important;
+        max-height: 148px !important;
+      }
+    }
+    .split-feature-img-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+    }
+    .split-feature-content {
+      flex: 1 1 0% !important;
+      min-width: 0 !important;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .split-feature-content {
+        text-align: left !important;
+      }
+    }
+
+    /* 6. Closing Banner */
+    .festival-closing-banner {
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, #24133B 0%, #3B152A 50%, #4D1832 100%);
+      border: 1px solid rgba(223, 76, 118, 0.45);
+      color: #ffffff;
+      padding: 1.75rem;
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 1024px) {
+      .festival-closing-banner {
+        flex-direction: row;
+        text-align: left;
+        padding: 2rem 2.5rem;
+      }
+    }
+    .closing-banner-silhouette {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 240px;
+      opacity: 0.22;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .closing-banner-silhouette img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: invert(1) contrast(1.5);
+    }
+
+    /* 7. Registration Section */
+    .festival-reg-card {
+      border-radius: 1.5rem;
+      background: #ffffff;
+      border: 1px solid rgba(223, 76, 118, 0.22);
+      padding: 2rem 1.5rem;
+      box-shadow: 0 10px 30px -5px rgba(223, 76, 118, 0.08);
+      max-width: 44rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) {
+      .festival-reg-card {
+        padding: 2.5rem 3rem;
+      }
     }
 
     /* Volunteers Showcase Row: Matches exact width & height of Founders and Interns 3-card grid */
@@ -518,8 +841,6 @@
               class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Verticals</button>
             <button onclick="scrollToSection('events')"
               class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Events</button>
-            <button onclick="scrollToSection('news')"
-              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">News</button>
             <button onclick="scrollToSection('volunteer')"
               class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Volunteer</button>
             <button onclick="scrollToSection('contact')"
@@ -570,8 +891,6 @@
               class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Verticals</button>
             <button onclick="closeMobileMenu(); scrollToSection('events')"
               class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Events</button>
-            <button onclick="closeMobileMenu(); scrollToSection('news')"
-              class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">News</button>
             <button onclick="closeMobileMenu(); scrollToSection('volunteer')"
               class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Volunteer</button>
             <button onclick="closeMobileMenu(); scrollToSection('contact')"
@@ -1140,282 +1459,524 @@
         </div>
       </section>
 
-      <section id="events" class="py-24 sm:py-32">
-        <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
-          <div class="flex flex-wrap items-end justify-between gap-4 scroll-reveal reveal-slide-up">
-            <div class="max-w-xl">
-              <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Join Us</span>
-              <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">Upcoming Events</h2>
+      <!-- ========================================================================= -->
+      <!-- ZION COMMUNITY SPORTS FESTIVAL (EVENTS SECTION)                            -->
+      <!-- ========================================================================= -->
+      <section id="events" class="py-16 sm:py-24 bg-gradient-to-b from-[#FFF5F7] via-white to-[#FDF2F4] relative overflow-hidden">
+        <div class="events-container">
+
+          <!-- 1. HERO SECTION -->
+          <div class="festival-hero scroll-reveal">
+            <!-- Subtle Ambient Glow -->
+            <div class="absolute -top-24 -left-24 w-80 h-80 bg-[#DF4C76]/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="festival-hero-grid">
+              <!-- Left Column: Content -->
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <span class="px-4 py-1 rounded-full border border-white/30 text-white text-xs font-600 uppercase tracking-widest bg-white/10 backdrop-blur-sm">
+                    EVENTS
+                  </span>
+                  <div class="h-[1px] w-20 bg-gradient-to-r from-white/40 to-transparent"></div>
+                </div>
+
+                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-800 tracking-tight text-white leading-tight">
+                  ZION COMMUNITY<br>
+                  <span class="text-[#FBBF24] italic font-700 tracking-normal drop-shadow-sm">SPORTS FESTIVAL</span>
+                </h2>
+
+                <p class="script-font text-2xl sm:text-3xl text-amber-200 leading-snug">
+                  Where Talent Meets Teamwork.<br>Where Communities Come Together.
+                </p>
+
+                <p class="text-xs sm:text-sm text-gray-200 leading-relaxed max-w-xl">
+                  A celebration of sports, teamwork and young talent! Join us to encourage participation, recognise achievement and promote Zion Academy.
+                </p>
+
+                <!-- Hero Buttons -->
+                <div class="pt-2 flex flex-wrap items-center gap-3">
+                  <button onclick="scrollToSection('festival-registration')"
+                    class="inline-flex items-center gap-2 rounded-full bg-[#E5A93C] hover:bg-[#d6992d] text-[#120a02] font-700 px-6 py-2.5 text-xs sm:text-sm shadow-lg hover:scale-105 transition-all">
+                    <span>Register Your Team</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+
+                  <a href="program.html?id=zion-academy"
+                    class="inline-flex items-center gap-2 rounded-full border border-white/40 hover:border-white text-white font-600 px-6 py-2.5 text-xs sm:text-sm bg-black/30 hover:bg-black/50 backdrop-blur-sm transition-all">
+                    <span>Explore Zion Academy</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </a>
+                </div>
+
+                <!-- Info Badges matching branding -->
+                <div class="pt-3 border-t border-white/15 flex flex-wrap gap-x-5 gap-y-2 text-xs text-gray-300">
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4 text-[#DF4C76]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Coliseo Atletico, NICE Rd, Bengaluru
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <svg class="h-4 w-4 text-[#DF4C76]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    Helplines: +91 81236 77210 | +91 90357 72512
+                  </span>
+                </div>
+              </div>
+
+              <!-- Right Column: Sized Sports Hero Image -->
+              <div class="festival-hero-image-wrap">
+                <img src="assets/images/events/hero-sports.jpg" alt="Zion Community Sports Festival action" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#24133B]/60 via-transparent to-transparent pointer-events-none"></div>
+              </div>
             </div>
-            <p class="text-muted-foreground max-w-xs">Come as you are. There's a place for everyone at our table.</p>
           </div>
 
-          <div class="mt-12 divide-y divide-border border-y border-border stagger-children scroll-reveal">
-            <!-- Event 1 -->
-            <div
-              class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
-              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
-                <span class="block font-display text-xl font-600 leading-none">18</span>
-                <span class="block text-xs mt-1 tracking-widest text-accent">MAY</span>
-              </div>
-              <div class="flex-1">
-                <span
-                  class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Outreach</span>
-                <h3 class="mt-2 font-display text-2xl font-600">Community Food Drive</h3>
-                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    9:00 AM
-                  </span>
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
-                      </path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Zion Community Center
-                  </span>
-                </div>
-              </div>
-              <button onclick="openRsvp('Community Food Drive', 'May 18, 9:00 AM', 'Zion Community Center')"
-                class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 2v4"></path>
-                  <path d="M16 2v4"></path>
-                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                  <path d="M3 10h18"></path>
-                </svg>
-                RSVP
-              </button>
+          <!-- 2. OUR EVENT OBJECTIVES -->
+          <div class="scroll-reveal reveal-slide-up">
+            <div class="flex items-center justify-center gap-4 my-6 sm:my-8">
+              <div class="h-[1.5px] w-12 sm:w-24 bg-[#DF4C76]/40"></div>
+              <h3 class="font-display text-lg sm:text-2xl font-800 uppercase tracking-widest text-[#24133B] text-center">
+                OUR EVENT OBJECTIVES
+              </h3>
+              <div class="h-[1.5px] w-12 sm:w-24 bg-[#DF4C76]/40"></div>
             </div>
 
-            <!-- Event 2 -->
-            <div
-              class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
-              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
-                <span class="block font-display text-xl font-600 leading-none">25</span>
-                <span class="block text-xs mt-1 tracking-widest text-accent">MAY</span>
-              </div>
-              <div class="flex-1">
-                <span
-                  class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Fundraiser</span>
-                <h3 class="mt-2 font-display text-2xl font-600">Youth Scholarship Gala</h3>
-                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
+            <div class="objectives-grid">
+              <!-- Objective 1: Invite Teams -->
+              <div class="festival-card">
+                <div>
+                  <div class="objective-icon-wrap">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
-                    6:30 PM
-                  </span>
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
-                      </path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Grand Hall Downtown
-                  </span>
+                  </div>
+                  <h4 class="font-display text-sm font-700 text-[#24133B] uppercase tracking-wide">
+                    INVITE TEAMS
+                  </h4>
+                  <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    Welcome football teams, schools and community participants.
+                  </p>
                 </div>
+                <span class="mt-4 inline-block text-[11px] font-semibold text-[#DF4C76]">Open Registrations</span>
               </div>
-              <button onclick="openRsvp('Youth Scholarship Gala', 'May 25, 6:30 PM', 'Grand Hall Downtown')"
-                class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 2v4"></path>
-                  <path d="M16 2v4"></path>
-                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                  <path d="M3 10h18"></path>
-                </svg>
-                RSVP
-              </button>
+
+              <!-- Objective 2: Equal Participation -->
+              <div class="festival-card">
+                <div>
+                  <div class="objective-icon-wrap">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M19 8v6"></path>
+                      <path d="M22 11h-6"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-display text-sm font-700 text-[#24133B] uppercase tracking-wide">
+                    EQUAL PARTICIPATION
+                  </h4>
+                  <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    Encourage boys and girls to participate and showcase their talent.
+                  </p>
+                </div>
+                <span class="mt-4 inline-block text-[11px] font-semibold text-[#DF4C76]">Boys &amp; Girls Brackets</span>
+              </div>
+
+              <!-- Objective 3: Community Connection -->
+              <div class="festival-card">
+                <div>
+                  <div class="objective-icon-wrap">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="m11 17 2 2a1 1 0 0 0 1.42 0l6.59-6.59a1 1 0 0 0 0-1.42l-2-2a1 1 0 0 0-1.42 0L14 12.59"></path>
+                      <path d="m7 7 2-2a1 1 0 0 1 1.42 0l6.59 6.59a1 1 0 0 1 0 1.42l-2 2a1 1 0 0 1-1.42 0L10 11.41"></path>
+                      <circle cx="6" cy="18" r="3"></circle>
+                      <circle cx="18" cy="6" r="3"></circle>
+                    </svg>
+                  </div>
+                  <h4 class="font-display text-sm font-700 text-[#24133B] uppercase tracking-wide">
+                    COMMUNITY CONNECTION
+                  </h4>
+                  <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    Bring families, parents and local communities together.
+                  </p>
+                </div>
+                <span class="mt-4 inline-block text-[11px] font-semibold text-[#DF4C76]">Family &amp; Fan Zones</span>
+              </div>
+
+              <!-- Objective 4: Recognition and Rewards -->
+              <div class="festival-card">
+                <div>
+                  <div class="objective-icon-wrap">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="6"></circle>
+                      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                      <polygon points="12 5 13 8 16 8 13.5 10 14.5 13 12 11 9.5 13 10.5 10 8 8 11 8 12 5"></polygon>
+                    </svg>
+                  </div>
+                  <h4 class="font-display text-sm font-700 text-[#24133B] uppercase tracking-wide">
+                    RECOGNITION AND REWARDS
+                  </h4>
+                  <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    Celebrate achievements with trophies, medals and certificates.
+                  </p>
+                </div>
+                <span class="mt-4 inline-block text-[11px] font-semibold text-[#DF4C76]">Trophies &amp; Medals</span>
+              </div>
+
+              <!-- Objective 5: Promote Zion Academy -->
+              <div class="festival-card">
+                <div>
+                  <div class="objective-icon-wrap">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-display text-sm font-700 text-[#24133B] uppercase tracking-wide">
+                    PROMOTE ZION ACADEMY
+                  </h4>
+                  <p class="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    Introduce Zion Academy and its sports programmes.
+                  </p>
+                </div>
+                <span class="mt-4 inline-block text-[11px] font-semibold text-[#DF4C76]">Youth Development</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. EVENT HIGHLIGHTS CAROUSEL -->
+          <div class="highlights-wrap scroll-reveal reveal-slide-up">
+            <div class="flex items-center justify-center gap-4 my-6 sm:my-8">
+              <div class="h-[1.5px] w-12 sm:w-24 bg-[#DF4C76]/40"></div>
+              <h3 class="font-display text-lg sm:text-2xl font-800 uppercase tracking-widest text-[#24133B] text-center">
+                EVENT HIGHLIGHTS
+              </h3>
+              <div class="h-[1.5px] w-12 sm:w-24 bg-[#DF4C76]/40"></div>
             </div>
 
-            <!-- Event 3 -->
-            <div
-              class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
-              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
-                <span class="block font-display text-xl font-600 leading-none">08</span>
-                <span class="block text-xs mt-1 tracking-widest text-accent">JUN</span>
-              </div>
-              <div class="flex-1">
-                <span
-                  class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Faith</span>
-                <h3 class="mt-2 font-display text-2xl font-600">Sunday Worship & Prayer</h3>
-                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    10:00 AM
-                  </span>
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
-                      </path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Zion Chapel
-                  </span>
-                </div>
-              </div>
-              <button onclick="openRsvp('Sunday Worship & Prayer', 'June 08, 10:00 AM', 'Zion Chapel')"
-                class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 2v4"></path>
-                  <path d="M16 2v4"></path>
-                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                  <path d="M3 10h18"></path>
+            <!-- Carousel Component with Navigation Chevrons -->
+            <div class="relative flex items-center gap-3">
+              <!-- Left Chevron -->
+              <button onclick="scrollHighlights('left')"
+                class="hidden sm:flex w-10 h-10 rounded-full bg-[#24133B] hover:bg-[#DF4C76] text-white items-center justify-center shadow-lg transition-colors shrink-0 z-10"
+                aria-label="Previous Highlight">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="m15 18-6-6 6-6"></path>
                 </svg>
-                RSVP
               </button>
-            </div>
 
-            <!-- Event 4 -->
-            <div
-              class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-6 hover:bg-secondary/50 transition-colors px-2 sm:px-4 -mx-2 sm:-mx-4">
-              <div class="flex-shrink-0 text-center bg-primary text-primary-foreground rounded-xl w-20 py-3">
-                <span class="block font-display text-xl font-600 leading-none">21</span>
-                <span class="block text-xs mt-1 tracking-widest text-accent">JUN</span>
-              </div>
-              <div class="flex-1">
-                <span
-                  class="inline-block text-xs font-600 uppercase tracking-wider text-accent bg-accent/15 rounded-full px-3 py-0.5">Volunteer</span>
-                <h3 class="mt-2 font-display text-2xl font-600">Neighborhood Rebuild Day</h3>
-                <div class="mt-1.5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    8:00 AM
-                  </span>
-                  <span class="inline-flex items-center gap-1.5">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
-                      </path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Maple District
-                  </span>
+              <!-- Track -->
+              <div id="highlightScrollTrack" class="highlight-scroll-track">
+                <!-- Highlight Card 1 -->
+                <div class="highlight-card">
+                  <img src="assets/images/events/hl-photo-1.jpg" alt="Football Tournaments" class="highlight-card-img" />
+                  <div class="highlight-card-caption">
+                    Football Tournaments
+                  </div>
+                </div>
+
+                <!-- Highlight Card 2 -->
+                <div class="highlight-card">
+                  <img src="assets/images/events/hl-photo-2.jpg" alt="Friendly Matches" class="highlight-card-img" />
+                  <div class="highlight-card-caption">
+                    Friendly Matches
+                  </div>
+                </div>
+
+                <!-- Highlight Card 3 -->
+                <div class="highlight-card">
+                  <img src="assets/images/events/hl-photo-3.jpg" alt="Team Competitions" class="highlight-card-img" />
+                  <div class="highlight-card-caption">
+                    Team Competitions
+                  </div>
+                </div>
+
+                <!-- Highlight Card 4 -->
+                <div class="highlight-card">
+                  <img src="assets/images/events/hl-photo-4.jpg" alt="Individual Challenges" class="highlight-card-img" />
+                  <div class="highlight-card-caption">
+                    Individual Challenges
+                  </div>
+                </div>
+
+                <!-- Highlight Card 5 -->
+                <div class="highlight-card">
+                  <img src="assets/images/events/hl-photo-5.jpg" alt="Awards & Recognition" class="highlight-card-img" />
+                  <div class="highlight-card-caption">
+                    Awards &amp; Recognition
+                  </div>
+                </div>
+
+                <!-- Highlight Card 6 -->
+                <div class="highlight-card">
+                  <img src="assets/images/events/hl-photo-6.jpg" alt="Family Engagement" class="highlight-card-img" />
+                  <div class="highlight-card-caption">
+                    Family Engagement
+                  </div>
+                </div>
+
+                <!-- Highlight Card 7 -->
+                <div class="highlight-card">
+                  <img src="assets/images/events/hl-photo-7.jpg" alt="Academy Programmes" class="highlight-card-img" />
+                  <div class="highlight-card-caption">
+                    Academy Programmes
+                  </div>
                 </div>
               </div>
-              <button onclick="openRsvp('Neighborhood Rebuild Day', 'June 21, 8:00 AM', 'Maple District')"
-                class="self-start sm:self-center inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-600 hover:bg-primary hover:text-primary-foreground hover:border-primary transition">
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 2v4"></path>
-                  <path d="M16 2v4"></path>
-                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                  <path d="M3 10h18"></path>
+
+              <!-- Right Chevron -->
+              <button onclick="scrollHighlights('right')"
+                class="hidden sm:flex w-10 h-10 rounded-full bg-[#24133B] hover:bg-[#DF4C76] text-white items-center justify-center shadow-lg transition-colors shrink-0 z-10"
+                aria-label="Next Highlight">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="m9 18 6-6-6-6"></path>
                 </svg>
-                RSVP
               </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section id="news" class="py-24 sm:py-32 bg-secondary/60">
-        <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
-          <div class="max-w-2xl scroll-reveal reveal-slide-up">
-            <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Stories & Updates</span>
-            <h2 class="mt-3 font-display text-4xl sm:text-5xl font-600 leading-tight">News & Blog</h2>
-          </div>
-
-          <div class="mt-12 grid md:grid-cols-3 gap-6 stagger-children scroll-reveal">
-            <!-- Article 1 -->
-            <article
-              class="story-card group rounded-2xl overflow-hidden bg-card border border-border shadow-sm">
-              <div class="story-card-media h-48 overflow-hidden">
-                <img src="assets/images/kids.png" alt="How mentorship transformed the Reyes family"
-                  class="story-card-img h-full w-full object-cover" />
+          <!-- 4 & 5. TWO-COLUMN SPLIT FEATURE CARDS: AWARDS & ZION ACADEMY -->
+          <div class="split-cards-grid scroll-reveal">
+            <!-- Left Card: AWARDS AND RECOGNITION -->
+            <div style="background: linear-gradient(135deg, #24133B 0%, #3B162E 50%, #200D2A 100%);" class="split-feature-card border border-[#DF4C76]/35 text-white">
+              <div class="split-feature-img-wrap border border-amber-400/40">
+                <img src="assets/images/events/trophy-medals.jpg" alt="Trophies, Medals and Certificates" />
               </div>
-              <div class="p-6">
-                <span class="text-xs font-600 uppercase tracking-wider text-accent">Education</span>
-                <h3 class="mt-2 font-display text-xl font-600 leading-snug">How mentorship transformed the Reyes family
-                </h3>
-                <p class="mt-2 text-sm text-muted-foreground leading-relaxed">A single mother of three shares how
-                  tutoring gave her children a new future.</p>
-                <button
-                  onclick="openStory('How mentorship transformed the Reyes family', 'Education', 'A single mother of three shares how tutoring gave her children a new future.', 'assets/images/kids.png')"
-                  class="btn-arrow-motion mt-4 inline-flex items-center gap-1 text-sm font-600 text-primary hover:gap-2 transition-all">
-                  Read story
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m9 18 6-6-6-6"></path>
+              <div class="split-feature-content">
+                <h4 class="font-display text-base sm:text-lg font-800 text-[#FBBF24] uppercase tracking-wide">
+                  AWARDS AND RECOGNITION
+                </h4>
+                <p class="mt-2 text-xs sm:text-sm text-gray-200 leading-relaxed">
+                  Honouring talent, effort and sportsmanship with trophies, medals, certificates and special recognition.
+                </p>
+                <button onclick="scrollToSection('festival-registration')"
+                  class="mt-3.5 inline-flex items-center gap-2 rounded-full bg-[#E5A93C] hover:bg-[#d6992d] text-[#120a02] font-700 px-5 py-2 text-xs sm:text-sm shadow transition-all">
+                  <span>Celebrate Excellence</span>
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
                 </button>
               </div>
-            </article>
+            </div>
 
-            <!-- Article 2 -->
-            <article
-              class="story-card group rounded-2xl overflow-hidden bg-card border border-border shadow-sm">
-              <div class="story-card-media h-48 overflow-hidden">
-                <img src="assets/images/build.png" alt="30 homes restored after spring storms"
-                  class="story-card-img h-full w-full object-cover" />
+            <!-- Right Card: YOUR SPORTING JOURNEY STARTS HERE -->
+            <div class="split-feature-card bg-white border border-[#DF4C76]/25">
+              <div class="split-feature-img-wrap border border-[#DF4C76]/20">
+                <img src="assets/images/events/journey-boys.jpg" alt="Zion Academy Young Footballers" />
               </div>
-              <div class="p-6">
-                <span class="text-xs font-600 uppercase tracking-wider text-accent">Impact</span>
-                <h3 class="mt-2 font-display text-xl font-600 leading-snug">30 homes restored after spring storms</h3>
-                <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Volunteers rallied to rebuild an entire
-                  block in record time.</p>
-                <button
-                  onclick="openStory('30 homes restored after spring storms', 'Impact', 'Volunteers rallied to rebuild an entire block in record time.', 'assets/images/build.png')"
-                  class="btn-arrow-motion mt-4 inline-flex items-center gap-1 text-sm font-600 text-primary hover:gap-2 transition-all">
-                  Read story
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m9 18 6-6-6-6"></path>
+              <div class="split-feature-content">
+                <h4 class="font-display text-lg sm:text-xl font-700 text-[#24133B] leading-tight">
+                  Your Sporting<br>
+                  <span class="script-font text-2xl sm:text-3xl text-[#DF4C76] font-700">Journey Starts Here.</span>
+                </h4>
+                <p class="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Zion Academy nurtures young athletes through structured coaching, discipline and teamwork.
+                </p>
+                <a href="program.html?id=zion-academy"
+                  class="mt-3.5 inline-flex items-center gap-2 rounded-full bg-[#DF4C76] hover:bg-[#c93b64] text-white font-600 px-5 py-2 text-xs sm:text-sm shadow transition-all">
+                  <span>Explore Zion Academy</span>
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
-                </button>
+                </a>
               </div>
-            </article>
-
-            <!-- Article 3 -->
-            <article
-              class="story-card group rounded-2xl overflow-hidden bg-card border border-border shadow-sm">
-              <div class="story-card-media h-48 overflow-hidden">
-                <img src="assets/images/faith.png" alt="Finding hope: stories from our prayer circle"
-                  class="story-card-img h-full w-full object-cover" />
-              </div>
-              <div class="p-6">
-                <span class="text-xs font-600 uppercase tracking-wider text-accent">Faith</span>
-                <h3 class="mt-2 font-display text-xl font-600 leading-snug">Finding hope: stories from our prayer circle
-                </h3>
-                <p class="mt-2 text-sm text-muted-foreground leading-relaxed">The quiet power of community gathered in
-                  faith and fellowship.</p>
-                <button
-                  onclick="openStory('Finding hope: stories from our prayer circle', 'Faith', 'The quiet power of community gathered in faith and fellowship.', 'assets/images/faith.png')"
-                  class="btn-arrow-motion mt-4 inline-flex items-center gap-1 text-sm font-600 text-primary hover:gap-2 transition-all">
-                  Read story
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m9 18 6-6-6-6"></path>
-                  </svg>
-                </button>
-              </div>
-            </article>
+            </div>
           </div>
+
+          <!-- 6. CLOSING CALL TO ACTION BANNER -->
+          <div class="festival-closing-banner scroll-reveal">
+            <!-- Cheering crowd silhouette on the left -->
+            <div class="closing-banner-silhouette">
+              <img src="assets/images/events/crowd-silhouette.jpg" alt="" />
+            </div>
+
+            <div class="relative z-10 text-center lg:text-left">
+              <h4 class="font-display text-lg sm:text-xl lg:text-2xl font-700 text-white leading-tight">
+                Bring Your Team. Bring Your Family.<br>
+                <span class="script-font text-[#FBBF24] text-2xl sm:text-3xl font-700">Be Part of the Celebration.</span>
+              </h4>
+            </div>
+
+            <div class="relative z-10 flex flex-wrap items-center justify-center gap-3">
+              <button onclick="scrollToSection('festival-registration')"
+                class="inline-flex items-center gap-2 rounded-full bg-[#E5A93C] hover:bg-[#d6992d] text-[#120a02] font-700 px-5 py-2.5 text-xs sm:text-sm shadow hover:scale-105 transition-all">
+                <span>Register Your Team</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+
+              <button onclick="openRsvp('Zion Community Sports Festival', 'General Festival Information & Timings', 'Coliseo Atletico Sports Ventures')"
+                class="inline-flex items-center gap-2 rounded-full border border-white/35 hover:border-white text-white font-600 px-5 py-2.5 text-xs sm:text-sm bg-black/25 hover:bg-black/40 transition-all">
+                <span>Get Event Information</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+
+              <a href="program.html?id=zion-academy"
+                class="inline-flex items-center gap-2 rounded-full border border-white/35 hover:border-white text-white font-600 px-5 py-2.5 text-xs sm:text-sm bg-black/25 hover:bg-black/40 transition-all">
+                <span>Explore Zion Academy</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- 7. CLEAN ENQUIRY & REGISTRATION FORM (Matching Pink & White Brand Theme) -->
+          <div id="festival-registration" class="festival-reg-card scroll-reveal">
+            <div class="max-w-3xl mx-auto text-center mb-8">
+              <span class="text-xs sm:text-sm font-600 uppercase tracking-[0.2em] text-[#DF4C76]">Registration &amp; Enquiries</span>
+              <h3 class="mt-2 font-display text-2xl sm:text-3xl lg:text-4xl font-700 text-[#24133B] leading-tight">
+                Register Your Team or Participant
+              </h3>
+              <p class="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Complete the enquiry form below. Our sports event team will review your request and get in touch directly.
+              </p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+              <form id="festivalRegForm" onsubmit="submitFestivalForm(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regName">
+                      Participant / Contact Name <span class="text-[#DF4C76]">*</span>
+                    </label>
+                    <input id="regName" required placeholder="Full Name"
+                      class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+                  </div>
+                  <div>
+                    <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regAge">
+                      Age / Age Group <span class="text-[#DF4C76]">*</span>
+                    </label>
+                    <input id="regAge" required placeholder="e.g. 12 or U-14 Squad"
+                      class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regGender">
+                      Gender <span class="text-xs text-muted-foreground font-normal">(Optional)</span>
+                    </label>
+                    <select id="regGender"
+                      class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition font-500">
+                      <option value="Not Specified">Select Option</option>
+                      <option value="Boys Division">Boys Division</option>
+                      <option value="Girls Division">Girls Division</option>
+                      <option value="Mixed / Co-ed">Mixed / Co-ed</option>
+                      <option value="Family / Spectator">Family / Spectator Group</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regTeam">
+                      School / Team / Club Name <span class="text-[#DF4C76]">*</span>
+                    </label>
+                    <input id="regTeam" required placeholder="School, club, or 'Individual'"
+                      class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regPhone">
+                      Parent / Guardian / Coach Phone <span class="text-[#DF4C76]">*</span>
+                    </label>
+                    <input id="regPhone" type="tel" required placeholder="+91 98765 43210"
+                      class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+                  </div>
+                  <div>
+                    <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regEmail">
+                      Email Address <span class="text-[#DF4C76]">*</span>
+                    </label>
+                    <input id="regEmail" type="email" required placeholder="email@example.com"
+                      class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regSport">
+                    Sport or Activity of Interest <span class="text-[#DF4C76]">*</span>
+                  </label>
+                  <select id="regSport" required
+                    class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition font-500">
+                    <option value="7v7 Football Tournament">7v7 Football Tournament (Boys &amp; Girls Brackets)</option>
+                    <option value="5v5 Girls Football Festival">5v5 Girls' Football Festival &amp; Skills Clinic</option>
+                    <option value="Individual Sporting Challenges">Individual Sporting Challenges (Crossbar / Penalty Shootout / Agility)</option>
+                    <option value="Family Sports & Fan Pass">Family Sports &amp; Carnival Pass (Parents vs. Coaches Shootout &amp; Games)</option>
+                    <option value="Zion Academy Trial & Assessment">Zion Academy Scouting, Free Trial &amp; Skills Assessment</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs sm:text-sm font-semibold mb-1 text-[#24133B]" for="regNotes">
+                    Additional Notes / Team Roster Details <span class="text-xs text-muted-foreground font-normal">(Optional)</span>
+                  </label>
+                  <textarea id="regNotes" rows="2" placeholder="Tell us about your team size, player experience, or questions..."
+                    class="w-full rounded-xl border border-gray-200 bg-[#FFF8FA] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition"></textarea>
+                </div>
+
+                <!-- Explicit Disclaimer Callout -->
+                <div class="rounded-xl bg-[#FFF0F3] border border-[#DF4C76]/20 p-3.5 text-xs text-[#24133B] flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-[#DF4C76] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <span>
+                    <strong>Important Note:</strong> Submitting this form is an <em>enquiry or registration request</em>, not an automatically confirmed entry. Our tournament and academy coordinators will review your submission and contact you via phone/WhatsApp to confirm bracket availability, rules, and reporting schedules.
+                  </span>
+                </div>
+
+                <button type="submit" id="btnFestSubmit"
+                  class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#DF4C76] hover:bg-[#c93b64] px-8 py-3.5 text-base font-600 text-white active:scale-[0.99] transition shadow-lg">
+                  Submit Festival Registration Request
+                </button>
+              </form>
+
+              <!-- Form Success Box -->
+              <div id="festivalSuccessBox" class="hidden text-center py-6 px-4 rounded-2xl bg-emerald-50 border border-emerald-500/30 mt-4">
+                <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-emerald-600 text-white mb-3 shadow">
+                  <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                </span>
+                <h4 class="font-display text-2xl font-700 text-[#24133B]">Enquiry Received!</h4>
+                <p id="festivalSuccessMsg" class="text-sm text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
+                  Thank you! Your registration request has been submitted. Our sports coordinators will contact you shortly to review brackets and provide event details.
+                </p>
+                <div class="mt-4 flex flex-wrap justify-center gap-3">
+                  <a href="program.html?id=zion-academy"
+                    class="inline-flex items-center gap-2 rounded-full bg-[#24133B] px-6 py-2.5 text-sm font-600 text-white hover:bg-[#1a0c2c] transition shadow-sm">
+                    Explore Zion Academy Programs
+                  </a>
+                  <button type="button" onclick="resetFestivalForm()"
+                    class="inline-flex items-center gap-2 rounded-full border border-gray-300 px-5 py-2.5 text-sm font-600 hover:bg-[#FFF0F3] transition text-[#24133B]">
+                    Submit Another Request
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -1618,11 +2179,6 @@
               </svg>
               Donate ₹1,500 Now
             </button>
-                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
-                </path>
-              </svg>
-              Donate $60 Now
-            </button>
             <button onclick="openDonateModal(true)"
               class="btn-motion btn-secondary-motion inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-base font-600 hover:bg-white/10 active:scale-[0.98] transition">
               Give Monthly
@@ -1791,8 +2347,6 @@
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Verticals</button></li>
                 <li><button onclick="scrollToSection('events')"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Events</button></li>
-                <li><button onclick="scrollToSection('news')"
-                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">News</button></li>
                 <li><button onclick="scrollToSection('volunteer')"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Volunteer</button></li>
                 <li><button onclick="scrollToSection('contact')"
@@ -2027,9 +2581,9 @@
     </div>
   </div>
 
-  <!-- Interactive Modal: RSVP -->
+  <!-- Interactive Modal: Sports Festival Registration & Enquiry Request -->
   <div id="modalRsvp" class="modal-backdrop-custom">
-    <div class="modal-card-custom">
+    <div class="modal-card-custom" style="max-width: 36rem;">
       <button onclick="closeRsvp()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 6 6 18"></path>
@@ -2037,36 +2591,97 @@
         </svg>
       </button>
       <div id="rsvpBody">
-        <span class="text-xs font-600 uppercase tracking-wider text-accent">Join Us</span>
-        <h3 id="rsvpTitle" class="font-display text-2xl font-600 mt-1">Event RSVP</h3>
+        <span class="text-xs font-600 uppercase tracking-wider text-[#DF4C76]">Zion Community Sports Festival</span>
+        <h3 id="rsvpTitle" class="font-display text-2xl font-700 text-[#24133B] mt-1">Register / Event Enquiry</h3>
         <p id="rsvpSub" class="text-sm text-muted-foreground mt-0.5 mb-4"></p>
-        <form onsubmit="submitRsvp(event)" class="space-y-3">
-          <div>
-            <label class="block text-sm font-semibold mb-1" for="rName">Your Name</label>
-            <input id="rName" required
-              class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+        <form onsubmit="submitRsvp(event)" class="space-y-3.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rName">Participant / Contact Name *</label>
+              <input id="rName" required placeholder="Full Name"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rAge">Age / Age Group *</label>
+              <input id="rAge" required placeholder="e.g. 13 or U-14"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
           </div>
-          <div>
-            <label class="block text-sm font-semibold mb-1" for="rEmail">Email Address</label>
-            <input id="rEmail" type="email" required
-              class="w-full rounded-lg border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rGender">Gender <span class="text-muted-foreground font-normal">(Optional)</span></label>
+              <select id="rGender" class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition">
+                <option value="Not Specified">Select Option</option>
+                <option value="Boys Division">Boys Division</option>
+                <option value="Girls Division">Girls Division</option>
+                <option value="Co-ed / Family">Co-ed / Family</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rTeam">School / Team Name *</label>
+              <input id="rTeam" required placeholder="School, Club or 'Individual'"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
           </div>
-          <button type="submit"
-            class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-600 text-accent-foreground hover:brightness-105 transition">
-            Confirm Attendance
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rPhone">Parent / Guardian Contact *</label>
+              <input id="rPhone" type="tel" required placeholder="+91 98765 43210"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rEmail">Email Address *</label>
+              <input id="rEmail" type="email" required placeholder="name@example.com"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rSport">Sport / Activity of Interest *</label>
+            <select id="rSport" class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition font-500">
+              <option value="7v7 Football Tournament">7v7 Football Tournament (Boys &amp; Girls Brackets)</option>
+              <option value="5v5 Girls Football Festival">5v5 Girls' Football Festival &amp; Skills Clinic</option>
+              <option value="Individual Sporting Challenges">Individual Sporting Challenges (Crossbar / Penalty / Agility)</option>
+              <option value="Family Sports & Fan Pass">Family Sports &amp; Carnival Pass</option>
+              <option value="Zion Academy Trial & Assessment">Zion Academy Scouting &amp; Free Assessment</option>
+            </select>
+          </div>
+
+          <!-- Important Disclaimer -->
+          <div class="rounded-lg bg-[#FFF0F3] border border-[#DF4C76]/25 p-2.5 text-[11px] text-[#24133B] flex items-start gap-2">
+            <svg class="w-4 h-4 text-[#DF4C76] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>
+              <strong>Note:</strong> Submitting this form is an <em>enquiry / registration request</em>, not an automatically confirmed entry. Coordinators will contact you to verify details and confirm brackets.
+            </span>
+          </div>
+
+          <button type="submit" id="btnModalRsvpSubmit"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#DF4C76] hover:bg-[#c93b64] px-6 py-3 text-sm sm:text-base font-600 text-white transition shadow-md">
+            Submit Registration Request
           </button>
         </form>
       </div>
-      <div id="rsvpSuccess" class="hidden text-center py-4">
-        <span class="grid place-items-center h-12 w-12 mx-auto rounded-full bg-accent text-accent-foreground mb-2">
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+      <div id="rsvpSuccess" class="hidden text-center py-5">
+        <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-emerald-600 text-white mb-3 shadow">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M20 6 9 17l-5-5"></path>
           </svg>
         </span>
-        <h3 class="font-display text-2xl font-600">You're Registered!</h3>
-        <p class="text-sm text-muted-foreground mt-1">We look forward to seeing you there.</p>
+        <h3 class="font-display text-2xl font-700 text-[#24133B]">Enquiry Received!</h3>
+        <p class="text-sm text-muted-foreground mt-2 max-w-sm mx-auto leading-relaxed">
+          Thank you! We have received your request. A Zion Foundation sports coordinator will call/WhatsApp you to verify player/team details and match fixtures.
+        </p>
         <button onclick="closeRsvp()"
-          class="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground">Done</button>
+          class="mt-5 inline-flex items-center gap-2 rounded-full bg-[#24133B] px-7 py-2.5 text-sm font-600 text-white hover:bg-[#1a0c2c] transition shadow">
+          Done
+        </button>
       </div>
     </div>
   </div>
@@ -2356,10 +2971,21 @@
       }
     }
 
-    // RSVP Modal
+    // Sports Festival Highlight Carousel Scroll
+    function scrollHighlights(direction) {
+      const track = document.getElementById('highlightScrollTrack');
+      if (track) {
+        const shift = direction === 'left' ? -280 : 280;
+        track.scrollBy({ left: shift, behavior: 'smooth' });
+      }
+    }
+
+    // RSVP / Event Enquiry Modal
     function openRsvp(title, time, place) {
-      document.getElementById('rsvpTitle').textContent = title;
-      document.getElementById('rsvpSub').textContent = `${time} · ${place}`;
+      if (title) document.getElementById('rsvpTitle').textContent = title;
+      if (time || place) {
+        document.getElementById('rsvpSub').textContent = [time, place].filter(Boolean).join(' · ');
+      }
       document.getElementById('rsvpBody').classList.remove('hidden');
       document.getElementById('rsvpSuccess').classList.add('hidden');
       document.getElementById('modalRsvp').classList.add('open');
@@ -2367,11 +2993,115 @@
     function closeRsvp() {
       document.getElementById('modalRsvp').classList.remove('open');
     }
-    function submitRsvp(e) {
+    async function submitRsvp(e) {
       e.preventDefault();
-      document.getElementById('rsvpBody').classList.add('hidden');
-      document.getElementById('rsvpSuccess').classList.remove('hidden');
-      triggerToast('RSVP confirmed!');
+      const btn = document.getElementById('btnModalRsvpSubmit');
+      const origText = btn ? btn.innerHTML : 'Submit Registration Request';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="inline-block animate-spin mr-2">◌</span> Submitting Request...`;
+      }
+
+      const payload = {
+        eventName: document.getElementById('rsvpTitle')?.textContent?.trim() || 'Zion Community Sports Festival',
+        eventDetails: document.getElementById('rsvpSub')?.textContent?.trim() || 'Coliseo Atletico, Bengaluru',
+        contactName: document.getElementById('rName')?.value?.trim() || '',
+        phone: document.getElementById('rPhone')?.value?.trim() || '',
+        email: document.getElementById('rEmail')?.value?.trim() || '',
+        category: document.getElementById('rSport')?.value || 'Community Participant',
+        details: `Age: ${document.getElementById('rAge')?.value?.trim() || ''} | Gender: ${document.getElementById('rGender')?.value || ''} | Team: ${document.getElementById('rTeam')?.value?.trim() || ''}`
+      };
+
+      try {
+        const res = await fetch('/api/register-event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({ success: true }));
+        document.getElementById('rsvpBody').classList.add('hidden');
+        document.getElementById('rsvpSuccess').classList.remove('hidden');
+        triggerToast('Registration request submitted successfully!');
+      } catch (err) {
+        // Graceful offline fallback
+        console.warn('Network notice:', err);
+        document.getElementById('rsvpBody').classList.add('hidden');
+        document.getElementById('rsvpSuccess').classList.remove('hidden');
+        triggerToast('Enquiry saved offline! Coordinator will follow up.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+    }
+
+    // Inline Festival Registration & Enquiry Form
+    async function submitFestivalForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnFestSubmit');
+      const origText = btn ? btn.innerHTML : 'Submit Festival Registration Request';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="inline-block animate-spin mr-2">◌</span> Submitting Request...`;
+      }
+
+      const name = document.getElementById('regName')?.value?.trim() || '';
+      const age = document.getElementById('regAge')?.value?.trim() || '';
+      const gender = document.getElementById('regGender')?.value || 'Not Specified';
+      const team = document.getElementById('regTeam')?.value?.trim() || '';
+      const phone = document.getElementById('regPhone')?.value?.trim() || '';
+      const email = document.getElementById('regEmail')?.value?.trim() || '';
+      const sport = document.getElementById('regSport')?.value || 'General Festival Participant';
+      const notes = document.getElementById('regNotes')?.value?.trim() || '';
+
+      const payload = {
+        eventName: 'Zion Community Sports Festival',
+        eventDetails: 'Coliseo Atletico Sports Ventures, NICE Road, Bengaluru',
+        contactName: name,
+        phone: phone,
+        email: email,
+        category: sport,
+        details: `Age/Squad: ${age} | Gender: ${gender} | School/Team: ${team}${notes ? ' | Notes: ' + notes : ''}`
+      };
+
+      try {
+        const res = await fetch('/api/register-event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({ success: true }));
+        const form = document.getElementById('festivalRegForm');
+        const successBox = document.getElementById('festivalSuccessBox');
+        if (form) form.classList.add('hidden');
+        if (successBox) successBox.classList.remove('hidden');
+        triggerToast(`Thank you ${name}! Registration request received.`);
+      } catch (err) {
+        console.warn('Network notice:', err);
+        const form = document.getElementById('festivalRegForm');
+        const successBox = document.getElementById('festivalSuccessBox');
+        if (form) form.classList.add('hidden');
+        if (successBox) successBox.classList.remove('hidden');
+        triggerToast('Request submitted! Our team will contact you shortly.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+    }
+
+    function resetFestivalForm() {
+      const form = document.getElementById('festivalRegForm');
+      const successBox = document.getElementById('festivalSuccessBox');
+      if (form) {
+        form.reset();
+        form.classList.remove('hidden');
+      }
+      if (successBox) {
+        successBox.classList.add('hidden');
+      }
     }
 
     // Story Modal

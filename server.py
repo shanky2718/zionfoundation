@@ -46,6 +46,7 @@ DATA_DIR = os.path.dirname(__file__)
 DONATIONS_FILE = os.path.join(DATA_DIR, 'donations.json')
 FOOD_DONATIONS_FILE = os.path.join(DATA_DIR, 'food_donations.json')
 FOOTBALL_TRIALS_FILE = os.path.join(DATA_DIR, 'football_trials.json')
+EVENT_REGISTRATIONS_FILE = os.path.join(DATA_DIR, 'event_registrations.json')
 
 def save_json_record(filepath, record):
     records = []
@@ -116,6 +117,8 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
             self.handle_food_donation(payload)
         elif self.path == '/api/register-football-trial':
             self.handle_football_trial(payload)
+        elif self.path == '/api/register-event':
+            self.handle_event_registration(payload)
         else:
             self.send_json(404, {'error': 'API endpoint not found'})
 
@@ -393,6 +396,47 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
             })
         except Exception as e:
             self.send_json(500, {'success': False, 'error': f'Failed to register trial: {str(e)}'})
+
+    def handle_event_registration(self, payload):
+        """Registers a participant or team for Zion Tournaments and Community Events"""
+        try:
+            event_name = payload.get('eventName', 'Zion Community Sports Event').strip()
+            event_details = payload.get('eventDetails', '').strip()
+            contact_name = payload.get('contactName', '').strip()
+            phone = payload.get('phone', '').strip()
+            email = payload.get('email', '').strip()
+            category = payload.get('category', 'Community Participant').strip()
+            details = payload.get('details', '').strip()
+
+            if not contact_name or not phone:
+                self.send_json(400, {'success': False, 'error': 'Name and phone number are required'})
+                return
+
+            registration_id = f"ZION-EVT-{datetime.now().strftime('%Y%m')}-{int(time.time()) % 10000:04d}"
+
+            record = {
+                'registration_id': registration_id,
+                'event_name': event_name,
+                'event_details': event_details,
+                'contact_name': contact_name,
+                'phone': phone,
+                'email': email,
+                'category': category,
+                'details': details,
+                'timestamp': datetime.now().isoformat(),
+                'status': 'REGISTERED'
+            }
+            save_json_record(EVENT_REGISTRATIONS_FILE, record)
+
+            self.send_json(200, {
+                'success': True,
+                'registrationId': registration_id,
+                'contactName': contact_name,
+                'eventName': event_name,
+                'message': f'Registration confirmed for {contact_name}! We will reach out on {phone} with further details.'
+            })
+        except Exception as e:
+            self.send_json(500, {'success': False, 'error': f'Failed to register event: {str(e)}'})
 
 def run_server():
     os.chdir(DATA_DIR)

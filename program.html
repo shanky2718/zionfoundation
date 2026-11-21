@@ -68,6 +68,26 @@
       scroll-behavior: smooth;
     }
 
+    /* Fixed Header Clearance & Hero Spacing for All Verticals */
+    #genericProgramHero {
+      padding-top: 7.5rem !important;
+      padding-bottom: 3.5rem !important;
+      scroll-margin-top: 5.5rem;
+    }
+    @media (min-width: 640px) {
+      #genericProgramHero {
+        padding-top: 9rem !important;
+        padding-bottom: 4.5rem !important;
+      }
+    }
+    #zionAcademyFootballExperience {
+      padding-top: 5.5rem !important;
+      scroll-margin-top: 5.5rem;
+    }
+    section {
+      scroll-margin-top: 5.5rem;
+    }
+
     .progress-bar-track {
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 9999px;
@@ -1502,33 +1522,6 @@
             Weekly food pantries, hot meals, and emergency crisis relief for families and individuals navigating hard
             seasons.
           </p>
-
-          <!-- Campaign Progress Card -->
-          <div
-            class="hero-stagger-card mt-8 rounded-2xl bg-white/10 border border-white/20 p-6 sm:p-8 backdrop-blur-md max-w-2xl shadow-lg">
-            <div class="flex flex-wrap items-end justify-between gap-3 mb-3">
-              <div>
-                <p class="text-xs uppercase tracking-wider text-accent font-semibold">2026 Program Support Goal</p>
-                <p class="font-display text-3xl sm:text-4xl font-600 text-white mt-1">
-                  <span id="progRaised" class="stat-counter-animate">$54,800</span> <span
-                    class="text-lg font-normal text-primary-foreground/70">raised of <span id="progGoal">$75,000</span>
-                    goal</span>
-                </p>
-              </div>
-              <div class="text-right">
-                <span id="progPercent" class="font-display text-2xl font-bold text-accent">73%</span>
-              </div>
-            </div>
-
-            <div class="progress-bar-track">
-              <div id="progBarFill" class="progress-bar-fill" style="width: 73%;"></div>
-            </div>
-
-            <div class="mt-4 flex flex-wrap justify-between text-xs text-primary-foreground/75">
-              <span>❤️ <strong id="progDonors">384</strong> community donors this month</span>
-              <span>100% Tax-Deductible 501(c)(3)</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -3999,9 +3992,6 @@
                 <li><a href="index.html#events"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Events</a>
                 </li>
-                <li><a href="index.html#news"
-                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">News</a>
-                </li>
                 <li><a href="index.html#volunteer"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Volunteer</a>
                 </li>
@@ -4648,28 +4638,43 @@
       }
     };
 
-    // Parse URL parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    let currentProgId = urlParams.get('id') || 'zion-loyals';
-    if (currentProgId === 'dog-feeding') currentProgId = 'zion-loyals';
-    if (currentProgId === 'food-relief') currentProgId = 'zion-home';
-    if (currentProgId === 'education-youth') currentProgId = 'zion-academy';
-    if (currentProgId === 'faith-worship') currentProgId = 'zion-care';
-    if (currentProgId === 'housing-rebuild') currentProgId = 'zion-home';
-    if (!PROGRAMS_DATA[currentProgId]) {
-      currentProgId = 'zion-loyals';
+    // Parse URL parameter or hash
+    function getTargetProgId() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let pId = urlParams.get('id') || window.location.hash.replace(/^#/, '').trim() || 'zion-loyals';
+      if (pId === 'dog-feeding') pId = 'zion-loyals';
+      if (pId === 'food-relief') pId = 'zion-home';
+      if (pId === 'education-youth') pId = 'zion-academy';
+      if (pId === 'faith-worship') pId = 'zion-care';
+      if (pId === 'housing-rebuild') pId = 'zion-home';
+      if (!PROGRAMS_DATA[pId]) {
+        pId = 'zion-loyals';
+      }
+      return pId;
     }
 
-    const currentProg = PROGRAMS_DATA[currentProgId];
-    const currencySym = currentProg.currencySymbol || (currentProg.currency === 'INR' ? '₹' : '$');
-    const currencyCode = currentProg.currency || 'INR';
+    let currentProgId = getTargetProgId();
+    let currentProg = PROGRAMS_DATA[currentProgId];
+    let currencySym = currentProg.currencySymbol || (currentProg.currency === 'INR' ? '₹' : '$');
+    let currencyCode = currentProg.currency || 'INR';
 
-    let selectedAmount = currentProg.tiers[1].amount;
+    let selectedAmount = currentProg.tiers && currentProg.tiers[1] ? currentProg.tiers[1].amount : 1000;
     let selectedFreq = 'one-time';
-    let contributionMode = urlParams.get('mode') === 'food' ? 'food' : 'money';
+    const initialUrlParams = new URLSearchParams(window.location.search);
+    let contributionMode = initialUrlParams.get('mode') === 'food' ? 'food' : 'money';
 
     // Populate Page with Program Data
     function renderProgramPage() {
+      currentProgId = getTargetProgId();
+      currentProg = PROGRAMS_DATA[currentProgId];
+      if (!currentProg) return;
+
+      currencySym = currentProg.currencySymbol || (currentProg.currency === 'INR' ? '₹' : '$');
+      currencyCode = currentProg.currency || 'INR';
+      if (currentProg.tiers && currentProg.tiers[1]) {
+        selectedAmount = currentProg.tiers[1].amount;
+      }
+
       document.getElementById('pageTitle').textContent = `${currentProg.title} | Zion Foundation`;
       document.getElementById('progTitle').textContent = currentProg.title;
       document.getElementById('progSubtitle').textContent = currentProg.shortDesc;
@@ -4690,8 +4695,10 @@
         }
       }
 
-      document.getElementById('progHeroImg').src = currentProg.heroImg;
-      document.getElementById('detailImg').src = currentProg.heroImg;
+      const heroImg = document.getElementById('progHeroImg');
+      if (heroImg) heroImg.src = currentProg.heroImg;
+      const detailImg = document.getElementById('detailImg');
+      if (detailImg) detailImg.src = currentProg.heroImg;
 
       // Toggle between Bespoke Experiences (Football Academy vs Zion Loyals vs Generic Verticals)
       const footballExp = document.getElementById('zionAcademyFootballExperience');
@@ -4729,20 +4736,11 @@
       const donorsEl = document.getElementById('progDonors');
       const barFill = document.getElementById('progBarFill');
 
-      raisedEl.textContent = currentProg.raised;
-      raisedEl.setAttribute('data-counter-target', currentProg.raised);
-      raisedEl.removeAttribute('data-has-animated');
-
-      goalEl.textContent = currentProg.goal;
-
-      percentEl.textContent = currentProg.percent;
-      percentEl.setAttribute('data-counter-target', currentProg.percent);
-      percentEl.removeAttribute('data-has-animated');
-
-      barFill.style.width = currentProg.percent;
-      barFill.setAttribute('data-target-width', currentProg.percent);
-
-      donorsEl.textContent = currentProg.donors;
+      if (raisedEl) raisedEl.textContent = currentProg.raised || '';
+      if (goalEl) goalEl.textContent = currentProg.goal || '';
+      if (percentEl) percentEl.textContent = currentProg.percent || '';
+      if (barFill) barFill.style.width = currentProg.percent || '0%';
+      if (donorsEl) donorsEl.textContent = currentProg.donors || '';
       donorsEl.setAttribute('data-counter-target', currentProg.donors);
       donorsEl.removeAttribute('data-has-animated');
 
@@ -5805,6 +5803,11 @@
 
     // Initial render
     renderProgramPage();
+
+    window.addEventListener('hashchange', () => {
+      renderProgramPage();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     if (urlParams.get('preview') !== null) {
       setTimeout(() => openLoyalsLightbox(parseInt(urlParams.get('preview')) || 0), 300);
