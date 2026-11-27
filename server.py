@@ -85,6 +85,27 @@ class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
+        # Clean query parameters for route matching
+        clean_path = self.path.split('?')[0].rstrip('/')
+        if not clean_path:
+            clean_path = '/'
+
+        # Route aliases mapping clean URLs to dedicated HTML pages
+        route_map = {
+            '/about': '/about.html',
+            '/verticals': '/verticals.html',
+            '/events': '/events.html',
+            '/volunteer': '/volunteer.html',
+            '/contact': '/contact.html',
+            '/donate': '/donate.html',
+            '/program': '/program.html',
+        }
+
+        if clean_path in route_map:
+            # Reconstruct path with target HTML and original query parameters
+            query = ('?' + self.path.split('?')[1]) if '?' in self.path else ''
+            self.path = route_map[clean_path] + query
+
         if self.path == '/api/config/razorpay-key':
             # Strictly return public Key ID only, never secret!
             key_id = RAZORPAY_KEY_ID if RAZORPAY_KEY_ID else 'rzp_test_simulation'

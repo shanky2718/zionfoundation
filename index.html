@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="apple-touch-icon" href="assets/images/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zion Foundation | Compassion in Action</title>
+  <title>Zion Foundation | Building Hope, One Community at a Time</title>
   <meta name="description"
     content="Zion Foundation serves families through compassion, education, and faith — meeting real needs and nurturing lasting change across our neighborhoods." />
 
@@ -890,37 +890,42 @@
       box-shadow: 0 12px 24px -6px rgba(36, 19, 59, 0.08) !important;
     }
   </style>
+  <link rel="stylesheet" href="css/responsive-nav.css" />
 </head>
+<body class="min-h-screen bg-background text-foreground antialiased selection:bg-accent/20 selection:text-accent">
+  <div id="toastContainer" class="toast-container-custom"></div>
+  <div class="relative min-h-screen flex flex-col justify-between">
+    <div class="flex-1">
 
-<body class="bg-background text-foreground">
-  <div id="root">
-    <div>
-      <!-- Fixed Header -->
-      <header id="siteHeader" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-transparent">
+      
+      <!-- Top Navigation Header -->
+      <header id="siteHeader" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-md shadow-sm border-b border-border">
         <div class="mx-auto max-w-[90rem] px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
-          <button onclick="scrollToSection('top')" class="flex items-center gap-2.5 group">
+          <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Zion Foundation Homepage">
             <span
               class="grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-xl bg-white shadow-md ring-1 ring-black/10 p-1 shrink-0 transition-transform group-hover:scale-105">
               <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain drop-shadow-xs" />
             </span>
-            <span id="brandName" class="font-display text-lg font-600 leading-tight text-primary-foreground text-left">
+            <span id="brandName" class="font-display text-lg font-600 leading-tight text-foreground text-left">
               Zion
               <span class="block text-[0.62rem] tracking-[0.2em] uppercase font-sans opacity-70">Foundation</span>
             </span>
-          </button>
+          </a>
 
-          <nav class="hidden lg:flex items-center gap-1">
-            <button onclick="scrollToSection('about')"
-              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">About</button>
-            <button onclick="scrollToSection('programs')"
-              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Verticals</button>
-            <button onclick="scrollToSection('events')"
-              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Events</button>
-            <button onclick="scrollToSection('volunteer')"
-              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Volunteer</button>
-            <button onclick="scrollToSection('contact')"
-              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10">Contact</button>
-            <button onclick="openDonateModal()"
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-1.5" aria-label="Primary Desktop Navigation">
+            <a href="about.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">About</a>
+            <a href="verticals.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Verticals</a>
+            <a href="events.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Events</a>
+            <a href="volunteer.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Volunteer</a>
+            <a href="contact.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Contact</a>
+            
+            <a href="donate.html"
               class="ml-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-600 text-accent-foreground shadow-sm hover:brightness-105 active:scale-[0.98] transition">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -928,12 +933,13 @@
                   d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
                 </path>
               </svg>
-              Donate
-            </button>
+              Donate Now
+            </a>
           </nav>
 
-          <button id="mobileMenuOpenBtn" class="lg:hidden text-primary-foreground" aria-label="Open menu">
-            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobileMenuOpenBtn" type="button" class="lg:hidden p-2 rounded-lg text-foreground hover:bg-secondary transition" aria-label="Open mobile menu">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
               stroke-linecap="round" stroke-linejoin="round">
               <line x1="4" x2="20" y1="12" y2="12"></line>
               <line x1="4" x2="20" y1="6" y2="6"></line>
@@ -942,36 +948,46 @@
           </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobileMenu" class="fixed inset-0 z-50 bg-primary/98 backdrop-blur-sm lg:hidden hidden">
-          <div class="flex items-center justify-between h-16 px-5">
-            <div class="flex items-center gap-2.5">
+        <!-- Solid Mobile Menu Overlay (Completely Opaque, 0% Transparency, No Blur) -->
+        <div id="mobileMenu" class="hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+          <div class="mobile-nav-header">
+            <a href="index.html" class="flex items-center gap-2.5" onclick="closeMobileMenu()">
               <span class="grid place-items-center h-10 w-10 rounded-xl bg-white shadow-sm p-1 shrink-0">
                 <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
               </span>
-              <span class="font-display text-primary-foreground text-lg font-600">Zion Foundation</span>
-            </div>
-            <button id="mobileMenuCloseBtn" class="text-primary-foreground" aria-label="Close menu">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              <span class="font-display text-white text-lg font-600">Zion Foundation</span>
+            </a>
+            <button id="mobileMenuCloseBtn" type="button" class="mobile-nav-close-btn" aria-label="Close mobile menu">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 6 6 18"></path>
                 <path d="m6 6 12 12"></path>
               </svg>
             </button>
           </div>
-          <nav class="flex flex-col px-6 pt-6 gap-1">
-            <button onclick="closeMobileMenu(); scrollToSection('about')"
-              class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">About</button>
-            <button onclick="closeMobileMenu(); scrollToSection('programs')"
-              class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Verticals</button>
-            <button onclick="closeMobileMenu(); scrollToSection('events')"
-              class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Events</button>
-            <button onclick="closeMobileMenu(); scrollToSection('volunteer')"
-              class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Volunteer</button>
-            <button onclick="closeMobileMenu(); scrollToSection('contact')"
-              class="text-left py-3.5 text-2xl font-display text-primary-foreground/90 border-b border-white/10">Contact</button>
-            <button onclick="closeMobileMenu(); openDonateModal()"
-              class="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground">
+          <nav class="mobile-nav-links" aria-label="Mobile Menu Links">
+            <a href="about.html" class="mobile-nav-item">
+              <span>About Us</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="verticals.html" class="mobile-nav-item">
+              <span>Foundation Verticals</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="events.html" class="mobile-nav-item">
+              <span>Events & Programs</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="volunteer.html" class="mobile-nav-item">
+              <span>Volunteer With Us</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="contact.html" class="mobile-nav-item">
+              <span>Contact Zion</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+
+            <a href="donate.html" class="mobile-nav-donate-btn">
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path
@@ -979,13 +995,13 @@
                 </path>
               </svg>
               Donate Now
-            </button>
+            </a>
           </nav>
         </div>
       </header>
-
-      <!-- Hero Section -->
-      <section id="top" class="relative min-h-[100dvh] flex items-center overflow-hidden">
+    
+      <main>
+        <section id="top" class="relative min-h-[100dvh] flex items-center overflow-hidden">
         <div class="absolute inset-0 overflow-hidden">
           <img src="assets/images/hero-realistic.jpg" alt="Volunteers gathered at a community outreach event"
             class="h-full w-full object-cover hero-ambient-zoom" />
@@ -1010,20 +1026,16 @@
                 <path d="M4 17v2"></path>
                 <path d="M5 18H3"></path>
               </svg>
-              Zion Foundation &mdash; Compassion in Action &bull; One Soul at a Time
+              Building Hope. Protecting Lives. Empowering Communities.
             </span>
 
             <h1
               class="hero-stagger-title mt-6 font-display text-[2.7rem] leading-[1.05] sm:text-6xl lg:text-7xl font-600 text-primary-foreground">
-              Zion Foundation <br class="hidden sm:inline" /><span class="italic text-accent">Compassion</span> in Action
+              Building hope, one <br class="hidden sm:inline" /><span class="italic text-accent">community</span> at a time.
             </h1>
 
             <p class="hero-stagger-desc mt-6 text-base sm:text-lg text-primary-foreground/90 leading-relaxed max-w-xl">
-              Every day, something moves us. We see a person in need, an animal in distress, a child who deserves an opportunity, or someone facing a difficult season. Many people care. Some wish they could do more. We believe compassion becomes meaningful when someone takes the first step.
-            </p>
-
-            <p class="mt-4 text-sm sm:text-base text-primary-foreground/80 leading-relaxed max-w-xl">
-              At Zion Foundation, we turn concern into action &mdash; one person, one child, one animal and one opportunity at a time. The help may be small. It may be only one step. But for the life it touches, it can make a real difference.
+              Zion Foundation serves families through compassion, education, and faith &mdash; meeting real needs and nurturing lasting change across our neighborhoods.
             </p>
 
             <div class="hero-stagger-cta mt-9 flex flex-wrap gap-4">
@@ -1053,14 +1065,15 @@
       </section>
 
       <!-- About Section -->
-      <section id="about" class="py-16 sm:py-20 lg:py-24">
+      
+        <section id="about" class="py-16 sm:py-20 lg:py-24">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
           
           <!-- Top Story: Mission & Philosophy -->
           <div class="max-w-4xl mx-auto scroll-reveal reveal-slide-up text-center">
             <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#DF4C76]">About Zion Foundation</span>
             <h2 class="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#24133B] leading-tight">
-              Compassion is more than a feeling. <span class="marker-underline">It is a decision to act.</span>
+              Compassion is more than a feeling. <span>It is a decision to act.</span>
             </h2>
             
             <div class="mt-5 space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed text-left sm:text-center max-w-3xl mx-auto">
@@ -1175,22 +1188,22 @@
             </div>
           </div>
 
-          <!-- Dedicated Interns Section: Sized as Verticals (aspect-video 16:9), 3-card horizontal grid -->
+          <!-- Dedicated Interns & Core Team Section: Sized as Verticals (aspect-video 16:9), 4-card horizontal grid -->
           <div id="interns" class="mt-16 sm:mt-20 pt-12 sm:pt-14 border-t border-border/70 scroll-reveal reveal-slide-up">
             <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#2563EB]">Youth Leadership & Innovation</span>
               <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#24133B]">
-                Meet Our Interns
+                Meet Our Team
               </h3>
               <p class="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Empowered interns driving technological development, creative media production, and digital storytelling to uplift Zion Foundation initiatives.
+                Empowered leaders driving technological development, creative media production, groundwork operations, and design to uplift Zion Foundation initiatives.
               </p>
             </div>
 
-            <!-- Interns 3-Card Grid: Desktop 1 horizontal row, matching Founders layout -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+            <!-- Team 4-Card Grid: Desktop 1 horizontal row, matching Founders layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto items-stretch">
               
-              <!-- Intern 1: Shashank MV -->
+              <!-- Team Member 1: Shashank MV -->
               <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
                 <div>
                   <!-- Photo Container: aspect-video 16:9 matching Verticals, full face & head framed -->
@@ -1212,7 +1225,7 @@
                 </div>
               </div>
 
-              <!-- Intern 2: Harshith Sai -->
+              <!-- Team Member 2: Harshith Sai -->
               <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
                 <div>
                   <!-- Photo Container: aspect-video 16:9 matching Verticals, full face & head framed -->
@@ -1234,7 +1247,7 @@
                 </div>
               </div>
 
-              <!-- Intern 3: Sailesh -->
+              <!-- Team Member 3: Sailesh -->
               <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
                 <div>
                   <!-- Photo Container: aspect-video 16:9 matching Verticals, full face & head framed -->
@@ -1251,6 +1264,28 @@
                     </span>
                     <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
                       Capturing on-ground outreach initiatives, videography documentation, and dynamic social content highlighting real community impact.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Team Member 4: Steve Solomon -->
+              <div class="bg-card rounded-2xl border border-border/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  <!-- Photo Container: aspect-video 16:9 matching Verticals, full face framed -->
+                  <div class="w-full aspect-video overflow-hidden bg-secondary relative">
+                    <img src="assets/images/steve-solomon.jpg"
+                      alt="Steve Solomon - Groundwork & Designing"
+                      class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <!-- Content below photo -->
+                  <div class="p-5 sm:p-6 flex flex-col">
+                    <h4 class="founder-name text-xl font-semibold text-[#24133B] leading-snug">Steve Solomon</h4>
+                    <span class="founder-role inline-flex items-center self-start px-2.5 py-0.5 mt-2 text-xs font-medium rounded-full bg-[#DF4C76]/10 text-[#DF4C76]">
+                      Groundwork &amp; Designing
+                    </span>
+                    <p class="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      Directing hands-on field operations, on-ground initiative execution, and creative visual design supporting Zion Foundation projects.
                     </p>
                   </div>
                 </div>
@@ -1328,7 +1363,8 @@
 
 
       <!-- Six Verticals, One Family Section -->
-      <section id="programs" class="py-20 sm:py-28 bg-[#FAF9F5] border-t border-b border-border/80 relative">
+      
+        <section id="programs" class="py-20 sm:py-28 bg-[#FAF9F5] border-t border-b border-border/80 relative">
         <div id="pets" class="absolute -top-20"></div>
         <div id="verticals" class="absolute -top-20"></div>
         <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
@@ -1420,15 +1456,14 @@
             <!-- Vertical 3: Zion Vidya -->
             <div class="vertical-card group" id="vertical-zion-vidya">
               <div class="vertical-card-media">
-                <img src="assets/images/zion-vidya.jpg" alt="Zion Vidya - Education & Skills" class="vertical-card-img"
-                  style="object-position: center 20%;" loading="lazy" />
+                <img src="assets/images/zion-vidya.jpg" alt="Zion Vidya - Special & Inclusive Education for Physically Challenged Children" class="vertical-card-img"
+                  style="object-position: center center;" loading="lazy" />
                 <span class="vertical-badge badge-starting">Starting</span>
               </div>
               <div class="vertical-card-content">
                 <div>
                   <h3 class="vertical-card-title">Zion Vidya</h3>
-                  <p class="vertical-card-desc">Free English and Tamil tuition, foundational learning, and practical
-                    AI/digital training for government school students.</p>
+                  <p class="vertical-card-desc">Specialized, inclusive education and adaptive learning for physically challenged children — where dedicated, compassionate teachers provide personalized instruction, foundational skills, and assistive learning tools.</p>
                 </div>
                 <div class="vertical-card-actions">
                   <a href="program.html?id=zion-vidya" class="btn-explore">
@@ -1477,8 +1512,8 @@
             <!-- Vertical 5: Zion Care -->
             <div class="vertical-card group" id="vertical-zion-care">
               <div class="vertical-card-media">
-                <img src="assets/images/zion-care.jpg" alt="Zion Care - Palliative Comfort & Prayer"
-                  class="vertical-card-img" style="object-position: center 20%;" loading="lazy" />
+                <img src="assets/images/zion-care.jpg" alt="Zion Care - Bedside Palliative Care & Comfort"
+                  class="vertical-card-img" style="object-position: center center;" loading="lazy" />
                 <span class="vertical-badge badge-coming">Coming Soon</span>
               </div>
               <div class="vertical-card-content">
@@ -1537,7 +1572,8 @@
       <!-- ========================================================================= -->
       <!-- ZION COMMUNITY SPORTS FESTIVAL (EVENTS SECTION)                            -->
       <!-- ========================================================================= -->
-      <section id="events" class="py-16 sm:py-24 bg-gradient-to-b from-[#FFF5F7] via-white to-[#FDF2F4] relative overflow-hidden">
+      
+        <section id="events" class="py-16 sm:py-24 bg-gradient-to-b from-[#FFF5F7] via-white to-[#FDF2F4] relative overflow-hidden">
         <div class="events-container">
 
           <!-- 1. HERO SECTION -->
@@ -2061,7 +2097,8 @@
         </div>
       </section>
 
-      <section id="volunteer" class="py-24 sm:py-32">
+      
+        <section id="volunteer" class="py-24 sm:py-32">
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="grid lg:grid-cols-2 gap-14 items-start">
             <div class="scroll-reveal reveal-slide-left">
@@ -2217,7 +2254,8 @@
         </div>
       </section>
 
-      <section id="donate" class="relative py-24 sm:py-32 overflow-hidden bg-primary text-primary-foreground">
+      
+        <section id="donate" class="relative py-24 sm:py-32 overflow-hidden bg-primary text-primary-foreground">
         <img src="assets/images/hands.png" alt="" aria-hidden="true"
           class="absolute inset-0 h-full w-full object-cover opacity-15 hero-ambient-zoom" />
         <div class="absolute inset-0 bg-gradient-to-b from-primary/85 to-primary"></div>
@@ -2272,7 +2310,8 @@
         </div>
       </section>
 
-      <section id="contact" class="py-24 sm:py-32 bg-secondary/60">
+      
+        <section id="contact" class="py-24 sm:py-32 bg-secondary/60">
         <div class="mx-auto max-w-[72rem] px-5 sm:px-8 grid lg:grid-cols-2 gap-14">
           <div class="scroll-reveal reveal-slide-left">
             <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Reach Out</span>
@@ -2295,6 +2334,11 @@
                 <div>
                   <p class="font-600">Visit us</p>
                   <p class="text-muted-foreground">Coliseo Atletico Sports Ventures, 11/6/2, NICE Ring Road, off Bannerghatta Road Junction, Bengaluru, Karnataka</p>
+                  <a href="https://maps.google.com/?q=Coliseo+Atletico+Sports+Ventures+NICE+Ring+Road+Bengaluru" target="_blank" rel="noopener noreferrer"
+                    class="mt-1.5 inline-flex items-center gap-1.5 text-xs font-semibold text-[#DF4C76] hover:underline">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Open in Google Maps
+                  </a>
                 </div>
               </div>
 
@@ -2309,8 +2353,15 @@
                   </svg>
                 </span>
                 <div>
-                  <p class="font-600">Call us</p>
-                  <p class="text-muted-foreground">+91 81236 77210 | +91 90357 72512</p>
+                  <p class="font-600">Call & WhatsApp</p>
+                  <div class="mt-1 space-y-1.5 text-sm sm:text-base">
+                    <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1.5 font-semibold text-emerald-600 hover:text-emerald-700 transition">
+                      <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.587 1.761.887 2.796.887 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.774-5.768-5.774zm3.393 8.354c-.146.411-.749.771-1.047.818-.288.046-.66.074-2.155-.544-1.916-.79-3.149-2.738-3.244-2.865-.096-.128-.773-1.03-.773-1.964s.484-1.391.657-1.583c.172-.191.376-.239.502-.239.125 0 .252.002.361.007.116.006.27-.044.423.324.157.378.536 1.309.583 1.405.047.095.079.207.016.334-.064.128-.096.208-.192.32-.096.112-.202.25-.289.336-.096.096-.197.2-.085.391.112.191.498.823 1.07 1.332.737.657 1.359.861 1.551.956.192.096.304.08.418-.048.113-.128.484-.564.613-.757.128-.192.257-.16.433-.096.175.064 1.113.524 1.305.62.192.096.32.144.367.224.048.08.048.464-.098.875z"/></svg>
+                      +91 79805 64312 (WhatsApp Direct)
+                    </a>
+                    <p class="text-muted-foreground text-xs sm:text-sm">+91 81236 77210 | +91 90357 72512</p>
+                  </div>
                 </div>
               </div>
 
@@ -2323,9 +2374,16 @@
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
                 </span>
-                <div>
-                  <p class="font-600">Email us</p>
-                  <p class="text-muted-foreground">contact@trustzionfoundation.org <span class="text-xs text-muted-foreground/80 block">[Official Email]</span></p>
+                <div class="min-w-0 flex-1">
+                  <p class="font-600 text-foreground">Email us</p>
+                  <div class="mt-1 space-y-1 text-sm sm:text-base">
+                    <a href="mailto:connect@trustzionfnd.org" class="text-muted-foreground hover:text-primary transition-colors block break-all font-medium">
+                      connect@trustzionfnd.org
+                    </a>
+                    <a href="mailto:connect.zionfoundation@gmail.com" class="text-muted-foreground hover:text-primary transition-colors block break-all font-medium">
+                      connect.zionfoundation@gmail.com
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -2378,6 +2436,8 @@
       </section>
 
       <!-- Footer -->
+      
+      </main>
       <footer class="bg-primary text-primary-foreground">
         <div class="mx-auto max-w-[90rem] px-5 sm:px-8 py-16">
           <div class="grid md:grid-cols-4 gap-10 stagger-children scroll-reveal">
@@ -2391,7 +2451,7 @@
               <p class="mt-4 text-primary-foreground/70 leading-relaxed">
                 Compassion in action — turning concern into practical, life-changing support for one soul, one life, and one community at a time.
               </p>
-              <button onclick="scrollToSection('donate')"
+              <button onclick="location.href='donate.html'"
                 class="btn-motion btn-primary-motion btn-arrow-motion mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
@@ -2402,17 +2462,19 @@
                 Donate Now
               </button>
 
-              <!-- Interactive Social Links -->
-              <div class="mt-6 flex items-center gap-2.5">
-                <a href="#" aria-label="Facebook" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
+              <!-- Interactive Social Links & WhatsApp Direct -->
+              <div class="mt-6 flex flex-wrap items-center gap-2.5">
+                <a href="https://www.facebook.com/share/p/1M46Qx8EXD/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
                   <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
                 </a>
-                <a href="https://www.instagram.com/trustzionfnd?cnvx=ZGpuMWFmdmVwMGQ3" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
+                <a href="https://www.instagram.com/trustzionfnd?cnvx=ZGpuMWFmdmVwMGQ3" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
                   <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
                 </a>
-
-                <a href="https://www.linkedin.com/in/zion-foundation-85ab38445" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
+                <a href="https://www.linkedin.com/in/zion-foundation-85ab38445" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
                   <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                </a>
+                <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.677.15-.201.301-.777.979-.953 1.18-.175.201-.351.226-.652.075-.3-.151-1.267-.467-2.414-1.489-.893-.796-1.495-1.78-1.671-2.081-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.201-.301.301-.502.1-.201.05-.376-.025-.526-.075-.151-.677-1.632-.928-2.235-.245-.588-.493-.508-.677-.518-.175-.009-.376-.009-.576-.009-.201 0-.527.075-.802.376-.276.301-1.053 1.029-1.053 2.51 0 1.48 1.078 2.91 1.229 3.111.15.201 2.122 3.24 5.14 4.544.718.31 1.278.496 1.716.634.721.23 1.378.197 1.9.119.582-.088 1.78-.728 2.03-1.431.25-.703.25-1.305.175-1.431-.075-.126-.276-.201-.577-.351zm-5.466 7.423c-1.808 0-3.535-.487-5.045-1.336l-.362-.204-3.742.981.999-3.648-.223-.356c-.927-1.477-1.417-3.189-1.417-4.945 0-5.127 4.171-9.298 9.299-9.298 2.486 0 4.823.97 6.582 2.73 1.758 1.758 2.727 4.095 2.726 6.581 0 5.129-4.172 9.295-9.299 9.295zm7.989-17.288c-2.133-2.135-4.971-3.312-7.989-3.312-6.225 0-11.291 5.066-11.291 11.291 0 1.989.52 3.931 1.509 5.645l-1.603 5.856 5.992-1.572c1.654.903 3.518 1.379 5.393 1.379 6.226 0 11.292-5.066 11.292-11.291 0-3.018-1.176-5.856-3.31-7.996z"/></svg>
                 </a>
               </div>
             </div>
@@ -2420,15 +2482,15 @@
             <div>
               <p class="font-600 mb-4">Explore</p>
               <ul class="space-y-2.5">
-                <li><button onclick="scrollToSection('about')"
+                <li><button onclick="location.href='about.html'"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">About</button></li>
-                <li><button onclick="scrollToSection('programs')"
+                <li><button onclick="location.href='verticals.html'"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Verticals</button></li>
-                <li><button onclick="scrollToSection('events')"
+                <li><button onclick="location.href='events.html'"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Events</button></li>
-                <li><button onclick="scrollToSection('volunteer')"
+                <li><button onclick="location.href='volunteer.html'"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Volunteer</button></li>
-                <li><button onclick="scrollToSection('contact')"
+                <li><button onclick="location.href='contact.html'"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Contact</button></li>
               </ul>
             </div>
@@ -2436,9 +2498,19 @@
             <div>
               <p class="font-600 mb-4">Contact</p>
               <ul class="space-y-2.5 text-primary-foreground/70 text-sm">
-                <li>Coliseo Atletico Sports Ventures, NICE Ring Road, Bengaluru</li>
-                <li>+91 81236 77210 | +91 90357 72512</li>
-                <li><a href="mailto:contact@trustzionfoundation.org" class="footer-link-underline hover:underline">contact@trustzionfoundation.org</a></li>
+                <li><a href="https://maps.google.com/?q=Coliseo+Atletico+Sports+Ventures+NICE+Ring+Road+Bengaluru" target="_blank" rel="noopener noreferrer" class="hover:underline">Coliseo Atletico Sports Ventures, NICE Ring Road, Bengaluru, Karnataka</a></li>
+                <li>
+                  <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="hover:underline inline-flex items-center gap-2 group">
+                    <span class="inline-grid place-items-center h-5 w-5 rounded-full bg-white/10 text-primary-foreground shrink-0 shadow-sm transition-transform group-hover:scale-110">
+                      <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.587 1.761.887 2.796.887 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.774-5.768-5.774zm3.393 8.354c-.146.411-.749.771-1.047.818-.288.046-.66.074-2.155-.544-1.916-.79-3.149-2.738-3.244-2.865-.096-.128-.773-1.03-.773-1.964s.484-1.391.657-1.583c.172-.191.376-.239.502-.239.125 0 .252.002.361.007.116.006.27-.044.423.324.157.378.536 1.309.583 1.405.047.095.079.207.016.334-.064.128-.096.208-.192.32-.096.112-.202.25-.289.336-.096.096-.197.2-.085.391.112.191.498.823 1.07 1.332.737.657 1.359.861 1.551.956.192.096.304.08.418-.048.113-.128.484-.564.613-.757.128-.192.257-.16.433-.096.175.064 1.113.524 1.305.62.192.096.32.144.367.224.048.08.048.464-.098.875z"/></svg>
+                    </span>
+                    <span class="text-primary-foreground font-semibold text-sm">+91 79805 64312</span>
+                    <span class="text-xs text-primary-foreground/75">(WhatsApp Direct)</span>
+                  </a>
+                  <span class="text-primary-foreground/50 text-xs block mt-0.5">+91 81236 77210 | +91 90357 72512</span>
+                </li>
+                <li class="break-all"><a href="mailto:connect@trustzionfnd.org" class="footer-link-underline hover:underline">connect@trustzionfnd.org</a></li>
+                <li class="break-all"><a href="mailto:connect.zionfoundation@gmail.com" class="footer-link-underline hover:underline">connect.zionfoundation@gmail.com</a></li>
               </ul>
             </div>
           </div>
@@ -2534,7 +2606,7 @@
                   <option value="General Foundation Support">Zion Foundation (Where Most Needed)</option>
                   <option value="Zion FC Academy (Youth Sports & Coaching)">Zion FC Academy (Youth Sports & Coaching)</option>
                   <option value="Zion Loyals (Animal Welfare & Street Feeding)">Zion Loyals (Animal Welfare & Rescue)</option>
-                  <option value="Zion Vidya (Childhood Education & Tutoring)">Zion Vidya (Education & Tutoring)</option>
+                  <option value="Zion Vidya (Education for Physically Challenged Children)">Zion Vidya (Special & Inclusive Education)</option>
                   <option value="Zion Home (Elderly Shelter & Nutrition)">Zion Home (Elderly Relief & Food Pantries)</option>
                   <option value="Zion Care & Mind (Mental Health & Palliative)">Zion Care & Mind (Health & Compassion)</option>
                 </select>
@@ -2838,28 +2910,7 @@
     }
 
     // Header scroll background toggle
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('siteHeader');
-      const brand = document.getElementById('brandName');
-      const navButtons = document.querySelectorAll('.nav-btn');
-      const mobileBtn = document.getElementById('mobileMenuOpenBtn');
-
-      if (window.scrollY > 40) {
-        header.className = "fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-md shadow-sm border-b border-border";
-        if (brand) brand.className = "font-display text-lg font-600 leading-tight text-foreground text-left";
-        if (mobileBtn) mobileBtn.className = "lg:hidden text-foreground";
-        navButtons.forEach(btn => {
-          btn.className = "nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary";
-        });
-      } else {
-        header.className = "fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-transparent";
-        if (brand) brand.className = "font-display text-lg font-600 leading-tight text-primary-foreground text-left";
-        if (mobileBtn) mobileBtn.className = "lg:hidden text-primary-foreground";
-        navButtons.forEach(btn => {
-          btn.className = "nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-primary-foreground/85 hover:text-primary-foreground hover:bg-white/10";
-        });
-      }
-    }, { passive: true });
+    // Global header managed by animations.js
 
     // Mobile menu toggle with smooth slide/fade animations
     const mobileMenu = document.getElementById('mobileMenu');

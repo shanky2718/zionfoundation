@@ -1424,45 +1424,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/football.css" />
+  <link rel="stylesheet" href="css/responsive-nav.css" />
 </head>
 
-<body class="bg-background text-foreground">
-  <div id="root">
-    <div>
-      <!-- Header -->
-      <header id="siteHeader"
-        class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-md shadow-sm border-b border-border">
+<body class="bg-background text-foreground"
+      <!-- Top Navigation Header -->
+      <header id="siteHeader" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-md shadow-sm border-b border-border">
         <div class="mx-auto max-w-[90rem] px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
-          <a href="index.html" class="flex items-center gap-2.5 group">
+          <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Zion Foundation Homepage">
             <span
               class="grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-xl bg-white shadow-md ring-1 ring-black/10 p-1 shrink-0 transition-transform group-hover:scale-105">
               <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain drop-shadow-xs" />
             </span>
-            <span class="font-display text-lg font-600 leading-tight text-foreground text-left">
+            <span id="brandName" class="font-display text-lg font-600 leading-tight text-foreground text-left">
               Zion
               <span class="block text-[0.62rem] tracking-[0.2em] uppercase font-sans opacity-70">Foundation</span>
             </span>
           </a>
 
-          <nav class="hidden lg:flex items-center gap-2">
-            <a href="index.html#programs"
-              class="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="m15 18-6-6 6-6"></path>
-              </svg>
-              All Verticals
-            </a>
-            <a href="index.html#about"
-              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">About</a>
-            <a href="index.html#events"
-              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Events</a>
-            <a href="index.html#volunteer"
-              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Volunteer</a>
-            <a href="index.html#contact"
-              class="px-3.5 py-2 text-sm font-500 rounded-lg text-foreground/80 hover:text-foreground hover:bg-secondary transition">Contact</a>
-
-            <button onclick="scrollToDonation()"
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-1.5" aria-label="Primary Desktop Navigation">
+            <a href="about.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">About</a>
+            <a href="verticals.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary active">Verticals</a>
+            <a href="events.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Events</a>
+            <a href="volunteer.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Volunteer</a>
+            <a href="contact.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Contact</a>
+            
+            <a href="donate.html"
               class="ml-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-600 text-accent-foreground shadow-sm hover:brightness-105 active:scale-[0.98] transition">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -1470,16 +1463,73 @@
                   d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
                 </path>
               </svg>
-              Donate to Program
-            </button>
+              Donate Now
+            </a>
           </nav>
 
-          <a href="index.html#programs"
-            class="lg:hidden inline-flex items-center gap-1 text-sm font-semibold text-primary">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m15 18-6-6 6-6"></path>
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobileMenuOpenBtn" type="button" class="lg:hidden p-2 rounded-lg text-foreground hover:bg-secondary transition" aria-label="Open mobile menu">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
             </svg>
-            Back
+          </button>
+        </div>
+
+        <!-- Solid Mobile Menu Overlay (Completely Opaque, 0% Transparency, No Blur) -->
+        <div id="mobileMenu" class="hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+          <div class="mobile-nav-header">
+            <a href="index.html" class="flex items-center gap-2.5" onclick="closeMobileMenu()">
+              <span class="grid place-items-center h-10 w-10 rounded-xl bg-white shadow-sm p-1 shrink-0">
+                <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
+              </span>
+              <span class="font-display text-white text-lg font-600">Zion Foundation</span>
+            </a>
+            <button id="mobileMenuCloseBtn" type="button" class="mobile-nav-close-btn" aria-label="Close mobile menu">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <nav class="mobile-nav-links" aria-label="Mobile Menu Links">
+            <a href="about.html" class="mobile-nav-item">
+              <span>About Us</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="verticals.html" class="mobile-nav-item active">
+              <span>Foundation Verticals</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="events.html" class="mobile-nav-item">
+              <span>Events & Programs</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="volunteer.html" class="mobile-nav-item">
+              <span>Volunteer With Us</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="contact.html" class="mobile-nav-item">
+              <span>Contact Zion</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+
+            <a href="donate.html" class="mobile-nav-donate-btn">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                </path>
+              </svg>
+              Donate Now
+            </a>
+          </nav>
+        </div>
+      </header>
+        Back
           </a>
         </div>
       </header>
@@ -1498,7 +1548,7 @@
 
         <div class="relative mx-auto max-w-[72rem] px-5 sm:px-8">
           <div class="hero-stagger-badge flex flex-wrap items-center gap-2 mb-4">
-            <a href="index.html#programs"
+            <a href="verticals.html"
               class="inline-flex items-center gap-1 text-xs font-600 uppercase tracking-wider text-primary-foreground/70 hover:text-accent transition">
               Programs
             </a>
@@ -3380,16 +3430,24 @@
           </div>
           <h4>Phone & WhatsApp</h4>
           <p>
+            <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" style="color: #25D366; text-decoration: none;" class="hover:underline">
+              WhatsApp: <strong>+91 79805 64312</strong>
+            </a><br />
             Primary: <strong>+91 90357 72512</strong><br />
-            Helpline: <strong>+91 91135 56781</strong><br />
             Desk: <strong>+91 81236 77210</strong>
           </p>
-          <button type="button" class="zfc-copy-btn" onclick="copyContactText('+919035772512', this)">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-            </svg>
-            <span>Copy Number</span>
-          </button>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.75rem;">
+            <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="zfc-copy-btn" style="background: #25D366; color: white; border: none; text-decoration: none;">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.587 1.761.887 2.796.887 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.774-5.768-5.774zm3.393 8.354c-.146.411-.749.771-1.047.818-.288.046-.66.074-2.155-.544-1.916-.79-3.149-2.738-3.244-2.865-.096-.128-.773-1.03-.773-1.964s.484-1.391.657-1.583c.172-.191.376-.239.502-.239.125 0 .252.002.361.007.116.006.27-.044.423.324.157.378.536 1.309.583 1.405.047.095.079.207.016.334-.064.128-.096.208-.192.32-.096.112-.202.25-.289.336-.096.096-.197.2-.085.391.112.191.498.823 1.07 1.332.737.657 1.359.861 1.551.956.192.096.304.08.418-.048.113-.128.484-.564.613-.757.128-.192.257-.16.433-.096.175.064 1.113.524 1.305.62.192.096.32.144.367.224.048.08.048.464-.098.875z"/></svg>
+              <span>Chat WhatsApp</span>
+            </a>
+            <button type="button" class="zfc-copy-btn" onclick="copyContactText('+917980564312', this)">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span>Copy Number</span>
+            </button>
+          </div>
         </div>
 
         <!-- Email & Social -->
@@ -3400,17 +3458,25 @@
             </svg>
           </div>
           <h4>Official Email & Social</h4>
-          <p>
-            <strong>connect@trustzionfnd.org</strong><br />
-            <strong>zionfoundation@gmail.com</strong><br />
+          <p class="break-all" style="word-break: break-word;">
+            <a href="mailto:connect@trustzionfnd.org" style="color: inherit; text-decoration: none;"><strong class="hover:underline">connect@trustzionfnd.org</strong></a><br />
+            <a href="mailto:connect.zionfoundation@gmail.com" style="color: inherit; text-decoration: none;"><strong class="hover:underline">connect.zionfoundation@gmail.com</strong></a><br />
             Instagram: <strong>@zion.academyblr</strong>
           </p>
-          <button type="button" class="zfc-copy-btn" onclick="copyContactText('connect@trustzionfnd.org', this)">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-            </svg>
-            <span>Copy Email</span>
-          </button>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.75rem;">
+            <button type="button" class="zfc-copy-btn" onclick="copyContactText('connect@trustzionfnd.org', this)">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span>Copy Org Email</span>
+            </button>
+            <button type="button" class="zfc-copy-btn" onclick="copyContactText('connect.zionfoundation@gmail.com', this)">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span>Copy Gmail</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -3677,8 +3743,8 @@
               <div class="editorial-grid-layout-b">
                 <div class="layout-b-card" onclick="openLoyalsLightbox(6)">
                   <div class="card-img-container">
-                    <img src="assets/images/loyals/06-street-feeding.jpg" alt="Community Pack Feeding Drive"
-                      loading="lazy" style="object-position: center bottom;" />
+                    <img src="assets/images/loyals/06-street-feeding.jpg" alt="Daily Community Pack Feeding Drive"
+                      loading="lazy" style="object-position: center center;" />
                   </div>
                   <div class="editorial-card-info">
                     <span class="journal-tag">Plate 07 • Community Feeding</span>
@@ -3883,7 +3949,7 @@
               <span class="text-sm font-600 uppercase tracking-[0.18em] text-accent">Get Hands-On</span>
               <h2 class="mt-2 font-display text-3xl sm:text-4xl font-600">Upcoming Shifts & Activities</h2>
             </div>
-            <a href="index.html#volunteer"
+            <a href="volunteer.html"
               class="btn-motion inline-flex items-center gap-1.5 text-sm font-600 text-primary hover:text-accent transition">
               View All Opportunities <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2">
@@ -3906,7 +3972,7 @@
           <div class="flex flex-wrap items-center justify-between gap-4 mb-6 scroll-reveal reveal-slide-up">
             <h3 class="font-display text-xl sm:text-2xl font-600 text-[#24133B] dark:text-foreground">Explore Other
               Verticals</h3>
-            <a href="index.html#programs" class="text-xs sm:text-sm font-600 text-accent hover:underline">View All Six
+            <a href="verticals.html" class="text-xs sm:text-sm font-600 text-accent hover:underline">View All Six
               Verticals
               →</a>
           </div>
@@ -3945,31 +4011,19 @@
               </button>
 
               <!-- Social Links -->
-              <div class="mt-6 flex items-center gap-2.5">
-                <a href="#" aria-label="Facebook"
-                  class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
-                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z">
-                    </path>
-                  </svg>
+              <!-- Interactive Social Links & WhatsApp Direct -->
+              <div class="mt-6 flex flex-wrap items-center gap-2.5">
+                <a href="https://www.facebook.com/share/p/1M46Qx8EXD/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
                 </a>
-                <a href="https://www.instagram.com/trustzionfnd?cnvx=ZGpuMWFmdmVwMGQ3" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                  class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
-                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-                    </path>
-                  </svg>
+                <a href="https://www.instagram.com/trustzionfnd?cnvx=ZGpuMWFmdmVwMGQ3" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
                 </a>
-
-                <a href="https://www.linkedin.com/in/zion-foundation-85ab38445" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                  class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground">
-                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                    </path>
-                  </svg>
+                <a href="https://www.linkedin.com/in/zion-foundation-85ab38445" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                </a>
+                <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.677.15-.201.301-.777.979-.953 1.18-.175.201-.351.226-.652.075-.3-.151-1.267-.467-2.414-1.489-.893-.796-1.495-1.78-1.671-2.081-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.201-.301.301-.502.1-.201.05-.376-.025-.526-.075-.151-.677-1.632-.928-2.235-.245-.588-.493-.508-.677-.518-.175-.009-.376-.009-.576-.009-.201 0-.527.075-.802.376-.276.301-1.053 1.029-1.053 2.51 0 1.48 1.078 2.91 1.229 3.111.15.201 2.122 3.24 5.14 4.544.718.31 1.278.496 1.716.634.721.23 1.378.197 1.9.119.582-.088 1.78-.728 2.03-1.431.25-.703.25-1.305.175-1.431-.075-.126-.276-.201-.577-.351zm-5.466 7.423c-1.808 0-3.535-.487-5.045-1.336l-.362-.204-3.742.981.999-3.648-.223-.356c-.927-1.477-1.417-3.189-1.417-4.945 0-5.127 4.171-9.298 9.299-9.298 2.486 0 4.823.97 6.582 2.73 1.758 1.758 2.727 4.095 2.726 6.581 0 5.129-4.172 9.295-9.299 9.295zm7.989-17.288c-2.133-2.135-4.971-3.312-7.989-3.312-6.225 0-11.291 5.066-11.291 11.291 0 1.989.52 3.931 1.509 5.645l-1.603 5.856 5.992-1.572c1.654.903 3.518 1.379 5.393 1.379 6.226 0 11.292-5.066 11.292-11.291 0-3.018-1.176-5.856-3.31-7.996z"/></svg>
                 </a>
               </div>
             </div>
@@ -3977,19 +4031,19 @@
             <div>
               <p class="font-600 mb-4">Explore</p>
               <ul class="space-y-2.5">
-                <li><a href="index.html#about"
+                <li><a href="about.html"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">About</a>
                 </li>
-                <li><a href="index.html#programs"
+                <li><a href="verticals.html"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Programs</a>
                 </li>
-                <li><a href="index.html#events"
+                <li><a href="events.html"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Events</a>
                 </li>
-                <li><a href="index.html#volunteer"
+                <li><a href="volunteer.html"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Volunteer</a>
                 </li>
-                <li><a href="index.html#contact"
+                <li><a href="contact.html"
                     class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Contact</a>
                 </li>
               </ul>
@@ -3998,11 +4052,19 @@
             <div>
               <p class="font-600 mb-4">Contact</p>
               <ul class="space-y-2.5 text-primary-foreground/70 text-sm">
-                <li>Coliseo Atletico Sports Ventures, NICE Ring Road, Bengaluru</li>
-                <li>+91 81236 77210 | +91 90357 72512</li>
-                <li><a href="mailto:contact@trustzionfoundation.org"
-                    class="footer-link-underline hover:underline">contact@trustzionfoundation.org</a>
+                <li><a href="https://maps.google.com/?q=Coliseo+Atletico+Sports+Ventures+NICE+Ring+Road+Bengaluru" target="_blank" rel="noopener noreferrer" class="hover:underline">Coliseo Atletico Sports Ventures, NICE Ring Road, Bengaluru, Karnataka</a></li>
+                <li>
+                  <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="hover:underline inline-flex items-center gap-2 group">
+                    <span class="inline-grid place-items-center h-5 w-5 rounded-full bg-white/10 text-primary-foreground shrink-0 shadow-sm transition-transform group-hover:scale-110">
+                      <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.587 1.761.887 2.796.887 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.774-5.768-5.774zm3.393 8.354c-.146.411-.749.771-1.047.818-.288.046-.66.074-2.155-.544-1.916-.79-3.149-2.738-3.244-2.865-.096-.128-.773-1.03-.773-1.964s.484-1.391.657-1.583c.172-.191.376-.239.502-.239.125 0 .252.002.361.007.116.006.27-.044.423.324.157.378.536 1.309.583 1.405.047.095.079.207.016.334-.064.128-.096.208-.192.32-.096.112-.202.25-.289.336-.096.096-.197.2-.085.391.112.191.498.823 1.07 1.332.737.657 1.359.861 1.551.956.192.096.304.08.418-.048.113-.128.484-.564.613-.757.128-.192.257-.16.433-.096.175.064 1.113.524 1.305.62.192.096.32.144.367.224.048.08.048.464-.098.875z"/></svg>
+                    </span>
+                    <span class="text-primary-foreground font-semibold text-sm">+91 79805 64312</span>
+                    <span class="text-xs text-primary-foreground/75">(WhatsApp Direct)</span>
+                  </a>
+                  <span class="text-primary-foreground/50 text-xs block mt-0.5">+91 81236 77210 | +91 90357 72512</span>
                 </li>
+                <li class="break-all"><a href="mailto:connect@trustzionfnd.org" class="footer-link-underline hover:underline">connect@trustzionfnd.org</a></li>
+                <li class="break-all"><a href="mailto:connect.zionfoundation@gmail.com" class="footer-link-underline hover:underline">connect.zionfoundation@gmail.com</a></li>
               </ul>
             </div>
           </div>
@@ -4346,8 +4408,8 @@
         id: 'zion-vidya',
         title: 'Zion Vidya',
         status: 'Starting',
-        category: 'Inclusive Education & AI Skills',
-        shortDesc: 'Learning and AI skills for people with physical disabilities.',
+        category: 'Education for Physically Challenged Children',
+        shortDesc: 'Specialized inclusive education, adaptive learning, and nurturing teaching for physically challenged children.',
         heroImg: 'assets/images/zion-vidya.jpg',
         hasFoodDonation: false,
         currency: 'INR',
@@ -4358,60 +4420,60 @@
         percentNum: 31,
         donors: '140',
         tiers: [
-          { amount: 800, title: 'Adaptive Learning Accessories', desc: 'Funds ergonomic adaptive trackball mice, tactile keyboards, and voice-assisted AI screen reader software licenses.', popular: false },
-          { amount: 2200, title: '1-Month AI Skills Cohort Scholarship', desc: 'Full scholarship covering prompt engineering, generative AI workflows, transcription, and remote job readiness.', popular: true },
-          { amount: 6000, title: 'Accessible Tech Workstation & Mentorship', desc: 'Equips a remote learner with a dedicated workstation, high-speed broadband, and 6 months of corporate 1-on-1 mentoring.', popular: false }
+          { amount: 800, title: 'Adaptive Learning Kit & Workbooks', desc: 'Provides specialized tactile workbooks, sensory learning aids, adaptive grip stationery, and illustrated primers for young students.', popular: false },
+          { amount: 2200, title: '1-Month Personalized Teacher Tutoring', desc: 'Sponsors 1-on-1 personalized teaching sessions, foundational literacy, numeracy, and gentle cognitive guidance by caring educators.', popular: true },
+          { amount: 6000, title: 'Accessible Child Study Desk & Tablet', desc: 'Equips a physically challenged student with an ergonomic accessible study desk, adaptive chair setup, and interactive learning tablet.', popular: false }
         ],
-        overviewHeading: 'Harnessing modern generative AI and adaptive computing to unlock dignified, remote livelihoods.',
+        overviewHeading: 'Empowering physically challenged children through compassionate teaching, inclusive education, and adaptive learning.',
         overviewParas: [
-          'For millions of individuals living with physical disabilities, mobility challenges, or neuromuscular conditions, conventional physical office workplaces and exhausting daily commutes create immense barriers to career entry and financial independence. Yet, modern generative artificial intelligence and cloud computing have fundamentally eliminated the need for physical mobility to produce elite intellectual work.',
-          'Zion Vidya is our newly starting vertical dedicated to leveling the vocational playing field. We train persons with physical disabilities in high-demand, practical AI capabilities: structured prompt engineering, AI-assisted content editing, automated transcription, dataset annotation, and digital workflow automation.',
-          'Every learner is equipped with adaptive computing hardware tailored to their physical needs—from eye-tracking navigation and speech-to-text dictation to ergonomic adaptive controllers. Paired with 1-on-1 software industry mentors, our graduates transition directly into dignified remote freelance contracts and corporate diversity tech careers.'
+          'Every child, regardless of physical challenges, mobility limitations, or developmental hurdles, has an inherent right to an empowering, joyful education and the caring belief that they can thrive.',
+          'Zion Vidya brings passionate, patient teachers directly into the lives of physically challenged children. Through dedicated 1-on-1 instruction, adaptive learning tools, and supportive pacing, our educators guide each child toward foundational literacy, curiosity, and academic confidence.',
+          'Our inclusive classrooms and individualized tutoring combine empathetic teaching with specialized learning materials, ensuring that physical barriers never stop a young learner from experiencing the joy of discovery and achieving their fullest potential.'
         ],
         metrics: [
-          { val: 'Starting', lbl: 'Pilot cohort launching' },
-          { val: '100%', lbl: 'Adaptive accessibility' },
-          { val: '₹0', lbl: 'Fee charged to learners' },
-          { val: '1-on-1', lbl: 'Dedicated career mentorship' }
+          { val: 'Starting', lbl: 'Inclusive learning cohorts' },
+          { val: '100%', lbl: 'Empathetic 1-on-1 teaching' },
+          { val: '₹0', lbl: 'Fee charged to families' },
+          { val: 'Adaptive', lbl: 'Tailored study materials' }
         ],
         pillars: [
           {
-            title: 'Adaptive Hardware & Assistive Lab',
-            desc: 'Customizing workstations with head-tracking controllers, ergonomic single-hand keyboards, voice-command software, and high-contrast screen magnification.',
+            title: 'Personalized 1-on-1 Teaching',
+            desc: 'Caring, trained educators providing patient, step-by-step guidance tailored to each child’s physical abilities and learning style.',
+            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 6h10"></path><path d="M6 10h10"></path></svg>'
+          },
+          {
+            title: 'Adaptive Learning & Assistive Tools',
+            desc: 'Utilizing tactile books, speech-enabled digital tablets, large-print materials, and ergonomic accessible desks.',
             iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>'
           },
           {
-            title: 'Applied AI & Prompt Engineering',
-            desc: 'Structured curricula in state-of-the-art LLMs, multimodal creative tools, AI research synthesis, automated document formatting, and code assistance.',
+            title: 'Foundational Literacy & Cognitive Growth',
+            desc: 'Nurturing language fluency, reading, mathematical intuition, and creative thinking through joyful, interactive lessons.',
             iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"></path><path d="m4.93 4.93 2.83 2.83"></path><path d="M2 12h4"></path><path d="m4.93 19.07 2.83-2.83"></path><path d="M12 22v-4"></path><path d="m19.07 19.07-2.83-2.83"></path><path d="M22 12h-4"></path><path d="m19.07 4.93-2.83 2.83"></path></svg>'
           },
           {
-            title: '1-on-1 Remote Tech Mentorship',
-            desc: 'Pairing each learner with a seasoned tech professional for weekly 1-on-1 pair-programming, project reviews, and flexible learning schedules paced around medical routines.',
+            title: 'Caregiver Partnership & Encouragement',
+            desc: 'Supporting parents and families with home learning routines, emotional encouragement, and advocacy for mainstream school integration.',
             iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>'
-          },
-          {
-            title: 'Remote Placement & Freelancing',
-            desc: 'Building verified online client profiles, portfolio demonstrations, proposal writing, and connecting students with inclusive corporate remote hiring teams.',
-            iconSvg: '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>'
           }
         ],
         roadmap: [
-          { step: 'Phase 01', title: 'Ergonomic Tech Setup', desc: 'Individual assessment of physical mobility, adaptive input peripherals, voice dictation calibration, and home broadband setup.' },
-          { step: 'Phase 02', title: 'Core AI Skills (Weeks 1-4)', desc: 'Foundations of modern AI tooling, effective prompt structuring, generative writing, document summarization, and AI audio transcription.' },
-          { step: 'Phase 03', title: 'Applied Projects (Weeks 5-8)', desc: 'Hands-on client simulation projects: business research reporting, digital marketing copy, data cleansing, and workflow automation.' },
-          { step: 'Phase 04', title: 'Portfolio & Job Placement (Weeks 9-12)', desc: 'Publishing a professional digital portfolio, mock client interviews, and direct introduction to corporate remote diversity recruiters.' }
+          { step: 'Phase 01', title: 'Child Learning Assessment', desc: 'Understanding each child’s physical mobility, communication preferences, and personalized learning needs.' },
+          { step: 'Phase 02', title: 'Adaptive Materials & Setup', desc: 'Equipping accessible desks, sensory learning aids, and assistive tablets customized for the child.' },
+          { step: 'Phase 03', title: 'Daily Mentored Tutoring', desc: 'Engaging, patient 1-on-1 lessons led by dedicated special educators and compassionate volunteer teachers.' },
+          { step: 'Phase 04', title: 'Milestones & Mainstream Inclusion', desc: 'Celebrating milestones, fostering self-reliance, and facilitating successful enrollment in mainstream schooling.' }
         ],
         faqs: [
-          { q: 'Who is eligible to enroll in Zion Vidya?', a: 'Any individual living with a documented physical disability or chronic mobility impairment who wants to build digital skills. Prior computer programming experience is not required.' },
-          { q: 'Is the program completely free for learners?', a: 'Yes, 100% free. Tuition, adaptive hardware accessories, AI software licenses, and learning materials are entirely funded through our generous donor community.' },
-          { q: 'How can technology companies hire Zion Vidya graduates?', a: 'We partner with progressive corporate employers seeking remote talent in AI prompt design, data quality verification, digital operations, and customer support.' }
+          { q: 'Who is eligible to enroll in Zion Vidya?', a: 'Any physically challenged child or young student living with mobility, orthopedic, or physical disabilities who needs supportive, inclusive education.' },
+          { q: 'Is the education program free for families?', a: 'Yes, 100% free. Tutoring, adaptive learning kits, assistive supplies, and personalized educational coaching are entirely funded by our community.' },
+          { q: 'How can teachers or volunteers participate?', a: 'We welcome certified educators, special education tutors, and caring volunteers who want to teach and mentor physically challenged children.' }
         ],
-        quote: '"When physical mobility is restricted, AI and computing unlock limitless creative and earning power. Zion Vidya makes that dream completely tangible."',
-        quoteAuthor: 'Sneha Rao, Inclusive Technology Lead',
+        quote: '"When a teacher believes in a child and meets them with patience, physical obstacles fade. Every child possesses a beautiful mind ready to learn."',
+        quoteAuthor: 'Priya Sundaram, Special Educator & Learning Mentor',
         shifts: [
-          { title: 'Tech Lab & Virtual Classroom Setup', time: 'Tuesdays & Thursdays, 4:00 PM - 6:30 PM', place: 'Zion Digital Lab', desc: 'Configure screen readers, set up accessibility shortcuts, and assist students with AI exercises.' },
-          { title: 'Remote Resume & Portfolio Review', time: 'Saturdays, 11:00 AM - 1:00 PM', place: 'Online Video Session', desc: 'Help disabled learners craft freelance profiles, portfolio projects, and online applications.' }
+          { title: 'Inclusive Classroom & Reading Circle', time: 'Tuesdays & Thursdays, 4:00 PM - 6:30 PM', place: 'Zion Learning Center', desc: 'Assist teachers with interactive reading circles, adaptive writing practice, and creative arts for children.' },
+          { title: 'Weekend Tutoring & Learning Games', time: 'Saturdays, 10:00 AM - 1:00 PM', place: 'Zion Community Center', desc: 'Work 1-on-1 with children on math games, sensory storytelling, and educational tablet activities.' }
         ]
       },
       'zion-home': {
@@ -4883,7 +4945,7 @@
           <p class="mt-1 text-sm font-semibold text-primary">${s.time}</p>
           <p class="text-xs text-muted-foreground">${s.place}</p>
           <p class="mt-3 text-sm text-muted-foreground leading-relaxed">${s.desc}</p>
-          <a href="index.html#volunteer" class="btn-motion mt-4 inline-flex items-center gap-1.5 text-sm font-600 text-accent hover:underline">
+          <a href="volunteer.html" class="btn-motion mt-4 inline-flex items-center gap-1.5 text-sm font-600 text-accent hover:underline">
             Register for this shift →
           </a>
         `;

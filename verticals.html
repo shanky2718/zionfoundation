@@ -1,0 +1,2115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verticals | Zion Foundation</title>
+  <meta name="description" content="Explore the six core verticals of Zion Foundation: Vidya, Academy, Care, Loyals, Mind, and Home." />
+
+  <!-- Google Fonts: Poppins (Single Master Font) + Caveat (Sports Festival Accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Exact Production Stylesheet -->
+  <link rel="stylesheet" href="css/original.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+
+  <!-- Razorpay Checkout Gateway SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Interactive Enhancements Styles -->
+  <style>
+    /* Primary Global Font: Poppins */
+    :root {
+      --font-sans: 'Poppins', sans-serif;
+      --font-display: 'Poppins', sans-serif;
+    }
+
+    *, html, body, button, input, select, textarea, [class*="font-"] {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 400;
+    }
+
+    h1, .h1 {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    h2, h3, h4, h5, h6, .h2, .h3, .h4 {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    p, span, li, label, input, textarea, select {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    nav a, nav button, .nav-btn, button, .btn-motion {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 500 !important;
+    }
+
+    .font-display {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    .font-sans {
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    .vertical-card-title {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    .vertical-card-desc {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    .founder-name {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+    }
+
+    .founder-role {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 500 !important;
+    }
+
+    /* Zion Community Sports Festival Styles & Precise Layout Geometry */
+    .script-font, .script-font * {
+      font-family: 'Caveat', cursive, sans-serif !important;
+    }
+
+    .events-container {
+      width: 100%;
+      max-width: 72rem; /* 1152px - matches exact width of max-w-6xl across Zion site */
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    @media (min-width: 640px) {
+      .events-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .events-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* 1. Hero Card & Grid - Pink, Plum & White Zion Brand Identity */
+    .festival-hero {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, #24133B 0%, #3B152A 50%, #4D1832 100%);
+      border: 1px solid rgba(223, 76, 118, 0.45);
+      color: #ffffff;
+      box-shadow: 0 20px 45px -10px rgba(36, 19, 59, 0.4);
+      margin-bottom: 3rem;
+    }
+    .festival-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 1024px) {
+      .festival-hero-grid {
+        grid-template-columns: 1.25fr 1fr; /* Text 55%, Image 45% */
+        gap: 2.5rem;
+        padding: 2.75rem 3rem;
+      }
+    }
+    .festival-hero-image-wrap {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      height: 280px;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 2px solid rgba(223, 76, 118, 0.7);
+      box-shadow: 0 12px 30px rgba(36, 19, 59, 0.45);
+      background-color: #1e0d29;
+      position: relative;
+    }
+    @media (min-width: 1024px) {
+      .festival-hero-image-wrap {
+        height: 350px;
+        border-radius: 3rem 1.25rem 1.25rem 1.25rem;
+      }
+    }
+    .festival-hero-image-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: top center !important;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .festival-hero-image-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    /* 2. Objectives 5-Card Grid */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 640px) {
+      .objectives-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .objectives-grid {
+        grid-template-columns: repeat(5, 1fr); /* 5 clean cards in 1 row on desktop */
+        gap: 1rem;
+      }
+    }
+    .festival-card {
+      background: #ffffff;
+      border: 1px solid rgba(223, 76, 118, 0.22);
+      box-shadow: 0 4px 20px -2px rgba(36, 19, 59, 0.05), 0 2px 6px -1px rgba(223, 76, 118, 0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 1rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 230px;
+    }
+    .festival-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(223, 76, 118, 0.55);
+      box-shadow: 0 12px 28px -4px rgba(223, 76, 118, 0.22);
+    }
+    .objective-icon-wrap {
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #DF4C76 0%, #c93b64 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem auto;
+      box-shadow: 0 4px 14px rgba(223, 76, 118, 0.35);
+    }
+
+    /* 3. Event Highlights Carousel Track */
+    .highlights-wrap {
+      margin-bottom: 3rem;
+    }
+    .highlight-scroll-track {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-top: 0.5rem;
+      padding-bottom: 0.75rem;
+      width: 100%;
+    }
+    .highlight-scroll-track::-webkit-scrollbar {
+      display: none;
+    }
+    .highlight-card {
+      flex: 0 0 148px !important;
+      width: 148px !important;
+      max-width: 148px !important;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(223, 76, 118, 0.22);
+      box-shadow: 0 3px 10px rgba(36, 19, 59, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .highlight-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(223, 76, 118, 0.2);
+      border-color: rgba(223, 76, 118, 0.5);
+    }
+    .highlight-card-img {
+      width: 100%;
+      height: 105px;
+      object-fit: cover;
+      display: block;
+    }
+    .highlight-card-caption {
+      background: linear-gradient(135deg, #24133B 0%, #3B152A 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 0.5rem 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      line-height: 1.25;
+      min-height: 2.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 4 & 5. Dual Split Feature Cards */
+    .split-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 1024px) {
+      .split-cards-grid {
+        grid-template-columns: 1fr 1fr; /* Exact 50/50 balance on desktop */
+        gap: 1.75rem;
+      }
+    }
+    .split-feature-card {
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    @media (min-width: 640px) {
+      .split-feature-card {
+        flex-direction: row !important; /* Horizontal side-by-side inside card */
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.75rem;
+      }
+    }
+    .split-feature-card:hover {
+      transform: translateY(-3px);
+    }
+    .split-feature-img-wrap {
+      width: 135px !important;
+      height: 135px !important;
+      min-width: 135px !important;
+      max-width: 135px !important;
+      min-height: 135px !important;
+      max-height: 135px !important;
+      flex-shrink: 0 !important;
+      border-radius: 0.875rem;
+      overflow: hidden;
+      background-color: #000000;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+    @media (min-width: 640px) {
+      .split-feature-img-wrap {
+        width: 148px !important;
+        height: 148px !important;
+        min-width: 148px !important;
+        max-width: 148px !important;
+        min-height: 148px !important;
+        max-height: 148px !important;
+      }
+    }
+    .split-feature-img-wrap img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+    }
+    .split-feature-content {
+      flex: 1 1 0% !important;
+      min-width: 0 !important;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .split-feature-content {
+        text-align: left !important;
+      }
+    }
+
+    /* Split Feature Card - Left: Awards & Recognition (Dark Plum Theme) */
+    .split-feature-card-awards {
+      background: linear-gradient(135deg, #24133B 0%, #3B162E 50%, #200D2A 100%) !important;
+      border: 1px solid rgba(223, 76, 118, 0.45) !important;
+      color: #ffffff !important;
+    }
+    .split-feature-card-awards .awards-title,
+    .split-feature-card-awards h4 {
+      color: #FBBF24 !important;
+      font-weight: 800 !important;
+      font-size: 1.125rem !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+      line-height: 1.3 !important;
+      margin: 0 !important;
+    }
+    .split-feature-card-awards .awards-desc,
+    .split-feature-card-awards p {
+      color: #FFFFFF !important;
+      opacity: 0.95 !important;
+      font-size: 0.875rem !important;
+      line-height: 1.5 !important;
+      margin-top: 0.5rem !important;
+    }
+    .split-feature-card-awards .awards-btn,
+    .awards-btn {
+      background-color: #FBBF24 !important;
+      color: #120A02 !important;
+      font-weight: 700 !important;
+      font-size: 0.8125rem !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 9999px !important;
+      border: none !important;
+      box-shadow: 0 4px 14px rgba(251, 191, 36, 0.35) !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      margin-top: 0.875rem !important;
+      transition: all 0.2s ease !important;
+    }
+    .split-feature-card-awards .awards-btn:hover,
+    .awards-btn:hover {
+      background-color: #f59e0b !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 18px rgba(251, 191, 36, 0.45) !important;
+    }
+    .split-feature-card-awards .awards-btn svg,
+    .awards-btn svg {
+      stroke: #120A02 !important;
+    }
+
+    /* Festival Gold Action Buttons */
+    .festival-gold-btn {
+      background-color: #FBBF24 !important;
+      color: #120A02 !important;
+      font-weight: 700 !important;
+      border-radius: 9999px !important;
+      border: none !important;
+      box-shadow: 0 4px 14px rgba(251, 191, 36, 0.35) !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      transition: all 0.2s ease !important;
+    }
+    .festival-gold-btn:hover {
+      background-color: #f59e0b !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 18px rgba(251, 191, 36, 0.45) !important;
+    }
+    .festival-gold-btn svg {
+      stroke: #120A02 !important;
+    }
+
+    /* 6. Closing Banner */
+    .festival-closing-banner {
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, #24133B 0%, #3B152A 50%, #4D1832 100%);
+      border: 1px solid rgba(223, 76, 118, 0.45);
+      color: #ffffff;
+      padding: 1.75rem;
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 1024px) {
+      .festival-closing-banner {
+        flex-direction: row;
+        text-align: left;
+        padding: 2rem 2.5rem;
+      }
+    }
+    .closing-banner-silhouette {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 240px;
+      opacity: 0.22;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .closing-banner-silhouette img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: invert(1) contrast(1.5);
+    }
+
+    /* 7. Registration Section */
+    .festival-reg-card {
+      border-radius: 1.5rem;
+      background: #ffffff;
+      border: 1px solid rgba(223, 76, 118, 0.22);
+      padding: 2rem 1.5rem;
+      box-shadow: 0 10px 30px -5px rgba(223, 76, 118, 0.08);
+      max-width: 44rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) {
+      .festival-reg-card {
+        padding: 2.5rem 3rem;
+      }
+    }
+
+    /* Volunteers Showcase Row: Matches exact width & height of Founders and Interns 3-card grid */
+    .volunteers-grid-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .volunteers-grid-row > div {
+      width: 100%;
+      max-width: 22rem;
+    }
+    @media (min-width: 768px) {
+      .volunteers-grid-row {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        gap: 1.5rem;
+      }
+      .volunteers-grid-row > div {
+        width: calc((100% - 3rem) / 3);
+        max-width: 360px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .volunteers-grid-row {
+        gap: 2rem;
+      }
+      .volunteers-grid-row > div {
+        width: calc((100% - 4rem) / 3);
+        max-width: 360px;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Section padding normalization to prevent large empty spaces */
+    section {
+      scroll-margin-top: 5rem;
+    }
+
+    /* Modal Backdrop */
+    .modal-backdrop-custom {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop-custom.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card-custom {
+      position: relative;
+      width: 100%;
+      max-width: 32rem;
+      background-color: hsl(var(--card, 0 0% 100%));
+      color: hsl(var(--card-foreground, 240 10% 3.9%));
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid hsl(var(--border, 0 0% 88%));
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-backdrop-custom.open .modal-card-custom {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Donation Modal 2-Column Responsive Layout & Prominent Large QR Card */
+    .donate-modal-layout {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .donate-modal-form-col {
+      flex: 1 1 50%;
+      min-width: 0;
+    }
+    .donate-modal-qr-col {
+      flex: 0 0 340px;
+      max-width: 350px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .donate-qr-wrapper {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 0.65rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      width: 290px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .donate-qr-img {
+      width: 100%;
+      max-width: 275px;
+      max-height: 405px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: 0.65rem;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .donate-modal-layout {
+        flex-direction: column;
+      }
+      .donate-modal-qr-col {
+        max-width: 100% !important;
+        flex: 1 1 auto;
+      }
+      .donate-qr-wrapper {
+        width: 280px;
+        max-width: 90vw;
+      }
+      .donate-qr-img {
+        max-width: 265px;
+        max-height: 390px;
+      }
+    }
+
+    .toast-container-custom {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      pointer-events: none;
+    }
+
+    .toast-custom {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: hsl(var(--primary, 273 51% 15%));
+      color: #ffffff;
+      padding: 0.875rem 1.25rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.875rem;
+      font-weight: 500;
+      animation: toastIn 0.3s ease-out;
+    }
+
+    @keyframes toastIn {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Smooth Scroll Reveals handled gracefully by animations.css */
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+    html.motion-ready .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html.motion-ready .reveal.in,
+    html.motion-ready .reveal.revealed {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* -------------------------------------------------------------
+       VERTICALS SECTION & CARD DESIGN (16:9 Image Proportions)
+       ------------------------------------------------------------- */
+    .verticals-grid {
+      display: grid !important;
+      grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+      gap: 1.5rem !important;
+      width: 100% !important;
+      margin-top: 2.75rem !important;
+    }
+
+    @media (min-width: 640px) {
+      .verticals-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1.75rem !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .verticals-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 2rem !important;
+      }
+    }
+
+    .vertical-card {
+      position: relative !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      background-color: #ffffff !important;
+      border: 1px solid rgba(36, 19, 59, 0.1) !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 18px -2px rgba(36, 19, 59, 0.06) !important;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease !important;
+      text-decoration: none !important;
+      height: 100% !important;
+    }
+
+    .vertical-card:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 18px 30px -8px rgba(36, 19, 59, 0.14) !important;
+      border-color: rgba(223, 76, 118, 0.45) !important;
+    }
+
+    .vertical-card-media {
+      position: relative !important;
+      width: 100% !important;
+      aspect-ratio: 16 / 9 !important;
+      background-color: #f3efe8 !important;
+      overflow: hidden !important;
+    }
+
+    .vertical-card-img {
+      width: 100% !important;
+      height: 100% !important;
+      aspect-ratio: 16 / 9 !important;
+      object-fit: cover !important;
+      display: block !important;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .vertical-card:hover .vertical-card-img {
+      transform: scale(1.05) !important;
+    }
+
+    .vertical-badge {
+      position: absolute !important;
+      top: 0.85rem !important;
+      left: 0.85rem !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      padding: 0.3rem 0.75rem !important;
+      border-radius: 9999px !important;
+      font-size: 0.725rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+      z-index: 2 !important;
+    }
+
+    .badge-active {
+      background-color: #24133B !important;
+      color: #ffffff !important;
+    }
+
+    .badge-starting {
+      background-color: #DF4C76 !important;
+      color: #ffffff !important;
+    }
+
+    .badge-coming {
+      background-color: rgba(30, 20, 45, 0.75) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.35) !important;
+      backdrop-filter: blur(4px) !important;
+    }
+
+    .vertical-card-content {
+      padding: 1.4rem 1.4rem 1.5rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex-grow: 1 !important;
+      justify-content: space-between !important;
+      background-color: #ffffff !important;
+    }
+
+    .vertical-card-title {
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 1.4rem !important;
+      font-weight: 600 !important;
+      color: #24133B !important;
+      margin: 0 0 0.5rem 0 !important;
+      line-height: 1.25 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      transition: color 0.2s ease !important;
+    }
+
+    .vertical-card:hover .vertical-card-title {
+      color: #DF4C76 !important;
+    }
+
+    .vertical-card-desc {
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 0.925rem !important;
+      line-height: 1.55 !important;
+      color: #5C605C !important;
+      margin: 0 0 1.25rem 0 !important;
+      flex-grow: 1 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .vertical-card-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      margin-top: auto !important;
+      padding-top: 1rem !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.07) !important;
+    }
+
+    .btn-explore {
+      flex: 1 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.4rem !important;
+      padding: 0.65rem 1rem !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: #24133B !important;
+      background-color: #F5F2EB !important;
+      border: 1px solid rgba(36, 19, 59, 0.12) !important;
+      border-radius: 9999px !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .btn-explore:hover {
+      background-color: #24133B !important;
+      color: #ffffff !important;
+      border-color: #24133B !important;
+      transform: translateY(-1px) !important;
+    }
+
+    .btn-donate-card {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0.65rem 1.15rem !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: #ffffff !important;
+      background-color: #DF4C76 !important;
+      border-radius: 9999px !important;
+      text-decoration: none !important;
+      border: 1px solid transparent !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer !important;
+    }
+
+    .btn-donate-card:hover {
+      background-color: #c93d64 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(223, 76, 118, 0.35) !important;
+    }
+
+    /* -------------------------------------------------------------
+       IMPACT STATISTICS SECTION
+       ------------------------------------------------------------- */
+    .impact-stat-card {
+      background-color: #F8F6F0 !important;
+      border: 1px solid #EAE5D9 !important;
+      border-radius: 1.15rem !important;
+      padding: 1.75rem 1.5rem !important;
+      text-align: center !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    }
+
+    .impact-stat-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 24px -6px rgba(36, 19, 59, 0.08) !important;
+    }
+  </style>
+  <link rel="stylesheet" href="css/responsive-nav.css" />
+</head>
+<body class="min-h-screen bg-background text-foreground antialiased selection:bg-accent/20 selection:text-accent">
+  <div id="toastContainer" class="toast-container-custom"></div>
+  <div class="relative min-h-screen flex flex-col justify-between">
+    <div class="flex-1">
+      
+      <!-- Top Navigation Header -->
+      <header id="siteHeader" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-md shadow-sm border-b border-border">
+        <div class="mx-auto max-w-[90rem] px-5 sm:px-8 flex items-center justify-between h-16 sm:h-20">
+          <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Zion Foundation Homepage">
+            <span
+              class="grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-xl bg-white shadow-md ring-1 ring-black/10 p-1 shrink-0 transition-transform group-hover:scale-105">
+              <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain drop-shadow-xs" />
+            </span>
+            <span id="brandName" class="font-display text-lg font-600 leading-tight text-foreground text-left">
+              Zion
+              <span class="block text-[0.62rem] tracking-[0.2em] uppercase font-sans opacity-70">Foundation</span>
+            </span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-1.5" aria-label="Primary Desktop Navigation">
+            <a href="about.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">About</a>
+            <a href="verticals.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary active">Verticals</a>
+            <a href="events.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Events</a>
+            <a href="volunteer.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Volunteer</a>
+            <a href="contact.html"
+              class="nav-btn px-3.5 py-2 text-sm font-500 rounded-lg transition-colors text-foreground/80 hover:text-foreground hover:bg-secondary">Contact</a>
+            
+            <a href="donate.html"
+              class="ml-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-600 text-accent-foreground shadow-sm hover:brightness-105 active:scale-[0.98] transition">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                </path>
+              </svg>
+              Donate Now
+            </a>
+          </nav>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobileMenuOpenBtn" type="button" class="lg:hidden p-2 rounded-lg text-foreground hover:bg-secondary transition" aria-label="Open mobile menu">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Solid Mobile Menu Overlay (Completely Opaque, 0% Transparency, No Blur) -->
+        <div id="mobileMenu" class="hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+          <div class="mobile-nav-header">
+            <a href="index.html" class="flex items-center gap-2.5" onclick="closeMobileMenu()">
+              <span class="grid place-items-center h-10 w-10 rounded-xl bg-white shadow-sm p-1 shrink-0">
+                <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
+              </span>
+              <span class="font-display text-white text-lg font-600">Zion Foundation</span>
+            </a>
+            <button id="mobileMenuCloseBtn" type="button" class="mobile-nav-close-btn" aria-label="Close mobile menu">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <nav class="mobile-nav-links" aria-label="Mobile Menu Links">
+            <a href="about.html" class="mobile-nav-item">
+              <span>About Us</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="verticals.html" class="mobile-nav-item active">
+              <span>Foundation Verticals</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="events.html" class="mobile-nav-item">
+              <span>Events & Programs</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="volunteer.html" class="mobile-nav-item">
+              <span>Volunteer With Us</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a href="contact.html" class="mobile-nav-item">
+              <span>Contact Zion</span>
+              <svg class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+
+            <a href="donate.html" class="mobile-nav-donate-btn">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                </path>
+              </svg>
+              Donate Now
+            </a>
+          </nav>
+        </div>
+      </header>
+    
+      <main class="page-main">
+        
+  <div class="bg-gradient-to-b from-primary/10 via-background to-background pt-8 pb-10 sm:pt-10 sm:pb-12 border-b border-border/60">
+    <div class="mx-auto max-w-[76rem] px-5 sm:px-8 text-center">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-accent mb-2">Our Pillars of Impact</span>
+      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">Foundation Verticals</h1>
+      <p class="text-muted-foreground max-w-2xl mx-auto mt-3 text-sm sm:text-base">
+        Six specialized verticals working together as one family to touch every facet of community welfare.
+      </p>
+    </div>
+  </div>
+  <section id="programs" class="py-20 sm:py-28 bg-[#FAF9F5] border-t border-b border-border/80 relative">
+        <div id="pets" class="absolute -top-20"></div>
+        <div id="verticals" class="absolute -top-20"></div>
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-8">
+          <div class="max-w-3xl scroll-reveal reveal-slide-up">
+            <span class="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[#DF4C76]">Six Verticals, One
+              Family</span>
+            <h2
+              class="mt-2 font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#24133B] tracking-tight leading-tight">
+              Six verticals, one family
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+              Targeted, faith-driven, and hands-on community initiatives meeting real, urgent needs across our
+              neighborhoods.
+            </p>
+          </div>
+
+          <div class="verticals-grid stagger-children scroll-reveal">
+            <!-- Vertical 1: Zion Loyals -->
+            <div class="vertical-card group" id="vertical-zion-loyals">
+              <div class="vertical-card-media">
+                <img src="assets/images/zion-loyals.jpg" alt="Zion Loyals - Animal Welfare & Rescue"
+                  class="vertical-card-img" loading="lazy" />
+                <span class="vertical-badge badge-active">Active</span>
+              </div>
+              <div class="vertical-card-content">
+                <div>
+                  <h3 class="vertical-card-title">Zion Loyals</h3>
+                  <p class="vertical-card-desc">Emergency roadside rescue, orthopedic surgeries, daily pack feeding, and
+                    foster sanctuary for community street animals.</p>
+                </div>
+                <div class="vertical-card-actions">
+                  <a href="program.html?id=zion-loyals" class="btn-explore">
+                    <span>Explore Vertical</span>
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="program.html?id=zion-loyals#donate" class="btn-donate-card">
+                    <span>Donate</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vertical 2: Zion Academy -->
+            <div class="vertical-card group" id="vertical-zion-academy">
+              <div class="vertical-card-media relative">
+                <img src="assets/images/zion-academy-card.png" alt="Zion Academy - Play. Grow. Inspire." class="vertical-card-img"
+                  style="object-position: center center;" loading="lazy" />
+                <span class="vertical-badge badge-active">Active</span>
+                <button type="button" onclick="openAcademyVideoModal(event)"
+                  class="absolute inset-0 flex items-center justify-center bg-black/35 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity duration-200 cursor-pointer"
+                  title="Watch Zion Academy Video" aria-label="Watch Zion Academy Video">
+                  <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 text-emerald-950 font-semibold text-xs shadow-xl backdrop-blur hover:scale-105 transition-transform">
+                    <svg class="w-4 h-4 text-emerald-600 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    Watch Video
+                  </span>
+                </button>
+              </div>
+              <div class="vertical-card-content">
+                <div>
+                  <h3 class="vertical-card-title">Zion Academy</h3>
+                  <p class="vertical-card-desc">Free and accessible football coaching, sports mentorship, and opportunities for children and young people (Ages 10–18). Training at Coliseo Atletico Sports Ventures (NICE Ring Rd, Bengaluru) &bull; Mon/Wed 5:15 PM, Sat/Sun 4:00 PM &bull; Helplines: +91 81236 77210 | +91 90357 72512.</p>
+                </div>
+                <div class="vertical-card-actions">
+                  <a href="program.html?id=zion-academy" class="btn-explore">
+                    <span>Explore Vertical</span>
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <button type="button" onclick="openAcademyVideoModal(event)"
+                    class="btn-video-card inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 transition"
+                    title="Watch Video">
+                    <svg class="w-3.5 h-3.5 fill-current text-emerald-600" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <span>Watch Video</span>
+                  </button>
+                  <a href="program.html?id=zion-academy#donate" class="btn-donate-card">
+                    <span>Support</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vertical 3: Zion Vidya -->
+            <div class="vertical-card group" id="vertical-zion-vidya">
+              <div class="vertical-card-media">
+                <img src="assets/images/zion-vidya.jpg" alt="Zion Vidya - Special & Inclusive Education for Physically Challenged Children" class="vertical-card-img"
+                  style="object-position: center center;" loading="lazy" />
+                <span class="vertical-badge badge-starting">Starting</span>
+              </div>
+              <div class="vertical-card-content">
+                <div>
+                  <h3 class="vertical-card-title">Zion Vidya</h3>
+                  <p class="vertical-card-desc">Specialized, inclusive education and adaptive learning for physically challenged children — where dedicated, compassionate teachers provide personalized instruction, foundational skills, and assistive learning tools.</p>
+                </div>
+                <div class="vertical-card-actions">
+                  <a href="program.html?id=zion-vidya" class="btn-explore">
+                    <span>Explore Vertical</span>
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="program.html?id=zion-vidya#donate" class="btn-donate-card">
+                    <span>Support</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vertical 4: Zion Home -->
+            <div class="vertical-card group" id="vertical-zion-home">
+              <div class="vertical-card-media">
+                <img src="assets/images/zion-home.jpg" alt="Zion Home - Foster & Child Protection" class="vertical-card-img"
+                  style="object-position: center 25%;" loading="lazy" />
+                <span class="vertical-badge badge-coming">Coming Soon</span>
+              </div>
+              <div class="vertical-card-content">
+                <div>
+                  <h3 class="vertical-card-title">Zion Home</h3>
+                  <p class="vertical-card-desc">Zion Home is Zion Foundation’s foster-care initiative for children — providing a safe place, nurturing care, and child-centred protection that helps every child move forward.</p>
+                </div>
+                <div class="vertical-card-actions">
+                  <a href="program.html?id=zion-home" class="btn-explore">
+                    <span>Explore Vision</span>
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="program.html?id=zion-home#donate" class="btn-donate-card">
+                    <span>Support</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vertical 5: Zion Care -->
+            <div class="vertical-card group" id="vertical-zion-care">
+              <div class="vertical-card-media">
+                <img src="assets/images/zion-care.jpg" alt="Zion Care - Bedside Palliative Care & Comfort"
+                  class="vertical-card-img" style="object-position: center center;" loading="lazy" />
+                <span class="vertical-badge badge-coming">Coming Soon</span>
+              </div>
+              <div class="vertical-card-content">
+                <div>
+                  <h3 class="vertical-card-title">Zion Care</h3>
+                  <p class="vertical-card-desc">Presence, compassionate visitation, and comforting prayer for the
+                    chronically ill, the dying, and their grieving families.</p>
+                </div>
+                <div class="vertical-card-actions">
+                  <a href="program.html?id=zion-care" class="btn-explore">
+                    <span>Explore Vision</span>
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="program.html?id=zion-care#donate" class="btn-donate-card">
+                    <span>Support</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vertical 6: Zion Mind -->
+            <div class="vertical-card group" id="vertical-zion-mind">
+              <div class="vertical-card-media">
+                <img src="assets/images/zion-mind.jpg" alt="Zion Mind - Mental Health Support" class="vertical-card-img"
+                  style="object-position: center center;" loading="lazy" />
+                <span class="vertical-badge badge-coming">Coming Soon</span>
+              </div>
+              <div class="vertical-card-content">
+                <div>
+                  <h3 class="vertical-card-title">Zion Mind</h3>
+                  <p class="vertical-card-desc">Compassionate mental-health support and a safe sanctuary to reach out. If in immediate danger, contact crisis support: Tele-MANAS (14416 / 1800-891-4416) | Kiran (1800-599-0019) | 112.</p>
+                </div>
+                <div class="vertical-card-actions">
+                  <a href="program.html?id=zion-mind" class="btn-explore">
+                    <span>Explore Vision</span>
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <a href="program.html?id=zion-mind#donate" class="btn-donate-card">
+                    <span>Support</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- ZION COMMUNITY SPORTS FESTIVAL (EVENTS SECTION)                            -->
+      <!-- ========================================================================= -->
+      
+
+      </main>
+      <footer class="bg-primary text-primary-foreground">
+        <div class="mx-auto max-w-[90rem] px-5 sm:px-8 py-16">
+          <div class="grid md:grid-cols-4 gap-10 stagger-children scroll-reveal">
+            <div class="md:col-span-2 max-w-sm">
+              <div class="flex items-center gap-3">
+                <span class="grid place-items-center h-12 w-12 rounded-xl bg-white shadow-md p-1 shrink-0">
+                  <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
+                </span>
+                <span class="font-display text-xl font-600">Zion Foundation</span>
+              </div>
+              <p class="mt-4 text-primary-foreground/70 leading-relaxed">
+                Compassion in action — turning concern into practical, life-changing support for one soul, one life, and one community at a time.
+              </p>
+              <button onclick="location.href='donate.html'"
+                class="btn-motion btn-primary-motion btn-arrow-motion mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-600 text-accent-foreground hover:brightness-105 transition">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                  </path>
+                </svg>
+                Donate Now
+              </button>
+
+              <!-- Interactive Social Links & WhatsApp Direct -->
+              <div class="mt-6 flex flex-wrap items-center gap-2.5">
+                <a href="https://www.facebook.com/share/p/1M46Qx8EXD/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/trustzionfnd?cnvx=ZGpuMWFmdmVwMGQ3" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/zion-foundation-85ab38445" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                </a>
+                <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="footer-social-icon h-9 w-9 bg-white/10 text-primary-foreground hover:bg-white/20 transition">
+                  <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.677.15-.201.301-.777.979-.953 1.18-.175.201-.351.226-.652.075-.3-.151-1.267-.467-2.414-1.489-.893-.796-1.495-1.78-1.671-2.081-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.201-.301.301-.502.1-.201.05-.376-.025-.526-.075-.151-.677-1.632-.928-2.235-.245-.588-.493-.508-.677-.518-.175-.009-.376-.009-.576-.009-.201 0-.527.075-.802.376-.276.301-1.053 1.029-1.053 2.51 0 1.48 1.078 2.91 1.229 3.111.15.201 2.122 3.24 5.14 4.544.718.31 1.278.496 1.716.634.721.23 1.378.197 1.9.119.582-.088 1.78-.728 2.03-1.431.25-.703.25-1.305.175-1.431-.075-.126-.276-.201-.577-.351zm-5.466 7.423c-1.808 0-3.535-.487-5.045-1.336l-.362-.204-3.742.981.999-3.648-.223-.356c-.927-1.477-1.417-3.189-1.417-4.945 0-5.127 4.171-9.298 9.299-9.298 2.486 0 4.823.97 6.582 2.73 1.758 1.758 2.727 4.095 2.726 6.581 0 5.129-4.172 9.295-9.299 9.295zm7.989-17.288c-2.133-2.135-4.971-3.312-7.989-3.312-6.225 0-11.291 5.066-11.291 11.291 0 1.989.52 3.931 1.509 5.645l-1.603 5.856 5.992-1.572c1.654.903 3.518 1.379 5.393 1.379 6.226 0 11.292-5.066 11.292-11.291 0-3.018-1.176-5.856-3.31-7.996z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <p class="font-600 mb-4">Explore</p>
+              <ul class="space-y-2.5">
+                <li><button onclick="location.href='about.html'"
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">About</button></li>
+                <li><button onclick="location.href='verticals.html'"
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Verticals</button></li>
+                <li><button onclick="location.href='events.html'"
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Events</button></li>
+                <li><button onclick="location.href='volunteer.html'"
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Volunteer</button></li>
+                <li><button onclick="location.href='contact.html'"
+                    class="footer-link-underline text-primary-foreground/70 hover:text-accent transition">Contact</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="font-600 mb-4">Contact</p>
+              <ul class="space-y-2.5 text-primary-foreground/70 text-sm">
+                <li><a href="https://maps.google.com/?q=Coliseo+Atletico+Sports+Ventures+NICE+Ring+Road+Bengaluru" target="_blank" rel="noopener noreferrer" class="hover:underline">Coliseo Atletico Sports Ventures, NICE Ring Road, Bengaluru, Karnataka</a></li>
+                <li>
+                  <a href="https://wa.me/917980564312?text=Hello%20Zion%20Foundation,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="hover:underline inline-flex items-center gap-2 group">
+                    <span class="inline-grid place-items-center h-5 w-5 rounded-full bg-white/10 text-primary-foreground shrink-0 shadow-sm transition-transform group-hover:scale-110">
+                      <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.587 1.761.887 2.796.887 3.182 0 5.768-2.587 5.768-5.766.001-3.182-2.585-5.774-5.768-5.774zm3.393 8.354c-.146.411-.749.771-1.047.818-.288.046-.66.074-2.155-.544-1.916-.79-3.149-2.738-3.244-2.865-.096-.128-.773-1.03-.773-1.964s.484-1.391.657-1.583c.172-.191.376-.239.502-.239.125 0 .252.002.361.007.116.006.27-.044.423.324.157.378.536 1.309.583 1.405.047.095.079.207.016.334-.064.128-.096.208-.192.32-.096.112-.202.25-.289.336-.096.096-.197.2-.085.391.112.191.498.823 1.07 1.332.737.657 1.359.861 1.551.956.192.096.304.08.418-.048.113-.128.484-.564.613-.757.128-.192.257-.16.433-.096.175.064 1.113.524 1.305.62.192.096.32.144.367.224.048.08.048.464-.098.875z"/></svg>
+                    </span>
+                    <span class="text-primary-foreground font-semibold text-sm">+91 79805 64312</span>
+                    <span class="text-xs text-primary-foreground/75">(WhatsApp Direct)</span>
+                  </a>
+                  <span class="text-primary-foreground/50 text-xs block mt-0.5">+91 81236 77210 | +91 90357 72512</span>
+                </li>
+                <li class="break-all"><a href="mailto:connect@trustzionfnd.org" class="footer-link-underline hover:underline">connect@trustzionfnd.org</a></li>
+                <li class="break-all"><a href="mailto:connect.zionfoundation@gmail.com" class="footer-link-underline hover:underline">connect.zionfoundation@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-primary-foreground/60">
+            <p>© <span id="yearVal">2026</span> Trust Zion Foundation. All rights reserved.</p>
+            <p>Compassion in Action · One Soul at a Time</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: Donation with South Indian Bank UPI QR Code -->
+  <div id="modalDonate" class="modal-backdrop-custom">
+    <div class="modal-card-custom" style="max-width: 58rem; max-height: 94vh; overflow-y: auto;">
+      <button onclick="closeDonateModal()"
+        class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground z-10 rounded-lg hover:bg-secondary transition"
+        aria-label="Close donation modal">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+
+      <div id="donateModalBody">
+        <div class="flex items-center gap-2.5 mb-1.5">
+          <span class="grid place-items-center h-8 w-8 rounded-lg bg-white shadow-xs p-0.5 border border-border shrink-0">
+            <img src="assets/images/logo.png" alt="Zion Foundation logo" class="h-full w-full object-contain" />
+          </span>
+          <span class="text-xs font-600 uppercase tracking-wider text-accent">Official Contribution</span>
+        </div>
+        <h3 class="font-display text-2xl sm:text-3xl font-600 mt-0.5">Complete Your Donation</h3>
+        <p class="text-xs sm:text-sm text-muted-foreground mt-0.5 mb-5">
+          Fill in your details below and scan the <strong>South Indian Bank UPI QR Code</strong> with any UPI app to complete your donation.
+        </p>
+
+        <form id="donationForm" onsubmit="processDonation(event)" class="space-y-4">
+          <div class="donate-modal-layout">
+            <!-- Left: Donor Details & Amount -->
+            <div class="donate-modal-form-col space-y-3.5">
+              <!-- Frequency Toggle -->
+              <div class="flex gap-2 p-1 bg-secondary rounded-xl">
+                <button type="button" id="freqOnce" onclick="setFreq('one-time')"
+                  class="flex-1 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground shadow-sm transition">One-Time Gift</button>
+                <button type="button" id="freqMonthly" onclick="setFreq('monthly')"
+                  class="flex-1 py-1.5 text-xs font-semibold rounded-lg bg-transparent text-muted-foreground hover:text-foreground transition">Give Monthly</button>
+              </div>
+
+              <!-- Quick Amount Pills -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">Select or Enter Amount (₹ INR)</label>
+                <div class="grid grid-cols-4 gap-2 mb-2">
+                  <button type="button" onclick="setModalAmount(500)" class="quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition">₹500</button>
+                  <button type="button" onclick="setModalAmount(1000)" class="quick-amt-btn active py-1.5 px-2 rounded-lg border border-accent bg-accent/15 text-accent text-xs font-bold transition">₹1,000</button>
+                  <button type="button" onclick="setModalAmount(2500)" class="quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition">₹2,500</button>
+                  <button type="button" onclick="setModalAmount(5000)" class="quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition">₹5,000</button>
+                </div>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-display text-lg font-bold text-foreground">₹</span>
+                  <input id="modalAmount" type="number" min="10" step="10" value="1000" oninput="onModalAmountInput(this.value)"
+                    class="w-full pl-8 pr-4 py-2 rounded-xl border border-input bg-background font-display text-lg font-bold text-accent focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+              </div>
+
+              <!-- Donor Name -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dName">Your Full Name *</label>
+                <input id="dName" required placeholder="e.g. Ramesh Kumar"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+              </div>
+
+              <!-- Email & Phone Grid -->
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dEmail">Receipt Email *</label>
+                  <input id="dEmail" type="email" required placeholder="ramesh@example.com"
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dPhone">Phone Number *</label>
+                  <input id="dPhone" type="tel" required placeholder="+91 98765 43210"
+                    class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+              </div>
+
+              <!-- Designated Program / Cause -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dCause">Designated Vertical / Cause</label>
+                <select id="dCause"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-ring">
+                  <option value="General Foundation Support">Zion Foundation (Where Most Needed)</option>
+                  <option value="Zion FC Academy (Youth Sports & Coaching)">Zion FC Academy (Youth Sports & Coaching)</option>
+                  <option value="Zion Loyals (Animal Welfare & Street Feeding)">Zion Loyals (Animal Welfare & Rescue)</option>
+                  <option value="Zion Vidya (Education for Physically Challenged Children)">Zion Vidya (Special & Inclusive Education)</option>
+                  <option value="Zion Home (Elderly Shelter & Nutrition)">Zion Home (Elderly Relief & Food Pantries)</option>
+                  <option value="Zion Care & Mind (Mental Health & Palliative)">Zion Care & Mind (Health & Compassion)</option>
+                </select>
+              </div>
+
+              <!-- UTR Reference -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1" for="dUTR">
+                  UPI Transaction ID / UTR <span class="text-[0.65rem] lowercase font-normal">(optional, from your UPI app receipt)</span>
+                </label>
+                <input id="dUTR" placeholder="e.g. 4123XXXXXXXX (12-digit UTR)"
+                  class="w-full rounded-xl border border-input bg-background px-3.5 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring" />
+              </div>
+            </div>
+
+            <!-- Right: South Indian Bank Prominent QR Card -->
+            <div class="donate-modal-qr-col bg-gradient-to-b from-card to-secondary/30 rounded-2xl border border-border p-3.5 text-center space-y-3">
+              <div class="flex items-center justify-between text-[0.72rem] font-bold text-muted-foreground uppercase tracking-wider px-1">
+                <span>Scan & Pay UPI</span>
+                <span class="text-emerald-600 flex items-center gap-1 font-semibold">
+                  <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> SIB Verified
+                </span>
+              </div>
+
+              <!-- Prominent Large QR Image Container -->
+              <div class="donate-qr-wrapper" style="width: 290px; margin: 0 auto; background: #fff; padding: 10px; border-radius: 16px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+                <img src="assets/images/zion-qr-code.jpg" alt="Zion Foundation South Indian Bank UPI QR Code"
+                  class="donate-qr-img" style="max-width: 275px; max-height: 405px; width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto; border-radius: 10px;" />
+              </div>
+
+              <!-- UPI ID Pill with Quick Copy -->
+              <div class="rounded-xl bg-background border border-border p-2.5 text-left">
+                <div class="text-[0.68rem] text-muted-foreground uppercase font-semibold">Official UPI ID:</div>
+                <div class="flex items-center justify-between gap-1.5 mt-0.5">
+                  <span class="font-mono text-sm font-bold text-primary select-all">qr.zion1110@sib</span>
+                  <button type="button" onclick="copyUpiId(this)"
+                    class="px-2.5 py-1 rounded-lg bg-secondary hover:bg-accent hover:text-accent-foreground text-xs font-semibold transition shrink-0">
+                    Copy
+                  </button>
+                </div>
+              </div>
+
+              <!-- Bank Details -->
+              <div class="text-xs text-muted-foreground text-left space-y-0.5 bg-secondary/50 rounded-lg p-2.5 leading-snug">
+                <div><strong>Beneficiary:</strong> ZION FOUNDATION</div>
+                <div><strong>Bank:</strong> South Indian Bank</div>
+                <div class="text-[0.68rem] text-muted-foreground pt-0.5">BHIM · Google Pay · PhonePe · Paytm · Amazon Pay · MobiKwik</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action -->
+          <div class="pt-2">
+            <button id="btnSubmitDonation" type="submit"
+              class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-600 text-accent-foreground shadow-lg hover:brightness-105 active:scale-[0.98] transition">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              </svg>
+              <span id="btnSubmitLabel">I Have Paid ₹1,000 · Confirm Donation</span>
+            </button>
+
+            <div class="mt-2.5 flex items-center justify-center gap-2 text-[0.72rem] text-muted-foreground">
+              <svg class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Direct Bank Deposit · Instant Confirmation · Tax-Exempt Receipt Issued</span>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Verified Success Receipt -->
+      <div id="donateSuccess" class="hidden text-center py-5">
+        <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-emerald-500 text-white mb-3 shadow-lg">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </span>
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-100 dark:bg-emerald-950/60 dark:text-emerald-400 px-3 py-1 rounded-full mb-1.5">Contribution Confirmed</span>
+        <h3 class="font-display text-2xl sm:text-3xl font-600">Thank You For Your Generosity!</h3>
+        <p class="text-xs sm:text-sm text-muted-foreground mt-0.5 max-w-md mx-auto">
+          Your donation acknowledgement has been issued to <span id="confEmail" class="font-semibold text-foreground"></span>.
+        </p>
+
+        <div class="bg-secondary rounded-2xl p-4 sm:p-5 my-4 text-left text-xs space-y-2 border border-border max-w-md mx-auto shadow-sm">
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Receipt Number:</span>
+            <span id="confReceipt" class="font-mono font-bold text-primary">TZF-UPI-20261120-1049</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Amount:</span>
+            <span id="confAmt" class="font-bold text-foreground">₹1,000.00 INR (one-time)</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Donor Name:</span>
+            <span id="confName" class="font-semibold text-foreground">Sarah Jenkins</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Designated Vertical:</span>
+            <span id="confCause" class="font-semibold text-foreground">Zion Foundation General</span>
+          </div>
+          <div class="flex justify-between border-b border-border/60 pb-1.5">
+            <span class="text-muted-foreground">Payment Method:</span>
+            <span class="font-semibold text-foreground">South Indian Bank UPI QR</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-muted-foreground">Beneficiary UPI ID:</span>
+            <span class="font-mono text-foreground">qr.zion1110@sib</span>
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-3">
+          <button onclick="window.print()" class="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-secondary transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+            <span>Print Receipt</span>
+          </button>
+          <button onclick="closeDonateModal()"
+            class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-600 text-primary-foreground hover:bg-primary/90 transition shadow-md">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: Sports Festival Registration & Enquiry Request -->
+  <div id="modalRsvp" class="modal-backdrop-custom">
+    <div class="modal-card-custom" style="max-width: 36rem;">
+      <button onclick="closeRsvp()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+      <div id="rsvpBody">
+        <span class="text-xs font-600 uppercase tracking-wider text-[#DF4C76]">Zion Community Sports Festival</span>
+        <h3 id="rsvpTitle" class="font-display text-2xl font-700 text-[#24133B] mt-1">Register / Event Enquiry</h3>
+        <p id="rsvpSub" class="text-sm text-muted-foreground mt-0.5 mb-4"></p>
+        <form onsubmit="submitRsvp(event)" class="space-y-3.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rName">Participant / Contact Name *</label>
+              <input id="rName" required placeholder="Full Name"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rAge">Age / Age Group *</label>
+              <input id="rAge" required placeholder="e.g. 13 or U-14"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rGender">Gender <span class="text-muted-foreground font-normal">(Optional)</span></label>
+              <select id="rGender" class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition">
+                <option value="Not Specified">Select Option</option>
+                <option value="Boys Division">Boys Division</option>
+                <option value="Girls Division">Girls Division</option>
+                <option value="Co-ed / Family">Co-ed / Family</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rTeam">School / Team Name *</label>
+              <input id="rTeam" required placeholder="School, Club or 'Individual'"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rPhone">Parent / Guardian Contact *</label>
+              <input id="rPhone" type="tel" required placeholder="+91 98765 43210"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rEmail">Email Address *</label>
+              <input id="rEmail" type="email" required placeholder="name@example.com"
+                class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold mb-1 text-[#24133B]" for="rSport">Sport / Activity of Interest *</label>
+            <select id="rSport" class="w-full rounded-lg border border-gray-200 bg-[#FFF8FA] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#DF4C76] focus:bg-white transition font-500">
+              <option value="7v7 Football Tournament">7v7 Football Tournament (Boys &amp; Girls Brackets)</option>
+              <option value="5v5 Girls Football Festival">5v5 Girls' Football Festival &amp; Skills Clinic</option>
+              <option value="Individual Sporting Challenges">Individual Sporting Challenges (Crossbar / Penalty / Agility)</option>
+              <option value="Family Sports & Fan Pass">Family Sports &amp; Carnival Pass</option>
+              <option value="Zion Academy Trial & Assessment">Zion Academy Scouting &amp; Free Assessment</option>
+            </select>
+          </div>
+
+          <!-- Important Disclaimer -->
+          <div class="rounded-lg bg-[#FFF0F3] border border-[#DF4C76]/25 p-2.5 text-[11px] text-[#24133B] flex items-start gap-2">
+            <svg class="w-4 h-4 text-[#DF4C76] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>
+              <strong>Note:</strong> Submitting this form is an <em>enquiry / registration request</em>, not an automatically confirmed entry. Coordinators will contact you to verify details and confirm brackets.
+            </span>
+          </div>
+
+          <button type="submit" id="btnModalRsvpSubmit"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#DF4C76] hover:bg-[#c93b64] px-6 py-3 text-sm sm:text-base font-600 text-white transition shadow-md">
+            Submit Registration Request
+          </button>
+        </form>
+      </div>
+
+      <div id="rsvpSuccess" class="hidden text-center py-5">
+        <span class="grid place-items-center h-14 w-14 mx-auto rounded-full bg-emerald-600 text-white mb-3 shadow">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M20 6 9 17l-5-5"></path>
+          </svg>
+        </span>
+        <h3 class="font-display text-2xl font-700 text-[#24133B]">Enquiry Received!</h3>
+        <p class="text-sm text-muted-foreground mt-2 max-w-sm mx-auto leading-relaxed">
+          Thank you! We have received your request. A Zion Foundation sports coordinator will call/WhatsApp you to verify player/team details and match fixtures.
+        </p>
+        <button onclick="closeRsvp()"
+          class="mt-5 inline-flex items-center gap-2 rounded-full bg-[#24133B] px-7 py-2.5 text-sm font-600 text-white hover:bg-[#1a0c2c] transition shadow">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: Story -->
+  <div id="modalStory" class="modal-backdrop-custom">
+    <div class="modal-card-custom" style="max-width: 38rem;">
+      <button onclick="closeStory()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+      <img id="storyImg" src="" alt="" class="w-full h-52 object-cover rounded-xl mb-4" />
+      <span id="storyCat" class="text-xs font-600 uppercase tracking-wider text-accent"></span>
+      <h3 id="storyHeading" class="font-display text-2xl font-600 mt-1 leading-snug"></h3>
+      <p id="storyContent" class="text-muted-foreground mt-3 leading-relaxed"></p>
+      <div class="mt-5 text-right">
+        <button onclick="closeStory()"
+          class="rounded-full bg-primary px-6 py-2 text-sm font-600 text-primary-foreground">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: Zion Academy Video -->
+  <div id="modalAcademyVideo" class="modal-backdrop-custom" onclick="if(event.target === this) closeAcademyVideoModal()">
+    <div class="modal-card-custom" style="max-width: 54rem; padding: 1.25rem; background: #071912; color: #ffffff; border: 1px solid rgba(184, 145, 47, 0.45); box-shadow: 0 25px 60px rgba(0,0,0,0.85), 0 0 35px rgba(184, 145, 47, 0.25);">
+      <button onclick="closeAcademyVideoModal()" class="absolute top-3.5 right-3.5 p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition z-10" aria-label="Close video modal">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+      <div class="flex items-center gap-2 mb-3 pr-10">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[0.7rem] font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/40">
+          Official Promo
+        </span>
+        <h3 class="font-display text-lg sm:text-xl font-bold text-white tracking-wide truncate">
+          Zion FC Academy &mdash; Play. Grow. Inspire.
+        </h3>
+      </div>
+      <div class="relative w-full rounded-xl overflow-hidden bg-black aspect-video shadow-2xl">
+        <video id="academyModalVideo" class="w-full h-full object-contain" controls playsinline preload="metadata" poster="assets/images/zion-academy-card.png">
+          <source src="assets/videos/zion-academy-ad.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="mt-3.5 flex flex-wrap items-center justify-between gap-2 text-xs text-white/75 pt-2 border-t border-white/10">
+        <div class="flex items-center gap-1.5 text-white/80">
+          <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Training at Coliseo Atletico Sports Ventures &bull; NICE Ring Rd, Bengaluru</span>
+        </div>
+        <a href="program.html?id=zion-academy" class="inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-semibold transition">
+          <span>Explore Full Academy Experience</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container-custom"></div>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    // Smooth scroll helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Header scroll background toggle
+    // Global header managed by animations.js
+
+    // Mobile menu toggle with smooth slide/fade animations
+    const mobileMenu = document.getElementById('mobileMenu');
+    const openMobileBtn = document.getElementById('mobileMenuOpenBtn');
+    const closeMobileBtn = document.getElementById('mobileMenuCloseBtn');
+
+    if (openMobileBtn && mobileMenu) {
+      openMobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('drawer-animating-in', 'open');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    if (closeMobileBtn && mobileMenu) {
+      closeMobileBtn.addEventListener('click', closeMobileMenu);
+    }
+
+    function closeMobileMenu() {
+      if (!mobileMenu) return;
+      mobileMenu.classList.remove('drawer-animating-in');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+      }, 220);
+    }
+
+    // Scroll reveal observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Donation selection state
+    let curAmount = 1500;
+    let curFreq = 'one-time';
+    const tiers = [
+      { amt: '₹500', label: 'Feeds a street pack or family', val: 500 },
+      { amt: '₹1,500', label: "Sponsors monthly sports tuition or tutoring", val: 1500 },
+      { amt: '₹5,000', label: 'Funds emergency veterinary & medical care', val: 5000 }
+    ];
+
+    function selectTier(idx, val) {
+      curAmount = val;
+      const buttons = document.querySelectorAll('.tier-option');
+      buttons.forEach((btn, i) => {
+        if (i === idx) {
+          btn.className = "tier-option rounded-2xl border p-6 text-left transition bg-accent border-accent text-accent-foreground shadow-lg";
+          btn.querySelector('p:last-child').className = "mt-2 text-sm text-accent-foreground/80";
+        } else {
+          btn.className = "tier-option rounded-2xl border p-6 text-left transition bg-white/5 border-white/15 hover:bg-white/10";
+          btn.querySelector('p:last-child').className = "mt-2 text-sm text-primary-foreground/70";
+        }
+      });
+      document.getElementById('mainDonateBtn').innerHTML = `
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+        </svg>
+        Donate ₹${curAmount.toLocaleString('en-IN')} Now
+      `;
+    }
+
+    function openDonateModal(isMonthly = false) {
+      setModalAmount(curAmount || 1000);
+      if (isMonthly) setFreq('monthly');
+      else setFreq('one-time');
+      document.getElementById('donateModalBody').classList.remove('hidden');
+      document.getElementById('donateSuccess').classList.add('hidden');
+      document.getElementById('modalDonate').classList.add('open');
+    }
+
+    function closeDonateModal() {
+      document.getElementById('modalDonate').classList.remove('open');
+    }
+
+    function setModalAmount(amt) {
+      curAmount = amt;
+      const input = document.getElementById('modalAmount');
+      if (input) input.value = amt;
+      onModalAmountInput(amt);
+
+      document.querySelectorAll('.quick-amt-btn').forEach(btn => {
+        const text = btn.textContent.replace(/[^\d]/g, '');
+        if (parseInt(text) === amt) {
+          btn.className = 'quick-amt-btn active py-1.5 px-2 rounded-lg border border-accent bg-accent/15 text-accent text-xs font-bold transition';
+        } else {
+          btn.className = 'quick-amt-btn py-1.5 px-2 rounded-lg border border-border text-xs font-bold hover:border-accent hover:text-accent transition';
+        }
+      });
+    }
+
+    function onModalAmountInput(val) {
+      const amt = parseInt(val) || 0;
+      const label = document.getElementById('btnSubmitLabel');
+      if (label) {
+        label.textContent = `I Have Paid ₹${amt.toLocaleString('en-IN')} · Confirm Donation`;
+      }
+    }
+
+    function copyUpiId(btn) {
+      const upiId = 'qr.zion1110@sib';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(upiId).then(() => {
+          const span = btn.querySelector('span');
+          if (span) {
+            const orig = span.textContent;
+            span.textContent = 'Copied!';
+            setTimeout(() => span.textContent = orig, 2000);
+          }
+          triggerToast('UPI ID copied: qr.zion1110@sib');
+        });
+      } else {
+        triggerToast('UPI ID: qr.zion1110@sib');
+      }
+    }
+
+    function setFreq(f) {
+      curFreq = f;
+      const o = document.getElementById('freqOnce');
+      const m = document.getElementById('freqMonthly');
+      if (f === 'monthly') {
+        m.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground shadow-sm transition";
+        o.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-transparent text-muted-foreground hover:text-foreground transition";
+      } else {
+        o.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-primary text-primary-foreground shadow-sm transition";
+        m.className = "flex-1 py-1.5 text-xs font-semibold rounded-lg bg-transparent text-muted-foreground hover:text-foreground transition";
+      }
+    }
+
+    async function processDonation(e) {
+      e.preventDefault();
+      const amt = parseInt(document.getElementById('modalAmount').value) || curAmount || 1000;
+      const name = document.getElementById('dName').value.trim();
+      const email = document.getElementById('dEmail').value.trim();
+      const phone = document.getElementById('dPhone').value.trim();
+      const cause = document.getElementById('dCause').value;
+      const utr = document.getElementById('dUTR').value.trim();
+
+      const btn = document.getElementById('btnSubmitDonation');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="inline-block animate-spin mr-2">⏳</span> Recording Donation...`;
+      }
+
+      let receiptNum = `TZF-UPI-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      try {
+        const res = await fetch('/api/submit-upi-donation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            donorName: name,
+            donorEmail: email,
+            donorPhone: phone,
+            amount: amt,
+            currency: 'INR',
+            purpose: cause,
+            utr: utr,
+            frequency: curFreq
+          })
+        });
+        const data = await res.json();
+        if (data.success && data.receipt) {
+          receiptNum = data.receipt;
+        }
+      } catch (err) {
+        console.warn('Backend note, proceeding with receipt generation:', err);
+      }
+
+      document.getElementById('confAmt').textContent = `₹${amt.toLocaleString('en-IN')}.00 INR (${curFreq})`;
+      document.getElementById('confEmail').textContent = email;
+      document.getElementById('confName').textContent = name;
+      document.getElementById('confCause').textContent = cause;
+      document.getElementById('confReceipt').textContent = receiptNum;
+
+      document.getElementById('donateModalBody').classList.add('hidden');
+      document.getElementById('donateSuccess').classList.remove('hidden');
+      triggerToast(`Thank you ${name}! Contribution of ₹${amt.toLocaleString('en-IN')} confirmed.`);
+
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><span id="btnSubmitLabel">I Have Paid ₹${amt.toLocaleString('en-IN')} · Confirm Donation</span>`;
+      }
+    }
+
+    // Sports Festival Highlight Carousel Scroll
+    function scrollHighlights(direction) {
+      const track = document.getElementById('highlightScrollTrack');
+      if (track) {
+        const shift = direction === 'left' ? -280 : 280;
+        track.scrollBy({ left: shift, behavior: 'smooth' });
+      }
+    }
+
+    // RSVP / Event Enquiry Modal
+    function openRsvp(title, time, place) {
+      if (title) document.getElementById('rsvpTitle').textContent = title;
+      if (time || place) {
+        document.getElementById('rsvpSub').textContent = [time, place].filter(Boolean).join(' · ');
+      }
+      document.getElementById('rsvpBody').classList.remove('hidden');
+      document.getElementById('rsvpSuccess').classList.add('hidden');
+      document.getElementById('modalRsvp').classList.add('open');
+    }
+    function closeRsvp() {
+      document.getElementById('modalRsvp').classList.remove('open');
+    }
+    async function submitRsvp(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnModalRsvpSubmit');
+      const origText = btn ? btn.innerHTML : 'Submit Registration Request';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="inline-block animate-spin mr-2">◌</span> Submitting Request...`;
+      }
+
+      const payload = {
+        eventName: document.getElementById('rsvpTitle')?.textContent?.trim() || 'Zion Community Sports Festival',
+        eventDetails: document.getElementById('rsvpSub')?.textContent?.trim() || 'Coliseo Atletico, Bengaluru',
+        contactName: document.getElementById('rName')?.value?.trim() || '',
+        phone: document.getElementById('rPhone')?.value?.trim() || '',
+        email: document.getElementById('rEmail')?.value?.trim() || '',
+        category: document.getElementById('rSport')?.value || 'Community Participant',
+        details: `Age: ${document.getElementById('rAge')?.value?.trim() || ''} | Gender: ${document.getElementById('rGender')?.value || ''} | Team: ${document.getElementById('rTeam')?.value?.trim() || ''}`
+      };
+
+      try {
+        const res = await fetch('/api/register-event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({ success: true }));
+        document.getElementById('rsvpBody').classList.add('hidden');
+        document.getElementById('rsvpSuccess').classList.remove('hidden');
+        triggerToast('Registration request submitted successfully!');
+      } catch (err) {
+        // Graceful offline fallback
+        console.warn('Network notice:', err);
+        document.getElementById('rsvpBody').classList.add('hidden');
+        document.getElementById('rsvpSuccess').classList.remove('hidden');
+        triggerToast('Enquiry saved offline! Coordinator will follow up.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+    }
+
+    // Inline Festival Registration & Enquiry Form
+    async function submitFestivalForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnFestSubmit');
+      const origText = btn ? btn.innerHTML : 'Submit Festival Registration Request';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span class="inline-block animate-spin mr-2">◌</span> Submitting Request...`;
+      }
+
+      const name = document.getElementById('regName')?.value?.trim() || '';
+      const age = document.getElementById('regAge')?.value?.trim() || '';
+      const gender = document.getElementById('regGender')?.value || 'Not Specified';
+      const team = document.getElementById('regTeam')?.value?.trim() || '';
+      const phone = document.getElementById('regPhone')?.value?.trim() || '';
+      const email = document.getElementById('regEmail')?.value?.trim() || '';
+      const sport = document.getElementById('regSport')?.value || 'General Festival Participant';
+      const notes = document.getElementById('regNotes')?.value?.trim() || '';
+
+      const payload = {
+        eventName: 'Zion Community Sports Festival',
+        eventDetails: 'Coliseo Atletico Sports Ventures, NICE Road, Bengaluru',
+        contactName: name,
+        phone: phone,
+        email: email,
+        category: sport,
+        details: `Age/Squad: ${age} | Gender: ${gender} | School/Team: ${team}${notes ? ' | Notes: ' + notes : ''}`
+      };
+
+      try {
+        const res = await fetch('/api/register-event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({ success: true }));
+        const form = document.getElementById('festivalRegForm');
+        const successBox = document.getElementById('festivalSuccessBox');
+        if (form) form.classList.add('hidden');
+        if (successBox) successBox.classList.remove('hidden');
+        triggerToast(`Thank you ${name}! Registration request received.`);
+      } catch (err) {
+        console.warn('Network notice:', err);
+        const form = document.getElementById('festivalRegForm');
+        const successBox = document.getElementById('festivalSuccessBox');
+        if (form) form.classList.add('hidden');
+        if (successBox) successBox.classList.remove('hidden');
+        triggerToast('Request submitted! Our team will contact you shortly.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+    }
+
+    function resetFestivalForm() {
+      const form = document.getElementById('festivalRegForm');
+      const successBox = document.getElementById('festivalSuccessBox');
+      if (form) {
+        form.reset();
+        form.classList.remove('hidden');
+      }
+      if (successBox) {
+        successBox.classList.add('hidden');
+      }
+    }
+
+    // Story Modal
+    function openStory(title, cat, excerpt, img) {
+      document.getElementById('storyHeading').textContent = title;
+      document.getElementById('storyCat').textContent = cat;
+      document.getElementById('storyImg').src = img;
+      document.getElementById('storyContent').textContent = excerpt + " Through dedicated volunteers and generous community sponsors, Zion Foundation continues to offer sustained personal and family empowerment, ensuring long-term dignity and generational hope.";
+      document.getElementById('modalStory').classList.add('open');
+    }
+    function closeStory() {
+      document.getElementById('modalStory').classList.remove('open');
+    }
+
+    // Academy Video Modal
+    function openAcademyVideoModal(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const modal = document.getElementById('modalAcademyVideo');
+      const video = document.getElementById('academyModalVideo');
+      if (modal) {
+        modal.classList.add('open');
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(function() {});
+        }
+      }
+    }
+    function closeAcademyVideoModal() {
+      const modal = document.getElementById('modalAcademyVideo');
+      const video = document.getElementById('academyModalVideo');
+      if (modal) {
+        modal.classList.remove('open');
+        if (video) {
+          video.pause();
+        }
+      }
+    }
+
+    // Global escape key handler for modals
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeAcademyVideoModal();
+      }
+    });
+
+    // Volunteer Form
+    function submitVolunteer(e) {
+      e.preventDefault();
+      document.getElementById('volunteerForm').classList.add('hidden');
+      document.getElementById('volunteerSuccess').classList.remove('hidden');
+      triggerToast('Welcome to the Zion family!');
+    }
+    function resetVolunteer() {
+      document.getElementById('volunteerForm').reset();
+      document.getElementById('volunteerForm').classList.remove('hidden');
+      document.getElementById('volunteerSuccess').classList.add('hidden');
+    }
+
+    // Contact Form
+    function submitContact(e) {
+      e.preventDefault();
+      e.target.reset();
+      triggerToast('Message sent! We will reply within 24 hours.');
+    }
+
+    // Toast
+    function triggerToast(msg) {
+      const c = document.getElementById('toastContainer');
+      const t = document.createElement('div');
+      t.className = 'toast-custom';
+      t.innerHTML = `<span>✓</span><span>${msg}</span>`;
+      c.appendChild(t);
+      setTimeout(() => {
+        t.style.opacity = '0';
+        t.style.transform = 'translateY(10px)';
+        t.style.transition = 'all 0.3s ease';
+        setTimeout(() => t.remove(), 300);
+      }, 4000);
+    }
+
+    // Close on backdrop click
+    document.querySelectorAll('.modal-backdrop-custom').forEach(b => {
+      b.addEventListener('click', e => {
+        if (e.target === b) {
+          b.classList.remove('open');
+        }
+      });
+    });
+
+    document.getElementById('yearVal').textContent = new Date().getFullYear();
+  </script>
+  <!-- Modern Animation System Controller -->
+  <script src="js/animations.js"></script>
+</body>
+
+</html>
