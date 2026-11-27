@@ -20,7 +20,7 @@
   }
 
   function initAll() {
-    initPageTransitions();
+    // initPageTransitions(); // Disabled to prevent blank white page on navigation
     initScrollReveal();
     initNumericalCounters();
     initProgressBarAnimations();

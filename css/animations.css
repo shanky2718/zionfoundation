@@ -40,15 +40,13 @@ body {
   transition: opacity var(--motion-duration-sm) var(--motion-ease-out);
 }
 
-html.motion-ready body {
-  animation: pageFadeIn 0.5s var(--motion-ease-out) forwards;
+/* Direct body opacity */
+body {
+  opacity: 1 !important;
 }
 
-body.page-leaving {
-  opacity: 0 !important;
-  pointer-events: none;
-  transition: opacity 0.22s ease-in !important;
-}
+/* Page leaving transition disabled for instant rendering */
+body.page-leaving { opacity: 1 !important; }
 
 @keyframes pageFadeIn {
   from {
